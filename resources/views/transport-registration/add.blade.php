@@ -89,18 +89,6 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label class="tx-semibold">Select Campus</label>
-                                            <div class="pos-relative">
-                                                <select class="form-control select2" name="campus_id" id="campus-id">
-                                                    <option selected value="">Select Campus</option>
-                                                    @foreach($data['campuses'] as $item)
-                                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
                                         <!-- <div class="form-group">
                                             <label class="tx-semibold">Driver Shift</label>
                                             <input name="driver_shift" class="form-control" type="text"

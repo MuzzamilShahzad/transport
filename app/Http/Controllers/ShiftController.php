@@ -46,7 +46,7 @@ class ShiftController extends Controller
             
         } else {
             $shift = new Shifts;
-            $shift->timings = $request->timings;
+            $shift->timings  =  $request->timings;
             $shift->save();
 
             if ($shift->save()) {
