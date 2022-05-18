@@ -2,8 +2,6 @@
 @section('main-content')
 @section('page_title', 'Add Contactor')
 
-<div>.....</div>
-
 <div class="main-content side-content pt-0">
     <div class="main-container container-fluid">
         <div class="inner-body">

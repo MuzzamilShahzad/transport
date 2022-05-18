@@ -23,9 +23,9 @@ class VehicleController extends Controller
     }
 
     public function add() {
-        $contractor = Contractor::get();
+        $contractors = Contractor::get();
         $data = array(
-            'contractor'   => $contractor,
+            'contractor'   => $contractors,
             'page'         => 'Vehicle',
             'menu'         => 'Add Vehicle',
         );
@@ -43,7 +43,7 @@ class VehicleController extends Controller
             'contractor_id' => 'required'
         ]);
 
-        if (!$validator->passes()) {
+        if (!$validator->errors()) {
 
             $response = array(
                 'status' => false, 
@@ -106,7 +106,7 @@ class VehicleController extends Controller
             'contractor_id' => 'required'
         ]);
 
-        if (!$validator->passes()) {
+        if (!$validator->errors()) {
 
             $response = array(
                 'status' => false, 
