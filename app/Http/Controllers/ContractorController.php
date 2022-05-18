@@ -47,10 +47,12 @@ class ContractorController extends Controller
             return response()->json($response);
         
         } else {
-            $contractor        =  new Contractors;
+            $contractor = new Contractors;
+
             $contractor->name  =  $request->name;
             $contractor->area  =  $request->area;
             $contractor->cnic  =  $request->cnic;
+
             $contractor->save();
 
             if ($contractor->save()) {
@@ -72,9 +74,9 @@ class ContractorController extends Controller
     public function edit($id) {
         $contractor = Contractors::find($id);
         $data = array(
-            'contractor'   =>  $contractor,
-            'page'         =>  'Contractor',
-            'menu'         =>  'Edit Contractor',
+            'contractor'  =>  $contractor,
+            'page'        =>  'Contractor',
+            'menu'        =>  'Edit Contractor',
         );
 
         return view('contractor.edit', compact('data'));
@@ -97,10 +99,12 @@ class ContractorController extends Controller
             return response()->json($response);
 
         } else {
-            $contractor        =  Contractors::find($id);
+            $contractor = Contractors::find($id);
+
             $contractor->name  =  $request->name;
             $contractor->area  =  $request->area;
             $contractor->cnic  =  $request->cnic;
+
             $contractor->update();
 
             if ($contractor->update()) {
@@ -125,8 +129,8 @@ class ContractorController extends Controller
     }
 
     public function delete(Request $request) {
-        $contractor_id = $request->contractor_id;
-        $query = Contractors::find($contractor_id)->delete();
+        $contractor_id  =  $request->contractor_id;
+        $query          =  Contractors::find($contractor_id)->delete();
         
         if ($query) {
 
