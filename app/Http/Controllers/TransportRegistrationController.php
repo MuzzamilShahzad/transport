@@ -70,17 +70,17 @@ class TransportRegistrationController extends Controller
             
         } else {
             
-            $transportRegistrations = new TransportRegistrations;
+            $transportRegistration = new TransportRegistrations;
 
-            $transportRegistrations->vehicle_id    =  $request->vehicle_id;
-            $transportRegistrations->route_id      =  $request->route_id;
-            $transportRegistrations->driver_id     =  $request->driver_id;
-            $transportRegistrations->shift_id      =  $request->shift_id;
-            $transportRegistrations->student_id    =  $request->student_id;
-            $transportRegistrations->student_id    =  $request->student_id;
-            $transportRegistrations->joining_date  =  $request->joining_date;
+            $transportRegistration->vehicle_id    =  $request->vehicle_id;
+            $transportRegistration->route_id      =  $request->route_id;
+            $transportRegistration->driver_id     =  $request->driver_id;
+            $transportRegistration->shift_id      =  $request->shift_id;
+            $transportRegistration->student_id    =  $request->student_id;
+            $transportRegistration->student_id    =  $request->student_id;
+            $transportRegistration->joining_date  =  $request->joining_date;
 
-            if ($transportRegistrations->save()) {
+            if ($transportRegistration->save()) {
                 $response = array(
                     'status'   =>  true, 
                     'message'  =>  'Transport Registration has been completed successfully'
