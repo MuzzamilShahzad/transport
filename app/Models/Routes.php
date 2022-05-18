@@ -5,8 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Driver extends Model
+class Routes extends Model
 {
     use HasFactory;
-    protected $table = "drivers";
+    protected $table = "routes";
 }

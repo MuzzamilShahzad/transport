@@ -79,8 +79,8 @@
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="campus_id" id="campus-id">
                                                     <option selected value="">Select Student</option>
-                                                    @foreach($data['students'] as $student)
-                                                        <option value="{{$student->id}}">{{$student->first_name}}</option>
+                                                    @foreach($data['campuses'] as $campuses)
+                                                        <option value="{{$campuses->id}}">{{$campuses->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -104,7 +104,6 @@
                                             <label class="tx-semibold">Joining Date</label>
                                             <input class="form-control date-picker" name="joining_date" id="joining-date" placeholder="YYYY-MM-DD" type="text">
                                         </div>
-
                                         <button type="submit" id="btn-add-transport-registration" class="btn ripple btn-primary">Save</button>
                                         <a href="{{ route('registration.view') }}" class="btn btn-danger">Back</a>
                                     </form>
@@ -120,7 +119,7 @@
 </div>
 
 <!-- {{-- Own javascript --}} -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{{url('assets/js/transport-reg/transport-registration.js')}}"></script>
+<script src="{{ url('assets/plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ url('assets/js/transport-registration/transport-registration.js') }}"></script>
 
 @endsection

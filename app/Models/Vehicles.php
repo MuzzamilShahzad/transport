@@ -6,12 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 // use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Contractor extends Model
+class Vehicles extends Model
 {
     use HasFactory;
 
     // use SoftDeletes;
     // protected $date = ['deleted_at'];
 
-    protected $table = "contractors";
+    protected $table = "vehicles";
+
+    public function contractor(){
+        return $this->belongsTo(Contractors::class,'contractor_id','id');
+    }
 }

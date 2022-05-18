@@ -9,8 +9,8 @@ class DashboardController extends Controller
 {
     public function index() {
         $data = array(
-            'page' => 'Dashboard',
-            'menu' => 'dashboard',
+            'page'  =>  'Dashboard',
+            'menu'  =>  'dashboard',
         );
 
         return view('dashboard.index', compact('data'));

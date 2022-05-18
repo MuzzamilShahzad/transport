@@ -6,16 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Validator;
-use App\Models\Shift;
+use App\Models\Shifts;
 
 class ShiftController extends Controller
 {
     public function listing() {
-        $shifts = Shift::all();
+        $shifts = Shifts::all();
         $data = array(
-            'shifts'       => $shifts,
-            'page'         => 'Shift',
-            'menu'         => 'Manage Shift',
+            'shifts'       =>  $shifts,
+            'page'         =>  'Shift',
+            'menu'         =>  'Manage Shift',
         );
 
         return view('shift.listing', compact('data'));
@@ -23,8 +23,8 @@ class ShiftController extends Controller
 
     public function add() {
         $data = array(
-            'page'         => 'Shift',
-            'menu'         => 'Add Shift',
+            'page'         =>  'Shift',
+            'menu'         =>  'Add Shift',
         );
 
         return view('shift.add', compact('data'));
@@ -38,30 +38,30 @@ class ShiftController extends Controller
         if (!$validator->errors()) {
 
             $response = array(
-                'status' => false, 
-                'error' => $validator->errors()->toArray()
+                'status'  =>  false, 
+                'error'   =>  $validator->errors()->toArray()
             );
             
             return response()->json($response);
             
         } else {
-            $shift = new Shift;
+            $shift = new Shifts;
             $shift->timings = $request->timings;
             $shift->save();
 
             if ($shift->save()) {
 
                 $response = array(
-                    'status' => true, 
-                    'message' => 'Shift has been added successfully'
+                    'status'   =>  true, 
+                    'message'  =>  'Shift has been added successfully'
                 );
 
                 return response()->json($response);
             } else {
 
                 $response = array(
-                    'status' => false, 
-                    'message' => 'Some thing went wrong please try again letter'
+                    'status'   =>  false, 
+                    'message'  =>  'Some thing went wrong please try again letter'
                 );
                 
                 return response()->json($response);
@@ -70,11 +70,11 @@ class ShiftController extends Controller
     }
 
     public function edit($id){
-        $shift = Shift::find($id);
+        $shift = Shifts::find($id);
         $data = array(
-            'shift'        => $shift,
-            'page'         => 'Shift',
-            'menu'         => 'Edit Shift',
+            'shift'        =>  $shift,
+            'page'         =>  'Shift',
+            'menu'         =>  'Edit Shift',
         );
 
         return view('shift.edit', compact('data'));
@@ -88,22 +88,22 @@ class ShiftController extends Controller
         if (!$validator->errors()) {
 
             $response = array(
-                'status' => false, 
-                'error' => $validator->errors()->toArray()
+                'status'  =>  false, 
+                'error'   =>  $validator->errors()->toArray()
             );
             
             return response()->json($response);
 
         } else {
-            $shift = Shift::find($id);
+            $shift = Shifts::find($id);
             $shift->timings = $request->timings;
             $shift->update();
 
             if ($shift->update()) {
 
                 $response = array(
-                    'status' => true, 
-                    'message' => 'Shift has been updated successfully'
+                    'status'   =>  true, 
+                    'message'  =>  'Shift has been updated successfully'
                 );
 
                 return response()->json($response);
@@ -111,8 +111,8 @@ class ShiftController extends Controller
             } else {
 
                 $response = array(
-                    'status' => false, 
-                    'message' => 'Some thing went worng please try again letter'
+                    'status'   =>  false, 
+                    'message'  =>  'Some thing went worng please try again letter'
                 );
 
                 return response()->json($response);
@@ -122,20 +122,20 @@ class ShiftController extends Controller
 
     public function delete(Request $request) {
         $shift_id = $request->shift_id;
-        $query = Shift::find($shift_id)->delete();
+        $query = Shifts::find($shift_id)->delete();
 
         if ($query) {
 
             $response = array(
-                'status' => true, 
-                'message' => 'Record has been deleted successfully!'
+                'status'   =>  true, 
+                'message'  =>  'Record has been deleted successfully!'
             );
         }
 
         else {
             $response = array(
-                'status' => false,
-                'message' => 'Some thing went worng try again later!'
+                'status'   =>  false,
+                'message'  =>  'Some thing went worng try again later!'
             );
         }
 

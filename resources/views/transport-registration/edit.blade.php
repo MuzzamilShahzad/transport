@@ -105,6 +105,18 @@
                                         </div> -->
 
                                         <div class="form-group">
+                                            <label class="tx-semibold">Select Campus</label>
+                                            <div class="pos-relative">
+                                                <select class="form-control select2" name="campus_id" id="campus-id">
+                                                    <option selected value="">Select Campus</option>
+                                                    @foreach($data['campuses'] as $item)
+                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label class="tx-semibold">Select Student</label>
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="student_id" id="student-id">
@@ -120,7 +132,7 @@
                                             <input class="form-control date-picker" name="joining_date" id="joining-date" value="{{$data['regTrans']->joining_date}}" type="text">
                                         </div>
 
-                                        <button type="submit" id="btn-update-transport-reg" class="btn ripple btn-primary">Update</button>
+                                        <button type="submit" id="btn-update-transport-registration" class="btn ripple btn-primary">Update</button>
                                         <a href="{{ route('registration.view') }}" class="btn btn-danger">Back</a>
                                     </form>
                                 </div>
@@ -135,8 +147,8 @@
 </div>
 
 <!-- {{-- Own javascript --}} -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{{url('assets/js/transport-reg/transport-registration.js')}}"></script>
+<script src="{{ url('assets/plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ url('assets/js/transport-registration/transport-registration.js') }}"></script>
 
 
 @endsection

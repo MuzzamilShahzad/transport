@@ -6,17 +6,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Validator;
-use App\Models\TransportRegistration;
-use App\Models\Vehicle;
-use App\Models\Route;
-use App\Models\Driver;
-use App\Models\Shift;
-use App\Models\Student;
+use App\Models\TransportRegistrations;
+use App\Models\Vehicles;
+use App\Models\Routes;
+use App\Models\Drivers;
+use App\Models\Shifts;
+use App\Models\Students;
+use App\Models\Campuses;
 
 class TransportRegistrationController extends Controller
 {
     public function listing() {
-        $transReg = TransportRegistration::all();
+        $transReg = TransportRegistrations::all();
         $data = array(
             'transReg'  =>  $transReg,
             'page'      =>  'Transport Registration',
@@ -27,11 +28,11 @@ class TransportRegistrationController extends Controller
     }
 
     public function add() {
-        $vehicles  =  Vehicle::get();
-        $routes    =  Route::get();
-        $drivers   =  Driver::get();
-        $shifts    =  Shift::get();
-        $students  =  Student::get();
+        $vehicles  =  Vehicles::get();
+        $routes    =  Routes::get();
+        $drivers   =  Drivers::get();
+        $shifts    =  Shifts::get();
+        $students  =  Students::get();
 
         $data = array(
             'vehicles'  =>  $vehicles,
@@ -67,7 +68,7 @@ class TransportRegistrationController extends Controller
             
         } else {
             
-            $transportRegistration = new TransportRegistration;
+            $transportRegistration = new TransportRegistrations;
 
             $transportRegistration->vehicle_id    =  $request->vehicle_id;
             $transportRegistration->route_id      =  $request->route_id;
@@ -96,13 +97,14 @@ class TransportRegistrationController extends Controller
     }
 
     public function edit($id) {
-        $vehicle = Vehicle::get();
-        $route = Route::get();
-        $driver = Driver::get();
-        $shift = Shift::get();
-        $student = Student::get();
+        $vehicle = Vehicles::get();
+        $route = Routes::get();
+        $driver = Drivers::get();
+        $shift = Shifts::get();
+        $campuses = Campuses::get();
+        $student = Students::get();
 
-        $regTrans = TransportRegistration::find($id);
+        $regTrans = TransportRegistrations::find($id);
 
         $data = array(
             'regTrans'  => $regTrans,
@@ -110,9 +112,10 @@ class TransportRegistrationController extends Controller
             'route'     => $route,
             'driver'    => $driver,
             'shift'     => $shift,
+            'campuses'  => $campuses,
             'student'   => $student,
             'page'      => 'Transport Registration',
-            'menu'      => 'Edit Transport Registration',
+            'menu'      => 'Edit Transport Registration'
         );
 
         return view('transport-registration.edit', compact('data'));
@@ -138,7 +141,7 @@ class TransportRegistrationController extends Controller
             return response()->json($response);
 
         } else {
-            $regTrans = TransportRegistration::find($id);
+            $regTrans = TransportRegistrations::find($id);
 
             // $regTrans->ref_number = $request->ref_number;
             $regTrans->vehicle_id = $request->vehicle_id;
@@ -174,7 +177,7 @@ class TransportRegistrationController extends Controller
 
     public function delete(Request $request) {
         $trans_reg_id = $request->trans_reg_id;
-        $query = TransportRegistration::find($trans_reg_id)->delete();
+        $query = TransportRegistrations::find($trans_reg_id)->delete();
         
         if ($query) {
 
