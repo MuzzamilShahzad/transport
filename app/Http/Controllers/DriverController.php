@@ -11,9 +11,9 @@ class DriverController extends Controller
     public function listing(){
         $drivers = Drivers::all();
         $data = array(
-            'drivers'    =>  $drivers,
-            'page'       =>  'Driver',
-            'menu'       =>  'Manage Driver'
+            'drivers'  =>  $drivers,
+            'page'     =>  'Driver',
+            'menu'     =>  'Manage Driver'
         );
 
         return view('driver.listing', compact('data'));
@@ -21,8 +21,8 @@ class DriverController extends Controller
 
     public function add(){
         $data = array(
-            'page'         =>  'Driver',
-            'menu'         =>  'Add Driver',
+            'page'  =>  'Driver',
+            'menu'  =>  'Add Driver',
         );
 
         return view('driver.add', compact('data'));
@@ -47,12 +47,14 @@ class DriverController extends Controller
             return response()->json($response);
 
         } else {
-            $driver       = new Drivers;
-            $driver->name = $request->name;
-            $driver->address = $request->address;
-            $driver->cnic = $request->cnic;
-            $driver->license_no = $request->license_no;
-            $driver->joining_date = $request->joining_date;
+            $driver = new Drivers;
+
+            $driver->name          =  $request->name;
+            $driver->address       =  $request->address;
+            $driver->cnic          =  $request->cnic;
+            $driver->license_no    =  $request->license_no;
+            $driver->joining_date  =  $request->joining_date;
+
             $driver->save();
 
             if ($driver->save()) {
@@ -107,11 +109,13 @@ class DriverController extends Controller
 
         } else {
             $driver = Drivers::find($id);
-            $driver->name = $request->name;
-            $driver->address = $request->address;
-            $driver->cnic = $request->cnic;
-            $driver->license_no = $request->license_no;
-            $driver->joining_date = $request->joining_date;
+
+            $driver->name          =  $request->name;
+            $driver->address       =  $request->address;
+            $driver->cnic          =  $request->cnic;
+            $driver->license_no    =  $request->license_no;
+            $driver->joining_date  =  $request->joining_date;
+
             $driver->update();
 
             if ($driver->update()) {
@@ -136,8 +140,8 @@ class DriverController extends Controller
     }
 
     public function delete(Request $request) {
-        $driver_id = $request->driver_id;
-        $query = Drivers::find($driver_id)->delete();
+        $driver_id  =  $request->driver_id;
+        $query      =  Drivers::find($driver_id)->delete();
 
         if ($query) {
 

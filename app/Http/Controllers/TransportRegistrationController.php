@@ -19,9 +19,9 @@ class TransportRegistrationController extends Controller
     public function listing() {
         $transReg = TransportRegistrations::all();
         $data = array(
-            'transReg'     => $transReg,
-            'page'         => 'Transport Registration',
-            'menu'         => 'Manage Registration'
+            'transReg'  =>  $transReg,
+            'page'      =>  'Transport Registration',
+            'menu'      =>  'Manage Registration'
         );
 
         return view('transport-registration.listing', compact('data'));
@@ -36,14 +36,14 @@ class TransportRegistrationController extends Controller
         $student   =  Students::get();
 
         $data = array(
-            'vehicle'   => $vehicle,
-            'route'     => $route,
-            'driver'    => $driver,
-            'shift'     => $shift,
-            'campuses'  => $campuses,
-            'student'   => $student,
-            'page'      => 'Transport Registration',
-            'menu'      => 'Add Registration'
+            'vehicle'   =>  $vehicle,
+            'route'     =>  $route,
+            'driver'    =>  $driver,
+            'shift'     =>  $shift,
+            'campuses'  =>  $campuses,
+            'student'   =>  $student,
+            'page'      =>  'Transport Registration',
+            'menu'      =>  'Add Registration'
         );
 
         return view('transport-registration.add', compact('data'));
