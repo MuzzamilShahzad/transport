@@ -18,29 +18,29 @@ class TransportRegistrationController extends Controller
     public function listing() {
         $transReg = TransportRegistration::all();
         $data = array(
-            'transReg'     => $transReg,
-            'page'         => 'Transport Registration',
-            'menu'         => 'Manage Registration'
+            'transReg'  =>  $transReg,
+            'page'      =>  'Transport Registration',
+            'menu'      =>  'Manage Registration'
         );
 
         return view('transport-registration.listing', compact('data'));
     }
 
     public function add() {
-        $vehicle = Vehicle::get();
-        $route = Route::get();
-        $driver = Driver::get();
-        $shift = Shift::get();
-        $student = Student::get();
+        $vehicles  =  Vehicle::get();
+        $routes    =  Route::get();
+        $drivers   =  Driver::get();
+        $shifts    =  Shift::get();
+        $students  =  Student::get();
 
         $data = array(
-            'vehicle'   => $vehicle,
-            'route'     => $route,
-            'driver'    => $driver,
-            'shift'     => $shift,
-            'student'   => $student,
-            'page'      => 'Transport Registration',
-            'menu'      => 'Add Registration'
+            'vehicles'  =>  $vehicles,
+            'routes'    =>  $routes,
+            'drivers'   =>  $drivers,
+            'shifts'    =>  $shifts,
+            'students'  =>  $students,
+            'page'      =>  'Transport Registration',
+            'menu'      =>  'Add Registration'
         );
 
         return view('transport-registration.add', compact('data'));
@@ -49,17 +49,14 @@ class TransportRegistrationController extends Controller
     public function store(Request $request) {
         // dd($request);
         $validator = Validator::make($request->all(), [
-            // 'ref_number' => 'required',
             'vehicle_id' => 'required',
-            // 'route_id' => 'required',
             'driver_id' => 'required',
-            // 'total_cap' => 'required',
             'shift_id' => 'required',
             'student_id' => 'required',
             'joining_date' => 'required'
         ]);
 
-        if (!$validator->passes()) {
+        if (!$validator->errors()) {
 
             $response = array(
                 'status' => false, 
@@ -69,20 +66,20 @@ class TransportRegistrationController extends Controller
             return response()->json($response);
             
         } else {
-            $regTrans = new TransportRegistration;
+            
+            $transportRegistration = new TransportRegistration;
 
-            // $regTrans->ref_number = $request->ref_number;
-            $regTrans->vehicle_id = $request->vehicle_id;
-            $regTrans->route_id = $request->route_id;
-            $regTrans->driver_id = $request->driver_id;
-            // $regTrans->total_cap = $request->total_cap;
-            $regTrans->shift_id = $request->shift_id;
-            $regTrans->student_id = $request->student_id;
-            $regTrans->joining_date = $request->joining_date;
+            $transportRegistration->vehicle_id    =  $request->vehicle_id;
+            $transportRegistration->route_id      =  $request->route_id;
+            $transportRegistration->driver_id     =  $request->driver_id;
+            $transportRegistration->shift_id      =  $request->shift_id;
+            $transportRegistration->student_id    =  $request->student_id;
+            $transportRegistration->student_id    =  $request->student_id;
+            $transportRegistration->joining_date  =  $request->joining_date;
 
-            $regTrans->save();
+            $transportRegistration->save();
 
-            if ($regTrans->save()) {
+            if ($transportRegistration->save()) {
                 $response = array(
                     'status' => true, 
                     'message' => 'Transport Registration has been completed successfully'
@@ -123,17 +120,15 @@ class TransportRegistrationController extends Controller
 
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
-            // 'ref_number' => 'required',
             'vehicle_id' => 'required',
             'route_id' => 'required',
             'driver_id' => 'required',
-            // 'total_cap' => 'required',
             'shift_id' => 'required',
             'student_id' => 'required',
             'joining_date' => 'required'
         ]);
 
-        if (!$validator->passes()) {
+        if (!$validator->errors()) {
 
             $response = array(
                 'status' => false, 

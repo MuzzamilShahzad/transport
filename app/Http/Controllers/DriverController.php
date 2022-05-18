@@ -37,7 +37,7 @@ class DriverController extends Controller
             'joining_date' => 'required',
         ]);
 
-        if (!$validator->passes()) {
+        if (!$validator->errors()) {
 
             $response = array(
                 'status' => false, 
@@ -96,7 +96,7 @@ class DriverController extends Controller
             'joining_date' => 'required',
         ]);
 
-        if (!$validator->passes()) {
+        if (!$validator->errors()) {
 
             $response = array(
                 'status' => false, 

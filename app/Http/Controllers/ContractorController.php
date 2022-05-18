@@ -37,7 +37,7 @@ class ContractorController extends Controller
             'cnic' => 'required|min:4|max:30',
         ]);
 
-        if (!$validator->passes()) {
+        if (!$validator->errors()) {
             
             $response = array(
                 'status' => false, 
@@ -87,7 +87,7 @@ class ContractorController extends Controller
             'cnic' => 'required|min:4|max:30'
         ]);
 
-        if (!$validator->passes()) {
+        if (!$validator->errors()) {
 
             $response = array(
                 'status' => false, 

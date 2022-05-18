@@ -25,7 +25,7 @@ class VehicleController extends Controller
     public function add() {
         $contractors = Contractor::get();
         $data = array(
-            'contractor'   => $contractors,
+            'contractors'   => $contractors,
             'page'         => 'Vehicle',
             'menu'         => 'Add Vehicle',
         );

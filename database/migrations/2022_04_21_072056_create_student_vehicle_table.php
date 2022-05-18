@@ -32,6 +32,7 @@ return new class extends Migration
             $table->unsignedInteger('student_id')->nullable();
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             
+            $table->integer('fees');
             $table->date('joining_date');
             $table->tinyInteger('is_active')->default(1);
             $table->tinyInteger('is_delete')->default(0);
