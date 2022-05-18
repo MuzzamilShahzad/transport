@@ -71,7 +71,7 @@
                                             <td>{{$item->joining_date}}</td>
                                             <td>
                                                 <a href="{{ route('registration.edit',$item->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                                <button data-id="{{$item->id}}" id="btn-delete-transport-reg" class="btn btn-danger btn-sm">Delete</button>
+                                                <button data-id="{{$item->id}}" id="btn-delete-transport-registration" class="btn btn-danger btn-sm">Delete</button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -87,8 +87,8 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{{url('assets/js/transport-reg/transport-registration.js')}}"></script>
+<script src="{{ url('assets/plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ url('assets/js/transport-registration/transport-registration.js') }}"></script>
 
 
 

@@ -6,16 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Validator;
-use App\Models\Route;
+use App\Models\Routes;
 
 class RouteController extends Controller
 {
     public function listing() {
-        $routes = Route::all();
+        $routes = Routes::all();
         $data = array(
-            'routes'     => $routes,
-            'page'       => 'Route',
-            'menu'       => 'Manage Route',
+            'routes'     =>  $routes,
+            'page'       =>  'Route',
+            'menu'       =>  'Manage Route',
         );
 
         return view('route.listing', compact('data'));
@@ -23,8 +23,8 @@ class RouteController extends Controller
 
     public function add() {
         $data = array(
-            'page'         => 'Route',
-            'menu'         => 'Add Route',
+            'page'         =>  'Route',
+            'menu'         =>  'Add Route',
         );
 
         return view('route.add', compact('data'));
@@ -45,20 +45,20 @@ class RouteController extends Controller
             
         } else {
 
-            $route = new Route;
+            $route = new Routes;
             $route->area = $request->area;
             $route->save();
 
             if ($route->save()) {
                 $response = array(
-                    'status' => true, 
-                    'message' => 'Route has been added successfully'
+                    'status'   =>  true, 
+                    'message'  =>  'Route has been added successfully'
                 );
                 return response()->json($response);
             } else {
                 $response = array(
-                    'status' => false, 
-                    'message' => 'Some thing went wrong please try again letter'
+                    'status'   =>  false, 
+                    'message'  =>  'Some thing went wrong please try again letter'
                 );
                 return response()->json($response);
             }
@@ -66,11 +66,11 @@ class RouteController extends Controller
     }
 
     public function edit($id){
-        $route = Route::find($id);
+        $route = Routes::find($id);
         $data = array(
-            'route'        => $route,
-            'page'         => 'Route',
-            'menu'         => 'Edit Route',
+            'route'        =>  $route,
+            'page'         =>  'Route',
+            'menu'         =>  'Edit Route',
         );
 
         return view('route.edit', compact('data'));
@@ -84,22 +84,22 @@ class RouteController extends Controller
         if (!$validator->passes()) {
 
             $response = array(
-                'status' => false, 
-                'error' => $validator->errors()->toArray()
+                'status'  =>  false, 
+                'error'   =>  $validator->errors()->toArray()
             );
             
             return response()->json($response);
 
         } else {
-            $route = Route::find($id);
+            $route = Routes::find($id);
             $route->area = $request->area;
             $route->update();
 
             if ($route->update()) {
 
                 $response = array(
-                    'status' => true, 
-                    'message' => 'Route has been updated successfully'
+                    'status'   =>  true, 
+                    'message'  =>  'Route has been updated successfully'
                 );
 
                 return response()->json($response);
@@ -107,8 +107,8 @@ class RouteController extends Controller
             } else {
 
                 $response = array(
-                    'status' => false, 
-                    'message' => 'Some thing went worng please try again letter'
+                    'status'   =>  false, 
+                    'message'  =>  'Some thing went worng please try again letter'
                 );
 
                 return response()->json($response);
@@ -118,20 +118,20 @@ class RouteController extends Controller
 
     public function delete(Request $request) {
         $route_id = $request->route_id;
-        $query = Route::find($route_id)->delete();
+        $query = Routes::find($route_id)->delete();
 
         if ($query) {
 
             $response = array(
-                'status' => true, 
-                'message' => 'Record has been deleted successfully!'
+                'status'   =>  true, 
+                'message'  =>  'Record has been deleted successfully!'
             );
         }
 
         else {
             $response = array(
-                'status' => false,
-                'message' => 'Some thing went worng try again later!'
+                'status'   =>  false,
+                'message'  =>  'Some thing went worng try again later!'
             );
         }
 

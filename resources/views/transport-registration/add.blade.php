@@ -14,18 +14,6 @@
                         <li class="breadcrumb-item active" aria-current="page">{{ $data['menu'] }}</li>
                     </ol>
                 </div>
-                <!-- <div class="d-flex">
-                    <div class="justify-content-center">
-                        <button type="button" class="btn btn-white btn-icon-text my-2 me-2">
-                            <i class="fe fe-settings"></i>
-                            <span>Settings</span>
-                        </button>
-                        <button type="button" class="btn btn-primary my-2 btn-icon-text">
-                            <i class="fe fe-download-cloud bg-white-transparent text-white"></i>
-                            <span>Reports</span>
-                        </button>
-                    </div>
-                </div> -->
             </div>
             <!-- End Page Header -->
 
@@ -101,6 +89,18 @@
                                             </div>
                                         </div>
 
+                                        <div class="form-group">
+                                            <label class="tx-semibold">Select Campus</label>
+                                            <div class="pos-relative">
+                                                <select class="form-control select2" name="campus_id" id="campus-id">
+                                                    <option selected value="">Select Campus</option>
+                                                    @foreach($data['campuses'] as $item)
+                                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
                                         <!-- <div class="form-group">
                                             <label class="tx-semibold">Driver Shift</label>
                                             <input name="driver_shift" class="form-control" type="text"
@@ -122,10 +122,10 @@
 
                                         <div class="form-group">
                                             <label class="tx-semibold">Joining Date</label>
-                                            <input class="form-control date-picker" name="joining_date" id="joining-date" placeholder="MM/DD/YYYY" type="text">
+                                            <input class="form-control date-picker" name="joining_date" id="joining-date" placeholder="YYYY/MM/DD" type="text">
                                         </div>
 
-                                        <button type="submit" id="btn-add-transport-reg" class="btn ripple btn-primary">Save</button>
+                                        <button type="submit" id="btn-add-transport-registration" class="btn ripple btn-primary">Save</button>
                                         <a href="{{ route('registration.view') }}" class="btn btn-danger">Back</a>
                                     </form>
                                 </div>
@@ -140,7 +140,7 @@
 </div>
 
 <!-- {{-- Own javascript --}} -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{{url('assets/js/transport-reg/transport-registration.js')}}"></script>
+<script src="{{ url('assets/plugins/jquery/jquery.min.js') }}"></script>
+<script src="{{ url('assets/js/transport-registration/transport-registration.js') }}"></script>
 
 @endsection

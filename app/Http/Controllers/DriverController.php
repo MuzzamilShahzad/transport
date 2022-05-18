@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
-use App\Models\Driver;
+use App\Models\Drivers;
 
 class DriverController extends Controller
 {
     public function listing(){
-        $drivers = Driver::all();
+        $drivers = Drivers::all();
         $data = array(
-            'drivers'     => $drivers,
-            'page'       => 'Driver',
-            'menu'       => 'Manage Driver'
+            'drivers'    =>  $drivers,
+            'page'       =>  'Driver',
+            'menu'       =>  'Manage Driver'
         );
 
         return view('driver.listing', compact('data'));
@@ -21,8 +21,8 @@ class DriverController extends Controller
 
     public function add(){
         $data = array(
-            'page'         => 'Driver',
-            'menu'         => 'Add Driver',
+            'page'         =>  'Driver',
+            'menu'         =>  'Add Driver',
         );
 
         return view('driver.add', compact('data'));
@@ -30,24 +30,24 @@ class DriverController extends Controller
 
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'address' => 'required',
-            'cnic' => 'required',
-            'license_no' => 'required',
-            'joining_date' => 'required',
+            'name'          =>  'required',
+            'address'       =>  'required',
+            'cnic'          =>  'required',
+            'license_no'    =>  'required',
+            'joining_date'  =>  'required',
         ]);
 
         if (!$validator->passes()) {
 
             $response = array(
-                'status' => false, 
-                'error' => $validator->errors()->toArray()
+                'status'  =>  false, 
+                'error'   =>  $validator->errors()->toArray()
             );
             
             return response()->json($response);
 
         } else {
-            $driver = new Driver;
+            $driver       = new Drivers;
             $driver->name = $request->name;
             $driver->address = $request->address;
             $driver->cnic = $request->cnic;
@@ -58,8 +58,8 @@ class DriverController extends Controller
             if ($driver->save()) {
                 
                 $response = array(
-                    'status' => true, 
-                    'message' => 'Driver has been added successfully'
+                    'status'   =>  true, 
+                    'message'  =>  'Driver has been added successfully'
                 );
 
                 return response()->json($response);
@@ -67,8 +67,8 @@ class DriverController extends Controller
             } else {
 
                 $response = array(
-                    'status' => false, 
-                    'message' => 'Some thing went worng please try again letter'
+                    'status'   =>  false, 
+                    'message'  =>  'Some thing went worng please try again letter'
                 );
 
                 return response()->json($response);
@@ -77,11 +77,11 @@ class DriverController extends Controller
     }
 
     public function edit($id){
-        $driver = Driver::find($id);
+        $driver = Drivers::find($id);
         $data = array(
-            'driver'       => $driver,
-            'page'         => 'Driver',
-            'menu'         => 'Edit Driver'
+            'driver'       =>  $driver,
+            'page'         =>  'Driver',
+            'menu'         =>  'Edit Driver'
         );
 
         return view('driver.edit', compact('data'));
@@ -89,24 +89,24 @@ class DriverController extends Controller
 
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'address' => 'required',
-            'cnic' => 'required',
-            'license_no' => 'required',
-            'joining_date' => 'required',
+            'name'          =>  'required',
+            'address'       =>  'required',
+            'cnic'          =>  'required',
+            'license_no'    =>  'required',
+            'joining_date'  =>  'required',
         ]);
 
         if (!$validator->passes()) {
 
             $response = array(
-                'status' => false, 
-                'error' => $validator->errors()->toArray()
+                'status'  =>  false, 
+                'error'   =>  $validator->errors()->toArray()
             );
             
             return response()->json($response);
 
         } else {
-            $driver = Driver::find($id);
+            $driver = Drivers::find($id);
             $driver->name = $request->name;
             $driver->address = $request->address;
             $driver->cnic = $request->cnic;
@@ -117,8 +117,8 @@ class DriverController extends Controller
             if ($driver->update()) {
 
                 $response = array(
-                    'status' => true, 
-                    'message' => 'Driver has been updated successfully'
+                    'status'   =>  true, 
+                    'message'  =>  'Driver has been updated successfully'
                 );
 
                 return response()->json($response);
@@ -126,8 +126,8 @@ class DriverController extends Controller
             } else {
 
                 $response = array(
-                    'status' => false, 
-                    'message' => 'Some thing went worng please try again letter'
+                    'status'   =>  false, 
+                    'message'  =>  'Some thing went worng please try again letter'
                 );
 
                 return response()->json($response);
@@ -137,20 +137,20 @@ class DriverController extends Controller
 
     public function delete(Request $request) {
         $driver_id = $request->driver_id;
-        $query = Driver::find($driver_id)->delete();
+        $query = Drivers::find($driver_id)->delete();
 
         if ($query) {
 
             $response = array(
-                'status' => true, 
-                'message' => 'Record has been deleted successfully!'
+                'status'   =>  true, 
+                'message'  =>  'Record has been deleted successfully!'
             );
         }
 
         else {
             $response = array(
-                'status' => false,
-                'message' => 'Some thing went worng try again later!'
+                'status'   =>  false,
+                'message'  =>  'Some thing went worng try again later!'
             );
         }
 
