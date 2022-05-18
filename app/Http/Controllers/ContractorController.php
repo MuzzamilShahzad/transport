@@ -23,8 +23,8 @@ class ContractorController extends Controller
 
     public function add() {
         $data = array(
-            'page'    =>  'Contractor',
-            'menu'    =>  'Add Contractor',
+            'page'  =>  'Contractor',
+            'menu'  =>  'Add Contractor',
         );
 
         return view('contractor.add', compact('data'));

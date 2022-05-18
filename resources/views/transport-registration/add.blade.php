@@ -79,8 +79,8 @@
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="campus_id" id="campus-id">
                                                     <option selected value="">Select Student</option>
-                                                    @foreach($data['campuses'] as $campuses)
-                                                        <option value="{{$campuses->id}}">{{$campuses->name}}</option>
+                                                    @foreach($data['campuses'] as $campus)
+                                                        <option value="{{$campus->id}}">{{$campus->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

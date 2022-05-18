@@ -54,12 +54,14 @@ class VehicleController extends Controller
             
         } else {
             $vehicle = new Vehicles;
-            $vehicle->number = $request->number;
-            $vehicle->maker = $request->maker;
-            $vehicle->chassis_number = $request->chassis_number;
-            $vehicle->engine_number = $request->engine_number;
-            $vehicle->capacity = $request->capacity;
-            $vehicle->contractor_id = $request->contractor_id;
+
+            $vehicle->number          =  $request->number;
+            $vehicle->maker           =  $request->maker;
+            $vehicle->chassis_number  =  $request->chassis_number;
+            $vehicle->engine_number   =  $request->engine_number;
+            $vehicle->capacity        =  $request->capacity;
+            $vehicle->contractor_id   =  $request->contractor_id;
+
             $vehicle->save();
 
             if ($vehicle->save()) {
@@ -117,12 +119,14 @@ class VehicleController extends Controller
 
         } else {
             $vehicle = Vehicles::find($id);
-            $vehicle->number = $request->number;
-            $vehicle->maker = $request->maker;
-            $vehicle->chassis_number = $request->chassis_number;
-            $vehicle->engine_number = $request->engine_number;
-            $vehicle->capacity = $request->capacity;
-            $vehicle->contractor_id = $request->contractor_id;
+
+            $vehicle->number          =  $request->number;
+            $vehicle->maker           =  $request->maker;
+            $vehicle->chassis_number  =  $request->chassis_number;
+            $vehicle->engine_number   =  $request->engine_number;
+            $vehicle->capacity        =  $request->capacity;
+            $vehicle->contractor_id   =  $request->contractor_id;
+
             $vehicle->update();
 
             if ($vehicle->update()) {
@@ -147,8 +151,8 @@ class VehicleController extends Controller
     }
 
     public function delete(Request $request) {
-        $vehicle_id = $request->vehicle_id;
-        $query = Vehicles::find($vehicle_id)->delete();
+        $vehicle_id  =  $request->vehicle_id;
+        $query       =  Vehicles::find($vehicle_id)->delete();
 
         if ($query) {
 

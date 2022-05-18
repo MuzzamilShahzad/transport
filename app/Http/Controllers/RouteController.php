@@ -46,7 +46,7 @@ class RouteController extends Controller
         } else {
 
             $route = new Routes;
-            $route->area = $request->area;
+            $route->area  =  $request->area;
             $route->save();
 
             if ($route->save()) {
@@ -117,8 +117,8 @@ class RouteController extends Controller
     }
 
     public function delete(Request $request) {
-        $route_id = $request->route_id;
-        $query = Routes::find($route_id)->delete();
+        $route_id  =  $request->route_id;
+        $query     =  Routes::find($route_id)->delete();
 
         if ($query) {
 
