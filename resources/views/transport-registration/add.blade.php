@@ -74,28 +74,17 @@
                                                 </select>
                                             </div>
                                         </div>
-<<<<<<< HEAD
-
-                                        <!-- <div class="form-group">
-                                            <label class="tx-semibold">Driver Shift</label>
-                                            <input name="driver_shift" class="form-control" type="text"
-                                                placeholder="Driver Shift">
-                                            <span class="text-danger error-text driver_shift_error"></span>
-                                        </div> -->
-
-=======
                                         <div class="form-group">
                                             <label class="tx-semibold">Select Campus</label>
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="campus_id" id="campus-id">
                                                     <option selected value="">Select Student</option>
-                                                    @foreach($data['campuses'] as $campuses)
-                                                        <option value="{{$campuses->id}}">{{$campuses->name}}</option>
+                                                    @foreach($data['campuses'] as $campus)
+                                                        <option value="{{$campus->id}}">{{$campus->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
->>>>>>> c52b7885d8bd646fae118b9969362ba141ce4a46
                                         <div class="form-group">
                                             <label class="tx-semibold">Select Student</label>
                                             <div class="pos-relative">
