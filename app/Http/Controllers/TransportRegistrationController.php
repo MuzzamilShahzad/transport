@@ -59,7 +59,7 @@ class TransportRegistrationController extends Controller
             'joining_date'  =>  'required'
         ]);
 
-        if (!$validator->passes()) {
+        if (!$validator->errors()) {
 
             $response = array(
                 'status'  =>  false, 
@@ -69,19 +69,20 @@ class TransportRegistrationController extends Controller
             return response()->json($response);
             
         } else {
-            $regTrans = new TransportRegistrations;
+            
+            $transportRegistration = new TransportRegistrations;
 
-            $regTrans->vehicle_id    =  $request->vehicle_id;
-            $regTrans->route_id      =  $request->route_id;
-            $regTrans->driver_id     =  $request->driver_id;
-            $regTrans->shift_id      =  $request->shift_id;
-            $regTrans->campus_id     =  $request->shift_id;
-            $regTrans->student_id    =  $request->student_id;
-            $regTrans->joining_date  =  $request->joining_date;
+            $transportRegistration->vehicle_id    =  $request->vehicle_id;
+            $transportRegistration->route_id      =  $request->route_id;
+            $transportRegistration->driver_id     =  $request->driver_id;
+            $transportRegistration->shift_id      =  $request->shift_id;
+            $transportRegistration->student_id    =  $request->student_id;
+            $transportRegistration->student_id    =  $request->student_id;
+            $transportRegistration->joining_date  =  $request->joining_date;
 
-            $regTrans->save();
+            $transportRegistration->save();
 
-            if ($regTrans->save()) {
+            if ($transportRegistration->save()) {
                 $response = array(
                     'status'   =>  true, 
                     'message'  =>  'Transport Registration has been completed successfully'
@@ -124,14 +125,15 @@ class TransportRegistrationController extends Controller
 
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
-            'vehicle_id'    =>  'required',
-            'driver_id'     =>  'required',
-            'shift_id'      =>  'required',
-            'student_id'    =>  'required',
-            'joining_date'  =>  'required'
+            'vehicle_id' => 'required',
+            'route_id' => 'required',
+            'driver_id' => 'required',
+            'shift_id' => 'required',
+            'student_id' => 'required',
+            'joining_date' => 'required'
         ]);
 
-        if (!$validator->passes()) {
+        if (!$validator->errors()) {
 
             $response = array(
                 'status'  =>  false, 

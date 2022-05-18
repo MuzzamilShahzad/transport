@@ -44,7 +44,7 @@ class DriverVehicleController extends Controller
             'shift_time_id' => 'required',
         ]);
 
-        if (!$validator->passes()) {
+        if (!$validator->errors()) {
 
             $response = array(
                 'status' => false, 
@@ -103,7 +103,7 @@ class DriverVehicleController extends Controller
             'shift_time_id' => 'required',
         ]);
 
-        if (!$validator->passes()) {
+        if (!$validator->errors()) {
 
             $response = array(
                 'status' => false, 
