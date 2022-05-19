@@ -35,7 +35,7 @@ class VehicleController extends Controller
 
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
-            'number'          =>  'required|min:1|max:20',
+            'vehicle_number'  =>  'required|min:1|max:20',
             'maker'           =>  'required|min:1|max:20',
             'chassis_number'  =>  'required|min:1|max:20',
             'engine_number'   =>  'required|min:1|max:20',
@@ -55,7 +55,7 @@ class VehicleController extends Controller
         } else {
             $vehicle = new Vehicles;
 
-            $vehicle->number          =  $request->number;
+            $vehicle->number          =  $request->vehicle_number;
             $vehicle->maker           =  $request->maker;
             $vehicle->chassis_number  =  $request->chassis_number;
             $vehicle->engine_number   =  $request->engine_number;
@@ -100,7 +100,7 @@ class VehicleController extends Controller
 
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
-            'number'          =>  'required|min:1|max:20',
+            'vehicle_number'  =>  'required|min:1|max:20',
             'maker'           =>  'required|min:1|max:20',
             'chassis_number'  =>  'required|min:1|max:20',
             'engine_number'   =>  'required|min:1|max:20',
@@ -120,7 +120,7 @@ class VehicleController extends Controller
         } else {
             $vehicle = Vehicles::find($id);
 
-            $vehicle->number          =  $request->number;
+            $vehicle->number          =  $request->vehicle_number;
             $vehicle->maker           =  $request->maker;
             $vehicle->chassis_number  =  $request->chassis_number;
             $vehicle->engine_number   =  $request->engine_number;
