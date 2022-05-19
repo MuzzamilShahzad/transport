@@ -83,9 +83,9 @@ class TransportRegistrationController extends Controller
             $transportRegistration->fees          =  $request->fees;
             $transportRegistration->joining_date  =  $request->joining_date;
 
-            $query = $transportRegistration->save();
+            $querys = $transportRegistration->save();
 
-            if ($query) {
+            if ($querys) {
                 $response = array(
                     'status'   =>  true, 
                     'message'  =>  'Transport Registration has been completed successfully'
