@@ -21,7 +21,9 @@ class TransportRegistrationController extends Controller
         $data = array(
             'transportRegistration'  =>  $transportRegistration,
             'page'                   =>  'Transport Registration',
-            'menu'                   =>  'Manage Registration'
+            'menu'                   =>  'Manage Registration',
+            'title-1'                =>  'Driver Transport Registration',
+            'title-2'                =>  'Student Transport Registration'
         );
 
         return view('transport-registration.listing', compact('data'));

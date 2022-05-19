@@ -24,7 +24,7 @@
                         <div class="card-body">
                             <a href="{{ route('registration.create') }}" class="btn btn-primary" style="float:right">Add Transport Registration</a>
                             <div>
-                                <h1 class="main-content-label mb-1">{{ $data['menu'] }} </h1>
+                                <h1 class="main-content-label mb-1">{{ $data['title-1'] }} </h1>
                             </div>
                             <br>
                             <br>
@@ -34,14 +34,10 @@
                                     <thead>
                                         <tr>
                                             <th width="10px">S.NO</th>
-                                            <!-- <th>Reference Number</th> -->
                                             <th>Vehicle</th>
-                                            <th>Route</th>
                                             <th>Driver</th>
-                                            <!-- <th>Total Capacity</th> -->
-                                            <th>Shift Time</th>
-                                            <th>Student</th>
-                                            <th>Joining Date</th>
+                                            <th>Route</th>
+                                            <th>Total Capacity</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -49,14 +45,10 @@
                                         @foreach($data['transportRegistration'] as $sno => $item)
                                         <tr>
                                             <td>{{ $sno + 1 }}</td>
-                                            <!-- <td>{{$item->ref_number}}</td> -->
-                                            <td>{{$item->vehicle->maker}}</td>
-                                            <td>{{$item->route->area}}</td>
+                                            <td>{{$item->vehicle->maker}} ({{$item->vehicle->number }})</td>
                                             <td>{{$item->driver->name}}</td>
-                                            <!-- <td>{{$item->total_cap}}</td> -->
-                                            <td>{{$item->shift->timings}}</td>
-                                            <td>{{$item->student->first_name}}</td>
-                                            <td>{{$item->joining_date}}</td>
+                                            <td>{{$item->route->area}}</td>
+                                            <td>{{$item->vehicle->capacity}}</td>
                                             <td>
                                                 <a href="{{ route('registration.edit',$item->id) }}" class="btn btn-primary btn-sm">Edit</a>
                                                 <button data-id="{{$item->id}}" id="btn-delete-transport-registration" class="btn btn-danger btn-sm">Delete</button>
@@ -84,7 +76,7 @@
                     <div class="card custom-card">
                         <div class="card-body">
                             <div>
-                                <h1 class="main-content-label mb-1">{{ $data['menu'] }} </h1>
+                                <h1 class="main-content-label mb-1">{{ $data['title-2'] }} </h1>
                             </div>
                             <br>
                             <div class="table-responsive">
