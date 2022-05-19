@@ -42,6 +42,9 @@ Route::controller(VehicleController::class)->group(function () {
     Route::get('/vehicle/edit/{id}', 'edit')->name('vehicle.edit');
     Route::put('/vehicle/update/{id}', 'update')->name('vehicle.update');
     Route::delete('/vehicle/delete', 'delete')->name('vehicle.delete');
+
+    Route::get('/vehicle/total-capacity', 'getTotalCapacity')->name('get.totalCapacity');
+    // Route::get('/vehicle/remaining-capacity', 'getRemainingCapacity')->name('get.remainingCapacity');
 });
 
 //Route routes

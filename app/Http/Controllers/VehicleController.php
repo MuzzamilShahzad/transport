@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Vehicles;
 use App\Models\Contractors;
+use App\Models\TransportRegistrations;
 
 class VehicleController extends Controller
 {
@@ -171,4 +172,28 @@ class VehicleController extends Controller
 
         return response()->json($response);
     }
+
+    public function getTotalCapacity(Request $request){
+        $vehicle_id = $request->vehicle_id;
+
+        $totalCapacity = Vehicles::select('capacity')->where('id',$vehicle_id)->get();
+        $registerCount = TransportRegistrations::select('vehicle_id')->where('vehicle_id',$vehicle_id)->count();
+
+        $response = array(
+            'totalCapacity'  => $totalCapacity[0]['capacity'],
+            'registerCount'  =>  $registerCount
+        );
+
+        return response()->json($response);
+    }
+
+    // public function getRemainingCapacity(Request $request){
+    //     $vehicle_id = $request->vehicle_id;
+
+    //     $totalCapacity = Vehicles::select('capacity')->where('id',$vehicle_id)->get();
+    //     $registerCount = TransportRegistrations::select('vehicle_id')->where('vehicle_id',$vehicle_id)->count();
+
+    //     // $remainingCapacity = $totalCapacity - $registerCount;
+    //     return response()->json($registerCount);
+    // }
 }

@@ -96,6 +96,15 @@
                                                 </select>
                                             </div>
                                         </div>
+
+                                        <div class="form-group" id="total-capacity-input">
+                                          
+                                        </div>
+
+                                        <div class="form-group" id="remaining-capacity-input">
+                                          
+                                        </div>
+
                                         <div class="form-group">
                                             <label class="tx-semibold">Fees</label>
                                             <input name="fees" class="form-control" type="text" placeholder="Enter Fees" id="fees">
@@ -117,6 +126,37 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+  $(function(){
+
+    // Get Total Vehicle Capacity
+    $(document).on('change','#vehicle-id',function(){
+
+      var vehicle_id = $('#vehicle-id').val();
+
+      $.ajax({
+        url:"{{ route('get.totalCapacity') }}",
+        type:"GET",
+        data:{vehicle_id:vehicle_id},
+        success:function(response){
+
+            var remainingCapacity = response.totalCapacity - response.registerCount;
+
+            var html = '<label class="tx-semibold">Total Capacity</label>';
+                html += '<input class="form-control" value="'+response.totalCapacity+'" type="text" readonly>';
+                $('#total-capacity-input').html(html);
+     
+            var html = '<label class="tx-semibold">Remaining Capacity</label>';
+                html += '<input class="form-control" value="'+remainingCapacity+'" type="text" readonly>';
+                $('#remaining-capacity-input').html(html);
+        }
+      });
+    });
+
+  });
+
+</script>
 
 <!-- {{-- Own javascript --}} -->
 <script src="{{ url('assets/js/transport-registration/transport-registration.js') }}"></script>
