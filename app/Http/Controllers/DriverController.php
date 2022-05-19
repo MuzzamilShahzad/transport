@@ -55,9 +55,9 @@ class DriverController extends Controller
             $driver->license_no    =  $request->license_no;
             $driver->joining_date  =  $request->joining_date;
 
-            $driver->save();
+            $query = $driver->save();
 
-            if ($driver->save()) {
+            if ($query) {
                 
                 $response = array(
                     'status'   =>  true, 
@@ -81,9 +81,9 @@ class DriverController extends Controller
     public function edit($id){
         $driver = Drivers::find($id);
         $data = array(
-            'driver'       =>  $driver,
-            'page'         =>  'Driver',
-            'menu'         =>  'Edit Driver'
+            'driver'  =>  $driver,
+            'page'    =>  'Driver',
+            'menu'    =>  'Edit Driver'
         );
 
         return view('driver.edit', compact('data'));
@@ -116,9 +116,9 @@ class DriverController extends Controller
             $driver->license_no    =  $request->license_no;
             $driver->joining_date  =  $request->joining_date;
 
-            $driver->update();
+            $query = $driver->update();
 
-            if ($driver->update()) {
+            if ($query) {
 
                 $response = array(
                     'status'   =>  true, 

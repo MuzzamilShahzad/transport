@@ -13,9 +13,9 @@ class RouteController extends Controller
     public function listing() {
         $routes = Routes::all();
         $data = array(
-            'routes'     =>  $routes,
-            'page'       =>  'Route',
-            'menu'       =>  'Manage Route',
+            'routes'  =>  $routes,
+            'page'    =>  'Route',
+            'menu'    =>  'Manage Route',
         );
 
         return view('route.listing', compact('data'));
@@ -23,8 +23,8 @@ class RouteController extends Controller
 
     public function add() {
         $data = array(
-            'page'         =>  'Route',
-            'menu'         =>  'Add Route',
+            'page'  =>  'Route',
+            'menu'  =>  'Add Route',
         );
 
         return view('route.add', compact('data'));
@@ -32,14 +32,14 @@ class RouteController extends Controller
 
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
-            'area' => 'required|min:4|max:30',
+            'area'  =>  'required|min:4|max:30',
         ]);
 
         if (!$validator->errors()) {
 
             $response = array(
-                'status' => 0,
-                'error' => $validator->errors()->toArray(),
+                'status'  =>  0,
+                'error'   =>  $validator->errors()->toArray(),
             );
             return response()->json($response);
             
@@ -47,9 +47,9 @@ class RouteController extends Controller
 
             $route = new Routes;
             $route->area  =  $request->area;
-            $route->save();
+            $query = $route->save();
 
-            if ($route->save()) {
+            if ($query) {
                 $response = array(
                     'status'   =>  true, 
                     'message'  =>  'Route has been added successfully'
@@ -68,9 +68,9 @@ class RouteController extends Controller
     public function edit($id){
         $route = Routes::find($id);
         $data = array(
-            'route'        =>  $route,
-            'page'         =>  'Route',
-            'menu'         =>  'Edit Route',
+            'route'  =>  $route,
+            'page'   =>  'Route',
+            'menu'   =>  'Edit Route',
         );
 
         return view('route.edit', compact('data'));
@@ -78,7 +78,7 @@ class RouteController extends Controller
 
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
-            'area' => 'required|min:4|max:30',
+            'area'  =>  'required|min:4|max:30',
         ]);
 
         if (!$validator->errors()) {
@@ -92,10 +92,10 @@ class RouteController extends Controller
 
         } else {
             $route = Routes::find($id);
-            $route->area = $request->area;
-            $route->update();
+            $route->area  =  $request->area;
+            $query = $route->update();
 
-            if ($route->update()) {
+            if ($query) {
 
                 $response = array(
                     'status'   =>  true, 

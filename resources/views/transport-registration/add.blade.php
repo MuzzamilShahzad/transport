@@ -119,7 +119,6 @@
 </div>
 
 <!-- {{-- Own javascript --}} -->
-<script src="{{ url('assets/plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ url('assets/js/transport-registration/transport-registration.js') }}"></script>
 
 @endsection

@@ -20,28 +20,28 @@ class TransportRegistrationController extends Controller
         $transportRegistration = TransportRegistrations::all();
         $data = array(
             'transportRegistration'  =>  $transportRegistration,
-            'page'      =>  'Transport Registration',
-            'menu'      =>  'Manage Registration'
+            'page'                   =>  'Transport Registration',
+            'menu'                   =>  'Manage Registration'
         );
 
         return view('transport-registration.listing', compact('data'));
     }
 
     public function add() {
-        $vehicles   =  Vehicles::get();
-        $routes     =  Routes::get();
-        $drivers    =  Drivers::get();
-        $shifts     =  Shifts::get();
-        $campuses   =  Campuses::get();
-        $students   =  Students::get();
+        $vehicles  =  Vehicles::get();
+        $routes    =  Routes::get();
+        $drivers   =  Drivers::get();
+        $shifts    =  Shifts::get();
+        $campuses  =  Campuses::get();
+        $students  =  Students::get();
 
         $data = array(
-            'vehicles'   =>  $vehicles,
-            'routes'     =>  $routes,
-            'drivers'    =>  $drivers,
-            'shifts'     =>  $shifts,
-            'campuses'   =>  $campuses,
-            'students'   =>  $students,
+            'vehicles'  =>  $vehicles,
+            'routes'    =>  $routes,
+            'drivers'   =>  $drivers,
+            'shifts'    =>  $shifts,
+            'campuses'  =>  $campuses,
+            'students'  =>  $students,
             'page'      =>  'Transport Registration',
             'menu'      =>  'Add Registration'
         );
@@ -83,9 +83,9 @@ class TransportRegistrationController extends Controller
             $transportRegistration->fees          =  $request->fees;
             $transportRegistration->joining_date  =  $request->joining_date;
 
-            $queryss = $transportRegistration->save();
+            $query = $transportRegistration->save();
 
-            if ($queryss) {
+            if ($query) {
                 $response = array(
                     'status'   =>  true, 
                     'message'  =>  'Transport Registration has been completed successfully'

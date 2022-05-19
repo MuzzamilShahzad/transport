@@ -35,6 +35,8 @@
     <!-- Color css-->
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{ url('assets/css/colors/color.css') }}">
 
+    <script src="{{ url('assets/plugins/jquery/jquery.min.js') }}"></script>
+
 </head>
 
 <body class="main-body leftmenu ltr light-theme dark-menu">

@@ -63,7 +63,6 @@
 </div>
 
 <!-- {{-- Own javascript --}} -->
-<script src="{{ url('assets/plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ url('assets/js/contractor/contractor.js') }}"></script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
 

@@ -115,6 +115,11 @@
                                             </div>
                                         </div>
 
+                                            <div class="form-group">
+                                                <label class="tx-semibold">Fees</label>
+                                                <input name="fees" class="form-control" type="text" id="fees" value="{{$data['transportRegistration']->fees}}">
+                                            </div>
+
                                         <div class="form-group">
                                             <label class="tx-semibold">Joining Date</label>
                                             <input class="form-control date-picker" name="joining_date" id="joining-date" value="{{$data['transportRegistration']->joining_date}}" type="text">
@@ -135,7 +140,6 @@
 </div>
 
 <!-- {{-- Own javascript --}} -->
-<script src="{{ url('assets/plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ url('assets/js/transport-registration/transport-registration.js') }}"></script>
 
 

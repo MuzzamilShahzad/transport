@@ -75,7 +75,51 @@
     </div>
 </div>
 
-<script src="{{ url('assets/plugins/jquery/jquery.min.js') }}"></script>
+<div class="main-content side-content pt-0">
+    <div class="main-container container-fluid">
+        <div class="inner-body">
+            <!-- Row -->
+            <div class="row row-sm">
+                <div class="col-lg-12">
+                    <div class="card custom-card">
+                        <div class="card-body">
+                            <div>
+                                <h1 class="main-content-label mb-1">{{ $data['menu'] }} </h1>
+                            </div>
+                            <br>
+                            <div class="table-responsive">
+                                <table class="table table-bordered text-nowrap border-bottom" id="basic-datatable">
+                                    <thead>
+                                        <tr>
+                                            <th width="10px">S.NO</th>
+                                            <th>Student Name</th>
+                                            <th>Date</th>
+                                            <th>Month</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($data['transportRegistration'] as $sno => $item)
+                                        <tr>
+                                            <td>{{ $sno + 1 }}</td>
+                                            <td>{{$item->student->first_name}}</td>
+                                            <td>{{$item->joining_date}}</td>
+                                            <td>{{ date('M', strtotime($item->joining_date)) }}</td>
+                                            <td>{{$item->fees}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row -->
+        </div>
+    </div>
+</div>
+
 <script src="{{ url('assets/js/transport-registration/transport-registration.js') }}"></script>
 
 

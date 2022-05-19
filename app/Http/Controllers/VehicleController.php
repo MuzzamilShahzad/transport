@@ -14,9 +14,9 @@ class VehicleController extends Controller
     public function listing() {
         $vehicles = Vehicles::all();
         $data = array(
-            'vehicles'     =>  $vehicles,
-            'page'         =>  'Vehicle',
-            'menu'         =>  'Manage Vehicle',
+            'vehicles'  =>  $vehicles,
+            'page'      =>  'Vehicle',
+            'menu'      =>  'Manage Vehicle',
         );
 
         return view('vehicle.listing', compact('data'));
@@ -62,9 +62,9 @@ class VehicleController extends Controller
             $vehicle->capacity        =  $request->capacity;
             $vehicle->contractor_id   =  $request->contractor_id;
 
-            $vehicle->save();
+            $query = $vehicle->save();
 
-            if ($vehicle->save()) {
+            if ($query) {
 
                 $response = array(
                     'status'   =>  true, 
@@ -89,10 +89,10 @@ class VehicleController extends Controller
         $contractor = Contractors::get();
         $vehicle = Vehicles::find($id);
         $data = array(
-            'contractor'   =>  $contractor,
-            'vehicle'      =>  $vehicle,
-            'page'         =>  'Vehicle',
-            'menu'         =>  'Edit Vehicle',
+            'contractor'  =>  $contractor,
+            'vehicle'     =>  $vehicle,
+            'page'        =>  'Vehicle',
+            'menu'        =>  'Edit Vehicle',
         );
 
         return view('vehicle.edit', compact('data'));
@@ -127,9 +127,9 @@ class VehicleController extends Controller
             $vehicle->capacity        =  $request->capacity;
             $vehicle->contractor_id   =  $request->contractor_id;
 
-            $vehicle->update();
+            $query = $vehicle->update();
 
-            if ($vehicle->update()) {
+            if ($query) {
 
                 $response = array(
                     'status'   =>  true, 

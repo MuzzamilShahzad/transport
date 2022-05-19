@@ -69,7 +69,6 @@
     </div>
 </div>
 
-<script src="{{ url('assets/plugins/jquery/jquery.min.js') }}"></script>
 <script src="{{ url('assets/js/driver/driver.js') }}"></script>
 
 

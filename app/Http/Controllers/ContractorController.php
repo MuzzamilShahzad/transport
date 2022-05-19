@@ -53,9 +53,9 @@ class ContractorController extends Controller
             $contractor->area  =  $request->area;
             $contractor->cnic  =  $request->cnic;
 
-            $contractor->save();
+            $query = $contractor->save();
 
-            if ($contractor->save()) {
+            if ($query) {
                 $response = array(
                     'status'   =>  true, 
                     'message'  =>  'Contractor has been added successfully'
@@ -105,9 +105,9 @@ class ContractorController extends Controller
             $contractor->area  =  $request->area;
             $contractor->cnic  =  $request->cnic;
 
-            $contractor->update();
+            $query = $contractor->update();
 
-            if ($contractor->update()) {
+            if ($query) {
 
                 $response = array(
                     'status'   =>  true, 
