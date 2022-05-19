@@ -28,20 +28,20 @@ class TransportRegistrationController extends Controller
     }
 
     public function add() {
-        $vehicle   =  Vehicles::get();
-        $route     =  Routes::get();
-        $driver    =  Drivers::get();
-        $shift     =  Shifts::get();
-        $campuses  =  Campuses::get();
-        $student   =  Students::get();
+        $vehicles   =  Vehicles::get();
+        $routes     =  Routes::get();
+        $drivers    =  Drivers::get();
+        $shifts     =  Shifts::get();
+        $campuses   =  Campuses::get();
+        $students   =  Students::get();
 
         $data = array(
-            'vehicle'   =>  $vehicle,
-            'route'     =>  $route,
-            'driver'    =>  $driver,
-            'shift'     =>  $shift,
-            'campuses'  =>  $campuses,
-            'student'   =>  $student,
+            'vehicles'   =>  $vehicles,
+            'routes'     =>  $routes,
+            'drivers'    =>  $drivers,
+            'shifts'     =>  $shifts,
+            'campuses'   =>  $campuses,
+            'students'   =>  $students,
             'page'      =>  'Transport Registration',
             'menu'      =>  'Add Registration'
         );
