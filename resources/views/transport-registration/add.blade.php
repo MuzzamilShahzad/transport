@@ -33,7 +33,7 @@
                                         <div class="form-group">
                                             <label class="tx-semibold">Select Vehicle</label>
                                             <div class="pos-relative">
-                                                <select class="form-control select2" name="vehicle_id" id="vehicle-id">
+                                                <select class="form-control vehicleSelect2" name="vehicle_id" id="vehicle-id">
                                                     <option selected value="">Select Vehicle</option>
                                                     @foreach($data['vehicles'] as $vehicle)
                                                         <option value="{{$vehicle->id}}">{{$vehicle->number.' ['.$vehicle->maker.']'}}</option>
@@ -44,7 +44,7 @@
                                         <div class="form-group">
                                             <label class="tx-semibold">Select Route</label>
                                             <div class="pos-relative">
-                                                <select class="form-control select2" name="route_id" id="route-id">
+                                                <select class="form-control routeSelect2" name="route_id" id="route-id">
                                                     <option selected value="">Select Route</option>
                                                     @foreach($data['routes'] as $route)
                                                         <option value="{{$route->id}}">{{$route->area}}</option>
@@ -55,7 +55,7 @@
                                         <div class="form-group">
                                             <label class="tx-semibold">Select Driver</label>
                                             <div class="pos-relative">
-                                                <select class="form-control select2" name="driver_id" id="driver-id">
+                                                <select class="form-control driverSelect2" name="driver_id" id="driver-id">
                                                     <option selected value="">Select Driver</option>
                                                     @foreach($data['drivers'] as $driver)
                                                         <option value="{{$driver->id}}">{{$driver->name}}</option>
@@ -66,7 +66,7 @@
                                         <div class="form-group">
                                             <label class="tx-semibold">Select Shift Time</label>
                                             <div class="pos-relative">
-                                                <select class="form-control select2" name="shift_id" id="shift-id">
+                                                <select class="form-control shiftSelect2" name="shift_id" id="shift-id">
                                                     <option selected value="">Select Shift Time</option>
                                                     @foreach($data['shifts'] as $shift)
                                                         <option value="{{$shift->id}}">{{$shift->timings}}</option>
@@ -77,7 +77,7 @@
                                         <div class="form-group">
                                             <label class="tx-semibold">Select Campus</label>
                                             <div class="pos-relative">
-                                                <select class="form-control select2" name="campus_id" id="campus-id">
+                                                <select class="form-control campusSelect2" name="campus_id" id="campus-id">
                                                     <option selected value="">Select Student</option>
                                                     @foreach($data['campuses'] as $campus)
                                                         <option value="{{$campus->id}}">{{$campus->name}}</option>
@@ -88,7 +88,7 @@
                                         <div class="form-group">
                                             <label class="tx-semibold">Select Student</label>
                                             <div class="pos-relative">
-                                                <select class="form-control select2" name="student_id" id="student-id">
+                                                <select class="form-control studentSelect2" name="student_id" id="student-id">
                                                     <option selected value="">Select Student</option>
                                                     @foreach($data['students'] as $student)
                                                         <option value="{{$student->id}}">{{$student->first_name .' '.$student->last_name}}</option>
@@ -102,7 +102,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="tx-semibold">Joining Date</label>
-                                            <input class="form-control date-picker" name="joining_date" id="joining-date" placeholder="YYYY-MM-DD" type="text">
+                                            <input class="form-control" name="joining_date" id="joining-date" placeholder="DD-MM-YYYY" type="text" readonly>
                                         </div>
                                         <button type="submit" id="btn-add-transport-registration" class="btn ripple btn-primary">Save</button>
                                         <a href="{{ route('registration.view') }}" class="btn btn-danger">Back</a>

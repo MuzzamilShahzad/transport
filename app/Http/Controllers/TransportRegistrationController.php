@@ -50,18 +50,19 @@ class TransportRegistrationController extends Controller
     }
 
     public function store(Request $request) {
+    //    dd($request->joining_date);
         $validator = Validator::make($request->all(), [
-            'vehicle_id'    =>  'required',
-            'driver_id'     =>  'required',
-            'shift_id'      =>  'required',
-            'route_id'      =>  'required',
-            'campus_id'     =>  'required',
-            'student_id'    =>  'required',
-            'fees'          =>  'required',
-            'joining_date'  =>  'required'
+            'vehicle_id'    =>  'required|numeric|gt:0|digits_between:1,10',
+            'driver_id'     =>  'required|numeric|gt:0|digits_between:1,10',
+            'shift_id'      =>  'required|numeric|gt:0|digits_between:1,10',
+            'route_id'      =>  'required|numeric|gt:0|digits_between:1,10',
+            'student_id'    =>  'required|numeric|gt:0|digits_between:1,10',
+            'fees'          =>  'required|numeric|gt:0|digits_between:1,10',
+            'joining_date'  =>  'required|date_format:d-m-Y'
         ]);
 
-        if (!$validator->errors()) {
+        // dd($validator->errors());
+        if ($validator->errors()->all()) {
 
             $response = array(
                 'status'  =>  false, 
@@ -78,26 +79,24 @@ class TransportRegistrationController extends Controller
             $transportRegistration->route_id      =  $request->route_id;
             $transportRegistration->driver_id     =  $request->driver_id;
             $transportRegistration->shift_id      =  $request->shift_id;
-            $transportRegistration->campus_id     =  $request->campus_id;
             $transportRegistration->student_id    =  $request->student_id;
             $transportRegistration->fees          =  $request->fees;
-            $transportRegistration->joining_date  =  $request->joining_date;
-
+            $transportRegistration->joining_date  =  date('Y-m-d', strtotime($request->joining_date));
+            
             $query = $transportRegistration->save();
-
-            if ($query) {
+            
+            if ($transportRegistration->save()) {
                 $response = array(
                     'status'   =>  true, 
                     'message'  =>  'Transport Registration has been completed successfully'
                 );
-                return response()->json($response);
             } else {
                 $response = array(
                     'status'   =>  false, 
                     'message'  =>  'Some thing went wrong please try again letter'
                 );
-                return response()->json($response);
             }
+            return response()->json($response);    
         }
     }
 
@@ -138,7 +137,7 @@ class TransportRegistrationController extends Controller
             'joining_date'  =>  'required'
         ]);
 
-        if (!$validator->errors()) {
+        if ($validator->errors()) {
 
             $response = array(
                 'status'  =>  false, 
