@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
-use App\Models\Drivers;
+use App\Models\Driver;
 
 class DriverController extends Controller
 {
     public function listing(){
-        $drivers = Drivers::all();
+        $Driver = Driver::all();
         $data = array(
-            'drivers'  =>  $drivers,
+            'Driver'  =>  $Driver,
             'page'     =>  'Driver',
             'menu'     =>  'Manage Driver'
         );
@@ -47,13 +47,13 @@ class DriverController extends Controller
             return response()->json($response);
 
         } else {
-            $driver = new Drivers;
+            $driver = new Driver;
 
             $driver->name          =  $request->name;
             $driver->address       =  $request->address;
             $driver->cnic          =  $request->cnic;
             $driver->license_no    =  $request->license_no;
-            $driver->joining_date  =  $request->joining_date;
+            $driver->joining_date  =  date('Y-m-d', strtotime($request->joining_date));
 
             $query = $driver->save();
 
@@ -79,7 +79,7 @@ class DriverController extends Controller
     }
 
     public function edit($id){
-        $driver = Drivers::find($id);
+        $driver = Driver::find($id);
         $data = array(
             'driver'  =>  $driver,
             'page'    =>  'Driver',
@@ -108,13 +108,13 @@ class DriverController extends Controller
             return response()->json($response);
 
         } else {
-            $driver = Drivers::find($id);
+            $driver = Driver::find($id);
 
             $driver->name          =  $request->name;
             $driver->address       =  $request->address;
             $driver->cnic          =  $request->cnic;
             $driver->license_no    =  $request->license_no;
-            $driver->joining_date  =  $request->joining_date;
+            $driver->joining_date  =  date('Y-m-d', strtotime($request->joining_date));
 
             $query = $driver->update();
 
@@ -141,7 +141,7 @@ class DriverController extends Controller
 
     public function delete(Request $request) {
         $driver_id  =  $request->driver_id;
-        $query      =  Drivers::find($driver_id)->delete();
+        $query      =  Driver::find($driver_id)->delete();
 
         if ($query) {
 

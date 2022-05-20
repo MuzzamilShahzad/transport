@@ -35,7 +35,7 @@
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="contractor_id" id="contractor-id">
                                                     <option selected value="">Select Contractor</option>
-                                                    @foreach($data['contractors'] as $contractor)
+                                                    @foreach($data['Contractor'] as $contractor)
                                                         <option value="{{$contractor->id}}">{{$contractor->name}}</option>
                                                     @endforeach
                                                 </select>

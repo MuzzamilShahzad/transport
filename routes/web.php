@@ -44,7 +44,6 @@ Route::controller(VehicleController::class)->group(function () {
     Route::delete('/vehicle/delete', 'delete')->name('vehicle.delete');
 
     Route::get('/vehicle/total-capacity', 'getTotalCapacity')->name('get.totalCapacity');
-    // Route::get('/vehicle/remaining-capacity', 'getRemainingCapacity')->name('get.remainingCapacity');
 });
 
 //Route routes

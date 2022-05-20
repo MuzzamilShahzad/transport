@@ -44,7 +44,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($data['vehicles'] as $sno => $item)
+                                        @foreach($data['Vehicle'] as $sno => $item)
                                         <tr>
                                             <td>{{ $sno + 1 }}</td>
                                             <td>{{$item->number}}</td>

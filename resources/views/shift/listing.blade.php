@@ -39,7 +39,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($data['shifts'] as $sno => $item)
+                                        @foreach($data['Shift'] as $sno => $item)
                                         <tr>
                                             <td>{{ $sno + 1 }}</td>
                                             <td>{{$item->timings}}</td>

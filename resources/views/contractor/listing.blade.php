@@ -41,7 +41,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($data['contractors'] as $sno => $item)
+                                        @foreach($data['Contractor'] as $sno => $item)
                                         <tr>
                                             <td>{{ $sno + 1 }}</td>
                                             <td>{{$item->name}}</td>

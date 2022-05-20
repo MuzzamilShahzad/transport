@@ -6,16 +6,16 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Validator;
-use App\Models\Vehicles;
-use App\Models\Contractors;
-use App\Models\TransportRegistrations;
+use App\Models\Vehicle;
+use App\Models\Contractor;
+use App\Models\TransportRegistration;
 
 class VehicleController extends Controller
 {
     public function listing() {
-        $vehicles = Vehicles::all();
+        $Vehicle = Vehicle::all();
         $data = array(
-            'vehicles'  =>  $vehicles,
+            'Vehicle'  =>  $Vehicle,
             'page'      =>  'Vehicle',
             'menu'      =>  'Manage Vehicle',
         );
@@ -24,9 +24,9 @@ class VehicleController extends Controller
     }
 
     public function add() {
-        $contractors = Contractors::get();
+        $Contractor = Contractor::get();
         $data = array(
-            'contractors'  => $contractors,
+            'Contractor'  => $Contractor,
             'page'         => 'Vehicle',
             'menu'         => 'Add Vehicle',
         );
@@ -54,7 +54,7 @@ class VehicleController extends Controller
             return response()->json($response);
             
         } else {
-            $vehicle = new Vehicles;
+            $vehicle = new Vehicle;
 
             $vehicle->number          =  $request->vehicle_number;
             $vehicle->maker           =  $request->maker;
@@ -87,8 +87,8 @@ class VehicleController extends Controller
     }
 
     public function edit($id){
-        $contractor = Contractors::get();
-        $vehicle = Vehicles::find($id);
+        $contractor = Contractor::get();
+        $vehicle = Vehicle::find($id);
         $data = array(
             'contractor'  =>  $contractor,
             'vehicle'     =>  $vehicle,
@@ -119,7 +119,7 @@ class VehicleController extends Controller
             return response()->json($response);
 
         } else {
-            $vehicle = Vehicles::find($id);
+            $vehicle = Vehicle::find($id);
 
             $vehicle->number          =  $request->vehicle_number;
             $vehicle->maker           =  $request->maker;
@@ -153,7 +153,7 @@ class VehicleController extends Controller
 
     public function delete(Request $request) {
         $vehicle_id  =  $request->vehicle_id;
-        $query       =  Vehicles::find($vehicle_id)->delete();
+        $query       =  Vehicle::find($vehicle_id)->delete();
 
         if ($query) {
 
@@ -175,25 +175,20 @@ class VehicleController extends Controller
 
     public function getTotalCapacity(Request $request){
         $vehicle_id = $request->vehicle_id;
+        $shift_id = $request->shift_id;
+        // dd($shift_id);
 
-        $totalCapacity = Vehicles::select('capacity')->where('id',$vehicle_id)->get();
-        $registerCount = TransportRegistrations::select('vehicle_id')->where('vehicle_id',$vehicle_id)->count();
+        $totalCapacity = Vehicle::select('capacity')->where('id',$vehicle_id)->get();
+        // $shiftWiseRegisterCount = TransportRegistration::where('vehicle_id',$vehicle_id)->where('shift_id',$shift_id)->count();
+        // dd($shiftWiseRegisterCount);
+       
+        // $registerCount = TransportRegistration::select('vehicle_id')->where('vehicle_id',$vehicle_id)->count();
 
         $response = array(
             'totalCapacity'  => $totalCapacity[0]['capacity'],
-            'registerCount'  =>  $registerCount
+            // 'shiftWiseRegisterCount'  =>  $shiftWiseRegisterCount
         );
 
         return response()->json($response);
     }
-
-    // public function getRemainingCapacity(Request $request){
-    //     $vehicle_id = $request->vehicle_id;
-
-    //     $totalCapacity = Vehicles::select('capacity')->where('id',$vehicle_id)->get();
-    //     $registerCount = TransportRegistrations::select('vehicle_id')->where('vehicle_id',$vehicle_id)->count();
-
-    //     // $remainingCapacity = $totalCapacity - $registerCount;
-    //     return response()->json($registerCount);
-    // }
 }

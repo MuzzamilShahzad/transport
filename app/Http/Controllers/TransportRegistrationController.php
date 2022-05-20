@@ -6,18 +6,18 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Validator;
-use App\Models\TransportRegistrations;
-use App\Models\Vehicles;
-use App\Models\Routes;
-use App\Models\Drivers;
-use App\Models\Shifts;
-use App\Models\Students;
-use App\Models\Campuses;
+use App\Models\TransportRegistration;
+use App\Models\Vehicle;
+use App\Models\Route;
+use App\Models\Driver;
+use App\Models\Shift;
+use App\Models\student;
+use App\Models\campus;
 
 class TransportRegistrationController extends Controller
 {
     public function listing() {
-        $transportRegistration = TransportRegistrations::all();
+        $transportRegistration = TransportRegistration::all();
         $data = array(
             'transportRegistration'  =>  $transportRegistration,
             'page'                   =>  'Transport Registration',
@@ -30,20 +30,20 @@ class TransportRegistrationController extends Controller
     }
 
     public function add() {
-        $vehicles  =  Vehicles::get();
-        $routes    =  Routes::get();
-        $drivers   =  Drivers::get();
-        $shifts    =  Shifts::get();
-        $campuses  =  Campuses::get();
-        $students  =  Students::get();
+        $Vehicle   =  Vehicle::get();
+        $Route     =  Route::get();
+        $Driver    =  Driver::get();
+        $Shift     =  Shift::get();
+        $campus   =  campus::get();
+        $student   =  student::get();
 
         $data = array(
-            'vehicles'  =>  $vehicles,
-            'routes'    =>  $routes,
-            'drivers'   =>  $drivers,
-            'shifts'    =>  $shifts,
-            'campuses'  =>  $campuses,
-            'students'  =>  $students,
+            'Vehicle'   =>  $Vehicle,
+            'Route'     =>  $Route,
+            'Driver'    =>  $Driver,
+            'Shift'     =>  $Shift,
+            'campus'   =>  $campus,
+            'student'   =>  $student,
             'page'      =>  'Transport Registration',
             'menu'      =>  'Add Registration'
         );
@@ -53,17 +53,17 @@ class TransportRegistrationController extends Controller
 
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
-            'vehicle_id'    =>  'required',
-            'driver_id'     =>  'required',
-            'shift_id'      =>  'required',
-            'route_id'      =>  'required',
-            'campus_id'     =>  'required',
-            'student_id'    =>  'required',
-            'fees'          =>  'required',
-            'joining_date'  =>  'required'
+            'vehicle_id'    =>  'required|numeric|gt:0|digits_between:1,10',
+            'driver_id'     =>  'required|numeric|gt:0|digits_between:1,10',
+            'shift_id'      =>  'required|numeric|gt:0|digits_between:1,10',
+            'route_id'      =>  'required|numeric|gt:0|digits_between:1,10',
+            'shift_id'      =>  'required|numeric|gt:0|digits_between:1,10',
+            'student_id'    =>  'required|numeric|gt:0|digits_between:1,10',
+            'fees'          =>  'required|numeric|gt:0|digits_between:1,10',
+            'joining_date'  =>  'required|date_format:d-m-Y'
         ]);
 
-        if (!$validator->errors()) {
+        if ($validator->errors()->all()) {
 
             $response = array(
                 'status'  =>  false, 
@@ -74,7 +74,7 @@ class TransportRegistrationController extends Controller
             
         } else {
             
-            $transportRegistration = new TransportRegistrations;
+            $transportRegistration = new TransportRegistration;
 
             $transportRegistration->vehicle_id    =  $request->vehicle_id;
             $transportRegistration->route_id      =  $request->route_id;
@@ -83,42 +83,41 @@ class TransportRegistrationController extends Controller
             $transportRegistration->campus_id     =  $request->campus_id;
             $transportRegistration->student_id    =  $request->student_id;
             $transportRegistration->fees          =  $request->fees;
-            $transportRegistration->joining_date  =  $request->joining_date;
-
+            $transportRegistration->joining_date  =  date('Y-m-d', strtotime($request->joining_date));
+            
             $query = $transportRegistration->save();
-
-            if ($query) {
+            
+            if ($transportRegistration->save()) {
                 $response = array(
                     'status'   =>  true, 
-                    'message'  =>  'Transport Registration has been completed successfully'
+                    'message'  =>  'Transport Registration has been completed successfully.'
                 );
-                return response()->json($response);
             } else {
                 $response = array(
                     'status'   =>  false, 
-                    'message'  =>  'Some thing went wrong please try again letter'
+                    'message'  =>  'Some thing went wrong! please try again letter.'
                 );
-                return response()->json($response);
             }
+            return response()->json($response);    
         }
     }
 
     public function edit($id) {
-        $vehicle   =  Vehicles::get();
-        $route     =  Routes::get();
-        $driver    =  Drivers::get();
-        $shift     =  Shifts::get();
-        $campuses  =  Campuses::get();
-        $student   =  Students::get();
+        $vehicle   =  Vehicle::get();
+        $route     =  Route::get();
+        $driver    =  Driver::get();
+        $shift     =  Shift::get();
+        $campus  =  campus::get();
+        $student   =  student::get();
 
-        $transportRegistration = TransportRegistrations::find($id);
+        $transportRegistration = TransportRegistration::find($id);
 
         $data = array(
             'vehicle'                =>  $vehicle,
             'route'                  =>  $route,
             'driver'                 =>  $driver,
             'shift'                  =>  $shift,
-            'campuses'               =>  $campuses,
+            'campus'               =>  $campus,
             'student'                =>  $student,
             'transportRegistration'  =>  $transportRegistration,
             'page'                   =>  'Transport Registration',
@@ -130,17 +129,17 @@ class TransportRegistrationController extends Controller
 
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
-            'vehicle_id'    =>  'required',
-            'driver_id'     =>  'required',
-            'shift_id'      =>  'required',
-            'route_id'      =>  'required',
-            'campus_id'     =>  'required',
-            'student_id'    =>  'required',
-            'fees'          =>  'required',
-            'joining_date'  =>  'required'
+            'vehicle_id'    =>  'required|numeric|gt:0|digits_between:1,10',
+            'driver_id'     =>  'required|numeric|gt:0|digits_between:1,10',
+            'shift_id'      =>  'required|numeric|gt:0|digits_between:1,10',
+            'route_id'      =>  'required|numeric|gt:0|digits_between:1,10',
+            'shift_id'      =>  'required|numeric|gt:0|digits_between:1,10',
+            'student_id'    =>  'required|numeric|gt:0|digits_between:1,10',
+            'fees'          =>  'required|numeric|gt:0|digits_between:1,10',
+            'joining_date'  =>  'required|date_format:d-m-Y'
         ]);
 
-        if (!$validator->errors()) {
+        if (!$validator->passes()) {
 
             $response = array(
                 'status'  =>  false, 
@@ -150,7 +149,7 @@ class TransportRegistrationController extends Controller
             return response()->json($response);
 
         } else {
-            $transportRegistration = TransportRegistrations::find($id);
+            $transportRegistration = TransportRegistration::find($id);
 
             $transportRegistration->vehicle_id    =  $request->vehicle_id;
             $transportRegistration->route_id      =  $request->route_id;
@@ -159,7 +158,7 @@ class TransportRegistrationController extends Controller
             $transportRegistration->campus_id     =  $request->campus_id;
             $transportRegistration->student_id    =  $request->student_id;
             $transportRegistration->fees          =  $request->fees;
-            $transportRegistration->joining_date  =  $request->joining_date;
+            $transportRegistration->joining_date  =  date('Y-m-d', strtotime($request->joining_date));
 
             $query = $transportRegistration->update();
 
@@ -167,7 +166,7 @@ class TransportRegistrationController extends Controller
 
                 $response = array(
                     'status'   =>  true, 
-                    'message'  =>  'Transport Registration has been updated successfully'
+                    'message'  =>  'Transport Registration has been updated successfully.'
                 );
 
                 return response()->json($response);
@@ -176,7 +175,7 @@ class TransportRegistrationController extends Controller
 
                 $response = array(
                     'status'   =>  false, 
-                    'message'  =>  'Some thing went worng please try again letter'
+                    'message'  =>  'Some thing went worng! please try again letter.'
                 );
 
                 return response()->json($response);
@@ -186,7 +185,7 @@ class TransportRegistrationController extends Controller
 
     public function delete(Request $request) {
         $trans_reg_id  =  $request->trans_reg_id;
-        $query         =  TransportRegistrations::find($trans_reg_id)->delete();
+        $query         =  TransportRegistration::find($trans_reg_id)->delete();
         
         if ($query) {
 

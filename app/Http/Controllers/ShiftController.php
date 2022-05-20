@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Validator;
-use App\Models\Shifts;
+use App\Models\Shift;
 
 class ShiftController extends Controller
 {
     public function listing() {
-        $shifts = Shifts::all();
+        $Shift = Shift::all();
         $data = array(
-            'shifts'  =>  $shifts,
+            'Shift'  =>  $Shift,
             'page'    =>  'Shift',
             'menu'    =>  'Manage Shift',
         );
@@ -45,7 +45,7 @@ class ShiftController extends Controller
             return response()->json($response);
             
         } else {
-            $shift = new Shifts;
+            $shift = new Shift;
             $shift->timings  =  $request->timings;
             $query = $shift->save();
 
@@ -70,7 +70,7 @@ class ShiftController extends Controller
     }
 
     public function edit($id){
-        $shift = Shifts::find($id);
+        $shift = Shift::find($id);
         $data = array(
             'shift'  =>  $shift,
             'page'   =>  'Shift',
@@ -95,7 +95,7 @@ class ShiftController extends Controller
             return response()->json($response);
 
         } else {
-            $shift = Shifts::find($id);
+            $shift = Shift::find($id);
             $shift->timings  =  $request->timings;
             $query = $shift->update();
 
@@ -122,7 +122,7 @@ class ShiftController extends Controller
 
     public function delete(Request $request) {
         $shift_id  =  $request->shift_id;
-        $query     =  Shifts::find($shift_id)->delete();
+        $query     =  Shift::find($shift_id)->delete();
 
         if ($query) {
 

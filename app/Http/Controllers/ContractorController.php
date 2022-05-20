@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
-use App\Models\Contractors;
+use App\Models\Contractor;
 
 class ContractorController extends Controller
 {
     public function listing() {
-        $contractors = Contractors::all();
+        $Contractor = Contractor::all();
         $data = array(
-            'contractors'  =>  $contractors, 
+            'Contractor'  =>  $Contractor, 
             'page'         =>  'Contractor',
             'menu'         =>  'Manage Contractor',
         );
@@ -47,7 +47,7 @@ class ContractorController extends Controller
             return response()->json($response);
         
         } else {
-            $contractor = new Contractors;
+            $contractor = new Contractor;
 
             $contractor->name  =  $request->name;
             $contractor->area  =  $request->area;
@@ -72,7 +72,7 @@ class ContractorController extends Controller
     }
 
     public function edit($id) {
-        $contractor = Contractors::find($id);
+        $contractor = Contractor::find($id);
         $data = array(
             'contractor'  =>  $contractor,
             'page'        =>  'Contractor',
@@ -99,7 +99,7 @@ class ContractorController extends Controller
             return response()->json($response);
 
         } else {
-            $contractor = Contractors::find($id);
+            $contractor = Contractor::find($id);
 
             $contractor->name  =  $request->name;
             $contractor->area  =  $request->area;
@@ -130,7 +130,7 @@ class ContractorController extends Controller
 
     public function delete(Request $request) {
         $contractor_id  =  $request->contractor_id;
-        $query          =  Contractors::find($contractor_id)->delete();
+        $query          =  Contractor::find($contractor_id)->delete();
         
         if ($query) {
 

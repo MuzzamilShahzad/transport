@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('main-content')
-@section('page_title', 'Manage Routes')
+@section('page_title', 'Manage Route')
 
 <div class="main-content side-content pt-0">
     <div class="main-container container-fluid">
@@ -39,7 +39,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($data['routes'] as $sno => $item)
+                                        @foreach($data['Route'] as $sno => $item)
                                         <tr>
                                             <td>{{ $sno + 1 }}</td>
                                             <td>{{$item->area}}</td>

@@ -32,7 +32,7 @@
                                     <form action="{{ route('vehicle.update', $data['vehicle']->id) }}" method="put">
                                         <div class="form-group">
                                             <label class="tx-semibold">Vehicle Number</label>
-                                            <input name="number" class="form-control" type="text" value="{{$data['vehicle']->number}}" id="number">
+                                            <input name="vehicle_number" class="form-control" type="text" value="{{$data['vehicle']->number}}" id="vehicle-number">
                                         </div>
 
                                         <div class="form-group">
@@ -45,14 +45,14 @@
                                         <div class="form-group">
                                             <label class="tx-semibold">Chassis Number</label>
                                             <div class="pos-relative">
-                                                <input name="chassis_number" class="form-control pd-r-80" type="text" value="{{$data['vehicle']->chassis_number}}" id="chassis_number">
+                                                <input name="chassis_number" class="form-control pd-r-80" type="text" value="{{$data['vehicle']->chassis_number}}" id="chassis-number">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="tx-semibold">Engine Number</label>
                                             <div class="pos-relative">
-                                                <input name="engine_number" class="form-control pd-r-80" type="text" value="{{$data['vehicle']->engine_number}}" id="engine_number">
+                                                <input name="engine_number" class="form-control pd-r-80" type="text" value="{{$data['vehicle']->engine_number}}" id="engine-number">
                                             </div>
                                         </div>
 

@@ -67,7 +67,7 @@
 
 <script>
     $('.date-picker').datepicker({
-        dateFormat: 'yy-mm-dd',
+        dateFormat: 'dd-mm-yy',
 		showOtherMonths: true,
 		selectOtherMonths: true
 	});

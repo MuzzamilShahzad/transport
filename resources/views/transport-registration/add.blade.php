@@ -35,8 +35,19 @@
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="vehicle_id" id="vehicle-id">
                                                     <option selected value="">Select Vehicle</option>
-                                                    @foreach($data['vehicles'] as $vehicle)
+                                                    @foreach($data['Vehicle'] as $vehicle)
                                                         <option value="{{$vehicle->id}}">{{$vehicle->number.' ['.$vehicle->maker.']'}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="tx-semibold">Select Shift Time</label>
+                                            <div class="pos-relative">
+                                                <select class="form-control select2" name="shift_id" id="shift-id">
+                                                    <option selected value="">Select Shift Time</option>
+                                                    @foreach($data['Shift'] as $shift)
+                                                        <option value="{{$shift->id}}">{{$shift->timings}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -46,7 +57,7 @@
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="route_id" id="route-id">
                                                     <option selected value="">Select Route</option>
-                                                    @foreach($data['routes'] as $route)
+                                                    @foreach($data['Route'] as $route)
                                                         <option value="{{$route->id}}">{{$route->area}}</option>
                                                     @endforeach
                                                 </select>
@@ -57,19 +68,8 @@
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="driver_id" id="driver-id">
                                                     <option selected value="">Select Driver</option>
-                                                    @foreach($data['drivers'] as $driver)
+                                                    @foreach($data['Driver'] as $driver)
                                                         <option value="{{$driver->id}}">{{$driver->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="tx-semibold">Select Shift Time</label>
-                                            <div class="pos-relative">
-                                                <select class="form-control select2" name="shift_id" id="shift-id">
-                                                    <option selected value="">Select Shift Time</option>
-                                                    @foreach($data['shifts'] as $shift)
-                                                        <option value="{{$shift->id}}">{{$shift->timings}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -79,7 +79,7 @@
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="campus_id" id="campus-id">
                                                     <option selected value="">Select Student</option>
-                                                    @foreach($data['campuses'] as $campus)
+                                                    @foreach($data['campus'] as $campus)
                                                         <option value="{{$campus->id}}">{{$campus->name}}</option>
                                                     @endforeach
                                                 </select>
@@ -90,7 +90,7 @@
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="student_id" id="student-id">
                                                     <option selected value="">Select Student</option>
-                                                    @foreach($data['students'] as $student)
+                                                    @foreach($data['student'] as $student)
                                                         <option value="{{$student->id}}">{{$student->first_name .' '.$student->last_name}}</option>
                                                     @endforeach
                                                 </select>
@@ -111,7 +111,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="tx-semibold">Joining Date</label>
-                                            <input class="form-control date-picker" name="joining_date" id="joining-date" placeholder="YYYY-MM-DD" type="text">
+                                            <input class="form-control date-picker" name="joining_date" id="joining-date" placeholder="DD-MM-YYYY" type="text">
                                         </div>
                                         <button type="submit" id="btn-add-transport-registration" class="btn ripple btn-primary">Save</button>
                                         <a href="{{ route('registration.view') }}" class="btn btn-danger">Back</a>
@@ -126,37 +126,6 @@
         </div>
     </div>
 </div>
-
-<script type="text/javascript">
-  $(function(){
-
-    // Get Total Vehicle Capacity
-    $(document).on('change','#vehicle-id',function(){
-
-      var vehicle_id = $('#vehicle-id').val();
-
-      $.ajax({
-        url:"{{ route('get.totalCapacity') }}",
-        type:"GET",
-        data:{vehicle_id:vehicle_id},
-        success:function(response){
-
-            var remainingCapacity = response.totalCapacity - response.registerCount;
-
-            var html = '<label class="tx-semibold">Total Capacity</label>';
-                html += '<input class="form-control" value="'+response.totalCapacity+'" type="text" readonly>';
-                $('#total-capacity-input').html(html);
-     
-            var html = '<label class="tx-semibold">Remaining Capacity</label>';
-                html += '<input class="form-control" value="'+remainingCapacity+'" type="text" readonly>';
-                $('#remaining-capacity-input').html(html);
-        }
-      });
-    });
-
-  });
-
-</script>
 
 <!-- {{-- Own javascript --}} -->
 <script src="{{ url('assets/js/transport-registration/transport-registration.js') }}"></script>

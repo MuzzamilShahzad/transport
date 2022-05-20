@@ -97,8 +97,8 @@
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="campus_id" id="campus-id">
                                                     <option selected value="">Select Student</option>
-                                                    @foreach($data['campuses'] as $campus)
-                                                        <option value="{{$campus->id}}" {{$item->id == $data['transportRegistration']->campus_id ? 'selected' : null }}>{{$campus->name}}</option>
+                                                    @foreach($data['campus'] as $item)
+                                                        <option value="{{$item->id}}" {{$item->id == $data['transportRegistration']->campus_id ? 'selected' : null }}>{{$item->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

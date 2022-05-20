@@ -6,14 +6,14 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Validator;
-use App\Models\Routes;
+use App\Models\Route;
 
 class RouteController extends Controller
 {
     public function listing() {
-        $routes = Routes::all();
+        $Route = Route::all();
         $data = array(
-            'routes'  =>  $routes,
+            'Route'  =>  $Route,
             'page'    =>  'Route',
             'menu'    =>  'Manage Route',
         );
@@ -45,7 +45,7 @@ class RouteController extends Controller
             
         } else {
 
-            $route = new Routes;
+            $route = new Route;
             $route->area  =  $request->area;
             $query = $route->save();
 
@@ -66,7 +66,7 @@ class RouteController extends Controller
     }
 
     public function edit($id){
-        $route = Routes::find($id);
+        $route = Route::find($id);
         $data = array(
             'route'  =>  $route,
             'page'   =>  'Route',
@@ -91,7 +91,7 @@ class RouteController extends Controller
             return response()->json($response);
 
         } else {
-            $route = Routes::find($id);
+            $route = Route::find($id);
             $route->area  =  $request->area;
             $query = $route->update();
 
@@ -118,7 +118,7 @@ class RouteController extends Controller
 
     public function delete(Request $request) {
         $route_id  =  $request->route_id;
-        $query     =  Routes::find($route_id)->delete();
+        $query     =  Route::find($route_id)->delete();
 
         if ($query) {
 

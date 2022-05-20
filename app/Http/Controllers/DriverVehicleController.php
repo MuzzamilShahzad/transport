@@ -13,13 +13,13 @@ use App\Models\Shift;
 class DriverVehicleController extends Controller
 {
     public function listing() {
-        $driverVehicles = DriverVehicle::all();
+        $driverVehicle = DriverVehicle::all();
         $data = array(
             'page'         => 'Driver Vehicle',
             'menu'         => 'Manage Driver Vehicle',
         );
 
-        return view('driver_vehicle.listing', compact('data','driverVehicles'));
+        return view('driver_vehicle.listing', compact('data','driverVehicle'));
     }
 
     public function add(){
