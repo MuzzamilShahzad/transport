@@ -52,17 +52,25 @@ class TransportRegistrationController extends Controller
     }
 
     public function store(Request $request) {
+    //    dd($request->joining_date);
         $validator = Validator::make($request->all(), [
             'vehicle_id'    =>  'required|numeric|gt:0|digits_between:1,10',
             'driver_id'     =>  'required|numeric|gt:0|digits_between:1,10',
             'shift_id'      =>  'required|numeric|gt:0|digits_between:1,10',
             'route_id'      =>  'required|numeric|gt:0|digits_between:1,10',
+<<<<<<< HEAD
             'shift_id'      =>  'required|numeric|gt:0|digits_between:1,10',
+=======
+>>>>>>> 8bcb86ffb4f293f22ba3c3f3533fa76259fbc357
             'student_id'    =>  'required|numeric|gt:0|digits_between:1,10',
             'fees'          =>  'required|numeric|gt:0|digits_between:1,10',
             'joining_date'  =>  'required|date_format:d-m-Y'
         ]);
 
+<<<<<<< HEAD
+=======
+        // dd($validator->errors());
+>>>>>>> 8bcb86ffb4f293f22ba3c3f3533fa76259fbc357
         if ($validator->errors()->all()) {
 
             $response = array(
@@ -80,7 +88,6 @@ class TransportRegistrationController extends Controller
             $transportRegistration->route_id      =  $request->route_id;
             $transportRegistration->driver_id     =  $request->driver_id;
             $transportRegistration->shift_id      =  $request->shift_id;
-            $transportRegistration->campus_id     =  $request->campus_id;
             $transportRegistration->student_id    =  $request->student_id;
             $transportRegistration->fees          =  $request->fees;
             $transportRegistration->joining_date  =  date('Y-m-d', strtotime($request->joining_date));
@@ -139,7 +146,11 @@ class TransportRegistrationController extends Controller
             'joining_date'  =>  'required|date_format:d-m-Y'
         ]);
 
+<<<<<<< HEAD
         if (!$validator->passes()) {
+=======
+        if ($validator->errors()) {
+>>>>>>> 8bcb86ffb4f293f22ba3c3f3533fa76259fbc357
 
             $response = array(
                 'status'  =>  false, 

@@ -54,7 +54,7 @@
 <!-- Custom js -->
 <script src="{{ url('assets/js/custom.js') }}"></script>
 
-<!-- Internal Form-elements js-->
+<!-- Select2 js-->
 <script src="{{ url('assets/js/select2.js') }}"></script>
 
 <!-- SweetAlert -->
