@@ -3,67 +3,50 @@ $(document).ready(function () {
     var baseUrl = $(".base-url").val();
 
     // Start data store script
-    $("#btn-add-transport-registration").on("click", function (e) {
+    $("#btn-add-vehicle").on("click", function (e) {
 
         e.preventDefault();
         $("span.error, .alert").remove();
         $("span, input").removeClass("has-error");
 
         var flag = true;
-        var vehicle_id = $("#vehicle-id").val();
-        var route_id = $("#route-id").val();
-        var driver_id = $("#driver-id").val();
-        var shift_id = $("#shift-id").val();
-        var campus_id = $("#campus-id").val();
-        var student_id = $("#student-id").val();
-        var fees = $("#fees").val();
-        var joining_date = $("#joining-date").val();
+        var maker = $("#maker").val();
+        var vehicle_number = $("#vehicle-number").val();
+        var capacity = $("#capacity").val();
+        var engine_number = $("#engine-number").val();
+        var contractor_id = $("#contractor-id").val();
+        var chassis_number = $("#chassis-number").val();
 
-        if (vehicle_id == "") {
-            $("#vehicle-id").addClass("has-error");
-            $("#vehicle-id").after("<span class='error text-danger'>This field is required.</span>");
+        if (vehicle_number == "") {
+            $("#vehicle-number").addClass("has-error");
+            $("#vehicle-number").after("<span class='error text-danger'>This field is required.</span>");
             flag = false;
         }
-        if (route_id == "") {
-            $("#route-id").addClass("has-error");
-            $("#route-id").after("<span class='error text-danger'>This field is required.</span>");
+        if (maker == "") {
+            $("#maker").addClass("has-error");
+            $("#maker").after("<span class='error text-danger'>This field is required.</span>");
             flag = false;
         }
-        if (driver_id == "") {
-            $("#driver-id").addClass("has-error");
-            $("#driver-id").after("<span class='error text-danger'>This field is required.</span>");
+        if (chassis_number == "") {
+            $("#chassis-number").addClass("has-error");
+            $("#chassis-number").after("<span class='error text-danger'>This field is required.</span>");
             flag = false;
         }
-        if (shift_id == "") {
-            $("#shift-id").addClass("has-error");
-            $("#shift-id").after("<span class='error text-danger'>This field is required.</span>");
+        if (engine_number == "") {
+            $("#engine-number").addClass("has-error");
+            $("#engine-number").after("<span class='error text-danger'>This field is required.</span>");
             flag = false;
         }
-        if (campus_id == "") {
-            $("#campus-id").addClass("has-error");
-            $("#campus-id").after("<span class='error text-danger'>This field is required.</span>");
-            flag = false;
-        }
-        if (student_id == "") {
-            $("#student-id").addClass("has-error");
-            $("#student-id").after("<span class='error text-danger'>This field is required.</span>");
-            flag = false;
-        }
-        if (fees == "") {
-            $("#fees").addClass("has-error");
-            $("#fees").after("<span class='error text-danger'>This field is required.</span>");
-            flag = false;
-        }
-        if (joining_date == "") {
-            $("#joining-date").addClass("has-error");
-            $("#joining-date").after("<span class='error text-danger'>This field is required.</span>");
+        if (capacity == "") {
+            $("#capacity").addClass("has-error");
+            $("#capacity").after("<span class='error text-danger'>This field is required.</span>");
             flag = false;
         }
 
         if (flag) {
 
-            $("#btn-add-transport-registration").addClass('disabled');
-            $("#btn-add-transport-registration").html('. . . . .');
+            $("#btn-add-vehicle").addClass('disabled');
+            $("#btn-add-vehicle").html('. . . . .');
 
             var message = '';
 
@@ -71,7 +54,7 @@ $(document).ready(function () {
                 type: $(this).parent('form').attr('method'),
                 url: $(this).parent('form').attr('action'),
                 headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                data: { "vehicle_id": vehicle_id, "route_id": route_id, "driver_id": driver_id, "shift_id": shift_id, "campus_id": campus_id, "student_id": student_id, "fees": fees, "joining_date": joining_date },
+                data: { "vehicle_number": vehicle_number, "maker": maker, "chassis_number": chassis_number, "engine_number": engine_number, "capacity": capacity, "contractor_id": contractor_id, },
                 dataType: "json",
                 success: function (response) {
 
@@ -90,7 +73,7 @@ $(document).ready(function () {
                                         <ul>`;
                                 $.each(response.error, function (key, value) {
 
-                                    // $("input[name='"+key+"']").addClass("has-error");
+                                    // $("input[name='" + key + "']").addClass("has-error");
                                     $("#" + key).addClass("has-error");
                                     $("#" + key).after("<span class='error text-danger'>" + value.toString().replace(',', '<br>') + "</span>");
 
@@ -107,16 +90,12 @@ $(document).ready(function () {
                         }
                     } else {
 
-                        // $("#ref_number").val('');
-                        $("#vehicle-id").val('').change();
-                        $("#route-id").val('').change();
-                        $("#driver-id").val('').change();
-                        // $("#total_cap").val('');
-                        $("#shift-id").val('').change();
-                        $("#campus-id").val('').change();
-                        $("#student-id").val('').change();
-                        $("#fees").val('');
-                        $("#joining-date").val('');
+                        $("#vehicle-number").val('');
+                        $("#maker").val('');
+                        $("#chassis-number").val('');
+                        $("#engine-number").val('');
+                        $("#capacity").val('');
+                        $("#contractor-id").val('').change();
 
                         message += `<div class="alert alert-success alert-dismissible">
                                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -133,8 +112,8 @@ $(document).ready(function () {
                 complete: function () {
 
                     $("form").prepend(message);
-                    $("#btn-add-transport-registration").removeClass('disabled');
-                    $("#btn-add-transport-registration").html('Submit');
+                    $("#btn-add-vehicle").removeClass('disabled');
+                    $("#btn-add-vehicle").html('Submit');
                     setTimeout(function () {
                         $(".alert").remove();
                     }, 4000);
@@ -150,68 +129,50 @@ $(document).ready(function () {
 
 
     // Start data update script
-    $("#btn-update-transport-registration").on("click", function (e) {
+    $("#btn-update-vehicle").on("click", function (e) {
 
         e.preventDefault();
         $("span.error, .alert").remove();
         $("span, input").removeClass("has-error");
 
         var flag = true;
+        var maker = $("#maker").val();
+        var vehicle_number = $("#vehicle-number").val();
+        var capacity = $("#capacity").val();
+        var engine_number = $("#engine-number").val();
+        var contractor_id = $("#contractor-id").val();
+        var chassis_number = $("#chassis-number").val();
 
-        var vehicle_id = $("#vehicle-id").val();
-        var route_id = $("#route-id").val();
-        var driver_id = $("#driver-id").val();
-        var shift_id = $("#shift-id").val();
-        var campus_id = $("#campus-id").val();
-        var student_id = $("#student-id").val();
-        var fees = $("#fees").val();
-        var joining_date = $("#joining-date").val();
-
-        if (vehicle_id == "") {
-            $("#vehicle-id").addClass("has-error");
-            $("#vehicle-id").after("<span class='error text-danger'>This field is required.</span>");
+        if (vehicle_number == "") {
+            $("#vehicle-number").addClass("has-error");
+            $("#vehicle-number").after("<span class='error text-danger'>This field is required.</span>");
             flag = false;
         }
-        if (route_id == "") {
-            $("#route-id").addClass("has-error");
-            $("#route-id").after("<span class='error text-danger'>This field is required.</span>");
+        if (maker == "") {
+            $("#maker").addClass("has-error");
+            $("#maker").after("<span class='error text-danger'>This field is required.</span>");
             flag = false;
         }
-        if (driver_id == "") {
-            $("#driver-id").addClass("has-error");
-            $("#driver-id").after("<span class='error text-danger'>This field is required.</span>");
+        if (chassis_number == "") {
+            $("#chassis-number").addClass("has-error");
+            $("#chassis-number").after("<span class='error text-danger'>This field is required.</span>");
             flag = false;
         }
-        if (shift_id == "") {
-            $("#shift-id").addClass("has-error");
-            $("#shift-id").after("<span class='error text-danger'>This field is required.</span>");
+        if (engine_number == "") {
+            $("#engine-number").addClass("has-error");
+            $("#engine-number").after("<span class='error text-danger'>This field is required.</span>");
             flag = false;
         }
-        if (campus_id == "") {
-            $("#campus-id").addClass("has-error");
-            $("#campus-id").after("<span class='error text-danger'>This field is required.</span>");
-            flag = false;
-        }
-        if (student_id == "") {
-            $("#student-id").addClass("has-error");
-            $("#student-id").after("<span class='error text-danger'>This field is required.</span>");
-            flag = false;
-        }
-        if (fees == "") {
-            $("#fees").addClass("has-error");
-            $("#fees").after("<span class='error text-danger'>This field is required.</span>");
-            flag = false;
-        }
-        if (joining_date == "") {
-            $("#joining-date").addClass("has-error");
-            $("#joining-date").after("<span class='error text-danger'>This field is required.</span>");
+        if (capacity == "") {
+            $("#capacity").addClass("has-error");
+            $("#capacity").after("<span class='error text-danger'>This field is required.</span>");
             flag = false;
         }
 
         if (flag) {
 
-            $("#btn-update-transport-registration").addClass('disabled');
-            $("#btn-update-transport-registration").html('. . . . .');
+            $("#btn-update-vehicle").addClass('disabled');
+            $("#btn-update-vehicle").html('. . . . .');
 
             var message = '';
 
@@ -219,7 +180,7 @@ $(document).ready(function () {
                 type: $(this).parent('form').attr('method'),
                 url: $(this).parent('form').attr('action'),
                 headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                data: { "vehicle_id": vehicle_id, "route_id": route_id, "driver_id": driver_id, "shift_id": shift_id, "campus_id": campus_id, "student_id": student_id, "fees": fees, "joining_date": joining_date },
+                data: { "vehicle_number": vehicle_number, "maker": maker, "chassis_number": chassis_number, "engine_number": engine_number, "capacity": capacity, "contractor_id": contractor_id, },
                 dataType: "json",
                 success: function (response) {
 
@@ -255,13 +216,12 @@ $(document).ready(function () {
                         }
                     } else {
 
-                        // $("#ref_number").val('');
-                        // $("#vehicle_id").val('');
-                        // $("#route_id").val('');
-                        // $("#driver_id").val('');
-                        // $("#total_cap").val('');
-                        // $("#shift_id").val('');
-                        // $("#student_id").val('');
+                        // $("#vehicle-number").val('');
+                        // $("#maker").val('');
+                        // $("#chassis-number").val('');
+                        // $("#engine-number").val('');
+                        // $("#capacity").val('');
+                        // $("#contractor_id").val('');
 
                         message += `<div class="alert alert-success alert-dismissible">
                                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -278,8 +238,8 @@ $(document).ready(function () {
                 complete: function () {
 
                     $("form").prepend(message);
-                    $("#btn-update-transport-registration").removeClass('disabled');
-                    $("#btn-update-transport-registration").html('Updated');
+                    $("#btn-update-vehicle").removeClass('disabled');
+                    $("#btn-update-vehicle").html('Updated');
                     setTimeout(function () {
                         $(".alert").remove();
                     }, 4000);
@@ -292,14 +252,13 @@ $(document).ready(function () {
 
 
 
+    // Start data delete script
+    $(document).on('click', '#btn-delete-vehicle', function () {
+        // console.log('sadasd');
 
-
-
-    // Start Delete Data Script
-    $(document).on('click', '#btn-delete-transport-registration', function () {
-
-        var trans_reg_id = $(this).data('id');
-        var url = baseUrl + '/transport/registration/delete';
+        var vehicle_id = $(this).data('id');
+        // console.log(vehicle_id);
+        var url = baseUrl + '/vehicle/delete';
         var row = $(this).parent().parent("tr");
 
         swal.fire({
@@ -319,14 +278,13 @@ $(document).ready(function () {
 
             if (result.value) {
 
-                var message;
-                // console.log(message);
+                // var message = '';
 
                 $.ajax({
                     url: url,
                     type: 'DELETE',
                     headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                    data: { trans_reg_id: trans_reg_id },
+                    data: { vehicle_id: vehicle_id },
                     dataType: "json",
                     success: function (response) {
                         if (response.status == false) {
@@ -390,55 +348,5 @@ $(document).ready(function () {
             }
         });
     });
-    // End Delete Data Script
-
-    // Get Total Vehicle Capacity
-    $(document).on('change', '#vehicle-id', function () {
-
-        var vehicle_id = $('#vehicle-id').val();
-
-        $.ajax({
-            url: baseUrl + '/vehicle/total-capacity',
-            type: "GET",
-            data: { vehicle_id: vehicle_id },
-            success: function (response) {
-
-                // var remainingCapacity = response.totalCapacity - response.shiftWiseRegisterCount;
-
-                var html = '<label class="tx-semibold">Total Capacity</label>';
-                html += '<input class="form-control" value="' + response.totalCapacity + '" type="text" readonly>';
-                $('#total-capacity-input').html(html);
-
-                // var html = '<label class="tx-semibold">Remaining Capacity</label>';
-                // html += '<input class="form-control" value="' + remainingCapacity + '" type="text" readonly>';
-                // $('#remaining-capacity-input').html(html);
-            }
-        });
-    });
-
-    // Get Total Vehicle Capacity
-    $(document).on('change', '#shift-id', function () {
-
-        var shift_id = $('#shift-id').val();
-
-        $.ajax({
-            url: baseUrl + '/vehicle/total-capacity',
-            type: "GET",
-            data: { shift_id: shift_id },
-            success: function (response) {
-
-                // var remainingCapacity = response.totalCapacity - response.shiftWiseRegisterCount;
-
-                // var html = '<label class="tx-semibold">Total Capacity</label>';
-                // html += '<input class="form-control" value="' + response.totalCapacity + '" type="text" readonly>';
-                // $('#total-capacity-input').html(html);
-
-                // var html = '<label class="tx-semibold">Remaining Capacity</label>';
-                // html += '<input class="form-control" value="' + remainingCapacity + '" type="text" readonly>';
-                // $('#remaining-capacity-input').html(html);
-            }
-        });
-    });
-
-
+    // End data delete script
 });

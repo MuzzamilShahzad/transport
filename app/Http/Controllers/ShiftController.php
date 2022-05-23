@@ -35,7 +35,7 @@ class ShiftController extends Controller
             'timings'  =>  'required',
         ]);
 
-        if (!$validator->errors()) {
+        if ($validator->errors()->all()) {
 
             $response = array(
                 'status'  =>  false, 
@@ -85,7 +85,7 @@ class ShiftController extends Controller
             'timings'  =>  'required',
         ]);
 
-        if (!$validator->errors()) {
+        if ($validator->errors()->all()) {
 
             $response = array(
                 'status'  =>  false, 

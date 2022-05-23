@@ -192,8 +192,8 @@ body {
     -webkit-text-size-adjust: none;
     -ms-touch-action: manipulation;
     touch-action: manipulation;
-    -webkit-font-feature-settings: "liga"0;
-    font-feature-settings: "liga"0;
+    -webkit-font-feature-settings: "liga" 0;
+    font-feature-settings: "liga" 0;
     overflow-y: scroll;
     width: 100%;
     position: relative;
@@ -510,6 +510,19 @@ h6,
     margin-bottom: 0.5rem;
     font-weight: 500;
     line-height: 1.2;
+}
+
+.has-error {
+    border-color: #fd6074 !important;
+}
+
+.error {
+    color: #fd6074;
+}
+
+.select2-selection__clear {
+    margin-top: 1px;
+    margin-right: 10px;
 }
 
 h1,
@@ -103424,7 +103437,7 @@ textarea.custom-control-input.parsley-error~.invalid-tooltip {
     }
 
     abbr[title]::after {
-        content: " ("attr(title) ")";
+        content: " (" attr(title) ")";
     }
 
     pre {
@@ -107938,6 +107951,7 @@ li.ui-timepicker-selected,
     border-color: var(--primary-bg-color) !important;
 }
 
+
 @media (min-width: 992px) {
 
     .hor-menu .slide-left,
@@ -108089,4 +108103,5 @@ li.ui-timepicker-selected,
     padding: 0.5rem 0rem !important;
     border: 0 !important;
 }
+
 /*# sourceMappingURL=style.css.map */

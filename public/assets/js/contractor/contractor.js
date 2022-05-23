@@ -16,19 +16,19 @@ $(document).ready(function () {
 
         if (name == "") {
             $("#name").addClass("has-error");
-            $("#name").after("<span class='error text-danger'>This field is required.</span>");
+            $("#name").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
 
         if (area == "") {
             $("#area").addClass("has-error");
-            $("#area").after("<span class='error text-danger'>This field is required.</span>");
+            $("#area").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
 
         if (cnic == "") {
             $("#cnic").addClass("has-error");
-            $("#cnic").after("<span class='error text-danger'>This field is required.</span>");
+            $("#cnic").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
 
@@ -38,50 +38,41 @@ $(document).ready(function () {
             $("#btn-add-contractor").html('. . . . .');
 
             var message = '';
+            var formData = {
+                "name": name,
+                "area": area,
+                "cnic": cnic,
+            };
 
             $.ajax({
                 type: $(this).parent('form').attr('method'),
                 url: $(this).parent('form').attr('action'),
                 headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
-                data: { "name": name, "area": area, "cnic": cnic },
+                data: formData,
                 dataType: "json",
                 success: function (response) {
 
                     if (response.status === false) {
-                        var a = response.error;
-
-                        // console.log(JSON.stringify(response.error).length);
-                        // console.log(Object.keys(response.error).length);
-                        // console.log(response.error);
-                        // console.log($.parseJSON(response.error));
-
                         if (response.error) {
                             if (Object.keys(response.error).length > 0) {
-                                message += `<div class="alert alert-danger">
-                                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                        <ul>`;
                                 $.each(response.error, function (key, value) {
 
-                                    // $("input[name='"+key+"']").addClass("has-error");
-                                    $("#" + key).addClass("has-error");
-                                    $("#" + key).after("<span class='error text-danger'>" + value.toString().replace(',', '<br>') + "</span>");
+                                    $("input[name='" + key + "']").addClass("has-error");
+                                    $("input[name='" + key + "']").after("<span class='error'>" + value.toString().split(/[,]+/).join("<br/>") + "</span>");
 
-                                    message += `<li>` + value + `</li>`
                                 });
                                 message += `</ul>
                                     </div>`;
                             }
                         } else {
                             message += `<div class="alert alert-danger alert-dismissible">
-                                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                                <strong> Success!</strong> `+ response.message + `
-                                            </div>`;
+                                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                            <strong> Success!</strong> `+ response.message + `
+                                        </div>`;
                         }
                     } else {
 
-                        $("#name").val('');
-                        $("#area").val('');
-                        $("#cnic").val('');
+                        $("#name, #area, #cnic").val('');
 
                         message += `<div class="alert alert-success alert-dismissible">
                                     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -96,13 +87,15 @@ $(document).ready(function () {
                             </div>`;
                 },
                 complete: function () {
+                    if (message !== '') {
+                        $("form").prepend(message);
+                        setTimeout(function () {
+                            $(".alert").remove();
+                        }, 4000);
+                    }
 
-                    $("form").prepend(message);
                     $("#btn-add-contractor").removeClass('disabled');
                     $("#btn-add-contractor").html('Submitted');
-                    setTimeout(function () {
-                        $(".alert").remove();
-                    }, 4000);
                 }
             });
         }
@@ -126,19 +119,19 @@ $(document).ready(function () {
 
         if (name == "") {
             $("#name").addClass("has-error");
-            $("#name").after("<span class='error text-danger'>This field is required.</span>");
+            $("#name").after("<span class='error '>This field is required.</span>");
             flag = false;
         }
 
         if (area == "") {
             $("#area").addClass("has-error");
-            $("#area").after("<span class='error text-danger'>This field is required.</span>");
+            $("#area").after("<span class='error '>This field is required.</span>");
             flag = false;
         }
 
         if (cnic == "") {
             $("#cnic").addClass("has-error");
-            $("#cnic").after("<span class='error text-danger'>This field is required.</span>");
+            $("#cnic").after("<span class='error '>This field is required.</span>");
             flag = false;
         }
 
@@ -174,7 +167,7 @@ $(document).ready(function () {
 
                                     // $("input[name='"+key+"']").addClass("has-error");
                                     $("#" + key).addClass("has-error");
-                                    $("#" + key).after("<span class='error text-danger'>" + value.toString().replace(',', '<br>') + "</span>");
+                                    $("#" + key).after("<span class='error '>" + value.toString().replace(',', '<br>') + "</span>");
 
                                     message += `<li>` + value + `</li>`
                                 });

@@ -35,7 +35,7 @@ class RouteController extends Controller
             'area'  =>  'required|min:4|max:30',
         ]);
 
-        if (!$validator->errors()) {
+        if ($validator->errors()->all()) {
 
             $response = array(
                 'status'  =>  0,
@@ -81,7 +81,7 @@ class RouteController extends Controller
             'area'  =>  'required|min:4|max:30',
         ]);
 
-        if (!$validator->errors()) {
+        if ($validator->errors()->all()) {
 
             $response = array(
                 'status'  =>  false, 

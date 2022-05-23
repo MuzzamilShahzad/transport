@@ -33,7 +33,7 @@ return new class extends Migration
             $table->foreign('campus_id')->references('id')->on('campuses')->onDelete('cascade');
 
             $table->unsignedInteger('student_id')->nullable();
-            $table->foreign('student_id')->references('id')->on('student')->onDelete('cascade');
+            $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             
             $table->integer('fees');
             $table->date('joining_date');
