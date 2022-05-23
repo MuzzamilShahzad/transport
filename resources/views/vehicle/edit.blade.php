@@ -31,6 +31,18 @@
                                 <div class="col-md-12 col-lg-12 col-xl-12">
                                     <form action="{{ route('vehicle.update', $data['vehicle']->id) }}" method="put">
                                         <div class="form-group">
+                                            <label class="tx-semibold">Select Contractor</label>
+                                            <div class="pos-relative">
+                                                <select class="form-control select2" name="contractor_id" id="contractor-id">
+                                                <option selected value="">Select Contractor</option>
+                                                    @foreach($data['contractor'] as $item)
+                                                        <option value="{{$item->id}}" {{$item->id == $data['vehicle']->contractor_id ? 'selected' : null }}> {{$item->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label class="tx-semibold">Vehicle Number</label>
                                             <input name="vehicle_number" class="form-control" type="text" value="{{$data['vehicle']->number}}" id="vehicle-number">
                                         </div>
@@ -63,16 +75,6 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label class="tx-semibold">Select Contractor</label>
-                                            <div class="pos-relative">
-                                                <select class="form-control select2" name="contractor_id" id="contractor-id">
-                                                    @foreach($data['contractor'] as $item)
-                                                        <option value="{{$item->id}}" {{$item->id == $data['vehicle']->contractor_id ? 'selected' : null }}> {{$item->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
                                         <button type="submit" id="btn-update-vehicle" class="btn ripple btn-primary">Update</button>
                                         <a href="{{ route('vehicle.view') }}" class="btn btn-danger">Back</a>
                                     </form>

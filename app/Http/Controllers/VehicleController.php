@@ -15,7 +15,7 @@ class VehicleController extends Controller
     public function listing() {
         $Vehicle = Vehicle::all();
         $data = array(
-            'Vehicle'  =>  $Vehicle,
+            'Vehicle'   =>  $Vehicle,
             'page'      =>  'Vehicle',
             'menu'      =>  'Manage Vehicle',
         );
@@ -26,9 +26,9 @@ class VehicleController extends Controller
     public function add() {
         $Contractor = Contractor::get();
         $data = array(
-            'Contractor'  => $Contractor,
-            'page'         => 'Vehicle',
-            'menu'         => 'Add Vehicle',
+            'Contractor'   =>  $Contractor,
+            'page'         =>  'Vehicle',
+            'menu'         =>  'Add Vehicle',
         );
 
         return view('vehicle.add', compact('data'));
@@ -40,11 +40,10 @@ class VehicleController extends Controller
             'maker'           =>  'required|min:1|max:20',
             'chassis_number'  =>  'required|min:1|max:20',
             'engine_number'   =>  'required|min:1|max:20',
-            'capacity'        =>  'required',
-            'contractor_id'   =>  'required'
+            'capacity'        =>  'required'
         ]);
 
-        if (!$validator->errors()) {
+        if ($validator->errors()->all()) {
 
             $response = array(
                 'status'  =>  false, 
@@ -106,10 +105,9 @@ class VehicleController extends Controller
             'chassis_number'  =>  'required|min:1|max:20',
             'engine_number'   =>  'required|min:1|max:20',
             'capacity'        =>  'required',
-            'contractor_id'   =>  'required'
         ]);
 
-        if (!$validator->errors()) {
+        if ($validator->errors()->all()) {
 
             $response = array(
                 'status'  =>  false, 
@@ -175,18 +173,19 @@ class VehicleController extends Controller
 
     public function getTotalCapacity(Request $request){
         $vehicle_id = $request->vehicle_id;
-        $shift_id = $request->shift_id;
+        $shift_id   = $request->shift_id;
         // dd($shift_id);
 
         $totalCapacity = Vehicle::select('capacity')->where('id',$vehicle_id)->get();
+        $registerCount = TransportRegistration::select('vehicle_id')->where('vehicle_id',$vehicle_id)->count();
+
         // $shiftWiseRegisterCount = TransportRegistration::where('vehicle_id',$vehicle_id)->where('shift_id',$shift_id)->count();
         // dd($shiftWiseRegisterCount);
        
-        // $registerCount = TransportRegistration::select('vehicle_id')->where('vehicle_id',$vehicle_id)->count();
 
         $response = array(
             'totalCapacity'  => $totalCapacity[0]['capacity'],
-            // 'shiftWiseRegisterCount'  =>  $shiftWiseRegisterCount
+            'registerCount'  =>  $registerCount
         );
 
         return response()->json($response);

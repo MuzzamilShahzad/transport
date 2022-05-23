@@ -42,11 +42,6 @@ $(document).ready(function () {
             $("#capacity").after("<span class='error text-danger'>This field is required.</span>");
             flag = false;
         }
-        if (contractor_id == "") {
-            $("#contractor-id").addClass("has-error");
-            $("#contractor-id").after("<span class='error text-danger'>This field is required.</span>");
-            flag = false;
-        }
 
         if (flag) {
 
@@ -171,11 +166,6 @@ $(document).ready(function () {
         if (capacity == "") {
             $("#capacity").addClass("has-error");
             $("#capacity").after("<span class='error text-danger'>This field is required.</span>");
-            flag = false;
-        }
-        if (contractor_id == "") {
-            $("#contractor-id").addClass("has-error");
-            $("#contractor-id").after("<span class='error text-danger'>This field is required.</span>");
             flag = false;
         }
 

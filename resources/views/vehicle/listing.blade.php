@@ -52,7 +52,7 @@
                                             <td>{{$item->chassis_number}}</td>
                                             <td>{{$item->engine_number}}</td>
                                             <td>{{$item->capacity}}</td>
-                                            <td>{{$item->contractor->name}}</td>
+                                            <td>{{$item->contractor_id ? $item->contractor->name : 'No Contractor Selected'}}</td>
                                             <td>
                                                 <a href="{{ route('vehicle.edit',$item->id) }}" class="btn btn-primary btn-sm">Edit</a>
                                                 <button data-id="{{$item->id}}" id="btn-delete-vehicle" class="btn btn-danger btn-sm">Delete</button>

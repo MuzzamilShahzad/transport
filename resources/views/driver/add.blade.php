@@ -59,7 +59,7 @@
                                         <div class="form-group">
                                             <label class="tx-semibold">Joining Date</label>
                                             <div class="pos-relative">
-                                                <input class="form-control date-picker" name="joining_date" id="joining-date" placeholder="YYYY/MM/DD" type="text">
+                                                <input class="form-control date-picker" name="joining_date" id="joining-date" placeholder="DD/MM/YYYY" type="text">
                                             </div>
                                         </div>
 
