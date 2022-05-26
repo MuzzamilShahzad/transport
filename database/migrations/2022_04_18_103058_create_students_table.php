@@ -18,9 +18,16 @@ return new class extends Migration
             $table->increments('id');
             $table->string('first_name',30);
             $table->string('last_name',30);
-            
-            $table->unsignedInteger('campus_id')->nullable();
-            $table->foreign('campus_id')->references('id')->on('campuses')->onDelete('cascade');
+            $table->date('dob')->nullable();
+            $table->string('gender',10);
+            $table->string('place_of_birth',30);
+            $table->string('nationality',30);
+            $table->string('bform_crms_no',20)->nullable();
+            $table->string('religion',20);
+            $table->date('admission_date');
+            $table->string('blood_group',10)->nullable();
+            $table->string('height',20)->nullable();
+            $table->string('weight',20)->nullable();
 
             $table->tinyInteger('is_active')->default(1);
             $table->tinyInteger('is_delete')->default(0);

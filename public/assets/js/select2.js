@@ -1,6 +1,57 @@
 jQuery(function () {
 	$('.select2').select2({
-		placeholder: 'Choose one',
+		placeholder: 'Select',
+		searchInputPlaceholder: 'Search',
+		width: '100%'
+	});
+
+	$('.campusSelect2').select2({
+		placeholder: 'Select Campus',
+		searchInputPlaceholder: 'Search',
+		width: '100%'
+	});
+	$('.sessionSelect2').select2({
+		placeholder: 'Select Session',
+		searchInputPlaceholder: 'Search',
+		width: '100%'
+	});
+	$('.classSelect2').select2({
+		placeholder: 'Select Class',
+		searchInputPlaceholder: 'Search',
+		width: '100%'
+	});
+	$('.sectionSelect2').select2({
+		placeholder: 'Select Section',
+		searchInputPlaceholder: 'Search',
+		width: '100%'
+	});
+	$('.genderSelect2').select2({
+		placeholder: 'Select Gender',
+		searchInputPlaceholder: 'Search',
+		width: '100%'
+	});
+	$('.categorySelect2').select2({
+		placeholder: 'Select Category',
+		searchInputPlaceholder: 'Search',
+		width: '100%'
+	});
+	$('.bloodSelect2').select2({
+		placeholder: 'Select Blood Group',
+		searchInputPlaceholder: 'Search',
+		width: '100%'
+	});
+	$('.houseSelect2').select2({
+		placeholder: 'Select School House',
+		searchInputPlaceholder: 'Search',
+		width: '100%'
+	});
+	$('.currentSelect2').select2({
+		placeholder: 'Select Current Area',
+		searchInputPlaceholder: 'Search',
+		width: '100%'
+	});
+	$('.permenantSelect2').select2({
+		placeholder: 'Select Permenant Area',
 		searchInputPlaceholder: 'Search',
 		width: '100%'
 	});

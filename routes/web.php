@@ -10,6 +10,7 @@ use App\Http\Controllers\RouteController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\DriverVehicleController;
 use App\Http\Controllers\TransportRegistrationController;
+use App\Http\Controllers\AdmissionController;
 
 // Dashboard Routes
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -74,6 +75,14 @@ Route::controller(TransportRegistrationController::class)->group(function () {
     Route::get('/transport/registration/edit/{id}', 'edit')->name('registration.edit');
     Route::put('/transport/registration/update/{id}', 'update')->name('registration.update');
     Route::delete('/transport/registration/delete', 'delete')->name('registration.delete');
+});
+
+//Admission routes
+Route::controller(AdmissionController::class)->group(function () {
+    Route::get('/admission/add', 'add')->name('admission.create');
+    Route::post('/admission/store', 'store')->name('admission.store');
+    
+    Route::get('/campus/get-system', 'getCampusSystem');
 });
 
 //Driver Vehicles routes
