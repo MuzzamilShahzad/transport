@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Route extends Model
 {
     use HasFactory;
-    protected $table = "routes";
+    protected $table = "Routes";
 }

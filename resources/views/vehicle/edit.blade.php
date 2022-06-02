@@ -14,18 +14,6 @@
                         <li class="breadcrumb-item active" aria-current="page">{{ $data['menu'] }}</li>
                     </ol>
                 </div>
-                <!-- <div class="d-flex">
-                    <div class="justify-content-center">
-                        <button type="button" class="btn btn-white btn-icon-text my-2 me-2">
-                            <i class="fe fe-settings"></i>
-                            <span>Settings</span>
-                        </button>
-                        <button type="button" class="btn btn-primary my-2 btn-icon-text">
-                            <i class="fe fe-download-cloud bg-white-transparent text-white"></i>
-                            <span>Reports</span>
-                        </button>
-                    </div>
-                </div> -->
             </div>
             <!-- End Page Header -->
 
@@ -43,8 +31,20 @@
                                 <div class="col-md-12 col-lg-12 col-xl-12">
                                     <form action="{{ route('vehicle.update', $data['vehicle']->id) }}" method="put">
                                         <div class="form-group">
+                                            <label class="tx-semibold">Select Contractor</label>
+                                            <div class="pos-relative">
+                                                <select class="form-control select2" name="contractor_id" id="contractor-id">
+                                                <option selected value="">Select Contractor</option>
+                                                    @foreach($data['contractor'] as $item)
+                                                        <option value="{{$item->id}}" {{$item->id == $data['vehicle']->contractor_id ? 'selected' : null }}> {{$item->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label class="tx-semibold">Vehicle Number</label>
-                                            <input name="number" class="form-control" type="text" value="{{$data['vehicle']->number}}" id="number">
+                                            <input name="vehicle_number" class="form-control" type="text" value="{{$data['vehicle']->number}}" id="vehicle-number">
                                         </div>
 
                                         <div class="form-group">
@@ -57,14 +57,14 @@
                                         <div class="form-group">
                                             <label class="tx-semibold">Chassis Number</label>
                                             <div class="pos-relative">
-                                                <input name="chassis_number" class="form-control pd-r-80" type="text" value="{{$data['vehicle']->chassis_number}}" id="chassis_number">
+                                                <input name="chassis_number" class="form-control pd-r-80" type="text" value="{{$data['vehicle']->chassis_number}}" id="chassis-number">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="tx-semibold">Engine Number</label>
                                             <div class="pos-relative">
-                                                <input name="engine_number" class="form-control pd-r-80" type="text" value="{{$data['vehicle']->engine_number}}" id="engine_number">
+                                                <input name="engine_number" class="form-control pd-r-80" type="text" value="{{$data['vehicle']->engine_number}}" id="engine-number">
                                             </div>
                                         </div>
 
@@ -75,16 +75,6 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label class="tx-semibold">Select Contractor</label>
-                                            <div class="pos-relative">
-                                                <select class="form-control select2" name="contractor_id" id="contractor-id">
-                                                    @foreach($data['contractor'] as $item)
-                                                        <option value="{{$item->id}}" {{$item->id == $data['vehicle']->contractor_id ? 'selected' : null }}> {{$item->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
                                         <button type="submit" id="btn-update-vehicle" class="btn ripple btn-primary">Update</button>
                                         <a href="{{ route('vehicle.view') }}" class="btn btn-danger">Back</a>
                                     </form>
@@ -100,7 +90,6 @@
 </div>
 
 <!-- {{-- Own javascript --}} -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{{url('assets/js/vehicle/vehicle.js')}}"></script>
+<script src="{{ url('assets/js/vehicle/vehicle.js') }}"></script>
 
 @endsection

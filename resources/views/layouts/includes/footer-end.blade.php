@@ -54,6 +54,9 @@
 <!-- Custom js -->
 <script src="{{ url('assets/js/custom.js') }}"></script>
 
+<!-- Select2 js-->
+<script src="{{ url('assets/js/select2.js') }}"></script>
+
 <!-- SweetAlert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -64,7 +67,7 @@
 
 <script>
     $('.date-picker').datepicker({
-        dateFormat: 'yy-mm-dd',
+        dateFormat: 'dd-mm-yy',
 		showOtherMonths: true,
 		selectOtherMonths: true
 	});

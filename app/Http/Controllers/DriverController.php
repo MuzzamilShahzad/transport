@@ -9,11 +9,11 @@ use App\Models\Driver;
 class DriverController extends Controller
 {
     public function listing(){
-        $drivers = Driver::all();
+        $Driver = Driver::all();
         $data = array(
-            'drivers'     => $drivers,
-            'page'       => 'Driver',
-            'menu'       => 'Manage Driver'
+            'Driver'  =>  $Driver,
+            'page'     =>  'Driver',
+            'menu'     =>  'Manage Driver'
         );
 
         return view('driver.listing', compact('data'));
@@ -21,8 +21,8 @@ class DriverController extends Controller
 
     public function add(){
         $data = array(
-            'page'         => 'Driver',
-            'menu'         => 'Add Driver',
+            'page'  =>  'Driver',
+            'menu'  =>  'Add Driver',
         );
 
         return view('driver.add', compact('data'));
@@ -30,36 +30,38 @@ class DriverController extends Controller
 
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'address' => 'required',
-            'cnic' => 'required',
-            'license_no' => 'required',
-            'joining_date' => 'required',
+            'name'          =>  'required',
+            'address'       =>  'required',
+            'cnic'          =>  'required',
+            'license_no'    =>  'required',
+            'joining_date'  =>  'required',
         ]);
 
-        if (!$validator->passes()) {
+        if ($validator->errors()->all()) {
 
             $response = array(
-                'status' => false, 
-                'error' => $validator->errors()->toArray()
+                'status'  =>  false, 
+                'error'   =>  $validator->errors()->toArray()
             );
             
             return response()->json($response);
 
         } else {
             $driver = new Driver;
-            $driver->name = $request->name;
-            $driver->address = $request->address;
-            $driver->cnic = $request->cnic;
-            $driver->license_no = $request->license_no;
-            $driver->joining_date = $request->joining_date;
-            $driver->save();
 
-            if ($driver->save()) {
+            $driver->name          =  $request->name;
+            $driver->address       =  $request->address;
+            $driver->cnic          =  $request->cnic;
+            $driver->license_no    =  $request->license_no;
+            $driver->joining_date  =  date('Y-m-d', strtotime($request->joining_date));
+
+            $query = $driver->save();
+
+            if ($query) {
                 
                 $response = array(
-                    'status' => true, 
-                    'message' => 'Driver has been added successfully'
+                    'status'   =>  true, 
+                    'message'  =>  'Driver has been added successfully'
                 );
 
                 return response()->json($response);
@@ -67,8 +69,8 @@ class DriverController extends Controller
             } else {
 
                 $response = array(
-                    'status' => false, 
-                    'message' => 'Some thing went worng please try again letter'
+                    'status'   =>  false, 
+                    'message'  =>  'Some thing went worng please try again letter'
                 );
 
                 return response()->json($response);
@@ -79,9 +81,9 @@ class DriverController extends Controller
     public function edit($id){
         $driver = Driver::find($id);
         $data = array(
-            'driver'       => $driver,
-            'page'         => 'Driver',
-            'menu'         => 'Edit Driver'
+            'driver'  =>  $driver,
+            'page'    =>  'Driver',
+            'menu'    =>  'Edit Driver'
         );
 
         return view('driver.edit', compact('data'));
@@ -89,36 +91,38 @@ class DriverController extends Controller
 
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'address' => 'required',
-            'cnic' => 'required',
-            'license_no' => 'required',
-            'joining_date' => 'required',
+            'name'          =>  'required',
+            'address'       =>  'required',
+            'cnic'          =>  'required',
+            'license_no'    =>  'required',
+            'joining_date'  =>  'required',
         ]);
 
-        if (!$validator->passes()) {
+        if ($validator->errors()->all()) {
 
             $response = array(
-                'status' => false, 
-                'error' => $validator->errors()->toArray()
+                'status'  =>  false, 
+                'error'   =>  $validator->errors()->toArray()
             );
             
             return response()->json($response);
 
         } else {
             $driver = Driver::find($id);
-            $driver->name = $request->name;
-            $driver->address = $request->address;
-            $driver->cnic = $request->cnic;
-            $driver->license_no = $request->license_no;
-            $driver->joining_date = $request->joining_date;
-            $driver->update();
 
-            if ($driver->update()) {
+            $driver->name          =  $request->name;
+            $driver->address       =  $request->address;
+            $driver->cnic          =  $request->cnic;
+            $driver->license_no    =  $request->license_no;
+            $driver->joining_date  =  date('Y-m-d', strtotime($request->joining_date));
+
+            $query = $driver->update();
+
+            if ($query) {
 
                 $response = array(
-                    'status' => true, 
-                    'message' => 'Driver has been updated successfully'
+                    'status'   =>  true, 
+                    'message'  =>  'Driver has been updated successfully'
                 );
 
                 return response()->json($response);
@@ -126,8 +130,8 @@ class DriverController extends Controller
             } else {
 
                 $response = array(
-                    'status' => false, 
-                    'message' => 'Some thing went worng please try again letter'
+                    'status'   =>  false, 
+                    'message'  =>  'Some thing went worng please try again letter'
                 );
 
                 return response()->json($response);
@@ -136,21 +140,21 @@ class DriverController extends Controller
     }
 
     public function delete(Request $request) {
-        $driver_id = $request->driver_id;
-        $query = Driver::find($driver_id)->delete();
+        $driver_id  =  $request->driver_id;
+        $query      =  Driver::find($driver_id)->delete();
 
         if ($query) {
 
             $response = array(
-                'status' => true, 
-                'message' => 'Record has been deleted successfully!'
+                'status'   =>  true, 
+                'message'  =>  'Record has been deleted successfully!'
             );
         }
 
         else {
             $response = array(
-                'status' => false,
-                'message' => 'Some thing went worng try again later!'
+                'status'   =>  false,
+                'message'  =>  'Some thing went worng try again later!'
             );
         }
 

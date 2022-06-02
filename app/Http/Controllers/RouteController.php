@@ -11,11 +11,11 @@ use App\Models\Route;
 class RouteController extends Controller
 {
     public function listing() {
-        $routes = Route::all();
+        $Route = Route::all();
         $data = array(
-            'routes'     => $routes,
-            'page'       => 'Route',
-            'menu'       => 'Manage Route',
+            'Route'  =>  $Route,
+            'page'    =>  'Route',
+            'menu'    =>  'Manage Route',
         );
 
         return view('route.listing', compact('data'));
@@ -23,8 +23,8 @@ class RouteController extends Controller
 
     public function add() {
         $data = array(
-            'page'         => 'Route',
-            'menu'         => 'Add Route',
+            'page'  =>  'Route',
+            'menu'  =>  'Add Route',
         );
 
         return view('route.add', compact('data'));
@@ -32,33 +32,33 @@ class RouteController extends Controller
 
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
-            'area' => 'required|min:4|max:30',
+            'area'  =>  'required|min:4|max:30',
         ]);
 
-        if (!$validator->passes()) {
+        if ($validator->errors()->all()) {
 
             $response = array(
-                'status' => 0,
-                'error' => $validator->errors()->toArray(),
+                'status'  =>  0,
+                'error'   =>  $validator->errors()->toArray(),
             );
             return response()->json($response);
             
         } else {
 
             $route = new Route;
-            $route->area = $request->area;
-            $route->save();
+            $route->area  =  $request->area;
+            $query = $route->save();
 
-            if ($route->save()) {
+            if ($query) {
                 $response = array(
-                    'status' => true, 
-                    'message' => 'Route has been added successfully'
+                    'status'   =>  true, 
+                    'message'  =>  'Route has been added successfully'
                 );
                 return response()->json($response);
             } else {
                 $response = array(
-                    'status' => false, 
-                    'message' => 'Some thing went wrong please try again letter'
+                    'status'   =>  false, 
+                    'message'  =>  'Some thing went wrong please try again letter'
                 );
                 return response()->json($response);
             }
@@ -68,9 +68,9 @@ class RouteController extends Controller
     public function edit($id){
         $route = Route::find($id);
         $data = array(
-            'route'        => $route,
-            'page'         => 'Route',
-            'menu'         => 'Edit Route',
+            'route'  =>  $route,
+            'page'   =>  'Route',
+            'menu'   =>  'Edit Route',
         );
 
         return view('route.edit', compact('data'));
@@ -78,28 +78,28 @@ class RouteController extends Controller
 
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
-            'area' => 'required|min:4|max:30',
+            'area'  =>  'required|min:4|max:30',
         ]);
 
-        if (!$validator->passes()) {
+        if ($validator->errors()->all()) {
 
             $response = array(
-                'status' => false, 
-                'error' => $validator->errors()->toArray()
+                'status'  =>  false, 
+                'error'   =>  $validator->errors()->toArray()
             );
             
             return response()->json($response);
 
         } else {
             $route = Route::find($id);
-            $route->area = $request->area;
-            $route->update();
+            $route->area  =  $request->area;
+            $query = $route->update();
 
-            if ($route->update()) {
+            if ($query) {
 
                 $response = array(
-                    'status' => true, 
-                    'message' => 'Route has been updated successfully'
+                    'status'   =>  true, 
+                    'message'  =>  'Route has been updated successfully'
                 );
 
                 return response()->json($response);
@@ -107,8 +107,8 @@ class RouteController extends Controller
             } else {
 
                 $response = array(
-                    'status' => false, 
-                    'message' => 'Some thing went worng please try again letter'
+                    'status'   =>  false, 
+                    'message'  =>  'Some thing went worng please try again letter'
                 );
 
                 return response()->json($response);
@@ -117,21 +117,21 @@ class RouteController extends Controller
     }
 
     public function delete(Request $request) {
-        $route_id = $request->route_id;
-        $query = Route::find($route_id)->delete();
+        $route_id  =  $request->route_id;
+        $query     =  Route::find($route_id)->delete();
 
         if ($query) {
 
             $response = array(
-                'status' => true, 
-                'message' => 'Record has been deleted successfully!'
+                'status'   =>  true, 
+                'message'  =>  'Record has been deleted successfully!'
             );
         }
 
         else {
             $response = array(
-                'status' => false,
-                'message' => 'Some thing went worng try again later!'
+                'status'   =>  false,
+                'message'  =>  'Some thing went worng try again later!'
             );
         }
 
