@@ -72,7 +72,10 @@ $(document).ready(function () {
                 "driver_id": driver_id,
                 "shift_id": shift_id,
                 "student_id": student_id,
+<<<<<<< HEAD
                 "campus_id": campus_id,
+=======
+>>>>>>> 006a8d57bfecdb2a0392125c7eb641346cd1130d
                 "fees": fees,
                 "joining_date": joining_date
             };
@@ -135,6 +138,10 @@ $(document).ready(function () {
 
                     $("#btn-add-transport-registration").removeClass('disabled');
                     $("#btn-add-transport-registration").html('Submit');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 006a8d57bfecdb2a0392125c7eb641346cd1130d
                 }
             });
         }
@@ -399,6 +406,7 @@ $(document).ready(function () {
             success: function (response) {
                 // console.log(response.vehicle)
 
+<<<<<<< HEAD
                 if (response.vehicle[0]['total_students']) {
 
                     var remainingCapacity = response.totalCapacity - response.vehicle[0]['total_students'];
@@ -423,8 +431,17 @@ $(document).ready(function () {
                     html += '<input class="form-control" value="' + remainingCapacity + '" type="text" readonly>';
                     $('#remaining-capacity-input').html(html);
                 }
+=======
+                var remainingCapacity = response.totalCapacity - response.registerCount;
+>>>>>>> 006a8d57bfecdb2a0392125c7eb641346cd1130d
 
 
+<<<<<<< HEAD
+=======
+                var html = '<label class="tx-semibold">Remaining Capacity</label>';
+                html += '<input class="form-control" value="' + remainingCapacity + '" type="text" readonly>';
+                $('#remaining-capacity-input').html(html);
+>>>>>>> 006a8d57bfecdb2a0392125c7eb641346cd1130d
             }
         });
     });

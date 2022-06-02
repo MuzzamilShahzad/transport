@@ -175,6 +175,7 @@ class VehicleController extends Controller
 
     public function getTotalCapacity(Request $request){
         $vehicle_id = $request->vehicle_id;
+<<<<<<< HEAD
         $vehicle = TransportRegistration:: select(array('shift_id', 
          DB::raw('COUNT(student_id) as total_students')))
         ->join("vehicles","vehicles.id","=","student_vehicle.vehicle_id")
@@ -185,6 +186,24 @@ class VehicleController extends Controller
         ->get();
 
         dd($vehicle);
+=======
+        $shift_id   = $request->shift_id;
+        // dd($shift_id);
+
+        $totalCapacity = Vehicle::select('capacity')->where('id',$vehicle_id)->get();
+        $registerCount = TransportRegistration::select('vehicle_id')->where('vehicle_id',$vehicle_id)->count();
+
+        // $shiftWiseRegisterCount = TransportRegistration::where('vehicle_id',$vehicle_id)->where('shift_id',$shift_id)->count();
+        // dd($shiftWiseRegisterCount);
+       
+
+        $response = array(
+            'totalCapacity'  => $totalCapacity[0]['capacity'],
+            'registerCount'  =>  $registerCount
+        );
+
+        return response()->json($response);
+>>>>>>> 006a8d57bfecdb2a0392125c7eb641346cd1130d
     }
 
     // public function getTotalCapacity(Request $request){

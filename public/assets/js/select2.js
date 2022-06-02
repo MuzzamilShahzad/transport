@@ -1,5 +1,6 @@
 jQuery(function () {
 	$('.select2').select2({
+<<<<<<< HEAD
 		placeholder: 'Select',
 		searchInputPlaceholder: 'Search',
 		width: '100%'
@@ -52,6 +53,9 @@ jQuery(function () {
 	});
 	$('.permenantSelect2').select2({
 		placeholder: 'Select Permenant Area',
+=======
+		placeholder: 'Choose one',
+>>>>>>> 006a8d57bfecdb2a0392125c7eb641346cd1130d
 		searchInputPlaceholder: 'Search',
 		width: '100%'
 	});
