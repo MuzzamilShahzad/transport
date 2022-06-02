@@ -4,7 +4,6 @@
 
 <div class="main-content side-content pt-0">
     <div class="main-container container-fluid">
-        .................
         <div class="inner-body">
             <!-- Page Header -->
             <div class="page-header">
