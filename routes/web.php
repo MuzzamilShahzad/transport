@@ -11,6 +11,7 @@ use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\DriverVehicleController;
 use App\Http\Controllers\TransportRegistrationController;
 use App\Http\Controllers\AdmissionController;
+use App\Http\Controllers\StudentRegistrationController;
 
 // Dashboard Routes
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -83,6 +84,14 @@ Route::controller(AdmissionController::class)->group(function () {
     Route::post('/admission/store', 'store')->name('admission.store');
     
     Route::get('/campus/get-system', 'getCampusSystem');
+});
+
+//Admission routes
+Route::controller(StudentRegistrationController::class)->group(function () {
+    Route::get('/student/registration/add', 'add')->name('student.registration.create');
+    Route::post('/student/registration/store', 'store')->name('student.registration.store');
+
+    Route::get('/session/get-groups', 'getSessionGroups');
 });
 
 //Driver Vehicles routes

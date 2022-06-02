@@ -189,15 +189,10 @@ $(document).ready(function () {
             flag = false;
         }
         if (pick_and_drop_detail == "") {
-            $("#pick-and-drop-detail").addClass("has-error");
-            $("#pick-and-drop-detail").after("<span class='error'>This field is required.</span>");
+            $("#pick-and-drop-detail").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#pick-and-drop-detail").siblings("span").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
-        // if (first_person_call == "") {
-        //     $("#first-person-call").addClass("has-error");
-        //     $("#first-person-call").after("<span class='error'>This field is required.</span>");
-        //     flag = false;
-        // }
 
         if (flag) {
 
@@ -294,7 +289,7 @@ $(document).ready(function () {
                             if (Object.keys(response.error).length > 0) {
                                 $.each(response.error, function (key, value) {
 
-                                    if (key === 'admission_date' || key === 'father_phone' || key === 'mother_phone') {
+                                    if (key === 'admission_date') {
                                         $("input[name='" + key + "']").addClass("has-error");
                                         $("input[name='" + key + "']").after("<span class='error'>" + value.toString().split(/[,]+/).join("<br/>") + "</span>");
                                     } else {
@@ -380,11 +375,11 @@ $(document).ready(function () {
             $('#append-input').html(html);
         }
         else if (value == 'SchoolVan') {
-            var html = '<div class="form-row"> <div class="form-group col-md-4 mb-0" > <label class="form-label tx-semibold">School Driver Name</label> <input type="text" class="form-control" name="school_driver_name" id="school-driver-name"> </div> <div class="form-group col-md-4 mb-0"> <label class="form-label tx-semibold">School Driver Phone</label> <input type="number" class="form-control" name="school_driver_phone" id="school-driver-phone"> </div> <div class="form-group col-md-4 mb-0"> <label class="form-label tx-semibold">School Vehicle No</label> <input type="text" class="form-control" name="school_vehicle_no" id="school-vehicle-no"> </div> </div >';
+            var html = '<div class="form-row"> <div class="form-group col-md-4 mb-0" > <label class="form-label tx-semibold">School Driver Name</label> <input type="text" class="form-control" name="school_driver_name" id="school-driver-name"> </div> <div class="form-group col-md-4 mb-0"> <label class="form-label tx-semibold">School Driver Phone</label> <input type="number" class="form-control" name="school_driver_phone" id="school-driver-phone" placeholder="03##-#######"> </div> <div class="form-group col-md-4 mb-0"> <label class="form-label tx-semibold">School Vehicle No</label> <input type="text" class="form-control" name="school_vehicle_no" id="school-vehicle-no"> </div> </div >';
             $('#append-input').html(html);
         }
         else if (value == 'PrivateVan') {
-            var html = '<div class="form-row"> <div class="form-group col-md-4 mb-0"> <label class="form-label tx-semibold">Private Driver Name</label> <input type="text" class="form-control" name="private_driver_name" id="private-driver-name"> </div> <div class="form-group col-md-4 mb-0"> <label class="form-label tx-semibold">Private Driver Phone</label> <input type="number" class="form-control" name="private_driver_phone" id="private-driver-phone"> </div> <div class="form-group col-md-4 mb-0"> <label class="form-label tx-semibold">School Vehicle No</label> <input type="text" class="form-control" name="private_vehicle_no" id="private-vehicle-no"> </div> </div>';
+            var html = '<div class="form-row"> <div class="form-group col-md-4 mb-0"> <label class="form-label tx-semibold">Private Driver Name</label> <input type="text" class="form-control" name="private_driver_name" id="private-driver-name"> </div> <div class="form-group col-md-4 mb-0"> <label class="form-label tx-semibold">Private Driver Phone</label> <input type="number" class="form-control" name="private_driver_phone" id="private-driver-phone" placeholder="03##-#######"> </div> <div class="form-group col-md-4 mb-0"> <label class="form-label tx-semibold">School Vehicle No</label> <input type="text" class="form-control" name="private_vehicle_no" id="private-vehicle-no"> </div> </div>';
             $('#append-input').html(html);
         }
 

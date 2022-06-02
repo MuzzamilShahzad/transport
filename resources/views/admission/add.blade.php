@@ -206,7 +206,7 @@
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Mobile Number</label>
-                                            <input type="number" class="form-control" name="mobile_no"  id="mobile-no">
+                                            <input type="text" class="form-control" name="mobile_no" id="mobile-no" data-inputmask="'mask': '03##-#######'" placeholder="03##-#######">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-3 mb-0">
@@ -345,7 +345,7 @@
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Father Phone No</label>
-                                            <input type="number" class="form-control" name="father_phone"  id="father-phone">
+                                            <input type="text" class="form-control" name="father_phone"  id="father-phone" data-inputmask="'mask': '03##-#######'" placeholder="03##-#######">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-3 mb-0">
@@ -424,7 +424,7 @@
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Mother Phone No</label>
-                                            <input type="number" class="form-control" name="mother_phone"  id="mother-phone">
+                                            <input type="text" class="form-control" name="mother_phone"  id="mother-phone" data-inputmask="'mask': '03##-#######'" placeholder="03##-#######">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-3 mb-0">
@@ -480,13 +480,13 @@
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Guardian First Name</label>
-                                            <input type="text" class="form-control" name="guardian_first_name"  id="guardian-first-name">
+                                            <input type="text" class="form-control" name="guardian_first_name" id="guardian-first-name">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Guardian Phone</label>
-                                            <input type="number" class="form-control" name="guardian_phone"  id="guardian-phone">
+                                            <input type="text" class="form-control" name="guardian_phone" id="guardian-phone" data-inputmask="'mask': '03##-#######'" placeholder="03##-#######">
                                         </div>
                                     </div>
                                 </div>
@@ -496,7 +496,7 @@
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Guardian Relation</label>
 
-                                            <div class="form-check form-check-inline">
+                                            <div class="form-check form-check-inline my-3">
                                                 <!-- <input class="form-check-input" type="radio" name="guardian_relation" id="guardian-relation" value="Uncle/Aunty">
                                                 <label class="form-check-label" for="guardian_relation">Uncle / Aunty</label> -->
 
@@ -537,7 +537,7 @@
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">First Person to call in case of Emergency:</label>
 
-                                            <div class="form-check form-check-inline">
+                                            <div class="form-check form-check-inline my-3">
 
                                                 <!-- <input class="form-check-input" type="radio" name="first_person_call" id="first-person-call" value="Father">
                                                 <label class="form-check-label" for="first_person_call">Father</label> -->
@@ -692,7 +692,6 @@
                                 <h6 class="main-content-label">Pick up / Drop off Transport Details</h6>
                             </div>
                             <div class="card-body">
-                            
                                 <div class="form-row">
                                     <div class="form-group col-md-12 mb-0">
                                         <div class="form-group">
@@ -723,7 +722,6 @@
                     </div>
                 </div>
             </div>
-            
             <!-- End Row -->
         </div>
     </div>

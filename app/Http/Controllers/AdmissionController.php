@@ -51,9 +51,7 @@ class AdmissionController extends Controller
             'class_id'              =>  'required|numeric|gt:0|digits_between:1,10',
             'section_id'            =>  'required|numeric|gt:0|digits_between:1,10',
             'category_id'           =>  'required|numeric|gt:0|digits_between:1,10',
-            'admission_date'        =>  'required|date_format:d-m-Y',
-            'father_phone'          =>  'required|numeric',
-            'mother_phone'          =>  'required|numeric'
+            'admission_date'        =>  'required|date_format:d-m-Y'
         ]);
 
         if ($validator->errors()->all()) {
@@ -127,8 +125,12 @@ class AdmissionController extends Controller
 
                 if ($request->guardian_relation) {
                     $admission->guardian_relation           =  $request->guardian_relation;
+                    
                 } else if ($request->other_relation) {
                     $admission->guardian_relation           =  $request->other_relation;
+
+                } else {
+                    $admission->guardian_relation           =  NULL;
                 }
 
                 $admission->first_person_call               =  $request->first_person_call;
@@ -162,7 +164,7 @@ class AdmissionController extends Controller
                 $admission->private_driver_phone            =  $request->private_driver_phone;
                 $admission->private_vehicle_no              =  $request->private_vehicle_no;
                 
-                $admission->save();  
+                $query = $admission->save();  
             });
 
             // if ($query) {
@@ -182,16 +184,16 @@ class AdmissionController extends Controller
         }
     }
 
-     public function getCampusSystem(Request $request){
+    public function getCampusSystem(Request $request){
         $campus_id = $request->campus_id;
         
-        $query = Campus::select('system_id')->where('id',$campus_id)->get();
-        $system_id = $query['0']['system_id'];
+        $query = Campus::select('system_id')->where('id',$campus_id)->first();
+        $system_id = $query['system_id'];
 
-        $system = System::select('type')->where('id',$system_id)->get();
+        $system = System::select('type')->where('id',$system_id)->first();
        
         $response = array(
-            'system'  => $system['0']['type'],
+            'system'  => $system['type']
         );
 
         return response()->json($response);

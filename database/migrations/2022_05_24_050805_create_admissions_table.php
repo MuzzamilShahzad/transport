@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreign('campus_id')->references('id')->on('campuses')->onDelete('cascade');
             $table->unsignedInteger('session_id');
             $table->foreign('session_id')->references('id')->on('sessions')->onDelete('cascade');
-            $table->string('system',10);
+            $table->string('system',20);
             $table->string('roll_no',20);
             $table->unsignedInteger('class_id');
             $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
