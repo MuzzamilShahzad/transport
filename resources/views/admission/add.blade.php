@@ -2,8 +2,10 @@
 @section('main-content')
 @section('page_title', 'Add Admission')
 
+<link href="{{ url('assets/css/custom/style.css') }}" rel="stylesheet" />
+
+
 <div class="main-content side-content pt-0">
-    .......................
     <div class="main-container container-fluid">
         <div class="inner-body">
             <!-- Page Header -->
@@ -287,25 +289,16 @@
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Student Vaccinated</label>
 
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="student_vaccinated" id="student-vaccinated" value="Yes">
-                                                <label class="form-check-label" for="student_vaccinated">Yes</label>
-                                                
-                                                <!-- <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="student_vaccinated" value="Yes">
-                                                    <span class="custom-control-label"> Yes </span>
-                                                </label> -->
+                                            <div class="btn-list radiobtns radio-btn">
+                                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                    <input type="radio" class="btn-check" name="student_vaccinated" id="student-vaccinated-yes" value="Yes" checked>
+                                                    <label class="btn btn-outline-primary" for="student-vaccinated-yes">Yes</label>
+
+                                                    <input type="radio" class="btn-check" name="student_vaccinated" id="student-vaccinated-no" value="No">
+                                                    <label class="btn btn-outline-primary" for="student-vaccinated-no">No</label>
+                                                </div>
                                             </div>
 
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="student_vaccinated" id="student-vaccinated" value="No">
-                                                <label class="form-check-label" for="student_vaccinated">No</label>
-
-                                                <!-- <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="student_vaccinated" value="No">
-                                                    <span class="custom-control-label"> No </span>
-                                                </label> -->
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -365,27 +358,16 @@
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Father Vaccinated</label>
 
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="father_vaccinated" id="father-vaccinated" value="Yes">
-                                                <label class="form-check-label" for="father_vaccinated">Yes</label>
+                                            <div class="btn-list radiobtns radio-btn">
+                                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                    <input type="radio" class="btn-check" name="father_vaccinated" id="father-vaccinated-yes" value="Yes" checked>
+                                                    <label class="btn btn-outline-primary" for="father-vaccinated-yes">Yes</label>
 
-                                                
-                                                <!-- <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="father_vaccinated" value="Yes">
-                                                    <span class="custom-control-label"> Yes </span>
-                                                </label> -->
+                                                    <input type="radio" class="btn-check" name="father_vaccinated" id="father-vaccinated-no" value="No">
+                                                    <label class="btn btn-outline-primary" for="father-vaccinated-no">No</label>
+                                                </div>
                                             </div>
 
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="father_vaccinated" id="father-vaccinated" value="No">
-                                                <label class="form-check-label" for="father_vaccinated">No</label>
-
-                                                
-                                                <!-- <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="father_vaccinated" value="No">
-                                                    <span class="custom-control-label"> No </span>
-                                                </label> -->
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -444,25 +426,16 @@
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Mother Vaccinated</label>
 
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="mother_vaccinated" id="mother-vaccinated" value="Yes">
-                                                <label class="form-check-label" for="mother_vaccinated">Yes</label>
+                                            <div class="btn-list radiobtns radio-btn">
+                                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                    <input type="radio" class="btn-check" name="mother_vaccinated" id="mother-vaccinated-yes" value="Yes" checked>
+                                                    <label class="btn btn-outline-primary" for="mother-vaccinated-yes">Yes</label>
 
-                                                <!-- <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="mother_vaccinated" value="Yes">
-                                                    <span class="custom-control-label"> Yes </span>
-                                                </label> -->
+                                                    <input type="radio" class="btn-check" name="mother_vaccinated" id="mother-vaccinated-no" value="No">
+                                                    <label class="btn btn-outline-primary" for="mother-vaccinated-no">No</label>
+                                                </div>
                                             </div>
 
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="mother_vaccinated" id="mother-vaccinated" value="No">
-                                                <label class="form-check-label" for="mother_vaccinated">No</label>
-
-                                                <!-- <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="mother_vaccinated" value="No">
-                                                    <span class="custom-control-label"> No </span>
-                                                </label> -->
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -497,35 +470,21 @@
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Guardian Relation</label>
 
-                                            <div class="form-check form-check-inline my-3">
-                                                <!-- <input class="form-check-input" type="radio" name="guardian_relation" id="guardian-relation" value="Uncle/Aunty">
-                                                <label class="form-check-label" for="guardian_relation">Uncle / Aunty</label> -->
-
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="guardian_relation" id="guardian-relation" value="Uncle/Aunty">
-                                                    <span class="custom-control-label"> Uncle / Aunty </span>
+                                            <div class="selectgroup selectgroup-pills">
+                                                <label class="selectgroup-item ">
+                                                    <input type="checkbox" name="guardian_relation" value="Uncle/Aunty" class="selectgroup-input">
+                                                    <span class="selectgroup-button">Uncle/Aunty</span>
+                                                </label>
+                                                <label class="selectgroup-item">
+                                                    <input type="checkbox" name="guardian_relation" value="GrandFather/GrandMother" class="selectgroup-input">
+                                                    <span class="selectgroup-button">GrandFather/GrandMother</span>
+                                                </label>
+                                                <label class="selectgroup-item">
+                                                    <input type="checkbox" name="guardian_relation" value="Neighbours" class="selectgroup-input">
+                                                    <span class="selectgroup-button">Neighbours</span>
                                                 </label>
                                             </div>
 
-                                            <div class="form-check form-check-inline">
-                                                <!-- <input class="form-check-input" type="radio" name="guardian_relation" id="guardian-relation" value="GrandFather/GrandMother">
-                                                <label class="form-check-label" for="guardian_relation">Grand Father / Grand Mother</label> -->
-
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="guardian_relation" id="guardian-relation" value="GrandFather/GrandMother">
-                                                    <span class="custom-control-label"> GrandFather / GrandMother </span>
-                                                </label>
-                                            </div>
-
-                                            <div class="form-check form-check-inline">
-                                                <!-- <input class="form-check-input" type="radio" name="guardian_relation" id="guardian-relation" value="Neighbours">
-                                                <label class="form-check-label" for="guardian_relation">Neighbours</label> -->
-
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="guardian_relation" id="guardian-relation" value="Neighbours">
-                                                    <span class="custom-control-label"> Neighbours </span>
-                                                </label>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4 mb-0">
@@ -538,37 +497,21 @@
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">First Person to call in case of Emergency:</label>
 
-                                            <div class="form-check form-check-inline my-3">
-
-                                                <!-- <input class="form-check-input" type="radio" name="first_person_call" id="first-person-call" value="Father">
-                                                <label class="form-check-label" for="first_person_call">Father</label> -->
-
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="first_person_call" value="Father">
-                                                    <span class="custom-control-label"> Father </span>
+                                            <div class="selectgroup selectgroup-pills">
+                                                <label class="selectgroup-item ">
+                                                    <input type="checkbox" name="first_person_call" value="Father" class="selectgroup-input">
+                                                    <span class="selectgroup-button">Father</span>
+                                                </label>
+                                                <label class="selectgroup-item">
+                                                    <input type="checkbox" name="first_person_call" value="Mother" class="selectgroup-input">
+                                                    <span class="selectgroup-button">Mother</span>
+                                                </label>
+                                                <label class="selectgroup-item">
+                                                    <input type="checkbox" name="first_person_call" value="Guardian" class="selectgroup-input">
+                                                    <span class="selectgroup-button">Guardian</span>
                                                 </label>
                                             </div>
 
-                                            <div class="form-check form-check-inline">
-
-                                                <!-- <input class="form-check-input" type="radio" name="first_person_call" id="first-person-call" value="Mother">
-                                                <label class="form-check-label" for="first_person_call">Mother</label> -->
-
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="first_person_call" value="Mother">
-                                                    <span class="custom-control-label"> Mother </span>
-                                                </label>
-                                            </div>
-
-                                            <div class="form-check form-check-inline">
-                                                <!-- <input class="form-check-input" type="radio" name="first_person_call" id="first-person-call" value="Guardian">
-                                                <label class="form-check-label" for="first_person_call">Guardian</label> -->
-
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="first_person_call" value="Guardian">
-                                                    <span class="custom-control-label"> Guardian </span>
-                                                </label>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
+
 use App\Http\Controllers\ContractorController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\VehicleController;
@@ -10,8 +11,16 @@ use App\Http\Controllers\RouteController;
 use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\DriverVehicleController;
 use App\Http\Controllers\TransportRegistrationController;
+
 use App\Http\Controllers\AdmissionController;
 use App\Http\Controllers\StudentRegistrationController;
+
+use App\Http\Controllers\FeesGroupController;
+use App\Http\Controllers\FeesTypeController;
+use App\Http\Controllers\FeesMasterController;
+use App\Http\Controllers\FeesDiscountController;
+
+use App\Http\Controllers\StudentDetailsController;
 
 // Dashboard Routes
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -92,6 +101,30 @@ Route::controller(StudentRegistrationController::class)->group(function () {
     Route::post('/student/registration/store', 'store')->name('student.registration.store');
 
     Route::get('/session/get-groups', 'getSessionGroups');
+});
+
+Route::controller(FeesGroupController::class)->group(function () {
+    Route::get('/fees/group', 'listing')->name('fees.group.view');
+    Route::get('/fees/group/add', 'add')->name('fees.group.create');
+});
+
+Route::controller(FeesTypeController::class)->group(function () {
+    Route::get('/fees/type', 'listing')->name('fees.type.view');
+    Route::get('/fees/type/add', 'add')->name('fees.type.create');
+});
+
+Route::controller(FeesMasterController::class)->group(function () {
+    Route::get('/fees/master', 'listing')->name('fees.master.view');
+    Route::get('/fees/master/add', 'add')->name('fees.master.create');
+});
+
+Route::controller(FeesDiscountController::class)->group(function () {
+    Route::get('/fees/discount', 'listing')->name('fees.discount.view');
+    Route::get('/fees/discount/add', 'add')->name('fees.discount.create');
+});
+
+Route::controller(StudentDetailsController::class)->group(function () {
+    Route::get('/student/details/view', 'studentDetailsView')->name('student.details.view');
 });
 
 //Driver Vehicles routes

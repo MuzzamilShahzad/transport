@@ -266,37 +266,22 @@
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">How did you hear about us?</label>
+
+                                            <div class="selectgroup selectgroup-pills">
+                                                <label class="selectgroup-item ">
+                                                    <input type="checkbox" name="first_person_call" value="Social Media" class="selectgroup-input">
+                                                    <span class="selectgroup-button">Social Media</span>
+                                                </label>
+                                                <label class="selectgroup-item">
+                                                    <input type="checkbox" name="first_person_call" value="Electronic Media" class="selectgroup-input">
+                                                    <span class="selectgroup-button">Electronic Media</span>
+                                                </label>
+                                                <label class="selectgroup-item">
+                                                    <input type="checkbox" name="first_person_call" value="Print Media" class="selectgroup-input">
+                                                    <span class="selectgroup-button">Print Media</span>
+                                                </label>
+                                            </div>
                                             
-
-                                            <div class="form-check form-check-inline my-3">
-                                                 <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="hear_about_us" value="Social-Media">
-                                                    <span class="custom-control-label"> Social Media </span>
-                                                </label>
-
-                                                <!-- <input class="form-check-input" type="radio" name="hear_about_us" id="hear-about-us" value="Social-Media">
-                                                <label class="form-check-label" for="hear_about_us">Social Media</label> -->
-                                            </div>
-
-                                            <div class="form-check form-check-inline">
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="hear_about_us" value="Electronic-Media">
-                                                    <span class="custom-control-label"> Electronic Media </span>
-                                                </label>
-
-                                                <!-- <input class="form-check-input" type="radio" name="hear_about_us" id="hear-about-us" value="Electronic-Media">
-                                                <label class="form-check-label" for="hear_about_us">Electronic Media</label> -->
-                                            </div>
-
-                                            <div class="form-check form-check-inline">
-                                                <label class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input" name="hear_about_us" value="Print-Media">
-                                                    <span class="custom-control-label"> Print Media </span>
-                                                </label>
-
-                                                <!-- <input class="form-check-input" type="radio" name="hear_about_us" id="hear-about-us" value="Print-Media">
-                                                <label class="form-check-label" for="hear_about_us">Print Media</label> -->
-                                            </div>
                                         </div>
                                     </div>
 
