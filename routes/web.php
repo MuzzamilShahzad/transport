@@ -91,7 +91,8 @@ Route::controller(TransportRegistrationController::class)->group(function () {
 Route::controller(AdmissionController::class)->group(function () {
     Route::get('/admission/add', 'add')->name('admission.create');
     Route::post('/admission/store', 'store')->name('admission.store');
-    
+
+    Route::get('/import', 'import')->name('import');
     Route::get('/campus/get-system', 'getCampusSystem');
 });
 

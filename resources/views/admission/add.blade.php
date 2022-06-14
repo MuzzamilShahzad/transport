@@ -9,6 +9,7 @@
     <div class="main-container container-fluid">
         <div class="inner-body">
             <!-- Page Header -->
+            <a href="{{ route('import') }}" class="btn btn-primary" style="float:right">Import</a>
             <div class="page-header">
                 <div>
                     <h2 class="main-content-title tx-24 mg-b-5">{{ $data['menu'] }}</h2>
@@ -73,7 +74,8 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group" id="campus-system-input">
-                                        
+                                        <label class="form-label tx-semibold">System</label>
+                                            <input type="text" class="form-control" name="system" id="system" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-3 mb-0">
@@ -301,7 +303,7 @@
 
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-2 mb-0">
+                                    <!-- <div class="form-group col-md-2 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Religion Type</label>
 
@@ -316,14 +318,32 @@
                                                 </label>
                                             </div>
                                         </div>
+                                    </div> -->
+
+                                    <div class="form-group col-md-3 mb-0">
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Select Religion Type</label>
+                                            <div class="pos-relative">
+                                                <select class="form-control select2" name="religion_type" id="religion-type">
+                                                    <option selected value="">Select Religion Type</option>
+                                                    <option value="Sunni">Sunni</option>
+                                                    <option value="Asna Ashri">Asna Ashri</option>
+                                                    <option value="other">Other</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" id="append-other-input">
+                                            
+                                        </div>
                                     </div>
 
-                                    <div class="form-group col-md-4 mb-0">
+                                    <!-- <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Other</label>
                                             <input type="text" class="form-control" name="other_religion" id="other-religion">
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="form-row">
@@ -698,7 +718,6 @@
                                         <div class="form-group" id="append-input">
                                             
                                         </div>
-
                                     </div>
                                 </div>
 
