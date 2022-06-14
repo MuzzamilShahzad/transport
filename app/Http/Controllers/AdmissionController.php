@@ -252,4 +252,8 @@ class AdmissionController extends Controller
 
         return response()->json($response);
     }
+
+    public function import(){
+        return view('admission.import');
+    }
 }
