@@ -279,13 +279,13 @@
                                 </div>
 
                                 <div class="form-row">
-                                    <div class="form-group col-md-3 mb-0">
+                                    <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Fee Discount</label>
                                             <input type="text" class="form-control" name="fee_discount"  id="fee-discount">
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-3 mb-0">
+                                    <div class="form-group col-md-2 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Student Vaccinated</label>
 
@@ -299,6 +299,50 @@
                                                 </div>
                                             </div>
 
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-2 mb-0">
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Religion Type</label>
+
+                                            <div class="selectgroup selectgroup-pills">
+                                                <label class="selectgroup-item ">
+                                                    <input type="checkbox" name="religion_type" value="Sunni" class="selectgroup-input">
+                                                    <span class="selectgroup-button">Sunni</span>
+                                                </label>
+                                                <label class="selectgroup-item">
+                                                    <input type="checkbox" name="religion_type" value="Asna Ashri" class="selectgroup-input">
+                                                    <span class="selectgroup-button">Asna Ashri</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-4 mb-0">
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Other</label>
+                                            <input type="text" class="form-control" name="other_religion" id="other-religion">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 mb-0">
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Is there any sibling currently studying in MPA ?</label>
+                                            <div class="pos-relative">
+                                                <select class="form-control select2" name="siblings_in_mpa" id="siblings-in-mpa">
+                                                    <option selected value="">Select</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4 mb-0">
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">No. of Siblings</label>
+                                            <input type="number" class="form-control" name="no_of_siblings"  id="no-of-siblings">
                                         </div>
                                     </div>
                                 </div>

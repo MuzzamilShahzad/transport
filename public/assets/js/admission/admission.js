@@ -83,6 +83,12 @@ $(document).ready(function () {
         var private_driver_phone = $("#private-driver-phone").val();
         var private_vehicle_no = $("#private-vehicle-no").val();
 
+        var religion_type = $("input[name='religion_type']:checked").val();
+        var other_religion = $("#other-religion").val();
+
+        var siblings_in_mpa = $("#siblings-in-mpa").val();
+        var no_of_siblings = $("#no-of-siblings").val();
+
         if (gr == "") {
             $("#gr").addClass("has-error");
             $("#gr").after("<span class='error'>This field is required.</span>");
@@ -272,7 +278,13 @@ $(document).ready(function () {
                 "school_vehicle_no": school_vehicle_no,
                 "private_driver_name": private_driver_name,
                 "private_driver_phone": private_driver_phone,
-                "private_vehicle_no": private_vehicle_no
+                "private_vehicle_no": private_vehicle_no,
+
+                "religion_type": religion_type,
+                "other_religion": other_religion,
+
+                "siblings_in_mpa": siblings_in_mpa,
+                "no_of_siblings": no_of_siblings
             };
 
             $.ajax({
@@ -307,8 +319,9 @@ $(document).ready(function () {
                         }
                     } else {
 
-                        $("#session-id, #class-id, #section-id, #category-id, #campus-id, #gender, #blood-group, #school_house_id, #current-area-id, #permenant-area-id, #pick-and-drop-detail").val('').change();
-                        $("#gr, #roll-no, #temporary-gr, #system, #bform-crms-no, #first-name, #last-name, #dob, #place-of-birth, #nationality, #mother-tongue, #previous-class, #previous-school, #religion, #mobile-no, #email, #admission-date, #height, #weight, #as-on-date, #fee-discount, #student-vaccinated, #father-cnic, #father-salary, #father-email, #father-name, #father-phone, #father-occupation, #father-company-name, #father-vaccinated, #mother-cnic, #mother-salary, #mother-email, #mother-name, #mother-phone, #mother-occupation, #mother-company-name, #mother-vaccinated, #guardian-cnic, #guardian-first-name, #guardian-phone, #guardian-relation, #first-person-call, #current-house-no, #current-block-no, #current-building-name-no, #current-city, #permenant-house-no, #permenant-block-no, #permenant-building-name-no, #permenant-city, #ride-vehicle-no, #school-driver-name, #school-driver-phone, #school-vehicle-no, #private-driver-name, #private-driver-phone, #private-vehicle-no,#other-relation").val('');
+                        $("#session-id, #class-id, #section-id, #category-id, #campus-id, #gender, #blood-group, #school_house_id, #current-area-id, #permenant-area-id, #pick-and-drop-detail, #siblings-in-mpa").val('').change();
+
+                        $("#gr, #roll-no, #temporary-gr, #system, #bform-crms-no, #first-name, #last-name, #dob, #place-of-birth, #nationality, #mother-tongue, #previous-class, #previous-school, #religion, #mobile-no, #email, #admission-date, #height, #weight, #as-on-date, #fee-discount, #student-vaccinated, #father-cnic, #father-salary, #father-email, #father-name, #father-phone, #father-occupation, #father-company-name, #father-vaccinated, #mother-cnic, #mother-salary, #mother-email, #mother-name, #mother-phone, #mother-occupation, #mother-company-name, #mother-vaccinated, #guardian-cnic, #guardian-first-name, #guardian-phone, #guardian-relation, #first-person-call, #current-house-no, #current-block-no, #current-building-name-no, #current-city, #permenant-house-no, #permenant-block-no, #permenant-building-name-no, #permenant-city, #ride-vehicle-no, #school-driver-name, #school-driver-phone, #school-vehicle-no, #private-driver-name, #private-driver-phone, #private-vehicle-no,#other-relation, #no-of-siblings").val('');
 
                         message += `<div class="alert alert-success alert-dismissible">
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>

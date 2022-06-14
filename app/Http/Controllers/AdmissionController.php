@@ -1,10 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
 
 use App\Models\Campus;
 use App\Models\Session;
@@ -14,8 +13,17 @@ use App\Models\Category;
 use App\Models\SchoolHouse;
 use App\Models\Area;
 use App\Models\System;
-use App\Models\Admission;
+
 use App\Models\Student;
+use App\Models\StudentFatherDetails;
+use App\Models\StudentMotherDetails;
+use App\Models\StudentGuardianDetails;
+use App\Models\StudentAddressDetail;
+use App\Models\StudentTransportDetails;
+use App\Models\StudentReligionType;
+use App\Models\StudentSiblingDetails;
+
+use App\Models\StudentDetails;
 
 class AdmissionController extends Controller
 {
@@ -44,14 +52,13 @@ class AdmissionController extends Controller
     }
 
     public function store(Request $request) {
-        // dd($request);
         $validator = Validator::make($request->all(), [
-            'campus_id'             =>  'required|numeric|gt:0|digits_between:1,10',
-            'session_id'            =>  'required|numeric|gt:0|digits_between:1,10',
-            'class_id'              =>  'required|numeric|gt:0|digits_between:1,10',
-            'section_id'            =>  'required|numeric|gt:0|digits_between:1,10',
-            'category_id'           =>  'required|numeric|gt:0|digits_between:1,10',
-            'admission_date'        =>  'required|date_format:d-m-Y'
+            'campus_id'       =>  'required|numeric|gt:0|digits_between:1,10',
+            'session_id'      =>  'required|numeric|gt:0|digits_between:1,10',
+            'class_id'        =>  'required|numeric|gt:0|digits_between:1,10',
+            'section_id'      =>  'required|numeric|gt:0|digits_between:1,10',
+            'category_id'     =>  'required|numeric|gt:0|digits_between:1,10',
+            'admission_date'  =>  'required|date_format:d-m-Y'
         ]);
 
         if ($validator->errors()->all()) {
@@ -64,123 +71,170 @@ class AdmissionController extends Controller
             return response()->json($response);
             
         } else {
-            DB::transaction(function() use($request){
 
-                $student = new Student;
+            $student = Student::create([
+                'gr'                  =>  $request->gr,
+                'bform_crms_no'       =>  $request->bform_crms_no,
+                'dob'                 =>  date('Y-m-d', strtotime($request->dob)),
+                'gender'              =>  $request->gender,
+                'place_of_birth'      =>  $request->place_of_birth,
+                'nationality'         =>  $request->nationality,
+                'mother_tongue'       =>  $request->mother_tongue,
+                'first_name'          =>  $request->first_name,
+                'last_name'           =>  $request->last_name,
+                'religion'            =>  $request->religion,
+                'admission_date'      =>  date('Y-m-d', strtotime($request->admission_date)),
+                'previous_class'      =>  $request->previous_class,
+                'previous_school'     =>  $request->previous_school,
+                'blood_group'         =>  $request->blood_group,
+                'height'              =>  $request->height,
+                'weight'              =>  $request->weight,
+                'student_vaccinated'  =>  $request->student_vaccinated,
+                'as_on_date'          =>  date('Y-m-d', strtotime($request->as_on_date)),
+                'fee_discount'        =>  $request->fee_discount,
+                'system'              =>  $request->system,
+                'roll_no'             =>  $request->roll_no,
+                'temporary_gr'        =>  $request->temporary_gr,
+                'mobile_no'           =>  $request->mobile_no,
+                'email'               =>  $request->email
+            ]);
 
-                $student->first_name                        =  $request->first_name;
-                $student->last_name                         =  $request->last_name;
-                $student->dob                               =  date('Y-m-d', strtotime($request->dob));
-                $student->gender                            =  $request->gender;
-                $student->place_of_birth                    =  $request->place_of_birth;
-                $student->nationality                       =  $request->nationality;
-                $student->bform_crms_no                     =  $request->bform_crms_no;
-                $student->religion                          =  $request->religion;
-                $student->admission_date                    =  date('Y-m-d', strtotime($request->admission_date));
-                $student->blood_group                       =  $request->blood_group;
-                $student->height                            =  $request->height;
-                $student->weight                            =  $request->weight;
-                $student->save();
+            if ($student) {
 
-                $admission = new Admission;
+                $studentFatherDetails = StudentFatherDetails::create([
+                    'name'          =>  $request->father_name,
+                    'cnic'          =>  $request->father_cnic,
+                    'phone'         =>  $request->father_phone,
+                    'email'         =>  $request->father_email,
+                    'occupation'    =>  $request->father_occupation,
+                    'company_name'  =>  $request->father_company_name,
+                    'salary'        =>  $request->father_salary,
+                    'vaccinated'    =>  $request->father_vaccinated
+                ]);
 
-                $admission->student_id                      =  $student->id;
-                $admission->temporary_gr                    =  $request->temporary_gr;
-                $admission->gr                              =  $request->gr;
-                $admission->campus_id                       =  $request->campus_id;
-                $admission->session_id                      =  $request->session_id;
-                $admission->system                          =  $request->system;
-                $admission->roll_no                         =  $request->roll_no;
-                $admission->class_id                        =  $request->class_id;
-                $admission->section_id                      =  $request->section_id ;
-                $admission->mother_tongue                   =  $request->mother_tongue;
-                $admission->previous_class                  =  $request->previous_class;
-                $admission->previous_school                 =  $request->previous_school;
-                $admission->category_id                     =  $request->category_id;
-                $admission->mobile_no                       =  $request->mobile_no;
-                $admission->email                           =  $request->email;
-                $admission->school_house_id                 =  $request->school_house_id;
-                $admission->as_on_date                      =  date('Y-m-d', strtotime($request->as_on_date));
-                $admission->fee_discount                    =  $request->fee_discount;
-                $admission->student_vaccinated              =  $request->student_vaccinated;
-                $admission->father_cnic                     =  $request->father_cnic;
-                $admission->father_salary                   =  $request->father_salary;
-                $admission->father_email                    =  $request->father_email;
-                $admission->father_name                     =  $request->father_name;
-                $admission->father_phone                    =  $request->father_phone;
-                $admission->father_occupation               =  $request->father_occupation;
-                $admission->father_company_name             =  $request->father_company_name;
-                $admission->father_vaccinated               =  $request->father_vaccinated;
-                $admission->mother_cnic                     =  $request->mother_cnic;
-                $admission->mother_salary                   =  $request->mother_salary;
-                $admission->mother_email                    =  $request->mother_email;
-                $admission->mother_name                     =  $request->mother_name;
-                $admission->mother_phone                    =  $request->mother_phone;
-                $admission->mother_occupation               =  $request->mother_occupation;
-                $admission->mother_company_name             =  $request->mother_company_name;
-                $admission->mother_vaccinated               =  $request->mother_vaccinated;
-                $admission->guardian_cnic                   =  $request->guardian_cnic;
-                $admission->guardian_first_name             =  $request->guardian_first_name;
-                $admission->guardian_phone                  =  $request->guardian_phone;
+                if ($studentFatherDetails) {
 
-                if ($request->guardian_relation) {
-                    $admission->guardian_relation           =  $request->guardian_relation;
-                    
-                } else if ($request->other_relation) {
-                    $admission->guardian_relation           =  $request->other_relation;
+                    $studentMotherDetails = StudentMotherDetails::create([
+                        'name'          =>  $request->mother_name,
+                        'cnic'          =>  $request->mother_cnic,
+                        'phone'         =>  $request->mother_phone,
+                        'email'         =>  $request->mother_email,
+                        'occupation'    =>  $request->mother_occupation,
+                        'company_name'  =>  $request->mother_company_name,
+                        'salary'        =>  $request->mother_salary,
+                        'vaccinated'    =>  $request->mother_vaccinated
+                    ]);
 
-                } else {
-                    $admission->guardian_relation           =  NULL;
+                    if ($studentMotherDetails) {
+
+                        $studentGuardianDetails = StudentGuardianDetails::create([
+                            'name'               =>  $request->guardian_first_name,
+                            'phone'              =>  $request->guardian_phone,
+                            'relation'           =>  $request->guardian_relation,
+                            'other_relation'     =>  $request->other_relation,
+                            'first_person_call'  =>  $request->first_person_call,
+                            'cnic'               =>  $request->guardian_cnic
+                        ]);
+
+                        if ($studentGuardianDetails) {
+
+                            if ($request->same_as_current == 'yes') {
+                                $permenant_house_no          =  $request->current_house_no;
+                                $permenant_block_no          =  $request->current_block_no;
+                                $permenant_building_name_no  =  $request->current_building_name_no;
+                                $permenant_city              =  $request->current_city;
+                                $permenant_area_id           =  $request->current_area_id; 
+                            } else {
+                                $permenant_house_no          =  $request->permenant_house_no;
+                                $permenant_block_no          =  $request->permenant_block_no;
+                                $permenant_building_name_no  =  $request->permenant_building_name_no;
+                                $permenant_city              =  $request->permenant_city;
+                                $permenant_area_id           =  $request->permenant_area_id;
+                            }
+
+                            $studentAddressDetail = StudentAddressDetail::create([
+                                'current_house_no'            =>  $request->current_house_no,
+                                'current_block_no'            =>  $request->current_block_no,
+                                'current_building_name_no'    =>  $request->current_building_name_no,
+                                'current_city'                =>  $request->current_city,
+                                'current_area_id'             =>  $request->current_area_id,
+
+                                'permenant_house_no'          =>  $permenant_house_no,
+                                'permenant_block_no'          =>  $permenant_block_no,
+                                'permenant_building_name_no'  =>  $permenant_building_name_no,
+                                'permenant_city'              =>  $permenant_city,
+                                'permenant_area_id'           =>  $permenant_area_id
+                            ]);
+
+                            if ($studentAddressDetail) {
+
+                                $studentTransportDetails = StudentTransportDetails::create([
+                                    'pick_and_drop_detail'  =>  $request->pick_and_drop_detail,
+                                    'ride_vehicle_no'       =>  $request->ride_vehicle_no,
+
+                                    'school_driver_name'    =>  $request->school_driver_name,
+                                    'school_driver_phone'   =>  $request->school_driver_phone,
+                                    'school_vehicle_no'     =>  $request->school_vehicle_no,
+
+                                    'private_driver_name'   =>  $request->private_driver_name,
+                                    'private_driver_phone'  =>  $request->private_driver_phone,
+                                    'private_vehicle_no'    =>  $request->private_vehicle_no
+                                ]);
+
+                                if ($studentTransportDetails) {
+
+                                    $studentReligionType = StudentReligionType::create([
+                                        'religion_type'   =>  $request->religion_type,
+                                        'other_religion'  =>  $request->other_religion
+                                    ]);
+
+                                    if ($studentReligionType) {
+
+                                        $studentSiblingDetails = StudentSiblingDetails::create([
+                                            'siblings_in_mpa'  =>  $request->siblings_in_mpa,
+                                            'no_of_siblings'   =>  $request->no_of_siblings
+                                        ]);
+
+                                        if ($studentSiblingDetails) {
+
+                                            $studentDetails = StudentDetails::create([
+                                                'student_id'                =>  $student->id,
+                                                'campus_id'                 =>  $request->campus_id,
+                                                'session_id'                =>  $request->session_id,
+                                                'class_id'                  =>  $request->class_id,
+                                                'section_id'                =>  $request->section_id,
+                                                'category_id'               =>  $request->category_id,
+                                                'school_house_id'           =>  $request->school_house_id,
+
+                                                'student_father_id'         =>  $studentFatherDetails->id,
+                                                'student_mother_id'         =>  $studentMotherDetails->id,
+                                                'student_guardian_id'       =>  $studentGuardianDetails->id,
+                                                'student_address_id'        =>  $studentAddressDetail->id,
+                                                'student_transport_id'      =>  $studentTransportDetails->id,
+                                                'student_religion_type_id'  =>  $studentReligionType->id,
+                                                'student_sibling_id'        =>  $studentSiblingDetails->id
+                                            ]);
+
+                                            if ($studentDetails) {
+                                                $response = array(
+                                                    'status'   =>  true, 
+                                                    'message'  =>  'Admission has been completed successfully.'
+                                                );
+                                            } else {
+                                                $response = array(
+                                                    'status'   =>  false, 
+                                                    'message'  =>  'Some thing went wrong!'
+                                                );
+                                            }
+                                            return response()->json($response);  
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-
-                $admission->first_person_call               =  $request->first_person_call;
-
-                $admission->current_house_no                =  $request->current_house_no;
-                $admission->current_block_no                =  $request->current_block_no;
-                $admission->current_building_name_no        =  $request->current_building_name_no;
-                $admission->current_city                    =  $request->current_city;
-                $admission->current_area_id                 =  $request->current_area_id;
-
-                if ($request->same_as_current == 'yes') {
-                    $admission->permenant_house_no          =  $request->current_house_no;
-                    $admission->permenant_block_no          =  $request->current_block_no;
-                    $admission->permenant_building_name_no  =  $request->current_building_name_no;
-                    $admission->permenant_city              =  $request->current_city;
-                    $admission->permenant_area_id           =  $request->current_area_id; 
-                } else {
-                    $admission->permenant_house_no          =  $request->permenant_house_no;
-                    $admission->permenant_block_no          =  $request->permenant_block_no;
-                    $admission->permenant_building_name_no  =  $request->permenant_building_name_no;
-                    $admission->permenant_city              =  $request->permenant_city;
-                    $admission->permenant_area_id           =  $request->permenant_area_id;
-                }
-
-                $admission->pick_and_drop_detail            =  $request->pick_and_drop_detail;
-                $admission->ride_vehicle_no                 =  $request->ride_vehicle_no;
-                $admission->school_driver_name              =  $request->school_driver_name;
-                $admission->school_driver_phone             =  $request->school_driver_phone;
-                $admission->school_vehicle_no               =  $request->school_vehicle_no;
-                $admission->private_driver_name             =  $request->private_driver_name;
-                $admission->private_driver_phone            =  $request->private_driver_phone;
-                $admission->private_vehicle_no              =  $request->private_vehicle_no;
-                
-                $query = $admission->save();  
-            });
-
-            // if ($query) {
-                $response = array(
-                    'status'   =>  true, 
-                    'message'  =>  'Admission has been completed successfully.'
-                );
-            // } else {
-            //     $response = array(
-            //         'status'   =>  false, 
-            //         'message'  =>  'Some thing went wrong! please try again letter.'
-            //     );
-            // }
-            return response()->json($response);  
-
-           
+            }
         }
     }
 

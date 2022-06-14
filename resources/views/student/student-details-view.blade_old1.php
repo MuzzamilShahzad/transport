@@ -2,7 +2,6 @@
 @section('main-content')
 @section('page_title', 'Student Details')
 
-<!-- Main Content-->
 <div class="main-content side-content pt-0">
     <div class="main-container container-fluid">
         <div class="inner-body">
@@ -15,97 +14,155 @@
                         <li class="breadcrumb-item active" aria-current="page">{{ $data['menu'] }}</li>
                     </ol>
                 </div>
-                <div class="d-flex">
-                    <div class="justify-content-center">
-                        <button type="button" class="btn btn-white btn-icon-text my-2 me-2">
-                            <i class="fe fe-settings"></i>
-                            <span>Settings</span>
-                        </button>
-                        <button type="button" class="btn btn-primary my-2 btn-icon-text">
-                            <i class="fe fe-download-cloud bg-white-transparent text-white"></i>
-                            <span>Reports</span>
-                        </button>
-                    </div>
-                </div>
             </div>
             <!-- End Page Header -->
 
-            <!-- Row -->
-            <div class="row row-sm">
-                <div class="col-xl-12 col-md-12">
-                    <div class="card custom-card">
-                        <div class="card-body">
-                            <div class="panel profile-cover">
-                                <div class="profile-cover__img">
-                                    <img src="{{ url('assets/img/users/6.jpg') }}" alt="img" />
-                                    <a href="javascript:;"><i class="mdi mdi-pencil"></i></a>
-                                </div>
-                                <div class="profile-info">
-                                    <h3 class="tx-medium">Student Name</h3>
-                                </div>
-                                <div class="profile-cover__action bg-img"></div>
-                            </div>
-                            <div class="profile-tab tab-menu-heading d-flex mt-3">
-                                <div class="">
-                                    <nav class="nav nav-pills flex-column flex-sm-row py-2">
-                                        <a class="nav-link active" data-bs-toggle="tab" href="#Profile">Profile</a>
-                                        <a class="nav-link" data-bs-toggle="tab" href="#edit">Fees</a>
-                                        <a class="nav-link" data-bs-toggle="tab" href="#timeline">Document</a>
-                                        <a class="nav-link" data-bs-toggle="tab" href="#gallery">Timeline</a>
-                                        <a class="nav-link" data-bs-toggle="tab" href="#friends">Friends</a>
-                                        <a class="nav-link" data-bs-toggle="tab" href="#settings">Account Settings</a>
-                                    </nav>
-                                </div>
-                                <div class="ms-auto d-none d-xl-block">
-                                    <div class="text-end mt-2">
-                                        <button class="btn btn-md ripple bg-primary-transparent text-primary me-1"><i class="mdi mdi-facebook"></i></button>
-                                        <button class="btn btn-md ripple bg-danger-transparent text-danger me-1"><i class="mdi mdi-google"></i></button>
-                                        <button class="btn btn-md ripple bg-info-transparent text-info me-1"><i class="mdi mdi-twitter"></i></button>
-                                        <button class="btn btn-md ripple bg-secondary-transparent text-secondary"><i class="mdi mdi-dribbble"></i></button>
+            <!--Row-->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card custom-card card-body bg-primary tx-white">
+                        <div class="container" align="center">
+                            <a href="profile.html"><img alt="avatar" class="rounded-circle" src="{{ url('assets/img/users/2.jpg')}}"></a>
+                            <h3><p class="card-text">Student Name</p></h3>
+                        </div>
+                        
+                        <hr>
+                        <p class="mb-0"><strong>Admission No:</strong> 14362 </p>
+
+                        <hr>
+                        <p class="mb-0"><strong>Roll Number:</strong> B-878 </p>
+
+                        <hr>
+                        <p class="mb-0"><strong>Class:</strong> Class VIII (2021-22) </p>
+
+                        <hr>
+                        <p class="mb-0"><strong>Section:</strong> A </p>
+
+                        <hr>
+                        <p class="mb-0"><strong>RTE:</strong> ASD-6148 </p>
+                        
+                        <hr>
+                        <p class="mb-0"><strong>Gender:</strong> Female </p>
+                        <hr>
+                    </div>
+                </div>
+
+                <div class="col-md-8">
+
+                    <div class="row row-sm">
+                        <div class="card custom-card">
+                            <div class="card-body">
+                                <div class="profile-tab tab-menu-heading d-flex mt-3">
+                                    <div class="">
+                                        <nav class="nav nav-pills flex-column flex-sm-row py-2">
+                                            <a class="nav-link active" data-bs-toggle="tab" href="#Proile">Proile</a>
+                                            <a class="nav-link" data-bs-toggle="tab" href="#Fees">Fees</a>
+                                            <a class="nav-link" data-bs-toggle="tab" href="#Documents">Documents</a>
+                                            <a class="nav-link" data-bs-toggle="tab" href="#Timeline">Timeline</a>
+                                        </nav>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
+					</div>
 
-            </div>
-            <!-- End Row -->
-
-            <!-- Row -->
-            <div class="row row-sm">
-                <div class="col-xxl-9 col-xl-8 col-md-12">
                     <div class="card custom-card main-content-body-profile">
                         <div class="tab-content">
-                            <div class="main-content-body tab-pane p-4 border-top-0" id="Profile">
+                            <div class="main-content-body tab-pane p-4 border-top-0 active" id="Proile">
                                 <div class="card-body p-0 border p-0 rounded-10">
                                     <div class="p-4">
-                                        <h4 class="tx-15 text-uppercase mb-3">Admission No:</h4>
-                                        <p class="m-b-5 text-muted">19968</p>
-                                        
-                                        <hr>
-                                        <h4 class="tx-15 text-uppercase mb-3">Roll No:</h4>
-                                        <p class="m-b-5 text-muted">GG-2134</p>
-                                        
-                                        <hr>
-                                        <h4 class="tx-15 text-uppercase mb-3">Class:</h4>
-                                        <p class="m-b-5 text-muted">Class I (2021-22)</p>
-                                        
-                                        <hr>
-                                        <h4 class="tx-15 text-uppercase mb-3">Section:</h4><p class="m-b-5 text-muted">A</p>
-                                        
-                                        
-                                        <hr>
-                                        <h4 class="tx-15 text-uppercase mb-3">RTE:</h4>
-                                        <p class="m-b-5 text-muted">0000</p>
-                                        
-                                        <hr>
-                                        <h4 class="tx-15 text-uppercase mb-3">Gender:</h4>
-                                        <p class="m-b-5 text-muted">Female</p>
+                                        <h4 class="tx-15 text-uppercase mb-3">Biodata</h4>
+                                        <p class="m-b-5 text-muted">Hi I'm Dennis Mark,has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                        <div class="m-t-30">
+                                            <h4 class="tx-15 text-uppercase mt-3">Experience</h4>
+                                            <div class=" p-t-10">
+                                                <h5 class="text-muted m-b-5 tx-14">Lead designer / Developer</h5>
+                                                <p class="">websitename.com</p>
+                                                <p class="mb-0">2016-2021</p>
+                                                <p class="text-muted tx-13 m-b-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            </div>
+
+                                            <div class="">
+                                                <h5 class="text-muted m-b-5 tx-14">Senior Graphic Designer</h5>
+                                                <p class="">spruko.com</p>
+                                                <p class="mb-0">20014-2016</p>
+                                                <p class="text-muted tx-13 mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="border-top"></div>
+                                    <div class="p-4">
+                                        <label class="main-content-label tx-13 mg-b-20">Contact</label>
+                                        <div class="d-sm-flex">
+                                            <div class="mg-sm-r-20 mg-b-10">
+                                                <div class="main-profile-contact-list">
+                                                    <div class="media">
+                                                        <div class="media-icon bg-primary-transparent text-primary"> <i class="icon ion-md-phone-portrait"></i> </div>
+                                                        <div class="media-body"> <span>Mobile</span>
+                                                            <div> +245 354 654 </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="mg-sm-r-20 mg-b-10">
+                                                <div class="main-profile-contact-list">
+                                                    <div class="media">
+                                                        <div class="media-icon bg-success-transparent text-success"> <i class="icon ion-logo-slack"></i> </div>
+                                                        <div class="media-body"> <span>Slack</span>
+                                                            <div> @spruko.w </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <div class="main-profile-contact-list">
+                                                    <div class="media">
+                                                        <div class="media-icon bg-info-transparent text-info"> <i class="icon ion-md-locate"></i> </div>
+                                                        <div class="media-body"> <span>Current Address</span>
+                                                            <div> San Francisco, CA </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="border-top"></div>
+                                    <div class="p-4">
+                                        <label class="main-content-label tx-13 mg-b-20">Social</label>
+                                        <div class="d-sm-flex">
+                                            <div class="profile-about-social">
+                                                <div class="main-profile-social-list mg-sm-r-20 mg-b-10">
+                                                    <div class="media">
+                                                        <div class="media-icon bg-primary-transparent text-primary"> <i class="icon ion-logo-github"></i> </div>
+                                                        <div class="media-body"> <span>Github</span> <a href="javascript:;">github.com/spruko</a> </div>
+                                                    </div>
+                                                </div>
+                                                <div class="main-profile-social-list mg-sm-r-20 mg-b-10">
+                                                    <div class="media">
+                                                        <div class="media-icon bg-success-transparent text-success"> <i class="icon ion-logo-twitter"></i> </div>
+                                                        <div class="media-body"> <span>Twitter</span> <a href="javascript:;">twitter.com/spruko.me</a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="profile-about-social">
+                                                <div class="main-profile-social-list mg-sm-r-20 mg-b-10">
+                                                    <div class="media">
+                                                        <div class="media-icon bg-info-transparent text-info"> <i class="icon ion-logo-linkedin"></i> </div>
+                                                        <div class="media-body"> <span>Linkedin</span> <a href="javascript:;">linkedin.com/in/spruko</a> </div>
+                                                    </div>
+                                                </div>
+                                                <div class="main-profile-social-list mg-sm-r-20 mg-b-10">
+                                                    <div class="media">
+                                                        <div class="media-icon bg-danger-transparent text-danger"> <i class="icon ion-md-link"></i> </div>
+                                                        <div class="media-body"> <span>My Portfolio</span> <a href="javascript:;">spruko.com/</a> </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="main-content-body tab-pane p-4 border-top-0" id="edit">
+                            <div class="main-content-body tab-pane p-4 border-top-0" id="Fees">
                                 <div class="card custom-card border">
                                     <div class="card-body">
                                         <div class="mb-4 main-content-label">Personal Information</div>
@@ -266,108 +323,11 @@
                                     </div>
                                 </div>
                             </div>
-                          
-                            <div class="main-content-body p-4 border tab-pane border-top-0" id="gallery">
-                                <div class="card-body border rounded-6">
-                                    <div class="masonry row row-sm">
-                                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                                            <div class="brick">
-                                                <a href="../assets/img/media/1.jpg" class="js-img-viewer" data-caption="IMAGE-01"
-                                                    data-id="lion">
-                                                    <img src="../assets/img/media/1.jpg" alt="img">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                                            <div class="brick">
-                                                <a href="../assets/img/media/2.jpg" class="js-img-viewer" data-caption="IMAGE-02"
-                                                    data-id="camel">
-                                                    <img src="../assets/img/media/2.jpg" alt="img">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                                            <div class="brick">
-                                                <a href="../assets/img/media/3.jpg" class="js-img-viewer" data-caption="IMAGE-03"
-                                                    data-id="hippo">
-                                                    <img src="../assets/img/media/3.jpg" alt="img">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                                            <div class="brick">
-                                                <a href="../assets/img/media/4.jpg" class="js-img-viewer" data-caption="IMAGE-04"
-                                                    data-id="koala">
-                                                    <img src="../assets/img/media/4.jpg" alt="img">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                                            <div class="brick">
-                                                <a href="../assets/img/media/5.jpg"  class="js-img-viewer" data-caption="IMAGE-05"
-                                                    data-id=" bear">
-                                                    <img src=" ../assets/img/media/5.jpg" alt="img">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                                            <div class="brick">
-                                                <a href=" ../assets/img/media/6.jpg" class=" js-img-viewer" data-caption="IMAGE-06"
-                                                    data-id=" rhino">
-                                                    <img src=" ../assets/img/media/6.jpg" alt="img">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                                            <div class="brick">
-                                                <a href=" ../assets/img/media/7.jpg" class=" js-img-viewer" data-caption="IMAGE-07"
-                                                    data-id=" rhino">
-                                                    <img src=" ../assets/img/media/7.jpg" alt="img">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                                            <div class="brick">
-                                                <a href=" ../assets/img/media/8.jpg" class=" js-img-viewer" data-caption="IMAGE-08"
-                                                    data-id=" rhino">
-                                                    <img src=" ../assets/img/media/8.jpg" alt="img">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                                            <div class="brick">
-                                                <a href=" ../assets/img/media/9.jpg" class=" js-img-viewer" data-caption="IMAGE-09"
-                                                    data-id=" rhino">
-                                                    <img src=" ../assets/img/media/9.jpg" alt="img">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                                            <div class="brick">
-                                                <a href=" ../assets/img/media/10.jpg" class=" js-img-viewer" data-caption="IMAGE-10"
-                                                    data-id=" rhino">
-                                                    <img src=" ../assets/img/media/10.jpg" alt="img">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                                            <div class="brick">
-                                                <a href=" ../assets/img/media/11.jpg" class=" js-img-viewer" data-caption="IMAGE-11"
-                                                    data-id=" rhino">
-                                                    <img src=" ../assets/img/media/11.jpg" alt="img">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-sm-6">
-                                            <div class="brick">
-                                                <a href=" ../assets/img/media/14.jpg" class=" js-img-viewer" data-caption="IMAGE-11"
-                                                    data-id=" rhino">
-                                                    <img src=" ../assets/img/media/14.jpg" alt="img">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="main-content-body tab-pane p-4 border-top-0" id="Documents">
+
+                            </div>
+                            <div class="main-content-body p-4 border tab-pane border-top-0" id="Timeline">
+                                
                             </div>
                             <div class="main-content-body tab-pane border-top-0" id="friends">
                                 <div class="card-body border pd-b-10">
@@ -728,169 +688,14 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xxl-3 col-xl-4">
-                    <div class="card custom-card">
-                        <div class="card-header">
-                            <h6 class="main-content-label">Following</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="media mb-3">
-                                <div class="avatar avatar-md">
-                                    <img alt="avatar" class="rounded-circle" src="../assets/img/users/2.jpg">
-                                </div>
-                                <div class="media-body ms-3 d-flex">
-                                    <div class="">
-                                        <p class="tx-14 text-dark mb-0 tx-medium">Benedict Vallone</p>
-                                        <a href="javascript:;" class="text-muted">Add Friend</a>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <a href="javascript:;" class="contact-icon text-primary" data-bs-toggle="tooltip" title="" data-bs-original-title="Message" aria-label="Message"><i class="fe fe-message-square"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media mb-3">
-                                <div class="avatar avatar-md">
-                                    <img alt="avatar" class="rounded-circle" src="../assets/img/users/3.jpg">
-                                </div>
-                                <div class="media-body ms-3 d-flex">
-                                    <div class="">
-                                        <p class="tx-14 text-dark mb-0 tx-medium">Dennis Trexy</p>
-                                        <a href="javascript:;" class="text-muted">Add Friend</a>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <a href="javascript:;" class="contact-icon text-primary" data-bs-toggle="tooltip" title="" data-bs-original-title="Message" aria-label="Message"><i class="fe fe-message-square"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media mb-3">
-                                <div class="avatar avatar-md">
-                                    <img alt="avatar" class="rounded-circle" src="../assets/img/users/5.jpg">
-                                </div>
-                                <div class="media-body ms-3 d-flex">
-                                    <div class="">
-                                        <p class="tx-14 text-dark mb-0 tx-medium">Elida Distefano</p>
-                                        <a href="javascript:;" class="text-muted">Add Friend</a>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <a href="javascript:;" class="contact-icon text-primary" data-bs-toggle="tooltip" title="" data-bs-original-title="Message" aria-label="Message"><i class="fe fe-message-square"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media mb-3">
-                                <div class="avatar avatar-md">
-                                    <img alt="avatar" class="rounded-circle" src="../assets/img/users/6.jpg">
-                                </div>
-                                <div class="media-body ms-3 d-flex">
-                                    <div class="">
-                                        <p class="tx-14 text-dark mb-0 tx-medium">Jacquelynn Sapienza</p>
-                                        <a href="javascript:;" class="text-muted">Add Friend</a>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <a href="javascript:;" class="contact-icon text-primary" data-bs-toggle="tooltip" title="" data-bs-original-title="Message" aria-label="Message"><i class="fe fe-message-square"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media mb-0">
-                                <div class="avatar avatar-md">
-                                    <img alt="avatar" class="rounded-circle" src="../assets/img/users/7.jpg">
-                                </div>
-                                <div class="media-body ms-3 d-flex">
-                                    <div class="">
-                                        <p class="tx-14 text-dark mb-0 tx-medium">Catrice Doshier</p>
-                                        <a href="javascript:;" class="text-muted">Add Friend</a>
-                                    </div>
-                                    <div class="ms-auto">
-                                        <a href="javascript:;" class="contact-icon text-primary" data-bs-toggle="tooltip" title="" data-bs-original-title="Message" aria-label="Message"><i class="fe fe-message-square"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card custom-card">
-                        <div class="card-header">
-                            <h6 class="main-content-label">Followers</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="media mb-3">
-                                <div class="avatar avatar-md">
-                                    <img alt="avatar" class="rounded-circle" src="../assets/img/users/1.jpg">
-                                </div>
-                                <div class="media-body ms-3 d-flex">
-                                    <div class="">
-                                        <p class="tx-14 text-dark mb-0 tx-medium">Harvey Mattos</p>
-                                        <a href="javascript:;" class="text-muted">19 Mutual Friends</a>
-                                    </div>
-                                    <div class="ms-auto mt-2">
-                                        <button class="btn btn-sm btn-success">Follow</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media mb-3">
-                                <div class="avatar avatar-md">
-                                    <img alt="avatar" class="rounded-circle" src="../assets/img/users/2.jpg">
-                                </div>
-                                <div class="media-body ms-3 d-flex">
-                                    <div class="">
-                                        <p class="tx-14 text-dark mb-0 tx-medium">Robbie Ruder</p>
-                                        <a href="javascript:;" class="text-muted">21 Mutual Friends</a>
-                                    </div>
-                                    <div class="ms-auto mt-2">
-                                        <button class="btn btn-sm btn-success">Follow</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media mb-3">
-                                <div class="avatar avatar-md">
-                                    <img alt="avatar" class="rounded-circle" src="../assets/img/users/3.jpg">
-                                </div>
-                                <div class="media-body ms-3 d-flex">
-                                    <div class="">
-                                        <p class="tx-14 text-dark mb-0 tx-medium">Dana Lott</p>
-                                        <a href="javascript:;" class="text-muted">0 Mutual Friends</a>
-                                    </div>
-                                    <div class="ms-auto mt-2">
-                                        <button class="btn btn-sm btn-success">Follow</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media mb-3">
-                                <div class="avatar avatar-md">
-                                    <img alt="avatar" class="rounded-circle" src="../assets/img/users/4.jpg">
-                                </div>
-                                <div class="media-body ms-3 d-flex">
-                                    <div class="">
-                                        <p class="tx-14 text-dark mb-0 tx-medium">Mercy Ritia</p>
-                                        <a href="javascript:;" class="text-muted">24 Mutual Friends</a>
-                                    </div>
-                                    <div class="ms-auto mt-2">
-                                        <button class="btn btn-sm btn-success">Follow</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="media mb-0">
-                                <div class="avatar avatar-md">
-                                    <img alt="avatar" class="rounded-circle" src="../assets/img/users/5.jpg">
-                                </div>
-                                <div class="media-body ms-3 d-flex">
-                                    <div class="">
-                                        <p class="tx-14 text-dark mb-0 tx-medium">Mark Jhon</p>
-                                        <a href="javascript:;" class="text-muted">15 Mutual Friends</a>
-                                    </div>
-                                    <div class="ms-auto mt-2">
-                                        <button class="btn btn-sm btn-success">Follow</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- End Row -->
 
+                </div>
+
+            </div>
+           
+            <!-- End Row -->
         </div>
     </div>
 </div>
-<!-- End Main Content-->
 
 @endsection
