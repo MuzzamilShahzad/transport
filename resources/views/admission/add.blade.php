@@ -29,7 +29,7 @@
                             <h6 class="main-content-label">{{ $data['menu'] }}</h6>
                         </div>
                         <form action="{{ route('admission.store') }}" method="post">
-                            <div class="card-body">  
+                            <div class="card-body" id="after-form-store-msg">  
                                 <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
@@ -37,12 +37,14 @@
                                             <input type="text" class="form-control" name="temporary_gr" id="temporary-gr">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">G.R</label>
                                             <input type="text" class="form-control" name="gr" id="gr">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Campus</label>
@@ -56,6 +58,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Session</label>
@@ -78,12 +81,14 @@
                                             <input type="text" class="form-control" name="system" id="system" readonly>
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Roll Number</label>
                                             <input type="text" class="form-control" name="roll_no"  id="roll-no">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Class</label>
@@ -97,6 +102,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Section</label>
@@ -117,21 +123,23 @@
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">B-Form / CRMS No </label>
                                             <input type="text" class="form-control" name="bform_crms_no" id="bform-crms-no">
-                                            <!-- <input type="text" class="form-control" name="bform_crms_no" id="bform-crms-no" data-inputmask="'mask': '99999-9999999-9'" placeholder="XXXXX-XXXXXXX-X"> -->
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">First Name</label>
                                             <input type="text" class="form-control" name="first_name"  id="first-name">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Last Name</label>
                                             <input type="text" class="form-control" name="last_name"  id="last-name">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold date-picker">Date of Birth</label>
@@ -153,18 +161,21 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Place of Birth</label>
                                             <input type="text" class="form-control" name="place_of_birth"  id="place-of-birth">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Nationality</label>
                                             <input type="text" class="form-control" name="nationality"  id="nationality">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Mother Tongue</label>
@@ -180,12 +191,14 @@
                                             <input type="text" class="form-control" name="previous_class"  id="previous-class">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Previous School</label>
                                             <input type="text" class="form-control" name="previous_school"  id="previous-school">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Category</label>
@@ -199,6 +212,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Religion</label>
@@ -214,18 +228,21 @@
                                             <input type="text" class="form-control" name="mobile_no" id="mobile-no" data-inputmask="'mask': '03##-#######'" placeholder="03##-#######">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Email</label>
                                             <input type="text" class="form-control" name="email"  id="email">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold date-picker">Admission Date</label>
                                             <input class="form-control date-picker" name="admission_date" id="admission-date" placeholder="DD-MM-YYYY" type="text">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Blood Group</label>
@@ -260,18 +277,21 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Height</label>
                                             <input type="text" class="form-control" name="height"  id="height">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Weight</label>
                                             <input type="text" class="form-control" name="weight"  id="weight">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold date-picker">As on Date</label>
@@ -287,40 +307,8 @@
                                             <input type="text" class="form-control" name="fee_discount"  id="fee-discount">
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-2 mb-0">
-                                        <div class="form-group">
-                                            <label class="form-label tx-semibold">Student Vaccinated</label>
 
-                                            <div class="btn-list radiobtns radio-btn">
-                                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                                    <input type="radio" class="btn-check" name="student_vaccinated" id="student-vaccinated-yes" value="Yes" checked>
-                                                    <label class="btn btn-outline-primary" for="student-vaccinated-yes">Yes</label>
-
-                                                    <input type="radio" class="btn-check" name="student_vaccinated" id="student-vaccinated-no" value="No">
-                                                    <label class="btn btn-outline-primary" for="student-vaccinated-no">No</label>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <!-- <div class="form-group col-md-2 mb-0">
-                                        <div class="form-group">
-                                            <label class="form-label tx-semibold">Religion Type</label>
-
-                                            <div class="selectgroup selectgroup-pills">
-                                                <label class="selectgroup-item ">
-                                                    <input type="checkbox" name="religion_type" value="Sunni" class="selectgroup-input">
-                                                    <span class="selectgroup-button">Sunni</span>
-                                                </label>
-                                                <label class="selectgroup-item">
-                                                    <input type="checkbox" name="religion_type" value="Asna Ashri" class="selectgroup-input">
-                                                    <span class="selectgroup-button">Asna Ashri</span>
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div> -->
-
-                                    <div class="form-group col-md-3 mb-0">
+                                    <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Select Religion Type</label>
                                             <div class="pos-relative">
@@ -332,18 +320,14 @@
                                                 </select>
                                             </div>
                                         </div>
-
-                                        <div class="form-group" id="append-other-input">
-                                            
-                                        </div>
                                     </div>
 
-                                    <!-- <div class="form-group col-md-4 mb-0">
-                                        <div class="form-group">
+                                    <div class="form-group col-md-4 mb-0">
+                                        <div class="form-group" id="religion-type-other-input">
                                             <label class="form-label tx-semibold">Other</label>
-                                            <input type="text" class="form-control" name="other_religion" id="other-religion">
+                                            <input type="text" class="form-control" name="other_religion" id="other-religion" readonly>
                                         </div>
-                                    </div> -->
+                                    </div>
                                 </div>
 
                                 <div class="form-row">
@@ -359,10 +343,26 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">No. of Siblings</label>
                                             <input type="number" class="form-control" name="no_of_siblings"  id="no-of-siblings">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-4 mb-0">
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Student Vaccinated</label>
+                                            <div class="btn-list radiobtns radio-btn">
+                                                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                                                    <input type="radio" class="btn-check" name="student_vaccinated" id="student-vaccinated-yes" value="Yes" checked>
+                                                    <label class="btn btn-outline-primary" for="student-vaccinated-yes">Yes</label>
+
+                                                    <input type="radio" class="btn-check" name="student_vaccinated" id="student-vaccinated-no" value="No">
+                                                    <label class="btn btn-outline-primary" for="student-vaccinated-no">No</label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -379,18 +379,21 @@
                                             <input type="text" class="form-control" name="father_cnic" id="father-cnic" data-inputmask="'mask': '99999-9999999-9'" placeholder="XXXXX-XXXXXXX-X">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Father Salary</label>
                                             <input type="number" class="form-control" name="father_salary" id="father-salary">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Father Email</label>
                                             <input type="text" class="form-control" name="father_email" id="father-email">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Father Name</label>
@@ -406,18 +409,21 @@
                                             <input type="text" class="form-control" name="father_phone"  id="father-phone" data-inputmask="'mask': '03##-#######'" placeholder="03##-#######">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Father Occupation</label>
                                             <input type="text" class="form-control" name="father_occupation"  id="father-occupation">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Company Name</label>
                                             <input type="text" class="form-control" name="father_company_name" id="father-company-name">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Father Vaccinated</label>
@@ -431,7 +437,6 @@
                                                     <label class="btn btn-outline-primary" for="father-vaccinated-no">No</label>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -447,18 +452,21 @@
                                             <input type="text" class="form-control" name="mother_cnic" id="mother-cnic" data-inputmask="'mask': '99999-9999999-9'" placeholder="XXXXX-XXXXXXX-X">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Mother Salary</label>
                                             <input type="number" class="form-control" name="mother_salary" id="mother-salary">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Mother Email</label>
                                             <input type="text" class="form-control" name="mother_email" id="mother-email">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Mother Name</label>
@@ -474,18 +482,21 @@
                                             <input type="text" class="form-control" name="mother_phone"  id="mother-phone" data-inputmask="'mask': '03##-#######'" placeholder="03##-#######">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Mother Occupation</label>
                                             <input type="text" class="form-control" name="mother_occupation"  id="mother-occupation">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Company Name</label>
                                             <input type="text" class="form-control" name="mother_company_name" id="mother-company-name">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Mother Vaccinated</label>
@@ -499,7 +510,6 @@
                                                     <label class="btn btn-outline-primary" for="mother-vaccinated-no">No</label>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -515,12 +525,14 @@
                                             <input type="text" class="form-control" name="guardian_cnic" id="guardian-cnic" data-inputmask="'mask': '99999-9999999-9'" placeholder="XXXXX-XXXXXXX-X">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Guardian First Name</label>
                                             <input type="text" class="form-control" name="guardian_first_name" id="guardian-first-name">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Guardian Phone</label>
@@ -532,50 +544,37 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
-                                            <label class="form-label tx-semibold">Guardian Relation</label>
-
-                                            <div class="selectgroup selectgroup-pills">
-                                                <label class="selectgroup-item ">
-                                                    <input type="checkbox" name="guardian_relation" value="Uncle/Aunty" class="selectgroup-input">
-                                                    <span class="selectgroup-button">Uncle/Aunty</span>
-                                                </label>
-                                                <label class="selectgroup-item">
-                                                    <input type="checkbox" name="guardian_relation" value="GrandFather/GrandMother" class="selectgroup-input">
-                                                    <span class="selectgroup-button">GrandFather/GrandMother</span>
-                                                </label>
-                                                <label class="selectgroup-item">
-                                                    <input type="checkbox" name="guardian_relation" value="Neighbours" class="selectgroup-input">
-                                                    <span class="selectgroup-button">Neighbours</span>
-                                                </label>
+                                            <label class="form-label tx-semibold">Select Guardian Relation</label>
+                                            <div class="pos-relative">
+                                                <select class="form-control select2" name="guardian_relation" id="guardian-relation">
+                                                    <option selected value="">Select Religion Type</option>
+                                                    <option value="Uncle/Aunty">Uncle/Aunty</option>
+                                                    <option value="GrandFather/GrandMother">GrandFather/GrandMother</option>
+                                                    <option value="Neighbours">Neighbours</option>
+                                                    <option value="other">Other</option>
+                                                </select>
                                             </div>
-
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-4 mb-0">
-                                        <div class="form-group">
+                                        <div class="form-group" id="guardian-relation-other-input">
                                             <label class="form-label tx-semibold">Other</label>
-                                            <input type="text" class="form-control" name="other_relation"  id="other-relation">
+                                            <input type="text" class="form-control" name="other_relation" id="other-relation" readonly>
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
-                                            <label class="form-label tx-semibold">First Person to call in case of Emergency:</label>
-
-                                            <div class="selectgroup selectgroup-pills">
-                                                <label class="selectgroup-item ">
-                                                    <input type="checkbox" name="first_person_call" value="Father" class="selectgroup-input">
-                                                    <span class="selectgroup-button">Father</span>
-                                                </label>
-                                                <label class="selectgroup-item">
-                                                    <input type="checkbox" name="first_person_call" value="Mother" class="selectgroup-input">
-                                                    <span class="selectgroup-button">Mother</span>
-                                                </label>
-                                                <label class="selectgroup-item">
-                                                    <input type="checkbox" name="first_person_call" value="Guardian" class="selectgroup-input">
-                                                    <span class="selectgroup-button">Guardian</span>
-                                                </label>
+                                            <label class="form-label tx-semibold">First Person to call in case of Emergency</label>
+                                            <div class="pos-relative">
+                                                <select class="form-control select2" name="first_person_call" id="first-person-call">
+                                                    <option selected value="">Select Person To Call</option>
+                                                    <option value="Father">Father</option>
+                                                    <option value="Mother">Mother</option>
+                                                    <option value="Guardian">Guardian</option>
+                                                </select>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -595,6 +594,7 @@
                                             <input type="text" class="form-control" name="current_house_no" id="current-house-no">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-6 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Block Number</label>
@@ -610,6 +610,7 @@
                                             <input type="text" class="form-control" name="current_building_name_no"  id="current-building-name-no">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Area</label>
@@ -623,6 +624,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">City</label>
@@ -659,6 +661,7 @@
                                             <input type="text" class="form-control" name="permenant_house_no" id="permenant-house-no">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-6 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Block Number</label>
@@ -674,6 +677,7 @@
                                             <input type="text" class="form-control" name="permenant_building_name_no"  id="permenant-building-name-no">
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Area</label>
@@ -687,6 +691,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">City</label>
@@ -715,7 +720,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="form-group" id="append-input">
+                                        <div class="form-group" id="pick-drop-append-input">
                                             
                                         </div>
                                     </div>

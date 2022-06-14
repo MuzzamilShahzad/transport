@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->string('name',30)->nullable();
             $table->string('phone',20)->nullable();
-            $table->enum('relation',['Uncle/Aunty','GrandFather/GrandMother', 'Neighbours'])->nullable();
+            $table->enum('relation',['Uncle/Aunty','GrandFather/GrandMother', 'Neighbours','other'])->nullable();
             $table->string('other_relation',10)->nullable();
             $table->enum('first_person_call',['Father','Mother', 'Guardian'])->nullable();
             $table->string('cnic',20)->nullable();

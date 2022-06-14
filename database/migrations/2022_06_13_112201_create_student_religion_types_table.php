@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('student_religion_types', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->enum('religion_type',['Sunni','Asna Ashri'])->nullable();
+            $table->enum('religion_type',['Sunni','Asna Ashri','other'])->nullable();
             $table->string('other_religion')->nullable();
             
             $table->timestamps();
