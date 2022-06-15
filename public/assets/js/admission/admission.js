@@ -364,7 +364,7 @@ $(document).ready(function () {
                         } else {
                             message += `<div class="alert alert-danger alert-dismissible">
                                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                            <strong> Success!</strong> `+ response.message + `
+                                            <strong> Error!</strong> `+ response.message + `
                                         </div>`;
                         }
                     } else {
