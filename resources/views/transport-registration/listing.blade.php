@@ -14,18 +14,6 @@
                         <li class="breadcrumb-item active" aria-current="page">{{ $data['menu'] }}</li>
                     </ol>
                 </div>
-                <!-- <div class="d-flex">
-                    <div class="justify-content-center">
-                        <button type="button" class="btn btn-white btn-icon-text my-2 me-2">
-                            <i class="fe fe-settings"></i>
-                            <span>Settings</span>
-                        </button>
-                        <button type="button" class="btn btn-primary my-2 btn-icon-text">
-                            <i class="fe fe-download-cloud bg-white-transparent text-white"></i>
-                            <span>Reports</span>
-                        </button>
-                    </div>
-                </div> -->
             </div>
             <!-- End Page Header -->
             
@@ -36,7 +24,7 @@
                         <div class="card-body">
                             <a href="{{ route('registration.create') }}" class="btn btn-primary" style="float:right">Add Transport Registration</a>
                             <div>
-                                <h1 class="main-content-label mb-1">{{ $data['menu'] }} </h1>
+                                <h1 class="main-content-label mb-1">{{ $data['title-1'] }} </h1>
                             </div>
                             <br>
                             <br>
@@ -46,32 +34,24 @@
                                     <thead>
                                         <tr>
                                             <th width="10px">S.NO</th>
-                                            <!-- <th>Reference Number</th> -->
                                             <th>Vehicle</th>
-                                            <th>Route</th>
                                             <th>Driver</th>
-                                            <!-- <th>Total Capacity</th> -->
-                                            <th>Shift Time</th>
-                                            <th>Student</th>
-                                            <th>Joining Date</th>
+                                            <th>Route</th>
+                                            <th>Total Capacity</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($data['transReg'] as $sno => $item)
+                                        @foreach($data['transportRegistration'] as $sno => $item)
                                         <tr>
                                             <td>{{ $sno + 1 }}</td>
-                                            <!-- <td>{{$item->ref_number}}</td> -->
-                                            <td>{{$item->vehicle->maker}}</td>
-                                            <td>{{$item->route->area}}</td>
+                                            <td>{{$item->vehicle->maker}} ({{$item->vehicle->number }})</td>
                                             <td>{{$item->driver->name}}</td>
-                                            <!-- <td>{{$item->total_cap}}</td> -->
-                                            <td>{{$item->shift->timings}}</td>
-                                            <td>{{$item->student->first_name}}</td>
-                                            <td>{{$item->joining_date}}</td>
+                                            <td>{{$item->route->area}}</td>
+                                            <td>{{$item->vehicle->capacity}}</td>
                                             <td>
                                                 <a href="{{ route('registration.edit',$item->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                                <button data-id="{{$item->id}}" id="btn-delete-transport-reg" class="btn btn-danger btn-sm">Delete</button>
+                                                <button data-id="{{$item->id}}" id="btn-delete-transport-registration" class="btn btn-danger btn-sm">Delete</button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -87,8 +67,52 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{{url('assets/js/transport-reg/transport-registration.js')}}"></script>
+<div class="main-content side-content pt-0">
+    <div class="main-container container-fluid">
+        <div class="inner-body">
+            <!-- Row -->
+            <div class="row row-sm">
+                <div class="col-lg-12">
+                    <div class="card custom-card">
+                        <div class="card-body">
+                            <div>
+                                <h1 class="main-content-label mb-1">{{ $data['title-2'] }} </h1>
+                            </div>
+                            <br>
+                            <div class="table-responsive">
+                                <table class="table table-bordered text-nowrap border-bottom" id="basic-datatable">
+                                    <thead>
+                                        <tr>
+                                            <th width="10px">S.NO</th>
+                                            <th>Student Name</th>
+                                            <th>Date</th>
+                                            <th>Month</th>
+                                            <th>Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($data['transportRegistration'] as $sno => $item)
+                                        <tr>
+                                            <td>{{ $sno + 1 }}</td>
+                                            <td>{{$item->student->first_name}}</td>
+                                            <td>{{$item->joining_date}}</td>
+                                            <td>{{ date('M', strtotime($item->joining_date)) }}</td>
+                                            <td>{{$item->fees}}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row -->
+        </div>
+    </div>
+</div>
+
+<script src="{{ url('assets/js/transport-registration/transport-registration.js') }}"></script>
 
 
 

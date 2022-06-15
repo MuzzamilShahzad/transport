@@ -11,11 +11,11 @@ use App\Models\Contractor;
 class ContractorController extends Controller
 {
     public function listing() {
-        $contractors = Contractor::all();
+        $Contractor = Contractor::all();
         $data = array(
-            'contractors' => $contractors,
-            'page'        => 'Contractor',
-            'menu'        => 'Manage Contractor',
+            'Contractor'  =>  $Contractor, 
+            'page'         =>  'Contractor',
+            'menu'         =>  'Manage Contractor',
         );
 
         return view('contractor.listing', compact('data'));
@@ -23,8 +23,8 @@ class ContractorController extends Controller
 
     public function add() {
         $data = array(
-            'page'         => 'Contractor',
-            'menu'         => 'Add Contractor',
+            'page'  =>  'Contractor',
+            'menu'  =>  'Add Contractor',
         );
 
         return view('contractor.add', compact('data'));
@@ -32,37 +32,39 @@ class ContractorController extends Controller
 
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:4|max:30',
-            'area' => 'required|min:4|max:30',
-            'cnic' => 'required|min:4|max:30',
+            'name'  =>  'required|min:4|max:30',
+            'area'  =>  'required|min:4|max:30',
+            'cnic'  =>  'required|min:4|max:30',
         ]);
 
-        if (!$validator->passes()) {
+        if ($validator->errors()->all()) {
             
             $response = array(
-                'status' => false, 
-                'error' => $validator->errors()->toArray()
+                'status'  =>  false, 
+                'error'   =>  $validator->errors()->toArray()
             );
             
             return response()->json($response);
         
         } else {
             $contractor = new Contractor;
-            $contractor->name = $request->name;
-            $contractor->area = $request->area;
-            $contractor->cnic = $request->cnic;
-            $contractor->save();
 
-            if ($contractor->save()) {
+            $contractor->name  =  $request->name;
+            $contractor->area  =  $request->area;
+            $contractor->cnic  =  $request->cnic;
+
+            $query = $contractor->save();
+
+            if ($query) {
                 $response = array(
-                    'status' => true, 
-                    'message' => 'Contractor has been added successfully'
+                    'status'   =>  true, 
+                    'message'  =>  'Contractor has been added successfully'
                 );
                 return response()->json($response);
             } else {
                 $response = array(
-                    'status' => false, 
-                    'message' => 'Some thing went please try again letter'
+                    'status'   =>  false, 
+                    'message'  =>  'Some thing went please try again letter'
                 );
                 return response()->json($response);
             }
@@ -72,9 +74,9 @@ class ContractorController extends Controller
     public function edit($id) {
         $contractor = Contractor::find($id);
         $data = array(
-            'contractor' => $contractor,
-            'page'         => 'Contractor',
-            'menu'         => 'Edit Contractor',
+            'contractor'  =>  $contractor,
+            'page'        =>  'Contractor',
+            'menu'        =>  'Edit Contractor',
         );
 
         return view('contractor.edit', compact('data'));
@@ -82,32 +84,34 @@ class ContractorController extends Controller
 
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|min:4|max:30',
-            'area' => 'required|min:4|max:30',
-            'cnic' => 'required|min:4|max:30'
+            'name'  =>  'required|min:4|max:30',
+            'area'  =>  'required|min:4|max:30',
+            'cnic'  =>  'required|min:4|max:30'
         ]);
 
-        if (!$validator->passes()) {
+        if ($validator->errors()->all()) {
 
             $response = array(
-                'status' => false, 
-                'error' => $validator->errors()->toArray()
+                'status'  =>  false, 
+                'error'   =>  $validator->errors()->toArray()
             );
             
             return response()->json($response);
 
         } else {
             $contractor = Contractor::find($id);
-            $contractor->name = $request->name;
-            $contractor->area = $request->area;
-            $contractor->cnic = $request->cnic;
-            $contractor->update();
 
-            if ($contractor->update()) {
+            $contractor->name  =  $request->name;
+            $contractor->area  =  $request->area;
+            $contractor->cnic  =  $request->cnic;
+
+            $query = $contractor->update();
+
+            if ($query) {
 
                 $response = array(
-                    'status' => true, 
-                    'message' => 'Contractor has been updated successfully'
+                    'status'   =>  true, 
+                    'message'  =>  'Contractor has been updated successfully'
                 );
 
                 return response()->json($response);
@@ -115,8 +119,8 @@ class ContractorController extends Controller
             } else {
 
                 $response = array(
-                    'status' => false, 
-                    'message' => 'Some thing went worng please try again letter'
+                    'status'   =>  false, 
+                    'message'  =>  'Some thing went worng please try again letter'
                 );
 
                 return response()->json($response);
@@ -125,21 +129,21 @@ class ContractorController extends Controller
     }
 
     public function delete(Request $request) {
-        $contractor_id = $request->contractor_id;
-        $query = Contractor::find($contractor_id)->delete();
+        $contractor_id  =  $request->contractor_id;
+        $query          =  Contractor::find($contractor_id)->delete();
         
         if ($query) {
 
             $response = array(
-                'status' => true, 
-                'message' => 'Record has been deleted successfully!'
+                'status'   =>  true, 
+                'message'  =>  'Record has been deleted successfully!'
             );
         }
 
         else {
             $response = array(
-                'status' => false,
-                'message' => 'Some thing went worng try again later!'
+                'status'   =>  false,
+                'message'  =>  'Some thing went worng try again later!'
             );
         }
             

@@ -6,28 +6,31 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Vehicle;
 use App\Models\Contractor;
+use App\Models\TransportRegistration;
 
 class VehicleController extends Controller
 {
     public function listing() {
-        $vehicles = Vehicle::all();
+        $Vehicle = Vehicle::all();
         $data = array(
-            'vehicles'      => $vehicles,
-            'page'         => 'Vehicle',
-            'menu'         => 'Manage Vehicle',
+            'Vehicle'   =>  $Vehicle,
+            'page'      =>  'Vehicle',
+            'menu'      =>  'Manage Vehicle',
         );
 
         return view('vehicle.listing', compact('data'));
     }
 
     public function add() {
-        $contractor = Contractor::get();
+        $Contractor = Contractor::get();
         $data = array(
-            'contractor'   => $contractor,
-            'page'         => 'Vehicle',
-            'menu'         => 'Add Vehicle',
+            'Contractor'   =>  $Contractor,
+            'page'         =>  'Vehicle',
+            'menu'         =>  'Add Vehicle',
         );
 
         return view('vehicle.add', compact('data'));
@@ -35,38 +38,39 @@ class VehicleController extends Controller
 
     public function store(Request $request) {
         $validator = Validator::make($request->all(), [
-            'number' => 'required|min:1|max:20',
-            'maker' => 'required|min:1|max:20',
-            'chassis_number' => 'required|min:1|max:20',
-            'engine_number' => 'required|min:1|max:20',
-            'capacity' => 'required',
-            'contractor_id' => 'required'
+            'vehicle_number'  =>  'required|min:1|max:20',
+            'maker'           =>  'required|min:1|max:20',
+            'chassis_number'  =>  'required|min:1|max:20',
+            'engine_number'   =>  'required|min:1|max:20',
+            'capacity'        =>  'required'
         ]);
 
-        if (!$validator->passes()) {
+        if ($validator->errors()->all()) {
 
             $response = array(
-                'status' => false, 
-                'error' => $validator->errors()->toArray()
+                'status'  =>  false, 
+                'error'   =>  $validator->errors()->toArray()
             );
             
             return response()->json($response);
             
         } else {
             $vehicle = new Vehicle;
-            $vehicle->number = $request->number;
-            $vehicle->maker = $request->maker;
-            $vehicle->chassis_number = $request->chassis_number;
-            $vehicle->engine_number = $request->engine_number;
-            $vehicle->capacity = $request->capacity;
-            $vehicle->contractor_id = $request->contractor_id;
-            $vehicle->save();
 
-            if ($vehicle->save()) {
+            $vehicle->number          =  $request->vehicle_number;
+            $vehicle->maker           =  $request->maker;
+            $vehicle->chassis_number  =  $request->chassis_number;
+            $vehicle->engine_number   =  $request->engine_number;
+            $vehicle->capacity        =  $request->capacity;
+            $vehicle->contractor_id   =  $request->contractor_id;
+
+            $query = $vehicle->save();
+
+            if ($query) {
 
                 $response = array(
-                    'status' => true, 
-                    'message' => 'Vehicle has been added successfully'
+                    'status'   =>  true, 
+                    'message'  =>  'Vehicle has been added successfully'
                 );
 
                 return response()->json($response);
@@ -74,8 +78,8 @@ class VehicleController extends Controller
             } else {
 
                 $response = array(
-                    'status' => false, 
-                    'message' => 'Some thing went please try again letter'
+                    'status'   =>  false, 
+                    'message'  =>  'Some thing went please try again letter'
                 );
                 
                 return response()->json($response);
@@ -87,10 +91,10 @@ class VehicleController extends Controller
         $contractor = Contractor::get();
         $vehicle = Vehicle::find($id);
         $data = array(
-            'contractor'   => $contractor,
-            'vehicle'      => $vehicle,
-            'page'         => 'Vehicle',
-            'menu'         => 'Edit Vehicle',
+            'contractor'  =>  $contractor,
+            'vehicle'     =>  $vehicle,
+            'page'        =>  'Vehicle',
+            'menu'        =>  'Edit Vehicle',
         );
 
         return view('vehicle.edit', compact('data'));
@@ -98,38 +102,39 @@ class VehicleController extends Controller
 
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
-            'number' => 'required|min:1|max:20',
-            'maker' => 'required|min:1|max:20',
-            'chassis_number' => 'required|min:1|max:20',
-            'engine_number' => 'required|min:1|max:20',
-            'capacity' => 'required',
-            'contractor_id' => 'required'
+            'vehicle_number'  =>  'required|min:1|max:20',
+            'maker'           =>  'required|min:1|max:20',
+            'chassis_number'  =>  'required|min:1|max:20',
+            'engine_number'   =>  'required|min:1|max:20',
+            'capacity'        =>  'required',
         ]);
 
-        if (!$validator->passes()) {
+        if ($validator->errors()->all()) {
 
             $response = array(
-                'status' => false, 
-                'error' => $validator->errors()->toArray()
+                'status'  =>  false, 
+                'error'   =>  $validator->errors()->toArray()
             );
             
             return response()->json($response);
 
         } else {
             $vehicle = Vehicle::find($id);
-            $vehicle->number = $request->number;
-            $vehicle->maker = $request->maker;
-            $vehicle->chassis_number = $request->chassis_number;
-            $vehicle->engine_number = $request->engine_number;
-            $vehicle->capacity = $request->capacity;
-            $vehicle->contractor_id = $request->contractor_id;
-            $vehicle->update();
 
-            if ($vehicle->update()) {
+            $vehicle->number          =  $request->vehicle_number;
+            $vehicle->maker           =  $request->maker;
+            $vehicle->chassis_number  =  $request->chassis_number;
+            $vehicle->engine_number   =  $request->engine_number;
+            $vehicle->capacity        =  $request->capacity;
+            $vehicle->contractor_id   =  $request->contractor_id;
+
+            $query = $vehicle->update();
+
+            if ($query) {
 
                 $response = array(
-                    'status' => true, 
-                    'message' => 'Vehicle has been updated successfully'
+                    'status'   =>  true, 
+                    'message'  =>  'Vehicle has been updated successfully'
                 );
 
                 return response()->json($response);
@@ -137,8 +142,8 @@ class VehicleController extends Controller
             } else {
 
                 $response = array(
-                    'status' => false, 
-                    'message' => 'Some thing went worng please try again letter'
+                    'status'   =>  false, 
+                    'message'  =>  'Some thing went worng please try again letter'
                 );
 
                 return response()->json($response);
@@ -147,24 +152,77 @@ class VehicleController extends Controller
     }
 
     public function delete(Request $request) {
-        $vehicle_id = $request->vehicle_id;
-        $query = Vehicle::find($vehicle_id)->delete();
+        $vehicle_id  =  $request->vehicle_id;
+        $query       =  Vehicle::find($vehicle_id)->delete();
 
         if ($query) {
 
             $response = array(
-                'status' => true, 
-                'message' => 'Record has been deleted successfully!'
+                'status'   =>  true, 
+                'message'  =>  'Record has been deleted successfully!'
             );
         }
 
         else {
             $response = array(
-                'status' => false,
-                'message' => 'Some thing went worng try again later!'
+                'status'   =>  false,
+                'message'  =>  'Some thing went worng try again later!'
             );
         }
 
         return response()->json($response);
     }
+
+    public function getTotalCapacity(Request $request){
+        $vehicle_id = $request->vehicle_id;
+<<<<<<< HEAD
+        $vehicle = TransportRegistration:: select(array('shift_id', 
+         DB::raw('COUNT(student_id) as total_students')))
+        ->join("vehicles","vehicles.id","=","student_vehicle.vehicle_id")
+        ->join("shifts","shifts.id","=","student_vehicle.shift_id")
+        ->where('vehicle_id', $request->vehicle_id)
+        ->groupBy('shift_id')
+        ->orderBy('shift_id','ASC')
+        ->get();
+
+        dd($vehicle);
+=======
+        $shift_id   = $request->shift_id;
+        // dd($shift_id);
+
+        $totalCapacity = Vehicle::select('capacity')->where('id',$vehicle_id)->get();
+        $registerCount = TransportRegistration::select('vehicle_id')->where('vehicle_id',$vehicle_id)->count();
+
+        // $shiftWiseRegisterCount = TransportRegistration::where('vehicle_id',$vehicle_id)->where('shift_id',$shift_id)->count();
+        // dd($shiftWiseRegisterCount);
+       
+
+        $response = array(
+            'totalCapacity'  => $totalCapacity[0]['capacity'],
+            'registerCount'  =>  $registerCount
+        );
+
+        return response()->json($response);
+>>>>>>> 006a8d57bfecdb2a0392125c7eb641346cd1130d
+    }
+
+    // public function getTotalCapacity(Request $request){
+    //     $vehicle_id = $request->vehicle_id;
+    //     $shift_id   = $request->shift_id;
+    //     // dd($shift_id);
+
+    //     $totalCapacity = Vehicle::select('capacity')->where('id',$vehicle_id)->get();
+    //     $registerCount = TransportRegistration::select('vehicle_id')->where('vehicle_id',$vehicle_id)->count();
+
+    //     // $shiftWiseRegisterCount = TransportRegistration::where('vehicle_id',$vehicle_id)->where('shift_id',$shift_id)->count();
+    //     // dd($shiftWiseRegisterCount);
+       
+
+    //     $response = array(
+    //         'totalCapacity'  => $totalCapacity[0]['capacity'],
+    //         'registerCount'  =>  $registerCount
+    //     );
+
+    //     return response()->json($response);
+    // }
 }

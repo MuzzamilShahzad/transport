@@ -14,18 +14,6 @@
                         <li class="breadcrumb-item active" aria-current="page">{{ $data['menu'] }}</li>
                     </ol>
                 </div>
-                <!-- <div class="d-flex">
-                    <div class="justify-content-center">
-                        <button type="button" class="btn btn-white btn-icon-text my-2 me-2">
-                            <i class="fe fe-settings"></i>
-                            <span>Settings</span>
-                        </button>
-                        <button type="button" class="btn btn-primary my-2 btn-icon-text">
-                            <i class="fe fe-download-cloud bg-white-transparent text-white"></i>
-                            <span>Reports</span>
-                        </button>
-                    </div>
-                </div> -->
             </div>
             <!-- End Page Header -->
 
@@ -42,90 +30,108 @@
                             <div class="row row-sm">
                                 <div class="col-md-12 col-lg-12 col-xl-12">
                                     <form action="{{ route('registration.store') }}" method="post">
-                                        <!-- <div class="form-group">
-                                            <label class="tx-semibold">Reference Number</label>
-                                            <input name="ref_number" class="form-control" type="text" placeholder="Reference Number" id="ref_number">
-                                            <span class="text-danger error-text timings_error"></span>
-                                        </div> -->
-
                                         <div class="form-group">
                                             <label class="tx-semibold">Select Vehicle</label>
                                             <div class="pos-relative">
-                                                <select class="form-control select2" name="vehicle_id" id="vehicle-id">
+                                                <select class="form-control vehicleSelect2" name="vehicle_id" id="vehicle-id">
                                                     <option selected value="">Select Vehicle</option>
-                                                    @foreach($data['vehicle'] as $item)
-                                                        <option value="{{$item->id}}">{{$item->maker}}</option>
+                                                    @foreach($data['Vehicle'] as $vehicle)
+                                                        <option value="{{$vehicle->id}}">{{$vehicle->number.' ['.$vehicle->maker.']'}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
-
                                         <div class="form-group">
-                                            <label class="tx-semibold">Select Route</label>
-                                            <div class="pos-relative">
-                                                <select class="form-control select2" name="route_id" id="route-id">
-                                                    <option selected value="">Select Route</option>
-                                                    @foreach($data['route'] as $item)
-                                                        <option value="{{$item->id}}">{{$item->area}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="tx-semibold">Select Driver</label>
-                                            <div class="pos-relative">
-                                                <select class="form-control select2" name="driver_id" id="driver-id">
-                                                    <option selected value="">Select Driver</option>
-                                                    @foreach($data['driver'] as $item)
-                                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <!-- <div class="form-group">
-                                            <label class="tx-semibold">Total Capacity</label>
-                                            <input name="total_cap" class="form-control" type="text" placeholder="Enter Total Capacity" id="total_cap">
-                                        </div> -->
-
-                                         <div class="form-group">
                                             <label class="tx-semibold">Select Shift Time</label>
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="shift_id" id="shift-id">
                                                     <option selected value="">Select Shift Time</option>
-                                                    @foreach($data['shift'] as $item)
-                                                        <option value="{{$item->id}}">{{$item->timings}}</option>
+                                                    @foreach($data['Shift'] as $shift)
+                                                        <option value="{{$shift->id}}">{{$shift->timings}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
-
-                                        <!-- <div class="form-group">
-                                            <label class="tx-semibold">Driver Shift</label>
-                                            <input name="driver_shift" class="form-control" type="text"
-                                                placeholder="Driver Shift">
-                                            <span class="text-danger error-text driver_shift_error"></span>
-                                        </div> -->
-
+                                        <div class="form-group">
+                                            <label class="tx-semibold">Select Route</label>
+                                            <div class="pos-relative">
+                                                <select class="form-control routeSelect2" name="route_id" id="route-id">
+                                                    <option selected value="">Select Route</option>
+                                                    @foreach($data['Route'] as $route)
+                                                        <option value="{{$route->id}}">{{$route->area}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="tx-semibold">Select Driver</label>
+                                            <div class="pos-relative">
+                                                <select class="form-control driverSelect2" name="driver_id" id="driver-id">
+                                                    <option selected value="">Select Driver</option>
+                                                    @foreach($data['Driver'] as $driver)
+                                                        <option value="{{$driver->id}}">{{$driver->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+<<<<<<< HEAD
+=======
+                                            <label class="tx-semibold">Select Shift Time</label>
+                                            <div class="pos-relative">
+                                                <select class="form-control shiftSelect2" name="shift_id" id="shift-id">
+                                                    <option selected value="">Select Shift Time</option>
+                                                    @foreach($data['shifts'] as $shift)
+                                                        <option value="{{$shift->id}}">{{$shift->timings}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+>>>>>>> 8bcb86ffb4f293f22ba3c3f3533fa76259fbc357
+                                            <label class="tx-semibold">Select Campus</label>
+                                            <div class="pos-relative">
+                                                <select class="form-control campusSelect2" name="campus_id" id="campus-id">
+                                                    <option selected value="">Select Student</option>
+                                                    @foreach($data['campus'] as $campus)
+                                                        <option value="{{$campus->id}}">{{$campus->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label class="tx-semibold">Select Student</label>
                                             <div class="pos-relative">
-                                                <select class="form-control select2" name="student_id" id="student-id">
+                                                <select class="form-control studentSelect2" name="student_id" id="student-id">
                                                     <option selected value="">Select Student</option>
-                                                    @foreach($data['student'] as $item)
-                                                        <option value="{{$item->id}}">{{$item->first_name}}</option>
+                                                    @foreach($data['student'] as $student)
+                                                        <option value="{{$student->id}}">{{$student->first_name .' '.$student->last_name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label class="tx-semibold">Joining Date</label>
-                                            <input class="form-control date-picker" name="joining_date" id="joining-date" placeholder="MM/DD/YYYY" type="text">
+                                        <div class="form-group" id="total-capacity-input">
+                                          
                                         </div>
 
-                                        <button type="submit" id="btn-add-transport-reg" class="btn ripple btn-primary">Save</button>
+                                        <div class="form-group" id="remaining-capacity-input">
+                                          
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="tx-semibold">Fees</label>
+                                            <input name="fees" class="form-control" type="text" placeholder="Enter Fees" id="fees">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="tx-semibold">Joining Date</label>
+<<<<<<< HEAD
+                                            <input class="form-control date-picker" name="joining_date" id="joining-date" placeholder="DD-MM-YYYY" type="text">
+=======
+                                            <input class="form-control" name="joining_date" id="joining-date" placeholder="DD-MM-YYYY" type="text" readonly>
+>>>>>>> 8bcb86ffb4f293f22ba3c3f3533fa76259fbc357
+                                        </div>
+                                        <button type="submit" id="btn-add-transport-registration" class="btn ripple btn-primary">Save</button>
                                         <a href="{{ route('registration.view') }}" class="btn btn-danger">Back</a>
                                     </form>
                                 </div>
@@ -140,7 +146,6 @@
 </div>
 
 <!-- {{-- Own javascript --}} -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{{url('assets/js/transport-reg/transport-registration.js')}}"></script>
+<script src="{{ url('assets/js/transport-registration/transport-registration.js') }}"></script>
 
 @endsection

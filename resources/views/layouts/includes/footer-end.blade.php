@@ -54,6 +54,13 @@
 <!-- Custom js -->
 <script src="{{ url('assets/js/custom.js') }}"></script>
 
+<!-- Select2 js-->
+<script src="{{ url('assets/js/select2.js') }}"></script>
+
+<!-- Internal Fileuploads js-->
+<script src="{{ url('assets/plugins/fileuploads/js/fileupload.js') }}"></script>
+<script src="{{ url('assets/plugins/fileuploads/js/file-upload.js') }}"></script>
+
 <!-- SweetAlert -->
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -64,7 +71,7 @@
 
 <script>
     $('.date-picker').datepicker({
-        dateFormat: 'yy-mm-dd',
+        dateFormat: 'dd-mm-yy',
 		showOtherMonths: true,
 		selectOtherMonths: true
 	});

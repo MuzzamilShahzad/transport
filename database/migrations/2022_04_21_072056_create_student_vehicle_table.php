@@ -29,9 +29,13 @@ return new class extends Migration
             $table->unsignedInteger('route_id')->nullable();
             $table->foreign('route_id')->references('id')->on('routes')->onDelete('cascade');
 
+            $table->unsignedInteger('campus_id')->nullable();
+            $table->foreign('campus_id')->references('id')->on('campuses')->onDelete('cascade');
+
             $table->unsignedInteger('student_id')->nullable();
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             
+            $table->integer('fees');
             $table->date('joining_date');
             $table->tinyInteger('is_active')->default(1);
             $table->tinyInteger('is_delete')->default(0);

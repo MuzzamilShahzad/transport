@@ -54,7 +54,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($driverVehicles as $sno => $item)
+                                        @foreach($driverVehicle as $sno => $item)
                                         <tr id="did{{$item->id}}">
                                             <td>{{ $sno + 1 }}</td>
                                             <td>{{$item->vehicle->maker}}</td>

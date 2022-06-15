@@ -13,7 +13,7 @@ class Vehicle extends Model
     // use SoftDeletes;
     // protected $date = ['deleted_at'];
 
-    protected $table = "vehicles";
+    protected $table = "Vehicles";
 
     public function contractor(){
         return $this->belongsTo(Contractor::class,'contractor_id','id');

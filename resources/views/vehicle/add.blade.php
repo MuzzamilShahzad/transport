@@ -14,18 +14,6 @@
                         <li class="breadcrumb-item active" aria-current="page">{{ $data['menu'] }}</li>
                     </ol>
                 </div>
-                <!-- <div class="d-flex">
-                    <div class="justify-content-center">
-                        <button type="button" class="btn btn-white btn-icon-text my-2 me-2">
-                            <i class="fe fe-settings"></i>
-                            <span>Settings</span>
-                        </button>
-                        <button type="button" class="btn btn-primary my-2 btn-icon-text">
-                            <i class="fe fe-download-cloud bg-white-transparent text-white"></i>
-                            <span>Reports</span>
-                        </button>
-                    </div>
-                </div> -->
             </div>
             <!-- End Page Header -->
 
@@ -43,8 +31,19 @@
                                 <div class="col-md-12 col-lg-12 col-xl-12">
                                     <form action="{{ route('vehicle.store') }}" method="post">
                                         <div class="form-group">
+                                            <label class="tx-semibold">Select Contractor</label>
+                                            <div class="pos-relative">
+                                                <select class="form-control select2" name="contractor_id" id="contractor-id">
+                                                    <option selected value="">Select Contractor</option>
+                                                    @foreach($data['Contractor'] as $contractor)
+                                                        <option value="{{$contractor->id}}">{{$contractor->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <label class="tx-semibold">Vehicle Number</label>
-                                            <input name="number" class="form-control" type="text" placeholder="Enter Number" id="number">
+                                            <input name="vehicle_number" class="form-control" type="text" placeholder="Enter Vehicle Number" id="vehicle-number">
                                         </div>
 
                                         <div class="form-group">
@@ -57,14 +56,14 @@
                                         <div class="form-group">
                                             <label class="tx-semibold">Chassis Number</label>
                                             <div class="pos-relative">
-                                                <input name="chassis_number" class="form-control pd-r-80" type="text" placeholder="Enter Chassis Number" id="chassis_number">
+                                                <input name="chassis_number" class="form-control pd-r-80" type="text" placeholder="Enter Chassis Number" id="chassis-number">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="tx-semibold">Engine Number</label>
                                             <div class="pos-relative">
-                                                <input name="engine_number" class="form-control pd-r-80" type="text" placeholder="Enter Engine Number" id="engine_number">
+                                                <input name="engine_number" class="form-control pd-r-80" type="text" placeholder="Enter Engine Number" id="engine-number">
                                             </div>
                                         </div>
 
@@ -74,19 +73,6 @@
                                                 <input name="capacity" class="form-control pd-r-80" type="text" placeholder="Enter Capacity" id="capacity">
                                             </div>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label class="tx-semibold">Select Contractor</label>
-                                            <div class="pos-relative">
-                                                <select class="form-control select2" name="contractor_id" id="contractor-id">
-                                                    <option selected value="">Select Contractor</option>
-                                                    @foreach($data['contractor'] as $item)
-                                                        <option value="{{$item->id}}">{{$item->name}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                        </div>
-                                        
                                         <button type="submit" id="btn-add-vehicle" class="btn ripple btn-primary">Save</button>
                                         <a href="{{ route('vehicle.view') }}" class="btn btn-danger">Back</a>
                                     </form>
@@ -102,8 +88,7 @@
 </div>
 
 <!-- {{-- Own javascript --}} -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="{{url('assets/js/vehicle/vehicle.js')}}"></script>
+<script src="{{ url('assets/js/vehicle/vehicle.js') }}"></script>
 
 
 @endsection
