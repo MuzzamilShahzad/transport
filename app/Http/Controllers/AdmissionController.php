@@ -253,12 +253,13 @@ class AdmissionController extends Controller
         return response()->json($response);
     }
 
-<<<<<<< HEAD
-    public function importAdmission(){
-        
-=======
-    public function import(){
-        return view('admission.import');
->>>>>>> 313dc7f21dd76dd1e8bae968769d5f073899bc5e
+    public function importStudent(Request $request){
+
+        if($request->file){
+
+        } else {
+            return view('admission.import');
+        }
     }
+    
 }

@@ -9,7 +9,7 @@
     <div class="main-container container-fluid">
         <div class="inner-body">
             <!-- Page Header -->
-            <a href="{{ route('import') }}" class="btn btn-primary" style="float:right">Import</a>
+            <a href="{{ route('admission.import') }}" class="btn btn-primary" style="float:right">Import</a>
             <div class="page-header">
                 <div>
                     <h2 class="main-content-title tx-24 mg-b-5">{{ $data['menu'] }}</h2>
