@@ -371,7 +371,7 @@ $(document).ready(function () {
 
                         $("#session-id, #class-id, #section-id, #category-id, #campus-id, #gender, #blood-group, #school-house-id, #current-area-id, #permenant-area-id, #pick-and-drop-detail, #siblings-in-mpa, #religion-type, #guardian-relation, #first-person-call").val('').change();
 
-                        $("#gr, #roll-no, #temporary-gr, #system, #bform-crms-no, #first-name, #last-name, #dob, #place-of-birth, #nationality, #mother-tongue, #previous-class, #previous-school, #religion, #mobile-no, #email, #admission-date, #height, #weight, #as-on-date, #fee-discount, #student-vaccinated, #father-cnic, #father-salary, #father-email, #father-name, #father-phone, #father-occupation, #father-company-name, #father-vaccinated, #mother-cnic, #mother-salary, #mother-email, #mother-name, #mother-phone, #mother-occupation, #mother-company-name, #mother-vaccinated, #guardian-cnic, #guardian-first-name, #guardian-phone, #guardian-relation, #first-person-call, #current-house-no, #current-block-no, #current-building-name-no, #current-city, #permenant-house-no, #permenant-block-no, #permenant-building-name-no, #permenant-city, #ride-vehicle-no, #school-driver-name, #school-driver-phone, #school-vehicle-no, #private-driver-name, #private-driver-phone, #private-vehicle-no,#other-relation, #no-of-siblings").val('');
+                        $("#gr, #roll-no, #temporary-gr, #system, #bform-crms-no, #first-name, #last-name, #dob, #place-of-birth, #nationality, #mother-tongue, #previous-class, #previous-school, #religion, #mobile-no, #email, #admission-date, #height, #weight, #as-on-date, #fee-discount, #student-vaccinated, #father-cnic, #father-salary, #father-email, #father-name, #father-phone, #father-occupation, #father-company-name, #father-vaccinated, #mother-cnic, #mother-salary, #mother-email, #mother-name, #mother-phone, #mother-occupation, #mother-company-name, #mother-vaccinated, #guardian-cnic, #guardian-first-name, #guardian-phone, #guardian-relation, #first-person-call, #current-house-no, #current-block-no, #current-building-name-no, #current-city, #permenant-house-no, #permenant-block-no, #permenant-building-name-no, #permenant-city, #ride-vehicle-no, #school-driver-name, #school-driver-phone, #school-vehicle-no, #private-driver-name, #private-driver-phone, #private-vehicle-no,#other-relation, #other-religion, #no-of-siblings").val('');
 
                         message += `<div class="alert alert-success alert-dismissible">
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -395,8 +395,6 @@ $(document).ready(function () {
                         }, 4000);
                     }
 
-                    $('#religion-type-other-input').html(html);
-                    $('#guardian-relation-other-input').html(html);
                     $('#pick-drop-append-input').html(html);
 
                     $("#btn-add-admission").removeClass('disabled');
