@@ -57,9 +57,6 @@
 <!-- Select2 js-->
 <script src="{{ url('assets/js/select2.js') }}"></script>
 
-<!-- Internal Form-wizard js-->
-<script src="{{ url('assets/js/form-wizard.js') }}"></script>
-
 <!-- Internal Fileuploads js-->
 <script src="{{ url('assets/plugins/fileuploads/js/fileupload.js') }}"></script>
 <script src="{{ url('assets/plugins/fileuploads/js/file-upload.js') }}"></script>
