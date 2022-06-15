@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "628f737ba951b0e7243c4b59c6e675a1",
+    "content-hash": "c8666637abbc11263c5e903c28f24597",
     "packages": [
         {
             "name": "brick/math",
@@ -436,8 +436,6 @@
                 }
             ],
             "time": "2022-05-28T22:19:18+00:00"
-<<<<<<< HEAD
-=======
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -489,7 +487,6 @@
                 "source": "https://github.com/ezyang/htmlpurifier/tree/v4.14.0"
             },
             "time": "2021-12-25T01:21:49+00:00"
->>>>>>> origin/muzzamil
         },
         {
             "name": "fruitcake/php-cors",
@@ -1653,17 +1650,6 @@
             "time": "2022-04-17T13:12:02+00:00"
         },
         {
-<<<<<<< HEAD
-            "name": "monolog/monolog",
-            "version": "2.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "5579edf28aee1190a798bfa5be8bc16c563bd524"
-            },
-            "dist": {
-                "type": "zip",
-=======
             "name": "maatwebsite/excel",
             "version": "3.1.40",
             "source": {
@@ -1931,7 +1917,6 @@
             },
             "dist": {
                 "type": "zip",
->>>>>>> origin/muzzamil
                 "url": "https://api.github.com/repos/Seldaek/monolog/zipball/5579edf28aee1190a798bfa5be8bc16c563bd524",
                 "reference": "5579edf28aee1190a798bfa5be8bc16c563bd524",
                 "shasum": ""
@@ -2027,17 +2012,6 @@
             "time": "2022-06-09T08:59:12+00:00"
         },
         {
-<<<<<<< HEAD
-            "name": "nesbot/carbon",
-            "version": "2.58.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "97a34af22bde8d0ac20ab34b29d7bfe360902055"
-            },
-            "dist": {
-                "type": "zip",
-=======
             "name": "myclabs/php-enum",
             "version": "1.8.3",
             "source": {
@@ -2107,7 +2081,6 @@
             },
             "dist": {
                 "type": "zip",
->>>>>>> origin/muzzamil
                 "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/97a34af22bde8d0ac20ab34b29d7bfe360902055",
                 "reference": "97a34af22bde8d0ac20ab34b29d7bfe360902055",
                 "shasum": ""
@@ -2397,8 +2370,6 @@
                 "source": "https://github.com/nikic/PHP-Parser/tree/v4.14.0"
             },
             "time": "2022-05-31T20:59:12+00:00"
-<<<<<<< HEAD
-=======
         },
         {
             "name": "phpoffice/phpspreadsheet",
@@ -2503,7 +2474,6 @@
                 "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.23.0"
             },
             "time": "2022-04-24T13:53:10+00:00"
->>>>>>> origin/muzzamil
         },
         {
             "name": "phpoption/phpoption",
@@ -3235,7 +3205,6 @@
         },
         {
             "name": "symfony/console",
-<<<<<<< HEAD
             "version": "v6.1.1",
             "source": {
                 "type": "git",
@@ -3246,18 +3215,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/console/zipball/6187424023fbffcd757789aeb517c9161b1eabee",
                 "reference": "6187424023fbffcd757789aeb517c9161b1eabee",
-=======
-            "version": "v6.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/console.git",
-                "reference": "9b190bc7a19d19add1dbb3382721973836e59b50"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/9b190bc7a19d19add1dbb3382721973836e59b50",
-                "reference": "9b190bc7a19d19add1dbb3382721973836e59b50",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -3324,11 +3281,7 @@
                 "terminal"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/console/tree/v6.1.1"
-=======
-                "source": "https://github.com/symfony/console/tree/v6.0.9"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -3344,11 +3297,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-06-08T14:02:09+00:00"
-=======
-            "time": "2022-05-27T06:40:13+00:00"
->>>>>>> origin/muzzamil
         },
         {
             "name": "symfony/css-selector",
@@ -3417,7 +3366,6 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-<<<<<<< HEAD
             "version": "v3.1.0",
             "source": {
                 "type": "git",
@@ -3428,18 +3376,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/07f1b9cc2ffee6aaafcf4b710fbc38ff736bd918",
                 "reference": "07f1b9cc2ffee6aaafcf4b710fbc38ff736bd918",
-=======
-            "version": "v3.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "26954b3d62a6c5fd0ea8a2a00c0353a14978d05c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/26954b3d62a6c5fd0ea8a2a00c0353a14978d05c",
-                "reference": "26954b3d62a6c5fd0ea8a2a00c0353a14978d05c",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -3477,11 +3413,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/deprecation-contracts/tree/v3.1.0"
-=======
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.0.1"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -3497,7 +3429,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-02-25T11:15:52+00:00"
         },
         {
@@ -3512,22 +3443,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/error-handler/zipball/d02c662651e5de760bb7d5e94437113309e8f8a0",
                 "reference": "d02c662651e5de760bb7d5e94437113309e8f8a0",
-=======
-            "time": "2022-01-02T09:55:41+00:00"
-        },
-        {
-            "name": "symfony/error-handler",
-            "version": "v6.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/error-handler.git",
-                "reference": "732ca203b3222cde3378d5ddf5e2883211acc53e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/error-handler/zipball/732ca203b3222cde3378d5ddf5e2883211acc53e",
-                "reference": "732ca203b3222cde3378d5ddf5e2883211acc53e",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -3569,11 +3484,7 @@
             "description": "Provides tools to manage errors and ease debugging PHP code",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/error-handler/tree/v6.1.0"
-=======
-                "source": "https://github.com/symfony/error-handler/tree/v6.0.9"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -3589,7 +3500,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-05-23T10:32:57+00:00"
         },
         {
@@ -3604,22 +3514,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/a0449a7ad7daa0f7c0acd508259f80544ab5a347",
                 "reference": "a0449a7ad7daa0f7c0acd508259f80544ab5a347",
-=======
-            "time": "2022-05-23T10:32:42+00:00"
-        },
-        {
-            "name": "symfony/event-dispatcher",
-            "version": "v6.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "5c85b58422865d42c6eb46f7693339056db098a8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/5c85b58422865d42c6eb46f7693339056db098a8",
-                "reference": "5c85b58422865d42c6eb46f7693339056db098a8",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -3673,11 +3567,7 @@
             "description": "Provides tools that allow your application components to communicate with each other by dispatching events and listening to them",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/event-dispatcher/tree/v6.1.0"
-=======
-                "source": "https://github.com/symfony/event-dispatcher/tree/v6.0.9"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -3693,7 +3583,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-05-05T16:51:07+00:00"
         },
         {
@@ -3708,22 +3597,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/02ff5eea2f453731cfbc6bc215e456b781480448",
                 "reference": "02ff5eea2f453731cfbc6bc215e456b781480448",
-=======
-            "time": "2022-05-05T16:45:52+00:00"
-        },
-        {
-            "name": "symfony/event-dispatcher-contracts",
-            "version": "v3.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/event-dispatcher-contracts.git",
-                "reference": "7bc61cc2db649b4637d331240c5346dcc7708051"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher-contracts/zipball/7bc61cc2db649b4637d331240c5346dcc7708051",
-                "reference": "7bc61cc2db649b4637d331240c5346dcc7708051",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -3773,11 +3646,7 @@
                 "standards"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/event-dispatcher-contracts/tree/v3.1.0"
-=======
-                "source": "https://github.com/symfony/event-dispatcher-contracts/tree/v3.0.1"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -3793,7 +3662,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-02-25T11:15:52+00:00"
         },
         {
@@ -3808,22 +3676,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/finder/zipball/45b8beb69d6eb3b05a65689ebfd4222326773f8f",
                 "reference": "45b8beb69d6eb3b05a65689ebfd4222326773f8f",
-=======
-            "time": "2022-01-02T09:55:41+00:00"
-        },
-        {
-            "name": "symfony/finder",
-            "version": "v6.0.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/finder.git",
-                "reference": "af7edab28d17caecd1f40a9219fc646ae751c21f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/af7edab28d17caecd1f40a9219fc646ae751c21f",
-                "reference": "af7edab28d17caecd1f40a9219fc646ae751c21f",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -3858,11 +3710,7 @@
             "description": "Finds files and directories via an intuitive fluent interface",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/finder/tree/v6.1.0"
-=======
-                "source": "https://github.com/symfony/finder/tree/v6.0.8"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -3878,7 +3726,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-04-15T08:08:08+00:00"
         },
         {
@@ -3893,22 +3740,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/http-foundation/zipball/a58dc88d56e04e57993d96c1407a17407610e1df",
                 "reference": "a58dc88d56e04e57993d96c1407a17407610e1df",
-=======
-            "time": "2022-04-15T08:07:58+00:00"
-        },
-        {
-            "name": "symfony/http-foundation",
-            "version": "v6.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "05abe9aab47decfd793632787d0c6a25268e2a5b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/05abe9aab47decfd793632787d0c6a25268e2a5b",
-                "reference": "05abe9aab47decfd793632787d0c6a25268e2a5b",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -3951,11 +3782,7 @@
             "description": "Defines an object-oriented layer for the HTTP specification",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/http-foundation/tree/v6.1.1"
-=======
-                "source": "https://github.com/symfony/http-foundation/tree/v6.0.9"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -3971,7 +3798,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-05-31T14:28:03+00:00"
         },
         {
@@ -3986,22 +3812,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/http-kernel/zipball/86c4d6f6c5b6cd012df41e3b950c924b3ffdc019",
                 "reference": "86c4d6f6c5b6cd012df41e3b950c924b3ffdc019",
-=======
-            "time": "2022-05-21T13:33:31+00:00"
-        },
-        {
-            "name": "symfony/http-kernel",
-            "version": "v6.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "e78407f2a7b683fd1269057aa39355d77ddbcff9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/e78407f2a7b683fd1269057aa39355d77ddbcff9",
-                "reference": "e78407f2a7b683fd1269057aa39355d77ddbcff9",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -4082,11 +3892,7 @@
             "description": "Provides a structured process for converting a Request into a Response",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/http-kernel/tree/v6.1.1"
-=======
-                "source": "https://github.com/symfony/http-kernel/tree/v6.0.9"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -4102,7 +3908,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-06-09T17:31:33+00:00"
         },
         {
@@ -4117,22 +3922,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/mailer/zipball/db6a19a5c896139901c2de59fc9849379e0ff3b6",
                 "reference": "db6a19a5c896139901c2de59fc9849379e0ff3b6",
-=======
-            "time": "2022-05-27T07:14:30+00:00"
-        },
-        {
-            "name": "symfony/mailer",
-            "version": "v6.0.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/mailer.git",
-                "reference": "706af6b3e99ebcbc639c9c664f5579aaa869409b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mailer/zipball/706af6b3e99ebcbc639c9c664f5579aaa869409b",
-                "reference": "706af6b3e99ebcbc639c9c664f5579aaa869409b",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -4177,11 +3966,7 @@
             "description": "Helps sending emails",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/mailer/tree/v6.1.1"
-=======
-                "source": "https://github.com/symfony/mailer/tree/v6.0.8"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -4197,7 +3982,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-06-06T19:15:01+00:00"
         },
         {
@@ -4212,22 +3996,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/mime/zipball/56508865dd883dce3c863af11b3e8053adab30d7",
                 "reference": "56508865dd883dce3c863af11b3e8053adab30d7",
-=======
-            "time": "2022-04-27T17:10:30+00:00"
-        },
-        {
-            "name": "symfony/mime",
-            "version": "v6.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/mime.git",
-                "reference": "e17bae63d437b3e21942dcc47ccca802d3573dd8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/e17bae63d437b3e21942dcc47ccca802d3573dd8",
-                "reference": "e17bae63d437b3e21942dcc47ccca802d3573dd8",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -4279,11 +4047,7 @@
                 "mime-type"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/mime/tree/v6.1.1"
-=======
-                "source": "https://github.com/symfony/mime/tree/v6.0.9"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -4299,11 +4063,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-06-09T12:51:38+00:00"
-=======
-            "time": "2022-05-21T13:33:31+00:00"
->>>>>>> origin/muzzamil
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -4962,7 +4722,6 @@
         },
         {
             "name": "symfony/process",
-<<<<<<< HEAD
             "version": "v6.1.0",
             "source": {
                 "type": "git",
@@ -4973,18 +4732,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/process/zipball/318718453c2be58266f1a9e74063d13cb8dd4165",
                 "reference": "318718453c2be58266f1a9e74063d13cb8dd4165",
-=======
-            "version": "v6.0.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/process.git",
-                "reference": "d074154ea8b1443a96391f6e39f9e547b2dd01b9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/d074154ea8b1443a96391f6e39f9e547b2dd01b9",
-                "reference": "d074154ea8b1443a96391f6e39f9e547b2dd01b9",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -5016,11 +4763,7 @@
             "description": "Executes commands in sub-processes",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/process/tree/v6.1.0"
-=======
-                "source": "https://github.com/symfony/process/tree/v6.0.8"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -5036,7 +4779,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-05-11T12:12:29+00:00"
         },
         {
@@ -5051,22 +4793,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/routing/zipball/8f068b792e515b25e26855ac8dc7fe800399f3e5",
                 "reference": "8f068b792e515b25e26855ac8dc7fe800399f3e5",
-=======
-            "time": "2022-04-12T16:11:42+00:00"
-        },
-        {
-            "name": "symfony/routing",
-            "version": "v6.0.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/routing.git",
-                "reference": "74c40c9fc334acc601a32fcf4274e74fb3bac11e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/74c40c9fc334acc601a32fcf4274e74fb3bac11e",
-                "reference": "74c40c9fc334acc601a32fcf4274e74fb3bac11e",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -5125,11 +4851,7 @@
                 "url"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/routing/tree/v6.1.1"
-=======
-                "source": "https://github.com/symfony/routing/tree/v6.0.8"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -5145,7 +4867,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-06-08T12:21:15+00:00"
         },
         {
@@ -5160,22 +4881,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/service-contracts/zipball/d66cd8ab656780f62c4215b903a420eb86358957",
                 "reference": "d66cd8ab656780f62c4215b903a420eb86358957",
-=======
-            "time": "2022-04-22T08:18:02+00:00"
-        },
-        {
-            "name": "symfony/service-contracts",
-            "version": "v3.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "e517458f278c2131ca9f262f8fbaf01410f2c65c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/e517458f278c2131ca9f262f8fbaf01410f2c65c",
-                "reference": "e517458f278c2131ca9f262f8fbaf01410f2c65c",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -5231,11 +4936,7 @@
                 "standards"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/service-contracts/tree/v3.1.0"
-=======
-                "source": "https://github.com/symfony/service-contracts/tree/v3.0.1"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -5251,7 +4952,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-05-07T08:07:09+00:00"
         },
         {
@@ -5266,22 +4966,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/string/zipball/d3edc75baf9f1d4f94879764dda2e1ac33499529",
                 "reference": "d3edc75baf9f1d4f94879764dda2e1ac33499529",
-=======
-            "time": "2022-03-13T20:10:05+00:00"
-        },
-        {
-            "name": "symfony/string",
-            "version": "v6.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/string.git",
-                "reference": "df9f03d595aa2d446498ba92fe803a519b2c43cc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/string/zipball/df9f03d595aa2d446498ba92fe803a519b2c43cc",
-                "reference": "df9f03d595aa2d446498ba92fe803a519b2c43cc",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -5337,11 +5021,7 @@
                 "utf8"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/string/tree/v6.1.0"
-=======
-                "source": "https://github.com/symfony/string/tree/v6.0.9"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -5357,7 +5037,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-04-22T08:18:23+00:00"
         },
         {
@@ -5372,22 +5051,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/translation/zipball/b254416631615bc6fe49b0a67f18658827288147",
                 "reference": "b254416631615bc6fe49b0a67f18658827288147",
-=======
-            "time": "2022-04-22T08:18:02+00:00"
-        },
-        {
-            "name": "symfony/translation",
-            "version": "v6.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/translation.git",
-                "reference": "9ba011309943955a3807b8236c17cff3b88f67b6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/9ba011309943955a3807b8236c17cff3b88f67b6",
-                "reference": "9ba011309943955a3807b8236c17cff3b88f67b6",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -5454,11 +5117,7 @@
             "description": "Provides tools to internationalize your application",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/translation/tree/v6.1.0"
-=======
-                "source": "https://github.com/symfony/translation/tree/v6.0.9"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -5474,7 +5133,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-05-11T12:12:29+00:00"
         },
         {
@@ -5489,22 +5147,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/bfddd2a1faa271b782b791c361cc16e2dd49dfaa",
                 "reference": "bfddd2a1faa271b782b791c361cc16e2dd49dfaa",
-=======
-            "time": "2022-05-06T14:27:17+00:00"
-        },
-        {
-            "name": "symfony/translation-contracts",
-            "version": "v3.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "c4183fc3ef0f0510893cbeedc7718fb5cafc9ac9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/c4183fc3ef0f0510893cbeedc7718fb5cafc9ac9",
-                "reference": "c4183fc3ef0f0510893cbeedc7718fb5cafc9ac9",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -5556,11 +5198,7 @@
                 "standards"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/translation-contracts/tree/v3.1.0"
-=======
-                "source": "https://github.com/symfony/translation-contracts/tree/v3.0.1"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -5576,7 +5214,6 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-04-22T07:30:54+00:00"
         },
         {
@@ -5591,22 +5228,6 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/symfony/var-dumper/zipball/98587d939cb783aa04e828e8fa857edaca24c212",
                 "reference": "98587d939cb783aa04e828e8fa857edaca24c212",
-=======
-            "time": "2022-01-02T09:55:41+00:00"
-        },
-        {
-            "name": "symfony/var-dumper",
-            "version": "v6.0.9",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "ac81072464221e73ee994d12f0b8a2af4a9ed798"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/ac81072464221e73ee994d12f0b8a2af4a9ed798",
-                "reference": "ac81072464221e73ee994d12f0b8a2af4a9ed798",
->>>>>>> origin/muzzamil
                 "shasum": ""
             },
             "require": {
@@ -5665,11 +5286,7 @@
                 "dump"
             ],
             "support": {
-<<<<<<< HEAD
                 "source": "https://github.com/symfony/var-dumper/tree/v6.1.0"
-=======
-                "source": "https://github.com/symfony/var-dumper/tree/v6.0.9"
->>>>>>> origin/muzzamil
             },
             "funding": [
                 {
@@ -5685,11 +5302,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
             "time": "2022-05-21T13:34:40+00:00"
-=======
-            "time": "2022-05-21T13:33:31+00:00"
->>>>>>> origin/muzzamil
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",
