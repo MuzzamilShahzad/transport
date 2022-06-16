@@ -728,6 +728,7 @@
 
                                 <div class="form-footer mt-2">
                                     <button type="submit" class="btn btn-primary" id="btn-add-admission">Save</button>
+                                    <a href="{{ route('admission.view') }}" class="btn btn-danger">Back</a>
                                 </div>
                             </div>
                         </form>

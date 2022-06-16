@@ -31,6 +31,32 @@ use App\Models\StudentDetails;
 
 class AdmissionController extends Controller
 {
+    public function listing() {
+        $students        =  Student::all();
+        $campuses        =  Campus::get();
+        $sessions        =  Session::get();
+        $studentClasses  =  StudentClass::get();
+        $sections        =  Section::get();
+        $categories      =  Category::get();
+        $schoolHouses    =  SchoolHouse::get();
+        $areas           =  Area::get();
+
+        $data = array(
+            'students'        =>  $students,
+            'campuses'        =>  $campuses,
+            'sessions'        =>  $sessions,
+            'studentClasses'  =>  $studentClasses,
+            'sections'        =>  $sections,
+            'categories'      =>  $categories,
+            'schoolHouses'    =>  $schoolHouses,
+            'areas'           =>  $areas,
+            'page'            =>  'Admission',
+            'menu'            =>  'Manage Admission'
+        );
+
+        return view('admission.listing', compact('data'));
+    }
+
     public function add() {
         $campus        =  Campus::get();
         $session       =  Session::get();
@@ -252,6 +278,49 @@ class AdmissionController extends Controller
                 );
                 return response()->json($response);
             }
+        }
+    }
+
+    public function studentDetails(Request $request){
+        $studentId  =  $request->student_id;
+        $student    =  Student::where('id',$studentId)->first();
+        // dd($student->toArray());
+
+        return view('admission.listing', compact('student'));
+
+        // $data = array(
+        //     'student'  =>  $student,
+        // );
+
+        // dd($data['student'][0]['gr']);
+        // return view('admission.listing', compact('data'));
+
+    }
+
+    public function searchStudent(Request $request){
+        $validator = Validator::make($request->all(), [
+            'campus_id'   =>  'required|numeric|gt:0|digits_between:1,10',
+            'session_id'  =>  'required|numeric|gt:0|digits_between:1,10',
+            'class_id'    =>  'required|numeric|gt:0|digits_between:1,10',
+            'section_id'  =>  'required|numeric|gt:0|digits_between:1,10',
+        ]);
+
+        if ($validator->errors()->toArray() != Null) {
+
+            $response = array(
+                'status'  =>  false, 
+                'error'   =>  $validator->errors()->toArray()
+            );
+            
+            return response()->json($response);
+        
+        } else {
+            $where[] = $request->campus_id;
+            $where[] = $request->session_id;
+            $where[] = $request->class_id;
+            $where[] = $request->section_id;
+
+            dd($where);
         }
     }
 
