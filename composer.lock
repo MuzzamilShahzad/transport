@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "content-hash": "8c59801cbf0148e95b318d88a6849b6b",
-=======
     "content-hash": "c8666637abbc11263c5e903c28f24597",
->>>>>>> 499e6bfc42ecb0a1b5ba2ea18512afe0351dbc91
     "packages": [
         {
             "name": "brick/math",
@@ -3209,16 +3205,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v6.1.1",
+            "version": "v6.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "6187424023fbffcd757789aeb517c9161b1eabee"
+                "reference": "9b190bc7a19d19add1dbb3382721973836e59b50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/6187424023fbffcd757789aeb517c9161b1eabee",
-                "reference": "6187424023fbffcd757789aeb517c9161b1eabee",
+                "url": "https://api.github.com/repos/symfony/console/zipball/9b190bc7a19d19add1dbb3382721973836e59b50",
+                "reference": "9b190bc7a19d19add1dbb3382721973836e59b50",
                 "shasum": ""
             },
             "require": {
@@ -8245,8 +8241,4 @@
     },
     "platform-dev": [],
     "plugin-api-version": "2.1.0"
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 499e6bfc42ecb0a1b5ba2ea18512afe0351dbc91
