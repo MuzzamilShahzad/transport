@@ -3205,16 +3205,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v6.1.1",
+            "version": "v6.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "6187424023fbffcd757789aeb517c9161b1eabee"
+                "reference": "9b190bc7a19d19add1dbb3382721973836e59b50"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/6187424023fbffcd757789aeb517c9161b1eabee",
-                "reference": "6187424023fbffcd757789aeb517c9161b1eabee",
+                "url": "https://api.github.com/repos/symfony/console/zipball/9b190bc7a19d19add1dbb3382721973836e59b50",
+                "reference": "9b190bc7a19d19add1dbb3382721973836e59b50",
                 "shasum": ""
             },
             "require": {
@@ -8243,7 +8243,10 @@
 <<<<<<< HEAD
     "plugin-api-version": "2.1.0"
 }
+<<<<<<< HEAD
 =======
     "plugin-api-version": "2.3.0"
 }
 >>>>>>> 402a0e2dff465557b361f1baff62cac16af7eee9
+=======
+>>>>>>> eba870a65288787d744fbc5e3e153817133d3000

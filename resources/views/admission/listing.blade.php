@@ -139,8 +139,9 @@
                                             <td>{{$student->gender}}</td>
                                             <td>{{ date('d/m/Y', strtotime($student->admission_date)) }}</td>
                                             <td>
-                                                <a href="{{ route('contractor.edit',$student->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                                <button data-id="{{$student->id}}" id="btn-delete-contractor" class="btn btn-danger btn-sm">Delete</button>
+                                                <a href="{{ route('student.details',$student->id) }}" class="btn btn-info btn-sm">Details</a>
+                                                <a href="{{ route('admission.edit',$student->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                                <button data-id="{{$student->id}}" id="btn-delete-admission" class="btn btn-danger btn-sm">Delete</button>
                                             </td>
                                         </tr>
                                         @endforeach
@@ -157,7 +158,7 @@
 </div>
 
 <!-- Student Details Modal -->
-<div class="modal fade" id="student-details-modal">
+<!-- <div class="modal fade" id="student-details-modal">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content modal-content-demo">
             <div class="modal-header">
@@ -855,7 +856,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!--End Student Details Modal -->
 
 <script src="{{ url('assets/js/admission/admission.js') }}"></script>
