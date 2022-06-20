@@ -364,7 +364,7 @@ $(document).ready(function () {
                         } else {
                             message += `<div class="alert alert-danger alert-dismissible">
                                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                            <strong> Success!</strong> `+ response.message + `
+                                            <strong> Error!</strong> `+ response.message + `
                                         </div>`;
                         }
                     } else {
@@ -515,4 +515,76 @@ $(document).ready(function () {
         }
 
     });
+
+    //Student Search
+    $("#btn-search-student").on("click", function (e) {
+        e.preventDefault();
+
+        var campus_id = $("#campus-id").val();
+        var session_id = $("#session-id").val();
+        var class_id = $("#class-id").val();
+        var section_id = $("#section-id").val();
+
+        var formData = {
+            'campus_id': campus_id,
+            'session_id': session_id,
+            'class_id': class_id,
+            'section_id': section_id
+        };
+
+        $.ajax({
+            url: baseUrl + '/search/student',
+            type: "POST",
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            data: formData,
+            dataType: "json",
+            success: function (response) {
+
+                if (response.status === false) {
+                    if (response.error) {
+                        if (Object.keys(response.error).length > 0) {
+                            $.each(response.error, function (key, value) {
+                                $("select[name='" + key + "']").siblings("span").find(".select2-selection--single").addClass("has-error");
+                                $("select[name='" + key + "']").siblings("span").after("<span class='error'>" + value.toString().split(/[,]+/).join("<br/>") + "</span>");
+                            });
+                        }
+                    }
+                }
+            },
+            error: function () {
+                message = `<div class="alert alert-danger alert-dismissible">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                <strong> Whoops !</strong> Something went wrong please contact to admintrator.
+                            </div>`;
+            },
+            complete: function () {
+            }
+        });
+    });
+
+    //Student Details
+    $(document).on('click', '#btn-student-details', function () {
+        var student_id = $(this).data('id');
+
+        $.ajax({
+            url: baseUrl + '/student/details',
+            type: "GET",
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            data: { student_id: student_id },
+            dataType: "json",
+            success: function (response) {
+
+            },
+            error: function () {
+                message = `<div class="alert alert-danger alert-dismissible">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                <strong> Whoops !</strong> Something went wrong please contact to admintrator.
+                            </div>`;
+            },
+            complete: function () {
+            }
+        });
+
+    });
+
 });
