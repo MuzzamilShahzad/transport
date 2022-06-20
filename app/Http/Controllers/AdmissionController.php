@@ -339,17 +339,6 @@ class AdmissionController extends Controller
         return response()->json($response);
     }
 
-<<<<<<< HEAD
-    public function importStudent(Request $request){
-
-        if($request->file){
-
-        } else {
-            return view('admission.import');
-        }
-    }
-    
-=======
     public function import(){
         $campuses        =  Campus::get();
         $sessions        =  Session::get();
@@ -398,5 +387,4 @@ class AdmissionController extends Controller
     //         return redirect()->back()->with('success', 'File has been Imported successfully.');
     //     }
     // }
->>>>>>> origin/ahsan
 }
