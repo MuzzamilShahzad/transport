@@ -46,11 +46,11 @@ class AdmissionController_old extends Controller
     public function store(Request $request) {
         // dd($request);
         $validator = Validator::make($request->all(), [
-            'campus_id'             =>  'required|numeric|gt:0|digits_between:1,10',
-            'session_id'            =>  'required|numeric|gt:0|digits_between:1,10',
-            'class_id'              =>  'required|numeric|gt:0|digits_between:1,10',
-            'section_id'            =>  'required|numeric|gt:0|digits_between:1,10',
-            'category_id'           =>  'required|numeric|gt:0|digits_between:1,10',
+            'campus_id'             =>  'required|numeric|gt:0|digits_between:1,11',
+            'session_id'            =>  'required|numeric|gt:0|digits_between:1,11',
+            'class_id'              =>  'required|numeric|gt:0|digits_between:1,11',
+            'section_id'            =>  'required|numeric|gt:0|digits_between:1,11',
+            'category_id'           =>  'required|numeric|gt:0|digits_between:1,11',
             'admission_date'        =>  'required|date_format:d-m-Y'
         ]);
 

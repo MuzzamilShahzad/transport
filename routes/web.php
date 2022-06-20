@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Http\Controllers\Student;
+
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\DashboardController;
@@ -21,6 +23,15 @@ use App\Http\Controllers\FeesMasterController;
 use App\Http\Controllers\FeesDiscountController;
 
 use App\Http\Controllers\StudentDetailsController;
+
+
+// ---------- STUDENT ---------- //
+Route::controller(RegistrationController::class)->group(function () {
+    Route::get('/student/registration/add', 'create')->name('student.registration.create');
+    // Route::post('/student/registration/store', 'store')->name('student.registration.store');
+    Route::get('/student/registration/store', 'store')->name('student.registration.store');
+    Route::get('/session/get-groups', 'getSessionGroups');
+});
 
 // Dashboard Routes
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -87,6 +98,14 @@ Route::controller(TransportRegistrationController::class)->group(function () {
     Route::delete('/transport/registration/delete', 'delete')->name('registration.delete');
 });
 
+//Student Registration Routes
+// Route::controller(StudentRegistrationController::class)->group(function () {
+//     Route::get('/student/registration/add', 'add')->name('student.registration.create');
+//     Route::post('/student/registration/store', 'store')->name('student.registration.store');
+
+//     Route::get('/session/get-groups', 'getSessionGroups');
+// });
+
 //Admission routes
 Route::controller(AdmissionController::class)->group(function () {
     Route::get('/admission', 'listing')->name('admission.view');
@@ -99,14 +118,6 @@ Route::controller(AdmissionController::class)->group(function () {
     Route::post('/admission/import/store', 'importStore')->name('admission.import.store');
 
     Route::get('/campus/get-system', 'getCampusSystem');
-});
-
-//Admission routes
-Route::controller(StudentRegistrationController::class)->group(function () {
-    Route::get('/student/registration/add', 'add')->name('student.registration.create');
-    Route::post('/student/registration/store', 'store')->name('student.registration.store');
-
-    Route::get('/session/get-groups', 'getSessionGroups');
 });
 
 Route::controller(FeesGroupController::class)->group(function () {
