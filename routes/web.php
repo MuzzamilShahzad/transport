@@ -89,11 +89,14 @@ Route::controller(TransportRegistrationController::class)->group(function () {
 
 //Admission routes
 Route::controller(AdmissionController::class)->group(function () {
+    Route::get('/admission', 'listing')->name('admission.view');
     Route::get('/admission/add', 'add')->name('admission.create');
     Route::post('/admission/store', 'store')->name('admission.store');
 
-    Route::get('admission/import', 'importStudent')->name('admission.import');
-    Route::post('admission/import', 'importStudent')->name('admission.import');
+    Route::post('/search/student', 'searchStudent');
+    Route::get('/student/details', 'studentDetails');
+    Route::get('/import', 'import')->name('import');
+    Route::post('/admission/import/store', 'importStore')->name('admission.import.store');
 
     Route::get('/campus/get-system', 'getCampusSystem');
 });
