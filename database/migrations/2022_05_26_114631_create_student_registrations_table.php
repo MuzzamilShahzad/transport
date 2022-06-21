@@ -33,8 +33,11 @@ return new class extends Migration
             $table->string('last_name',30);
             $table->date('dob')->nullable();
             $table->string('gender',10);
-            $table->string('siblings_in_mpa',5)->nullable();
+            
+            $table->enum('siblings_in_mpa',['Yes','No'])->default('No');
+            
             $table->string('no_of_siblings',10)->nullable();
+            
             $table->string('previous_class',20)->nullable();
             $table->string('previous_school',30)->nullable();
 

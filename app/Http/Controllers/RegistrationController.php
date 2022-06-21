@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Student;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
 use App\Models\Campus;
-use App\Models\StudentClass;
+use App\Models\SchoolClass;
 use App\Models\Session;
 use App\Models\Area;
 use App\Models\StudentRegistration;
@@ -17,13 +17,13 @@ class RegistrationController extends Controller
 {
     public function create() {
         $campus        =  Campus::get();
-        $studentClass  =  StudentClass::get();
+        $schoolClass   =  SchoolClass::get();
         $session       =  Session::get();
         $area          =  Area::get();
 
         $data = array(
             'campus'        =>  $campus,
-            'studentClass'  =>  $studentClass,
+            'schoolClass'   =>  $schoolClass,
             'session'       =>  $session,
             'area'          =>  $area,
             'page'          =>  'Student Registration',
@@ -34,10 +34,11 @@ class RegistrationController extends Controller
     }
 
     public function store(Request $request) {
+        
         $formData = $request->all();
+        dd($request->dob);
         
-        
-        $validator = Validator::make($request->all(), [
+        $validator = Validator::make($formData, [
             // 'campus_id'       =>  'required|numeric|gt:0|digits_between:1,11',
             // 'class_id'        =>  'required|numeric|gt:0|digits_between:1,11',
             // 'session_id'      =>  'required|numeric|gt:0|digits_between:1,11',
@@ -53,9 +54,9 @@ class RegistrationController extends Controller
             // 'computerize_registration'  =>   computerize_registration,
             'first_name'                =>  'required|alpha|max:30',
             'last_name'                 =>  'required|alpha|max:30',
-            'dob'                       =>  dob,
+            'dob'                       =>  'date_format:d-m-Y',
             'gender'                    =>  'required|alpha',
-            'siblings_in_mpa'           =>  'numeric|gt:0|digits_between:1,11',
+            // 'siblings_in_mpa'           =>  'numeric|gt:0|digits_between:1,11',
             'no_of_siblings'            =>  'required|numeric|gt:0|digits_between:1,11',
             'previous_class'            =>  'max:60',
             'previous_school'           =>  'max:60',
@@ -71,13 +72,13 @@ class RegistrationController extends Controller
             'father_cnic'               =>  'required|numeric|gt:0|digits:13',
             'father_email'              =>  'email|max:60',
             'father_occupation'         =>  'alpha|max:30',
-            'father_company_name'       =>  'alpha_num|max:30',
+            'father_company_name'       =>  'max:30',
             'father_phone'              =>  'required|numeric|gt:0|digits:12',
             'hear_about_us'             =>  'alpha|max:20',
             'other'                     =>  'alpha|max:20',
             // TEST-INTERVIEW GROUP
-            'test_group'                =>  'required_if:is_test_group,on|numeric|gt:0|digits_between:1,11',
-            'interview_group'           =>  'required_if:is_interview_group,on|numeric|gt:0|digits_between:1,11'
+            'test_group'                =>  'required_if:test_chkbox,on|numeric|gt:0|digits_between:1,11',
+            'interview_group'           =>  'required_if:interview_chkbox,on|numeric|gt:0|digits_between:1,11'
         ]);
 
         if ($validator->fails()) {
@@ -90,6 +91,8 @@ class RegistrationController extends Controller
             return response()->json($response);
             
         } else {
+
+            dd($formData);
             exit();
 
             $data = array(
@@ -101,7 +104,7 @@ class RegistrationController extends Controller
                 'computerize_registration'  =>  $formData['computerize_registration'],
                 'first_name'                =>  $formData['first_name'],
                 'last_name'                 =>  $formData['last_name'],
-                'dob'                       =>  date('Y-m-d', strtotime($formData['dob'])),
+                'dob'                       =>  $formData['dob'] ? date('Y-m-d', strtotime($formData['dob'])) : '',
                 'gender'                    =>  $formData['gender'],
                 'siblings_in_mpa'           =>  $formData['siblings_in_mpa'],
                 'no_of_siblings'            =>  $formData['no_of_siblings'],

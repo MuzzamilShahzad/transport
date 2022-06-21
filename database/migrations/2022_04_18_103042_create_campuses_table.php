@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('phone',15);
             $table->string('email',30);
             
-            $table->unsignedInteger('system_id')->nullable();
-            $table->foreign('system_id')->references('id')->on('school_systems')->onDelete('cascade');
+            // $table->unsignedInteger('system_id')->nullable();
+            // $table->foreign('system_id')->references('id')->on('school_systems')->onDelete('cascade');
             
             $table->tinyInteger('active_session');
             $table->string('logo',100);

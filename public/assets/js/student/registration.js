@@ -57,8 +57,8 @@ $(document).ready(function () {
             flag = false;
         }
         if (class_id == "" || class_id == "0") {
-            $("#class-id").siblings("span").find(".select2-selection--single").addClass("has-error");
-            $("#class-id").siblings("span").after("<span class='error'>This field is required.</span>");
+            $("#class-id:not([disabled]").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#class-id:not([disabled]").siblings("span").after("<span class='error'>This field is required.</span>");
             flag = false;
         }        
         if (class_group_id == "" || class_group_id == "0") {
@@ -132,24 +132,35 @@ $(document).ready(function () {
             flag = false;
         }
         if (city_id == ""  || city_id == "0") {
-            $("#city").addClass("has-error");
-            $("#city").after("<span class='error'>This field is required.</span>");
+            $("#city-id").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#city-id").siblings("span").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
 
-        if (test_group == "" || test_group == "0") {
-            $("#test-group").siblings("span").find(".select2-selection--single").addClass("has-error");
-            $("#test-group").siblings("span").after("<span class='error'>This field is required.</span>");
-            flag = false;
-        }
-        if (interview_group == "" || interview_group == "0") {
-            $("#interview-group").siblings("span").find(".select2-selection--single").addClass("has-error");
-            $("#interview-group").siblings("span").after("<span class='error'>This field is required.</span>");
-            flag = false;
+        if ($('#test-group').is(':checked')) {
+            if (test_group == "" || test_group == "0") {
+                $("#test-group:not([disabled]").siblings("span").find(".select2-selection--single").addClass("has-error");
+                $("#test-group:not([disabled]").siblings("span").after("<span class='error'>This field is required.</span>");
+                flag = false;
+            }
         }
 
+        if ($('#interview-group').is(':checked')) {
+
+            if (interview_group == "" || interview_group == "0") {
+                $("#interview-group:not([disabled]").siblings("span").find(".select2-selection--single").addClass("has-error");
+                $("#interview-group:not([disabled]").siblings("span").after("<span class='error'>This field is required.</span>");
+                flag = false;
+            }
+        }
+
+        console.log(flag);
+        console.log('Submitting................');
 
         if (flag) {
+
+            console.log('Submitting................');
+
 
             $("#btn-add-registration").addClass('disabled');
             $("#btn-add-registration").html('. . . . .');
@@ -157,7 +168,7 @@ $(document).ready(function () {
             var message = '';
             var formData = {
                     "campus_id"                 :  campus_id,
-                    "school_system_id"          :  system_id,
+                    "school_system_id"          :  school_system_id,
                     "class_id"                  :  class_id,
                     "class_group_id"            :  class_group_id,
                     "form_no"                   :  form_no,
@@ -180,11 +191,11 @@ $(document).ready(function () {
 
                     "father_salary"        :  father_salary,
                     "father_name"          :  father_name,
-                    "father_cnic"          :  father_cnic,
+                    "father_cnic"          :  father_cnic.replace("-",""),
                     "father_email"         :  father_email,
                     "father_occupation"    :  father_occupation,
                     "father_company_name"  :  father_company_name,
-                    "father_phone"         :  father_phone,
+                    "father_phone"         :  father_phone.replace("-",""),
                     "hear_about_us"        :  hear_about_us,
                     "other"                :  other,
 
@@ -257,22 +268,78 @@ $(document).ready(function () {
     });
     // End data store script
 
-    // Get Campus Wise System
+    // Get Campus School System
     $(document).on('change', '#campus-id', function (e) {
         e.preventDefault();
 
         var campus_id = $('#campus-id').val();
+        
+        if(campus_id !== "" && campus_id > "0"){
 
-        $.ajax({
-            url: baseUrl + '/campus/get-system',
-            type: "GET",
-            data: { campus_id: campus_id },
-            success: function (response) {
-                var html = '<label class="form-label tx-semibold">System</label>';
-                html += '<input type="text" class="form-control" value="' + response.system + '" name="system" id="system" readonly>';
-                $('#campus-system-input').html(html);
-            }
-        });
+            $.ajax({
+                url: baseUrl + '/campus/get-school-system-and-class',
+                type: "GET",
+                data: { campus_id: campus_id },
+                success: function (response) {
+                    
+                    var campusSchoolSystems = response.campusSchoolSystems
+                    var campusClasses       = response.campusClasses
+                    console.log(campusSchoolSystems);
+                    
+                    var campuses = `<option selected value="">Select</option>`;
+                    var classes  = `<option selected value="">Select</option>`;
+                    if(campusSchoolSystems.length){
+                        $(campusSchoolSystems).each(function(key, value){
+                            campuses += `<option value="`+value.id+`" >`+value.type+`</option>`;
+                        });
+                    }
+                    
+                    if(campusClasses.length){
+                        $(campusClasses).each(function(key, value){
+                            classes += `<option value="`+value.id+`" >`+value.name+`</option>`;
+                        });
+                    }
+                    
+                    $('#school-system-id').prop('disabled',false);
+                    $('#school-system-id').html(campuses);
+
+                    $('#class-id').prop('disabled',false);
+                    $('#class-id').html(classes);
+                }
+            });
+        }
+    });
+
+    $(document).on('change', '#class-id', function (e) {
+        e.preventDefault();
+
+        var class_id   =  $('#class-id').val();
+        var campus_id  =  $('#campus-id').val();
+  
+        if( (class_id !== "" && class_id > "0") && (campus_id !== "" && campus_id > "0")){
+            $.ajax({
+                url: baseUrl + '/campus/get-class-groups',
+                type: "GET",
+                data: { class_id: class_id, campus_id: campus_id },
+                success: function (response) {
+                    
+                    if(response.status === true){
+                        
+                        var classGroup  =  response.classGroups;
+
+                        var groups      =  `<option selected value="">Select</option>`;
+                        if(classGroup.length){
+                            $(classGroup).each(function(key, value){
+                                groups += `<option value="`+value.id+`" >`+value.name+`</option>`;
+                            });
+                        }
+
+                        $('#class-group-id').prop('disabled',false);
+                        $('#class-group-id').html(groups);
+                    }
+                }
+            });
+        }
     });
 
     // Get Session Wise Groups
@@ -280,25 +347,54 @@ $(document).ready(function () {
         e.preventDefault();
 
         var session_id = $('#session-id').val();
+        
+        if(session_id !== "" && session_id > "0"){
 
-        $.ajax({
-            url: baseUrl + '/session/get-groups',
-            type: "GET",
-            data: { session_id: session_id },
-            success: function (response) {
-                var html = '<option value="">Select Test Group</option>';
-                $.each(response.testGroups, function (key, v) {
-                    html += '<option value="' + v.id + '">' + v.date + ' ' + v.name + '</option>';
-                });
-                $('#test-group').html(html);
+            $.ajax({
+                url: baseUrl + '/campus/get-test-inteview-groups',
+                type: "GET",
+                data: { session_id: session_id },
+                success: function (response) {
+                    
+                    if(response.status === true){
+                        
+                        var interviewGroups  =  response.interviewGroups;
+                        var testGroups       =  response.testGroups;
+                        
+                        var interviews  =  `<option selected value="">Select</option>`;
+                        var tests       =  `<option selected value="">Select</option>`;
+                        
+                        if(interviewGroups.length){
+                            $(interviewGroups).each(function(key, value){
+                                interviews += `<option value="`+value.id+`" >`+value.type+`</option>`;
+                            });
+                        }
+                        
+                        if(testGroups.length){
+                            $(testGroups).each(function(key, value){
+                                tests += `<option value="`+value.id+`" >`+value.type+`</option>`;
+                            });
+                        }
 
-                var html = '<option value="">Select Interview Group</option>';
-                $.each(response.InterviewGroups, function (key, v) {
-                    html += '<option value="' + v.id + '">' + v.date + ' ' + v.name + '</option>';
-                });
-                $('#interview-group').html(html);
-            }
-        });
+                        // $('#test-group').prop('disabled',false);
+                        $('#test-group').html(tests);
+                        
+                        // $('#interview-group').prop('disabled',false);
+                        $('#interview-group').html(interviews);
+                    }
+                }
+            });
+        }
+    });
+
+    $(document).on('change',"input[type='checkbox']", function() {
+        
+        if(this.checked){
+            $(this).parent().siblings("div").find('select').prop('disabled',false);
+        } else {
+            $(this).parent().siblings("div").find('select').val('0').change();
+            $(this).parent().siblings("div").find('select').prop('disabled',true);
+        }
     });
 
 });
