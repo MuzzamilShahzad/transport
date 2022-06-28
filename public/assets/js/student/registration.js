@@ -31,7 +31,7 @@ $(document).ready(function () {
         var block_no          =  $("#block-no").val();
         var building_name_no  =  $("#building-name-no").val();
         var area_id           =  $("#area-id").val();
-        var city_id           =  $("#city_id").val();
+        var city_id           =  $("#city-id").val();
 
         var father_cnic          =  $("#father-cnic").val();
         var father_name          =  $("#father-name").val();
@@ -137,7 +137,8 @@ $(document).ready(function () {
             flag = false;
         }
 
-        if ($('#test-group').is(':checked')) {
+        if ($('#test-group-chkbox').is(':checked')) {
+            console.log("if");
             if (test_group == "" || test_group == "0") {
                 $("#test-group:not([disabled]").siblings("span").find(".select2-selection--single").addClass("has-error");
                 $("#test-group:not([disabled]").siblings("span").after("<span class='error'>This field is required.</span>");
@@ -145,7 +146,7 @@ $(document).ready(function () {
             }
         }
 
-        if ($('#interview-group').is(':checked')) {
+        if ($('#interview-group-chkbox').is(':checked')) {
 
             if (interview_group == "" || interview_group == "0") {
                 $("#interview-group:not([disabled]").siblings("span").find(".select2-selection--single").addClass("has-error");
@@ -202,6 +203,9 @@ $(document).ready(function () {
                     "test_group"       :  test_group,
                     "interview_group"  :  interview_group
             };
+            
+            // console.log(formData);
+            // console.log(father_cnic.replace("-",""));
 
             $.ajax({
                 url: baseUrl + '/student/registration/store',
@@ -268,8 +272,98 @@ $(document).ready(function () {
     });
     // End data store script
 
-    // Get Campus School System
-    $(document).on('change', '#campus-id', function (e) {
+    $('body').on("click","#btn-add-test",function(e){
+    
+        $(this).parent('div').remove();
+        $("#test-group").val('0').change();
+
+        $('#test-group-row').after(`<div class="form-row" id="test-group-details">
+                                        <div class="form-group col-md-3 mb-0">
+                                            <div class="form-group">
+                                                <label class="form-label tx-semibold">Name</label>
+                                                <input type="text" class="form-control" name="test_name" id="test-name" placeholder="Test Name">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-3 mb-0">
+                                            <div class="form-group">
+                                                <label class="form-label tx-semibold date-picker">Date</label>
+                                                <input class="form-control date-picker bg-transparent" name="test_date" id="test-date" placeholder="DD-MM-YYYY" type="text" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-3 mb-0">
+                                            <div class="form-group">
+                                                <label class="form-label tx-semibold date-picker">Time</label>
+                                                <input class="form-control time-picker bg-transparent" name="test_time" id="test-time" placeholder="DD-MM-YYYY" type="time">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-2 mb-0">
+                                            <div class="form-group">
+                                                <label class="form-label tx-semibold date-picker">Remove</label>
+                                                <img src="`+baseUrl+`/assets/img/remove-icon.png" class="btn-remove-img" alt="Remove Test" id="btn-remove-test">
+                                            </div>
+                                        </div>
+                                    </div>`);
+        $('.date-picker').datepicker({
+            dateFormat: 'dd-mm-yy',
+            showOtherMonths: true,
+            selectOtherMonths: true
+        });                            
+    });
+    
+    $('body').on("click","#btn-remove-test",function(e){
+        $("#test-group-details").remove();
+        $("#test-group-row").children('div').after(`<div class="form-group col-md-2 mb-0">
+                                                        <img src="`+baseUrl+`/assets/img/add-icon.png" class="btn-add-img" alt="Add Test" id="btn-add-test">
+                                                    </div>`);
+    });
+    
+    $('body').on("click","#btn-add-interview",function(e){
+    
+        $(this).parent('div').remove();
+        $("#interview-group").val('0').change();
+
+        $('#interview-group-row').after(`<div class="form-row" id="interview-group-details">
+                                            <div class="form-group col-md-3 mb-0">
+                                                <div class="form-group">
+                                                    <label class="form-label tx-semibold">Name</label>
+                                                    <input type="text" class="form-control" name="interview_name" id="interview-name" placeholder="Interview Name">
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-3 mb-0">
+                                                <div class="form-group">
+                                                    <label class="form-label tx-semibold date-picker">Date</label>
+                                                    <input class="form-control date-picker bg-transparent" name="interview_date" id="interview-date" placeholder="DD-MM-YYYY" type="text" readonly>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-3 mb-0">
+                                                <div class="form-group">
+                                                    <label class="form-label tx-semibold date-picker">Time</label>
+                                                    <input class="form-control time-picker bg-transparent" name="interview_time" id="interview-time" placeholder="DD-MM-YYYY" type="time">
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-2 mb-0">
+                                                <div class="form-group">
+                                                    <label class="form-label tx-semibold date-picker">Remove</label>
+                                                    <img src="`+baseUrl+`/assets/img/remove-icon.png" class="btn-remove-img" alt="Remove Interview" id="btn-remove-interview">
+                                                </div>
+                                            </div>
+                                        </div>`);
+        $('.date-picker').datepicker({
+            dateFormat: 'dd-mm-yy',
+            showOtherMonths: true,
+            selectOtherMonths: true
+        });                            
+    });
+    
+    $('body').on("click","#btn-remove-interview",function(e){
+        $("#interview-group-details").remove();
+        $("#interview-group-row").children('div').after(`<div class="form-group col-md-2 mb-0">
+                                                        <img src="`+baseUrl+`/assets/img/add-icon.png" class="btn-add-img" alt="Add Interview" id="btn-add-interview">
+                                                    </div>`);
+    });
+
+    
+    $(document).on('change', '#campus-id-old', function (e) {
         e.preventDefault();
 
         var campus_id = $('#campus-id').val();
@@ -277,40 +371,88 @@ $(document).ready(function () {
         if(campus_id !== "" && campus_id > "0"){
 
             $.ajax({
-                url: baseUrl + '/campus/get-school-system-and-class',
+                url: baseUrl + '/campus/school-system',
                 type: "GET",
                 data: { campus_id: campus_id },
                 success: function (response) {
                     
-                    var campusSchoolSystems = response.campusSchoolSystems
-                    var campusClasses       = response.campusClasses
-                    console.log(campusSchoolSystems);
-                    
-                    var campuses = `<option selected value="">Select</option>`;
-                    var classes  = `<option selected value="">Select</option>`;
-                    if(campusSchoolSystems.length){
-                        $(campusSchoolSystems).each(function(key, value){
-                            campuses += `<option value="`+value.id+`" >`+value.type+`</option>`;
-                        });
-                    }
-                    
-                    if(campusClasses.length){
-                        $(campusClasses).each(function(key, value){
-                            classes += `<option value="`+value.id+`" >`+value.name+`</option>`;
-                        });
-                    }
-                    
-                    $('#school-system-id').prop('disabled',false);
-                    $('#school-system-id').html(campuses);
+                    if(response.status === true){
 
-                    $('#class-id').prop('disabled',false);
-                    $('#class-id').html(classes);
+                        var campusSchoolSystems = response.campusSchoolSystems
+                        var campusClasses       = response.campusClasses
+                        console.log(campusSchoolSystems);
+                        
+                        var schoolSystems = `<option selected value="0">Select School System</option>`;
+                        // var classes  = `<option selected value="">Select</option>`;
+                        if(campusSchoolSystems.length){
+                            $(campusSchoolSystems).each(function(key, value){
+                                schoolSystems += `<option value="`+value.id+`" >`+value.type+`</option>`;
+                            });
+                        }
+                        
+                        // if(campusClasses.length){
+                        //     $(campusClasses).each(function(key, value){
+                        //         classes += `<option value="`+value.id+`" >`+value.name+`</option>`;
+                        //     });
+                        // }
+                        
+                        $('#school-system-id').prop('disabled',false);
+                        $('#school-system-id').html(schoolSystems);
+
+                        // $('#class-id').prop('disabled',false);
+                        // $('#class-id').html(classes);
+                    }
+                }
+            });
+        } else {
+            
+            $('#school-system-id').html('<option selected value="0">Select School System</option>');
+            $('#school-system-id').prop('disabled',true);
+            
+            $('#class-id').html('<option selected value="0">Select Class</option>');
+            $('#class-id').prop('disabled',true);
+            
+            $('#class-group-id').html('<option selected value="0">Select Class Group</option>');
+            $('#class-group-id').prop('disabled',true);
+        }
+    });
+
+    $(document).on('change', '#school-system-id-old', function (e) {
+        e.preventDefault();
+
+        var campus_id  =  $('#campus-id').val();
+        var system_id   =  $('#school-system-id').val();
+  
+        if( (campus_id !== "" && campus_id > "0") && (system_id !== "" && system_id > "0") ){
+            $.ajax({
+                url: baseUrl + '/campus/classes',
+                type: "GET",
+                data: { campus_id: campus_id, system_id: system_id },
+                success: function (response) {
+                    
+                    if(response.status === true){
+                        
+                        console.log(response);
+                        
+                        var campusClasses  =  response.campusClasses;
+
+                        var classes  =  `<option selected value="0">Select Class</option>`;
+
+                        if(campusClasses.length){
+                            $(campusClasses).each(function(key, value){
+                                classes += `<option value="`+value.id+`" >`+value.name+`</option>`;
+                            });
+                        }
+
+                        $('#class-id').prop('disabled',false);
+                        $('#class-id').html(classes);
+                    }
                 }
             });
         }
     });
 
-    $(document).on('change', '#class-id', function (e) {
+    $(document).on('change', '#class-id-old', function (e) {
         e.preventDefault();
 
         var class_id   =  $('#class-id').val();
@@ -342,7 +484,138 @@ $(document).ready(function () {
         }
     });
 
-    // Get Session Wise Groups
+    $(document).on('change', '#campus-id', function (e) {
+        
+        e.preventDefault();
+
+        var campus_id = $('#campus-id').val();
+        if(campus_id !== "" && campus_id > "0"){
+
+            $.ajax({
+                url: baseUrl + '/campus/school-system',
+                type: "GET",
+                data: { campus_id: campus_id },
+                success: function (response) {
+                    
+                    if(response.status === true){
+
+                        var campusSchoolSystems = response.campusSchoolSystems                        
+                        var schoolSystems = `<option value="">Select</option>`;
+                        
+                        if(campusSchoolSystems.length){
+                            $(campusSchoolSystems).each(function(key, value){
+                                schoolSystems += `<option value="`+value.id+`" >`+value.type+`</option>`;
+                            });
+                        }
+                        
+                        $('#school-system-id').prop('disabled',false);
+                        $('#school-system-id').html(schoolSystems);
+                    }
+                }
+            });
+        } else {
+            
+            $('#school-system-id, #class-id, #class-group-id').siblings("span.error").remove();
+            $('#school-system-id, #class-id, #class-group-id').siblings("span").find(".select2-selection--single").removeClass("has-error");
+
+            $('#school-system-id, #class-id, #class-group-id').html('<option value="">Select</option>');
+            $('#school-system-id, #class-id, #class-group-id').prop('disabled',true);
+        }
+    });
+
+    $(document).on('change', '#school-system-id', function (e) {
+        
+        e.preventDefault();
+
+        var campus_id  =  $('#campus-id').val();
+        var system_id   =  $('#school-system-id').val();
+  
+        if( (campus_id !== "" && campus_id > "0") && (system_id !== "" && system_id > "0") ){
+            $.ajax({
+                url: baseUrl + '/campus/classes',
+                type: "GET",
+                data: { campus_id: campus_id, system_id: system_id },
+                success: function (response) {
+                    
+                    if(response.status === true){
+                        
+                        var campusClasses  =  response.campusClasses;
+                        var classes  =  `<option value="">Select</option>`;
+
+                        if(campusClasses.length){
+                            $(campusClasses).each(function(key, value){
+                                classes += `<option value="`+value.id+`" >`+value.name+`</option>`;
+                            });
+                        }
+
+                        $('#class-id').prop('disabled',false);
+                        $('#class-id').html(classes);
+                    }
+                }
+            });
+        } else {
+
+            $('#class-id, #class-group-id').siblings("span.error").remove();
+            $('#class-id, #class-group-id').siblings("span").find(".select2-selection--single").removeClass("has-error");
+
+            $('#class-id, #class-group-id').html('<option value="">Select</option>');
+            $('#class-id, #class-group-id').prop('disabled',true);
+        }
+    });
+
+    $(document).on('change', '#class-id', function (e) {
+        e.preventDefault();
+
+        var campus_id  =  $('#campus-id').val();
+        var system_id  =  $('#school-system-id').val();
+        var class_id   =  $('#class-id').val();
+  
+        if((campus_id !== "" && campus_id > "0") && (system_id !== "" && system_id > "0") && (class_id !== "" && class_id > "0")){
+            $.ajax({
+                url: baseUrl + '/campus/class-groups-and-sections',
+                type: "GET",
+                data: { campus_id: campus_id, system_id: system_id, class_id: class_id  },
+                success: function (response) {
+                    
+                    if(response.status === true){
+                        
+                        var classGroup  =  response.classGroups;
+                        var groups      =  `<option value="">Select</option>`;
+
+                        var classSection  =  response.classSections;
+                        var sections      =  `<option value="">Select</option>`;
+
+                        if(classGroup.length){
+                            $(classGroup).each(function(key, value){
+                                groups += `<option value="`+value.id+`" >`+value.name+`</option>`;
+                            });
+
+                            $('#class-group-id').prop('disabled',false);
+                            $('#class-group-id').html(groups);
+                        }
+
+                        if(classSection.length){
+                            $(classSection).each(function(key, value){
+                                sections += `<option value="`+value.id+`" >`+value.name+`</option>`;
+                            });
+                        }
+
+                        $('#section-id').prop('disabled',false);
+                        $('#section-id').html(sections);
+                        
+                    }
+                }
+            });
+        } else {
+
+            $('#class-group-id').siblings("span.error").remove();
+            $('#class-group-id').siblings("span").find(".select2-selection--single").removeClass("has-error");
+
+            $('#class-group-id').html('<option value="">Select</option>');
+            $('#class-group-id').prop('disabled',true);
+        }
+    });
+
     $(document).on('change', '#session-id', function (e) {
         e.preventDefault();
 
@@ -387,14 +660,48 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on('change',"input[type='checkbox']", function() {
+    $(document).on('change',"#test-group-chkbox", function() {
         
-        if(this.checked){
-            $(this).parent().siblings("div").find('select').prop('disabled',false);
+        $("#btn-add-test").parent('div').remove();
+        $("#test-group-details").remove();
+        
+        if($('#test-group-chkbox').is(':checked')){
+            $("#test-group").prop('disabled',false);
+            $("#test-group-row").children('div').after(`<div class="form-group col-md-2 mb-0">
+                                                        <img src="`+baseUrl+`/assets/img/add-icon.png" class="btn-add-img" alt="Add Test" id="btn-add-test">
+                                                    </div>`);
         } else {
-            $(this).parent().siblings("div").find('select').val('0').change();
-            $(this).parent().siblings("div").find('select').prop('disabled',true);
+            $("#test-group").val('0').change();
+            $("#test-group").prop('disabled',true);
         }
     });
+
+    $(document).on('change',"#interview-group-chkbox", function() {
+        
+        $("#btn-add-interview").parent('div').remove();
+        $("#interview-group-details").remove();
+        
+        if($('#interview-group-chkbox').is(':checked')){
+            $("#interview-group").prop('disabled',false);
+            $("#interview-group-row").children('div').after(`<div class="form-group col-md-2 mb-0">
+                                                        <img src="`+baseUrl+`/assets/img/add-icon.png" class="btn-add-img" alt="Add interview" id="btn-add-interview">
+                                                    </div>`);
+        } else {
+            $("#interview-group").val('0').change();
+            $("#interview-group").prop('disabled',true);
+        }
+    });
+
+    $('.date-picker').datepicker({
+        dateFormat: 'dd-mm-yy',
+		showOtherMonths: true,
+		selectOtherMonths: true
+	});
+
+    $('.date-time-picker').datetimepicker({
+		format: "dd-mm-yyyy HH:ii P",
+        timepicker:true,
+		autoclose : true
+	});
 
 });

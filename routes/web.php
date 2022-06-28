@@ -39,10 +39,13 @@ Route::controller(RegistrationController::class)->group(function () {
 
 // ---------- SCHOOL ---------- //
 Route::controller(CampusController::class)->group(function () {
-    Route::get('/campus/get-school-system-and-class', 'getCampusSchoolSystemAndClassesByCampusId')->name('campus.schoolSystemAndClassesByCampusId');
-    Route::get('/campus/get-class-groups', 'getclassGroupByCampusAndClassId')->name('campus.classGroupByCampusAndClassId');
-    Route::get('/campus/get-test-inteview-groups', 'getTestInterviewGroupByCampusId')->name('campus.testInterviewGroupByCampusId');
-    // Route::get('/campus/get-class-groups-test-and-interview', 'getclassGroupTestInterviewByCampusAndClassId')->name('campus.classGroupTestInterviewByCampusAndClassId');
+    Route::get('/campus/school-system', 'getCampusSchoolSystemByCampusId')->name('campus.campusSchoolSystemByCampusId');
+    Route::get('/campus/classes', 'getCampusClassesByCampusAndSystemId')->name('campus.CampusClassesByCampusAndSystemId');
+    // Route::get('/campus/get-school-system-and-class', 'getCampusSchoolSystemAndClassesByCampusId')->name('campus.schoolSystemAndClassesByCampusId');
+    Route::get('/campus/class-groups-and-sections', 'getClassGroupAndSectionByCampusSystemAndClassId')->name('campus.classGroupAndSectionByCampusSystemAndClassId');
+    // Route::get('/campus/test-inteview-groups', 'getTestInterviewGroupByCampusId')->name('campus.testInterviewGroupByCampusId');
+    Route::get('/campus/test-inteview-groups-and-class-sections', 'getTestInterviewGroupAndClassSectionByCampusSystemClassId')->name('campus.testInterviewGroupAndClassSectionByCampusSystemClassId');
+    // Route::get('/campus/class-sections', 'getSectionByCampusSytemClassSessionId')->name('campus.sectionByCampusSytemClassSessionId');
 });
 
 // Route::controller(ClassController::class)->group(function () {
@@ -125,7 +128,7 @@ Route::controller(TransportRegistrationController::class)->group(function () {
 //Admission routes
 Route::controller(AdmissionController::class)->group(function () {
     Route::get('/admission', 'listing')->name('admission.view');
-    Route::get('/admission/add', 'add')->name('admission.create');
+    Route::get('/admission/add', 'create')->name('admission.create');
     Route::post('/admission/store', 'store')->name('admission.store');
     Route::get('/admission/edit/{id}', 'edit')->name('admission.edit');
     Route::put('/admission/update', 'update')->name('admission.update');
@@ -134,7 +137,8 @@ Route::controller(AdmissionController::class)->group(function () {
 
     Route::post('/search/student', 'searchStudent');
     Route::get('/student/details', 'studentDetails');
-    Route::get('/import', 'import')->name('import');
+    // Route::get('/import', 'import')->name('import');
+    Route::get('admission/import', 'import')->name('admission.import');
     Route::post('/admission/import/store', 'importStore')->name('admission.import.store');
 
     Route::get('/campus/get-system', 'getCampusSystem');

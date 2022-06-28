@@ -59,8 +59,14 @@ return new class extends Migration
             $table->string('father_phone',20);
             $table->string('hear_about_us',30)->nullable();
 
-            $table->string('test_group',30)->nullable();
-            $table->string('interview_group',30)->nullable();
+            // $table->string('test_group',30)->nullable();
+            // $table->string('interview_group',30)->nullable();
+
+            $table->unsignedInteger('test_group_id');
+            $table->foreign('test_group_id')->references('id')->on('test_interview_groups')->onDelete('cascade');
+
+            $table->unsignedInteger('interview_group_id');
+            $table->foreign('interview_group_id')->references('id')->on('test_interview_groups')->onDelete('cascade');
 
             $table->timestamps();
         });

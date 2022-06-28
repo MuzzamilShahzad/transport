@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Campus;
 use App\Models\Session;
-use App\Models\StudentClass;
+use App\Models\Classes;
 use App\Models\Section;
-use App\Models\Category;
-use App\Models\SchoolHouse;
+// use App\Models\Category;
+// use App\Models\SchoolHouse;
 use App\Models\Area;
 use App\Models\System;
 
@@ -56,31 +56,24 @@ class AdmissionController extends Controller
         return view('admission.listing', compact('data'));
     }
 
-    public function add() {
-        $campus        =  Campus::get();
+    public function create() {
+        $campus        =  Campus::where('is_active',1)->where('is_delete',0)->get();
         $session       =  Session::get();
-        $studentClass  =  StudentClass::get();
-        $section       =  Section::get();
-        $category      =  Category::get();
-        $schoolHouse   =  SchoolHouse::get();
         $area          =  Area::get();
 
         $data = array(
-            'campus'        =>  $campus,
-            'session'       =>  $session,
-            'studentClass'  =>  $studentClass,
-            'section'       =>  $section,
-            'category'      =>  $category,
-            'schoolHouse'   =>  $schoolHouse,
-            'area'          =>  $area,
-            'page'          =>  'Admission',
-            'menu'          =>  'Add Admission'
+            'campus'   =>  $campus,
+            'session'  =>  $session,
+            'area'     =>  $area,
+            'page'     =>  'Admission',
+            'menu'     =>  'Add Admission'
         );
 
         return view('admission.add', compact('data'));
     }
 
     public function store(Request $request) {
+
         $validator = Validator::make($request->all(), [
             'campus_id'       =>  'required|numeric|gt:0|digits_between:1,11',
             'session_id'      =>  'required|numeric|gt:0|digits_between:1,11',
@@ -651,7 +644,7 @@ class AdmissionController extends Controller
         print_r($request->file('import_file'));
         echo "<br>";
 
-        // $query = Excel::import(new StudentAdmissionImport, $request->file('import_file'));
+        $query = Excel::import(new StudentAdmissionImport, $request->file('import_file'));
         $query = true;
         if ($query) {
             return redirect()->back()->with('success', 'File has been Imported successfully.');
@@ -669,8 +662,6 @@ class AdmissionController extends Controller
     //         return redirect()->back()->with('success', 'File has been Imported successfully.');
     //     }
     // }
-<<<<<<< HEAD
-=======
 
     public function delete(Request $request) {
         $student_id      =  $request->student_id;
@@ -718,5 +709,4 @@ class AdmissionController extends Controller
 
     }
     
->>>>>>> eba870a65288787d744fbc5e3e153817133d3000
 }

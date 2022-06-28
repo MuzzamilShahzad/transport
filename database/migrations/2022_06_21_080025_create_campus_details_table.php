@@ -13,16 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('campus_school_systems', function (Blueprint $table) {
+        Schema::create('campus_details', function (Blueprint $table) {
             
             $table->increments('id');
-
-            $table->unsignedInteger('system_id')->nullable();
-            $table->foreign('system_id')->references('id')->on('school_systems')->onDelete('cascade');
+            
+            $table->string('short_name',10);
             
             $table->unsignedInteger('campus_id')->nullable();
             $table->foreign('campus_id')->references('id')->on('campuses')->onDelete('cascade');
-
+            
+            $table->unsignedInteger('system_id')->nullable();
+            $table->foreign('system_id')->references('id')->on('school_systems')->onDelete('cascade');
+            
+            $table->unique(array('campus_id','system_id'));
+            
             $table->timestamps();
         });
     }
@@ -34,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('campus_school_systems');
+        Schema::dropIfExists('campus_details');
     }
 };

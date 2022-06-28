@@ -18,13 +18,10 @@ return new class extends Migration
             $table->increments('id');
 
             $table->string('name',20);
-            $table->string('short_name',10);
+            
             $table->string('address',60);
             $table->string('phone',15);
             $table->string('email',30);
-            
-            // $table->unsignedInteger('system_id')->nullable();
-            // $table->foreign('system_id')->references('id')->on('school_systems')->onDelete('cascade');
             
             $table->tinyInteger('active_session');
             $table->string('logo',100);

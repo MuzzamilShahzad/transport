@@ -29,13 +29,13 @@ return new class extends Migration
             $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');
 
             $table->unsignedInteger('section_id');
-            $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
+            $table->foreign('section_id')->references('id')->on('class_sections')->onDelete('cascade');
 
-            $table->unsignedInteger('category_id');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            // $table->unsignedInteger('category_id');
+            // $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
          
-            $table->unsignedInteger('school_house_id')->nullable();
-            $table->foreign('school_house_id')->references('id')->on('school_houses')->onDelete('cascade');
+            // $table->unsignedInteger('school_house_id')->nullable();
+            // $table->foreign('school_house_id')->references('id')->on('school_houses')->onDelete('cascade');
 
             $table->unsignedInteger('student_guardian_id')->nullable();
             $table->foreign('student_guardian_id')->references('id')->on('student_guardian_details')->onDelete('cascade');

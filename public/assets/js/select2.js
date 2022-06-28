@@ -2,9 +2,9 @@ jQuery(function () {
 	$('.select2').select2({
 		placeholder: 'Select',
 		searchInputPlaceholder: 'Search',
-		width: '100%'
+		width: '100%',
+		allowClear: true
 	});
-
 	$('.campusSelect2').select2({
 		placeholder: 'Select Campus',
 		searchInputPlaceholder: 'Search',
@@ -50,6 +50,7 @@ jQuery(function () {
 		searchInputPlaceholder: 'Search',
 		width: '100%'
 	});
+
 	$('.permenantSelect2').select2({
 		placeholder: 'Select Permenant Area',
 		searchInputPlaceholder: 'Search',
@@ -84,5 +85,40 @@ jQuery(function () {
 			element.focus();
 		})
 	});
+
+	// $('.testGroup').select2({
+    //     placeholder:'Select Test Group',
+    //     tags:true,
+    // }).on('select2:close', function(){
+    //     var element = $(this);
+
+	// 	alert('You want to save');
+
+    //     console.log(element);
+    //     console.log(element.val());
+
+	// 	// $(this).remove();
+
+	// 	// $('.testGroup').select2();
+        
+	// 	// var new_category = $.trim(element.val());
+    
+    //     // if(new_category != '')
+    //     // {
+    //     //   $.ajax({
+    //     //     url:"add.php",
+    //     //     method:"POST",
+    //     //     data:{category_name:new_category},
+    //     //     success:function(data)
+    //     //     {
+    //     //       if(data == 'yes')
+    //     //       {
+    //     //         element.append('<option value="'+new_category+'">'+new_category+'</option>').val(new_category);
+    //     //       }
+    //     //     }
+    //     //   })
+    //     // }
+    
+    // });
 
 });

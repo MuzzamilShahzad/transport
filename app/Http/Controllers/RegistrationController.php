@@ -7,23 +7,21 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
 use App\Models\Campus;
-use App\Models\SchoolClass;
+use App\Models\Classes;
+use App\Models\CampusClassGroup;
+use App\Models\StudentRegistration;
 use App\Models\Session;
 use App\Models\Area;
-use App\Models\StudentRegistration;
-use App\Models\Group;
 
 class RegistrationController extends Controller
 {
     public function create() {
         $campus        =  Campus::get();
-        $schoolClass   =  SchoolClass::get();
         $session       =  Session::get();
         $area          =  Area::get();
 
         $data = array(
             'campus'        =>  $campus,
-            'schoolClass'   =>  $schoolClass,
             'session'       =>  $session,
             'area'          =>  $area,
             'page'          =>  'Student Registration',
@@ -36,7 +34,8 @@ class RegistrationController extends Controller
     public function store(Request $request) {
         
         $formData = $request->all();
-        dd($request->dob);
+
+        dd($formData);
         
         $validator = Validator::make($formData, [
             // 'campus_id'       =>  'required|numeric|gt:0|digits_between:1,11',
@@ -65,7 +64,7 @@ class RegistrationController extends Controller
             'block_no'                  =>  'required|alpha_num|max:60',
             'building_name_no'          =>  'required|alpha_num|max:60',
             'area_id'                   =>  'required|numeric|gt:0|digits_between:1,11',
-            'city_id'                   =>  'required|numeric|gt:0|digits_between:1,11',
+            // 'city_id'                   =>  'required|numeric|gt:0|digits_between:1,11',
             // FATHERS DETAIL
             'father_salary'             =>  'numeric|gt:0|digits_between:1,11',
             'father_name'               =>  'required|max:30',
@@ -73,9 +72,9 @@ class RegistrationController extends Controller
             'father_email'              =>  'email|max:60',
             'father_occupation'         =>  'alpha|max:30',
             'father_company_name'       =>  'max:30',
-            'father_phone'              =>  'required|numeric|gt:0|digits:12',
+            'father_phone'              =>  'required|numeric|gt:0|digits:11',
             'hear_about_us'             =>  'alpha|max:20',
-            'other'                     =>  'alpha|max:20',
+            // 'other'                     =>  'alpha|max:20',
             // TEST-INTERVIEW GROUP
             'test_group'                =>  'required_if:test_chkbox,on|numeric|gt:0|digits_between:1,11',
             'interview_group'           =>  'required_if:interview_chkbox,on|numeric|gt:0|digits_between:1,11'

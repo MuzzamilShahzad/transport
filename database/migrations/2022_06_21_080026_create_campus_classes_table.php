@@ -17,8 +17,14 @@ return new class extends Migration
             
             $table->increments('id');
 
-            $table->unsignedInteger('campus_id')->nullable();
-            $table->foreign('campus_id')->references('id')->on('campuses')->onDelete('cascade');
+            // $table->unsignedInteger('campus_id')->nullable();
+            // $table->foreign('campus_id')->references('id')->on('campuses')->onDelete('cascade');
+            
+            // $table->unsignedInteger('system_id')->nullable();
+            // $table->foreign('system_id')->references('id')->on('campus_school_systems')->onDelete('cascade');
+            
+            $table->unsignedInteger('campus_detail_id')->nullable();
+            $table->foreign('campus_detail_id')->references('id')->on('campus_details')->onDelete('cascade');
             
             $table->unsignedInteger('class_id')->nullable();
             $table->foreign('class_id')->references('id')->on('classes')->onDelete('cascade');

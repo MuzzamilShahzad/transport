@@ -27,9 +27,9 @@
 	<link href="{{ url('assets/web-fonts/plugin.css') }}" rel="stylesheet" />
 
     <!-- Style css-->
-    <link href="{{ url('assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ url('assets/css/transparent-style.css') }}" rel="stylesheet">
     <link href="{{ url('assets/css/dark-style.css') }}" rel="stylesheet">
+    <link href="{{ url('assets/css/style.css') }}" rel="stylesheet">
     <link href="{{ url('assets/css/skin-modes.css') }}" rel="stylesheet">
 
     <!-- Color css-->
