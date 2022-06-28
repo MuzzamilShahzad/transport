@@ -240,11 +240,11 @@ class CampusController extends Controller
         }
     }
 
-    public function testInterviewGroups($session_id){
+    public function testInterviewGroups($formData){
         
         $testGroups = TestInterviewGroup::select('test_interview_groups.*')
                             ->join('sessions','sessions.id','=','test_interview_groups.session_id')
-                            ->where('test_interview_groups.session_id',$session_id)
+                            ->where('test_interview_groups.session_id',$formData['session_id'])
                             ->where('test_interview_groups.type','Test')
                             ->get();
         

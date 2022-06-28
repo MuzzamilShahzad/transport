@@ -137,7 +137,7 @@
                                             <label class="form-label tx-semibold">Is there any sibling currently studying in MPA ?</label>
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="siblings_in_mpa" id="siblings-in-mpa">
-                                                    <!-- <option selected value="0">Select If Any</option> -->
+                                                    <option value="">Select If Any</option>
                                                     <option value="Yes">Yes</option>
                                                     <option value="No">No</option>
                                                 </select>
@@ -153,9 +153,20 @@
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6 mb-0">
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label class="form-label tx-semibold">Previous Class (IF ANY)</label>
                                             <input type="text" class="form-control" name="previous_class"  id="previous-class">
+                                        </div> -->
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Previous Class (IF ANY)</label>
+                                            <div class="pos-relative">
+                                                <select class="form-control select2" name="previous_class" id="previous-class">
+                                                    <option value="">Select</option>
+                                                    @foreach($data['class'] as $class)
+                                                        <option value="{{$class->id}}">{{$class->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6 mb-0">
@@ -187,7 +198,7 @@
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Building Name/Number (If ANY)</label>
-                                            <input type="text" class="form-control" name="building_name_no"  id="building-name-no">
+                                            <input type="text" class="form-control" name="building_no"  id="building-no">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4 mb-0">
@@ -195,7 +206,7 @@
                                             <label class="form-label tx-semibold">Area</label>
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="area_id " id="area-id">
-                                                    <!-- <option selected value="0">Select Area</option> -->
+                                                    <option value="">Select</option>
                                                     @foreach($data['area'] as $area)
                                                         <option value="{{$area->id}}">{{$area->name}}</option>
                                                     @endforeach
@@ -208,7 +219,7 @@
                                             <label class="form-label tx-semibold">City</label>
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="city_id" id="city-id">
-                                                    <!-- <option selected value="0">Select City</option> -->
+                                                    <option value="">Select</option>
                                                     @foreach($data['area'] as $area)
                                                         <option value="{{$area->id}}">{{$area->name}}</option>
                                                     @endforeach
@@ -216,6 +227,98 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="main-content-label"> <strong>Father</strong> </h4>
+                                <br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 mb-0">
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Father CNIC Number</label>
+                                            <input type="text" class="form-control" name="father_cnic" id="father-cnic" data-inputmask="'mask': '99999-9999999-9'" placeholder="XXXXX-XXXXXXX-X">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4 mb-0">
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Father Name</label>
+                                            <input type="text" class="form-control" name="father_name" id="father-name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4 mb-0">
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Father Occupation</label>
+                                            <input type="text" class="form-control" name="father_occupation"  id="father-occupation">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 mb-0">
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Company Name</label>
+                                            <input type="text" class="form-control" name="father_company_name" id="father-company-name">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-4 mb-0">
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Father Salary</label>
+                                            <input type="number" class="form-control" name="father_salary" id="father-salary">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-md-4 mb-0">
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Father Email</label>
+                                            <input type="text" class="form-control" name="father_email" id="father-email">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-4 mb-0">
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Father Phone No</label>
+                                            <input type="text" class="form-control" name="father_phone"  id="father-phone" data-inputmask="'mask': '03##-#######'" placeholder="03##-#######">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4 mb-0">
+                                        <div class="form-group">
+                                                <label class="form-label tx-semibold">How did you hear about us?</label>
+                                                <div class="pos-relative">
+                                                    <select class="form-control select2" name="hear_about_us " id="hear-about-us">
+                                                        <option value="">Select</option>
+                                                        <option value="Social Media">Social Media</option>
+                                                        <option value="Electronic Media">Electronic Media</option>
+                                                        <option value="Print Media">Print Media</option>
+                                                        <option value="Other">Other</option>
+                                                    </select>
+                                                </div>
+                                            <!-- <label class="form-label tx-semibold">How did you hear about us?</label>
+                                            <div class="selectgroup selectgroup-pills">
+                                                <label class="selectgroup-item ">
+                                                    <input type="checkbox" name="first_person_call" value="Social Media" class="selectgroup-input">
+                                                    <span class="selectgroup-button">Social Media</span>
+                                                </label>
+                                                <label class="selectgroup-item">
+                                                    <input type="checkbox" name="first_person_call" value="Electronic Media" class="selectgroup-input">
+                                                    <span class="selectgroup-button">Electronic Media</span>
+                                                </label>
+                                                <label class="selectgroup-item">
+                                                    <input type="checkbox" name="first_person_call" value="Print Media" class="selectgroup-input">
+                                                    <span class="selectgroup-button">Print Media</span>
+                                                </label>
+                                            </div> -->
+                                            
+                                        </div>
+                                    </div>
+                                    <!-- <div class="form-group col-md-4 mb-0">
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Other</label>
+                                            <input type="text" class="form-control" name="other" id="other" disabled>
+                                        </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="card-body">
@@ -246,7 +349,7 @@
                                         <div class="form-group">
                                            <div class="pos-relative">
                                                 <select class="form-control select2" name="interview_group" id="interview-group" disabled>
-                                                    <option value="0">Select Interview</option>
+                                                    <option value="">Select Interview</option>
                                                 </select>
                                             </div>
                                         </div>

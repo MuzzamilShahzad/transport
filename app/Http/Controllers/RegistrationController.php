@@ -19,11 +19,13 @@ class RegistrationController extends Controller
         $campus        =  Campus::get();
         $session       =  Session::get();
         $area          =  Area::get();
+        $class         =  Classes::get();
 
         $data = array(
             'campus'        =>  $campus,
             'session'       =>  $session,
             'area'          =>  $area,
+            'class'         =>  $class,
             'page'          =>  'Student Registration',
             'menu'          =>  'Add Student Registration'
         );
