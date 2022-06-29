@@ -12,7 +12,7 @@ $(document).ready(function () {
         var flag = true;
         // var gr                        =  $("#gr").val();
         var campus_id                 =  $("#campus-id").val();
-        var school_system_id          =  $("#school-system-id").val();
+        var system_id                 =  $("#system-id").val();
         var class_id                  =  $("#class-id").val();
         var class_group_id            =  $("#class-group-id").val();
         var session_id                =  $("#session-id").val();
@@ -29,7 +29,7 @@ $(document).ready(function () {
 
         var house_no          =  $("#house-no").val();
         var block_no          =  $("#block-no").val();
-        var building_no       =  $("#building-name").val();
+        var building_no       =  $("#building-no").val();
         var area_id           =  $("#area-id").val();
         var city_id           =  $("#city-id").val();
 
@@ -51,9 +51,9 @@ $(document).ready(function () {
             $("#campus-id").siblings("span").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
-        if (school_system_id == "" || school_system_id == "0") {
-            $("#school-system-id:not([disabled])").siblings("span").find(".select2-selection--single").addClass("has-error");
-            $("#school-system-id:not([disabled])").siblings("span").after("<span class='error'>This field is required.</span>");
+        if (system_id == "" || system_id == "0") {
+            $("#system-id:not([disabled])").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#system-id:not([disabled])").siblings("span").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
         if (class_id == "" || class_id == "0") {
@@ -71,11 +71,11 @@ $(document).ready(function () {
             $("#session-id").siblings("span").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
-        if (form_no == "") {
-            $("#form-no").addClass("has-error");
-            $("#form-no").after("<span class='error'>This field is required.</span>");
-            flag = false;
-        }
+        // if (form_no == "") {
+        //     $("#form-no").addClass("has-error");
+        //     $("#form-no").after("<span class='error'>This field is required.</span>");
+        //     flag = false;
+        // }
         if (first_name == "") {
             $("#first-name").addClass("has-error");
             $("#first-name").after("<span class='error'>This field is required.</span>");
@@ -129,11 +129,16 @@ $(document).ready(function () {
             $("#father-cnic").addClass("has-error");
             $("#father-cnic").after("<span class='error'>This field is required.</span>");
             flag = false;
-        } else if($.isNumeric(father_phone.replace("-","")) === false){
+        } else if($.isNumeric(father_cnic.replace(/-/g,'')) === false){
             $("#father-cnic").addClass("has-error");
             $("#father-cnic").after("<span class='error'>This field must be a number.</span>");
             flag = false;
-        } 
+        }
+        
+        // console.log(father_cnic);
+        // console.log(father_cnic.replace(/-/g,''));
+        // console.log($.isNumeric(father_cnic.replace("-","")));
+
         if (father_name == "") {
             $("#father-name").addClass("has-error");
             $("#father-name").after("<span class='error'>This field is required.</span>");
@@ -143,7 +148,7 @@ $(document).ready(function () {
             $("#father-phone").addClass("has-error");
             $("#father-phone").after("<span class='error'>This field is required.</span>");
             flag = false;
-        } else if($.isNumeric(father_phone.replace("-","")) === false){
+        } else if($.isNumeric(father_phone.replace(/-/g,'')) === false){
             $("#father-phone").addClass("has-error");
             $("#father-phone").after("<span class='error'>This field must be a number.</span>");
             flag = false;
@@ -218,6 +223,8 @@ $(document).ready(function () {
             }
         }
 
+        console.log(flag);
+        // flag = true;
         if (flag) {
             console.log('If & flag = 1');
             
@@ -227,7 +234,7 @@ $(document).ready(function () {
             var message = '';
             var formData = {
                     "campus_id"                 :  campus_id,
-                    "school_system_id"          :  school_system_id,
+                    "system_id"                 :  system_id,
                     "class_id"                  :  class_id,
                     "class_group_id"            :  class_group_id,
                     "form_no"                   :  form_no,
@@ -243,7 +250,7 @@ $(document).ready(function () {
 
                     "house_no"          :  house_no,
                     "block_no"          :  block_no,
-                    // "building_name_no"  :  building_name_no,
+                    "building_no"       :  building_no,
                     "area_id"           :  area_id,
                     "city_id"           :  city_id,
 
@@ -261,9 +268,6 @@ $(document).ready(function () {
                     "interview_group"  :  interview_group
             };
             
-            // console.log(formData);
-            // console.log(father_cnic.replace("-",""));
-
             $.ajax({
                 url: baseUrl + '/student/registration/store',
                 type: "POST",
@@ -276,12 +280,27 @@ $(document).ready(function () {
 
                         if (response.error) {
                             if (Object.keys(response.error).length > 0) {
+
+                                console.log(Object.keys(response.error));
+                                var input_fields = ['form_no','first_name','last_name','dob','no_of_siblings','previous_school','father_cnic','father_name','father_occupation','father_phone',
+                                                    'father_salary','father_email','father_company_name','test_name','test_date','test_time','interview_name','interview_date','interview_time'];
                                 $.each(response.error, function (key, value) {
 
-                                    if (key === 'father_email' || key === 'no_of_siblings') {
+                                    if(input_fields.indexOf(key)){
+
+                                    // if (key === 'form_no'             ||  key === 'first_name'      ||  key === 'last_name'          || 
+                                    //     key === 'dob'                 ||  key === 'no_of_siblings'  ||  key === 'previous_school'    ||
+                                    //     key === 'house_no'            ||  key === 'block_no'        ||  key === 'building_no'        ||
+                                    //     key === 'father_cnic'         ||  key === 'father_name'     ||  key === 'father_occupation'  ||
+                                    //     key === 'father_phone'        ||  key === 'father_salary'   ||  key === 'father_email'       ||
+                                    //     key === 'father_company_name' ||  key === 'test_name'       ||  key === 'test_date'          ||
+                                    //     key === 'test_time'           ||  key === 'interview_name'  ||  key === 'interview_date'     ||
+                                    //     key === 'interview_time') {
+
                                         $("input[name='" + key + "']").addClass("has-error");
                                         $("input[name='" + key + "']").after("<span class='error'>" + value.toString().split(/[,]+/).join("<br/>") + "</span>");
                                     } else {
+
                                         $("select[name='" + key + "']").siblings("span").find(".select2-selection--single").addClass("has-error");
                                         $("select[name='" + key + "']").siblings("span").after("<span class='error'>" + value.toString().split(/[,]+/).join("<br/>") + "</span>");
                                     }
@@ -483,8 +502,8 @@ $(document).ready(function () {
                         //     });
                         // }
                         
-                        $('#school-system-id').prop('disabled',false);
-                        $('#school-system-id').html(schoolSystems);
+                        $('#system-id').prop('disabled',false);
+                        $('#system-id').html(schoolSystems);
 
                         // $('#class-id').prop('disabled',false);
                         // $('#class-id').html(classes);
@@ -493,8 +512,8 @@ $(document).ready(function () {
             });
         } else {
             
-            $('#school-system-id').html('<option selected value="0">Select School System</option>');
-            $('#school-system-id').prop('disabled',true);
+            $('#system-id').html('<option selected value="0">Select School System</option>');
+            $('#system-id').prop('disabled',true);
             
             $('#class-id').html('<option selected value="0">Select Class</option>');
             $('#class-id').prop('disabled',true);
@@ -504,11 +523,11 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on('change', '#school-system-id-old', function (e) {
+    $(document).on('change', '#system-id-old', function (e) {
         e.preventDefault();
 
         var campus_id  =  $('#campus-id').val();
-        var system_id   =  $('#school-system-id').val();
+        var system_id   =  $('#system-id').val();
   
         if( (campus_id !== "" && campus_id > "0") && (system_id !== "" && system_id > "0") ){
             $.ajax({
@@ -595,27 +614,27 @@ $(document).ready(function () {
                             });
                         }
                         
-                        $('#school-system-id').prop('disabled',false);
-                        $('#school-system-id').html(schoolSystems);
+                        $('#system-id').prop('disabled',false);
+                        $('#system-id').html(schoolSystems);
                     }
                 }
             });
         } else {
             
-            $('#school-system-id, #class-id, #class-group-id').siblings("span.error").remove();
-            $('#school-system-id, #class-id, #class-group-id').siblings("span").find(".select2-selection--single").removeClass("has-error");
+            $('#system-id, #class-id, #class-group-id').siblings("span.error").remove();
+            $('#system-id, #class-id, #class-group-id').siblings("span").find(".select2-selection--single").removeClass("has-error");
 
-            $('#school-system-id, #class-id, #class-group-id').html('<option value="">Select</option>');
-            $('#school-system-id, #class-id, #class-group-id').prop('disabled',true);
+            $('#system-id, #class-id, #class-group-id').html('<option value="">Select</option>');
+            $('#system-id, #class-id, #class-group-id').prop('disabled',true);
         }
     });
 
-    $(document).on('change', '#school-system-id', function (e) {
+    $(document).on('change', '#system-id', function (e) {
         
         e.preventDefault();
 
         var campus_id  =  $('#campus-id').val();
-        var system_id   =  $('#school-system-id').val();
+        var system_id   =  $('#system-id').val();
   
         if( (campus_id !== "" && campus_id > "0") && (system_id !== "" && system_id > "0") ){
             $.ajax({
@@ -654,7 +673,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         var campus_id  =  $('#campus-id').val();
-        var system_id  =  $('#school-system-id').val();
+        var system_id  =  $('#system-id').val();
         var class_id   =  $('#class-id').val();
   
         if((campus_id !== "" && campus_id > "0") && (system_id !== "" && system_id > "0") && (class_id !== "" && class_id > "0")){

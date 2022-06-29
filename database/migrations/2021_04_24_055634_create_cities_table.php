@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('areas', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             
             $table->increments('id');
-            $table->string('area');
-
+            $table->string('city');
+            
             $table->tinyInteger('is_active')->default(1);
             $table->tinyInteger('is_delete')->default(0);
-            
+
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('areas');
+        Schema::dropIfExists('cities');
     }
 };

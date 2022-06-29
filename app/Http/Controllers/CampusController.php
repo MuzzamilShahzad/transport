@@ -15,6 +15,7 @@ use App\Models\Classes;
 use App\Models\Session;
 use App\Models\Section;
 
+
 class CampusController extends Controller
 {
     public function getCampusSchoolSystemByCampusId(Request $request){

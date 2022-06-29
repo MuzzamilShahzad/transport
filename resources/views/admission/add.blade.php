@@ -80,7 +80,7 @@
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">School System</label>
                                             <div class="pos-relative">
-                                                <select class="form-control select2" name="school_system_id" id="school-system-id" disabled>
+                                                <select class="form-control select2" name="school_system_id" id="system-id" disabled>
                                                     <option value="">Select School System</option>
                                                 </select>
                                             </div>

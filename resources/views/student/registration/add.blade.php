@@ -45,7 +45,7 @@
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">School System</label>
                                             <div class="pos-relative">
-                                                <select class="form-control select2" name="school_system_id" id="school-system-id" disabled>
+                                                <select class="form-control select2" name="system_id" id="system-id" disabled>
                                                     <!-- <option selected value="0">Select School System</option> -->
                                                 </select>
                                             </div>
@@ -220,8 +220,8 @@
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="city_id" id="city-id">
                                                     <option value="">Select</option>
-                                                    @foreach($data['area'] as $area)
-                                                        <option value="{{$area->id}}">{{$area->name}}</option>
+                                                    @foreach($data['city'] as $city)
+                                                        <option value="{{$city->id}}">{{$city->city}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

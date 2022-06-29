@@ -14,8 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('class_sections', function (Blueprint $table) {
+            
             $table->increments('id');
-            $table->string('name');
+            $table->string('section');
+
+            $table->tinyInteger('is_active')->default(1);
+            $table->tinyInteger('is_delete')->default(0);
+
             $table->timestamps();
         });
     }

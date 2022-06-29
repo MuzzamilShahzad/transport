@@ -849,24 +849,24 @@ $(document).ready(function () {
                             });
                         }
                         
-                        $('#school-system-id').prop('disabled',false);
-                        $('#school-system-id').html(schoolSystems);
+                        $('#system-id').prop('disabled',false);
+                        $('#system-id').html(schoolSystems);
                     }
                 }
             });
         } else {
             
-            $('#school-system-id, #class-id, #class-group-id').html('<option value="">Select</option>');
-            $('#school-system-id, #class-id, #class-group-id').prop('disabled',true);
+            $('#system-id, #class-id, #class-group-id').html('<option value="">Select</option>');
+            $('#system-id, #class-id, #class-group-id').prop('disabled',true);
         }
     });
 
-    $(document).on('change', '#school-system-id', function (e) {
+    $(document).on('change', '#system-id', function (e) {
         
         e.preventDefault();
 
         var campus_id  =  $('#campus-id').val();
-        var system_id   =  $('#school-system-id').val();
+        var system_id   =  $('#system-id').val();
   
         if( (campus_id !== "" && campus_id > "0") && (system_id !== "" && system_id > "0") ){
             $.ajax({
@@ -901,7 +901,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         var campus_id  =  $('#campus-id').val();
-        var system_id  =  $('#school-system-id').val();
+        var system_id  =  $('#system-id').val();
         var class_id   =  $('#class-id').val();
   
         if((campus_id !== "" && campus_id > "0") && (system_id !== "" && system_id > "0") && (class_id !== "" && class_id > "0")){
