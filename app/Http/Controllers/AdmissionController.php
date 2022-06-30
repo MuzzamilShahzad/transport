@@ -645,11 +645,7 @@ class AdmissionController extends Controller
         // echo "<br>";
 
         $query = Excel::import(new StudentAdmissionImport, $request->file('import_file'));
-<<<<<<< HEAD
         // $query = true;
-=======
-        $query = true;
->>>>>>> 82e4fd1bf2cc7b7e5cfda98764c6c1976bf2d8ab
         if ($query) {
             return redirect()->back()->with('success', 'File has been Imported successfully.');
         }
