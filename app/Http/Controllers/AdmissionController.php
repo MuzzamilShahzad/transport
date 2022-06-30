@@ -648,11 +648,11 @@ class AdmissionController extends Controller
         $request->validate([
             'import_file'  =>  'required|mimes:xlsx'
         ]);
-        print_r($request->file('import_file'));
-        echo "<br>";
+        // print_r($request->file('import_file'));
+        // echo "<br>";
 
-        // $query = Excel::import(new StudentAdmissionImport, $request->file('import_file'));
-        $query = true;
+        $query = Excel::import(new StudentAdmissionImport, $request->file('import_file'));
+        // $query = true;
         if ($query) {
             return redirect()->back()->with('success', 'File has been Imported successfully.');
         }
