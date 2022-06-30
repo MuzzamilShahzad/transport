@@ -11,101 +11,101 @@ $(document).ready(function () {
         var flag = true;
 
         //Student Table Data
-        var gr = $("#gr").val();
-        var bform_crms_no = $("#bform-crms-no").val();
-        var dob = $("#dob").val();
-        var gender = $("#gender").val();
-        var place_of_birth = $("#place-of-birth").val();
-        var nationality = $("#nationality").val();
-        var mother_tongue = $("#mother-tongue").val();
-        var first_name = $("#first-name").val();
-        var last_name = $("#last-name").val();
-        var religion = $("#religion").val();
-        var admission_date = $("#admission-date").val();
-        var previous_class = $("#previous-class").val();
-        var previous_school = $("#previous-school").val();
-        var blood_group = $("#blood-group").val();
-        var height = $("#height").val();
-        var weight = $("#weight").val();
-        var student_vaccinated = $("input[name='student_vaccinated']:checked").val();
-        var as_on_date = $("#as-on-date").val();
-        var fee_discount = $("#fee-discount").val();
-        var system = $("#system").val();
-        var roll_no = $("#roll-no").val();
-        var temporary_gr = $("#temporary-gr").val();
-        var mobile_no = $("#mobile-no").val();
-        var email = $("#email").val();
+        var gr                          =  $("#gr").val();
+        var bform_crms_no               =  $("#bform-crms-no").val();
+        var dob                         =  $("#dob").val();
+        var gender                      =  $("#gender").val();
+        var place_of_birth              =  $("#place-of-birth").val();
+        var nationality                 =  $("#nationality").val();
+        var mother_tongue               =  $("#mother-tongue").val();
+        var first_name                  =  $("#first-name").val();
+        var last_name                   =  $("#last-name").val();
+        var religion                    =  $("#religion").val();
+        var admission_date              =  $("#admission-date").val();
+        var previous_class              =  $("#previous-class").val();
+        var previous_school             =  $("#previous-school").val();
+        var blood_group                 =  $("#blood-group").val();
+        var height                      =  $("#height").val();
+        var weight                      =  $("#weight").val();
+        var student_vaccinated          =  $("input[name='student_vaccinated']:checked").val();
+        var as_on_date                  =  $("#as-on-date").val();
+        var fee_discount                =  $("#fee-discount").val();
+        var system                      =  $("#system").val();
+        var roll_no                     =  $("#roll-no").val();
+        var temporary_gr                =  $("#temporary-gr").val();
+        var mobile_no                   =  $("#mobile-no").val();
+        var email                       =  $("#email").val();
 
         //Student Religion Type Table Data
-        var religion_type = $("#religion-type").val();
-        var other_religion = $("#other-religion").val();
+        var religion_type               =  $("#religion-type").val();
+        var other_religion              =  $("#other-religion").val();
 
         //Student Sibling Table Data
-        var siblings_in_mpa = $("#siblings-in-mpa").val();
-        var no_of_siblings = $("#no-of-siblings").val();
+        var siblings_in_mpa             =  $("#siblings-in-mpa").val();
+        var no_of_siblings              =  $("#no-of-siblings").val();
 
         //Student Father Table Data
-        var father_name = $("#father-name").val();
-        var father_cnic = $("#father-cnic").val();
-        var father_phone = $("#father-phone").val();
-        var father_email = $("#father-email").val();
-        var father_occupation = $("#father-occupation").val();
-        var father_company_name = $("#father-company-name").val();
-        var father_salary = $("#father-salary").val();
-        var father_vaccinated = $("input[name='father_vaccinated']:checked").val();
+        var father_name                 =  $("#father-name").val();
+        var father_cnic                 =  $("#father-cnic").val();
+        var father_phone                =  $("#father-phone").val();
+        var father_email                =  $("#father-email").val();
+        var father_occupation           =  $("#father-occupation").val();
+        var father_company_name         =  $("#father-company-name").val();
+        var father_salary               =  $("#father-salary").val();
+        var father_vaccinated           =  $("input[name='father_vaccinated']:checked").val();
 
         //Student Mother Table Data
-        var mother_name = $("#mother-name").val();
-        var mother_cnic = $("#mother-cnic").val();
-        var mother_phone = $("#mother-phone").val();
-        var mother_email = $("#mother-email").val();
-        var mother_occupation = $("#mother-occupation").val();
-        var mother_company_name = $("#mother-company-name").val();
-        var mother_salary = $("#mother-salary").val();
-        var mother_vaccinated = $("input[name='mother_vaccinated']:checked").val();
+        var mother_name                 =  $("#mother-name").val();
+        var mother_cnic                 =  $("#mother-cnic").val();
+        var mother_phone                =  $("#mother-phone").val();
+        var mother_email                =  $("#mother-email").val();
+        var mother_occupation           =  $("#mother-occupation").val();
+        var mother_company_name         =  $("#mother-company-name").val();
+        var mother_salary               =  $("#mother-salary").val();
+        var mother_vaccinated           =  $("input[name='mother_vaccinated']:checked").val();
 
         //Student Guardian Table Data
-        var guardian_first_name = $("#guardian-first-name").val();
-        var guardian_phone = $("#guardian-phone").val();
-        var guardian_relation = $("#guardian-relation").val();
-        var other_relation = $("#other-relation").val();
-        var first_person_call = $("#first-person-call").val();
-        var guardian_cnic = $("#guardian-cnic").val();
+        var guardian_first_name         =  $("#guardian-first-name").val();
+        var guardian_phone              =  $("#guardian-phone").val();
+        var guardian_relation           =  $("#guardian-relation").val();
+        var other_relation              =  $("#other-relation").val();
+        var first_person_call           =  $("#first-person-call").val();
+        var guardian_cnic               =  $("#guardian-cnic").val();
 
         //Student Address Table Data
-        var current_house_no = $("#current-house-no").val();
-        var current_block_no = $("#current-block-no").val();
-        var current_building_name_no = $("#current-building-name-no").val();
-        var current_city = $("#current-city").val();
-        var current_area_id = $("#current-area-id").val();
+        var current_house_no            =  $("#current-house-no").val();
+        var current_block_no            =  $("#current-block-no").val();
+        var current_building_name_no    =  $("#current-building-name-no").val();
+        var current_city                =  $("#current-city").val();
+        var current_area_id             =  $("#current-area-id").val();
 
-        var same_as_current = $("input[name='same_as_current']:checked").val();
+        var same_as_current             =  $("input[name='same_as_current']:checked").val();
 
-        var permenant_house_no = $("#permenant-house-no").val();
-        var permenant_block_no = $("#permenant-block-no").val();
-        var permenant_building_name_no = $("#permenant-building-name-no").val();
-        var permenant_city = $("#permenant-city").val();
-        var permenant_area_id = $("#permenant-area-id").val();
+        var permenant_house_no          =  $("#permenant-house-no").val();
+        var permenant_block_no          =  $("#permenant-block-no").val();
+        var permenant_building_name_no  =  $("#permenant-building-name-no").val();
+        var permenant_city              =  $("#permenant-city").val();
+        var permenant_area_id           =  $("#permenant-area-id").val();
 
         //Student Pick And Drop Table Data
-        var pick_and_drop_detail = $("#pick-and-drop-detail").val();
-        var ride_vehicle_no = $("#ride-vehicle-no").val();
+        var pick_and_drop_detail        =  $("#pick-and-drop-detail").val();
+        var ride_vehicle_no             =  $("#ride-vehicle-no").val();
 
-        var school_driver_name = $("#school-driver-name").val();
-        var school_driver_phone = $("#school-driver-phone").val();
-        var school_vehicle_no = $("#school-vehicle-no").val();
+        var school_driver_name          =  $("#school-driver-name").val();
+        var school_driver_phone         =  $("#school-driver-phone").val();
+        var school_vehicle_no           =  $("#school-vehicle-no").val();
 
-        var private_driver_name = $("#private-driver-name").val();
-        var private_driver_phone = $("#private-driver-phone").val();
-        var private_vehicle_no = $("#private-vehicle-no").val();
+        var private_driver_name         =  $("#private-driver-name").val();
+        var private_driver_phone        =  $("#private-driver-phone").val();
+        var private_vehicle_no          =  $("#private-vehicle-no").val();
 
         //Student Detail Table Data
-        var campus_id = $("#campus-id").val();
-        var session_id = $("#session-id").val();
-        var class_id = $("#class-id").val();
-        var section_id = $("#section-id").val();
-        var category_id = $("#category-id").val();
-        var school_house_id = $("#school-house-id").val();
+        var campus_id                   =  $("#campus-id").val();
+        var session_id                  =  $("#session-id").val();
+        var class_id                    =  $("#class-id").val();
+        var section_id                  =  $("#section-id").val();
+        var category_id                 =  $("#category-id").val();
+        var school_house_id             =  $("#school-house-id").val();
 
         if (gr == "") {
             $("#gr").addClass("has-error");
@@ -804,22 +804,200 @@ $(document).ready(function () {
     // End data update script
 
     // Get Campus Wise System
+    // $(document).on('change', '#campus-id', function (e) {
+    //     e.preventDefault();
+
+    //     var campus_id = $('#campus-id').val();
+
+    //     $.ajax({
+    //         url: baseUrl + '/campus/get-system',
+    //         type: "GET",
+    //         data: { campus_id: campus_id },
+    //         success: function (response) {
+    //             var html = '<label class="form-label tx-semibold">System</label>';
+    //             html += '<input type="text" class="form-control" value="' + response.system + '" name="system" id="system" readonly>';
+    //             $('#campus-system-input').html(html);
+
+    //         }
+    //     });
+    // });
+
+    
+    
     $(document).on('change', '#campus-id', function (e) {
+        
         e.preventDefault();
 
         var campus_id = $('#campus-id').val();
+        
+        if(campus_id !== "" && campus_id > "0"){
 
-        $.ajax({
-            url: baseUrl + '/campus/get-system',
-            type: "GET",
-            data: { campus_id: campus_id },
-            success: function (response) {
-                var html = '<label class="form-label tx-semibold">System</label>';
-                html += '<input type="text" class="form-control" value="' + response.system + '" name="system" id="system" readonly>';
-                $('#campus-system-input').html(html);
+            $.ajax({
+                url: baseUrl + '/campus/school-system',
+                type: "GET",
+                data: { campus_id: campus_id },
+                success: function (response) {
+                    
+                    if(response.status === true){
 
-            }
-        });
+                        var campusSchoolSystems = response.campusSchoolSystems                        
+                        var schoolSystems = `<option value="">Select</option>`;
+                        
+                        if(campusSchoolSystems.length){
+                            $(campusSchoolSystems).each(function(key, value){
+                                schoolSystems += `<option value="`+value.id+`" >`+value.type+`</option>`;
+                            });
+                        }
+                        
+                        $('#system-id').prop('disabled',false);
+                        $('#system-id').html(schoolSystems);
+                    }
+                }
+            });
+        } else {
+            
+            $('#system-id, #class-id, #class-group-id').html('<option value="">Select</option>');
+            $('#system-id, #class-id, #class-group-id').prop('disabled',true);
+        }
+    });
+
+    $(document).on('change', '#system-id', function (e) {
+        
+        e.preventDefault();
+
+        var campus_id  =  $('#campus-id').val();
+        var system_id   =  $('#system-id').val();
+  
+        if( (campus_id !== "" && campus_id > "0") && (system_id !== "" && system_id > "0") ){
+            $.ajax({
+                url: baseUrl + '/campus/classes',
+                type: "GET",
+                data: { campus_id: campus_id, system_id: system_id },
+                success: function (response) {
+                    
+                    if(response.status === true){
+                        
+                        var campusClasses  =  response.campusClasses;
+                        var classes  =  `<option value="">Select</option>`;
+
+                        if(campusClasses.length){
+                            $(campusClasses).each(function(key, value){
+                                classes += `<option value="`+value.id+`" >`+value.name+`</option>`;
+                            });
+                        }
+
+                        $('#class-id').prop('disabled',false);
+                        $('#class-id').html(classes);
+                    }
+                }
+            });
+        } else {
+            $('#class-id, #class-group-id').html('<option value="">Select</option>');
+            $('#class-id, #class-group-id').prop('disabled',true);
+        }
+    });
+
+    $(document).on('change', '#class-id', function (e) {
+        e.preventDefault();
+
+        var campus_id  =  $('#campus-id').val();
+        var system_id  =  $('#system-id').val();
+        var class_id   =  $('#class-id').val();
+  
+        if((campus_id !== "" && campus_id > "0") && (system_id !== "" && system_id > "0") && (class_id !== "" && class_id > "0")){
+            $.ajax({
+                url: baseUrl + '/campus/class-groups-and-sections',
+                type: "GET",
+                data: { campus_id: campus_id, system_id: system_id, class_id: class_id  },
+                success: function (response) {
+                    
+                    if(response.status === true){
+                        
+                        var classGroup  =  response.classGroups;
+                        var groups      =  `<option value="">Select</option>`;
+
+                        var classSection  =  response.classSections;
+                        var sections      =  `<option value="">Select</option>`;
+
+                        if(classGroup.length){
+                            $(classGroup).each(function(key, value){
+                                groups += `<option value="`+value.id+`" >`+value.name+`</option>`;
+                            });
+
+                            $('#class-group-id').prop('disabled',false);
+                            $('#class-group-id').html(groups);
+                        }
+
+                        if(classSection.length){
+                            $(classSection).each(function(key, value){
+                                sections += `<option value="`+value.id+`" >`+value.name+`</option>`;
+                            });
+                        }
+
+                        $('#section-id').prop('disabled',false);
+                        $('#section-id').html(sections);
+                        
+                    }
+                }
+            });
+        } else {
+            $('#class-group-id, #section-id').html('<option value="">Select</option>');
+            $('#class-group-id, #section-id').prop('disabled',true);
+        }
+    });
+
+    $(document).on('change', '#session-id', function (e) {
+        e.preventDefault();
+
+        var session_id = $('#session-id').val();
+        
+        if(session_id !== "" && session_id > "0"){
+
+            $.ajax({
+                url: baseUrl + '/campus/test-inteview-groups-and-class-sections',
+                type: "GET",
+                data: { session_id: session_id },
+                success: function (response) {
+                    
+                    if(response.status === true){
+                        
+                        var interviewGroups      =  response.interviewGroups;
+                        var testGroups           =  response.testGroups;
+                        var classSections  =  response.classSections;
+                        
+                        var interviews  =  `<option value="">Select</option>`;
+                        var tests       =  `<option value="">Select</option>`;
+                        var sections    =  `<option value="">Select</option>`;
+                        
+                        if(interviewGroups.length){
+                            $(interviewGroups).each(function(key, value){
+                                interviews += `<option value="`+value.id+`" >`+value.type+`</option>`;
+                            });
+                        }
+                        
+                        if(testGroups.length){
+                            $(testGroups).each(function(key, value){
+                                tests += `<option value="`+value.id+`" >`+value.type+`</option>`;
+                            });
+                        }
+
+                        if(classSections.length){
+                            $(classSections).each(function(key, value){
+                                sections += `<option value="`+value.id+`" >`+value.type+`</option>`;
+                            });
+                        }
+                        
+                        $('#test-group').html(tests);
+                        $('#interview-group').html(interviews);
+                        $('#section-id').prop('disabled',false);
+                        $('#section-id').html(sections);
+                    }
+                }
+            });
+        } else {
+            $('#test-group, #interview-group, #section-id').html('<option value="">Select</option>');
+            $('#section-id').prop('disabled',true);
+        }
     });
 
     // Enable Religion Other Input

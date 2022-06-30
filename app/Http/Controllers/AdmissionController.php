@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\Campus;
 use App\Models\Session;
-use App\Models\StudentClass;
+use App\Models\Classes;
 use App\Models\Section;
-use App\Models\Category;
-use App\Models\SchoolHouse;
+// use App\Models\Category;
+// use App\Models\SchoolHouse;
 use App\Models\Area;
 use App\Models\System;
 
@@ -56,37 +56,30 @@ class AdmissionController extends Controller
         return view('admission.listing', compact('data'));
     }
 
-    public function add() {
-        $campus        =  Campus::get();
+    public function create() {
+        $campus        =  Campus::where('is_active',1)->where('is_delete',0)->get();
         $session       =  Session::get();
-        $studentClass  =  StudentClass::get();
-        $section       =  Section::get();
-        $category      =  Category::get();
-        $schoolHouse   =  SchoolHouse::get();
         $area          =  Area::get();
 
         $data = array(
-            'campus'        =>  $campus,
-            'session'       =>  $session,
-            'studentClass'  =>  $studentClass,
-            'section'       =>  $section,
-            'category'      =>  $category,
-            'schoolHouse'   =>  $schoolHouse,
-            'area'          =>  $area,
-            'page'          =>  'Admission',
-            'menu'          =>  'Add Admission'
+            'campus'   =>  $campus,
+            'session'  =>  $session,
+            'area'     =>  $area,
+            'page'     =>  'Admission',
+            'menu'     =>  'Add Admission'
         );
 
         return view('admission.add', compact('data'));
     }
 
     public function store(Request $request) {
+
         $validator = Validator::make($request->all(), [
-            'campus_id'       =>  'required|numeric|gt:0|digits_between:1,10',
-            'session_id'      =>  'required|numeric|gt:0|digits_between:1,10',
-            'class_id'        =>  'required|numeric|gt:0|digits_between:1,10',
-            'section_id'      =>  'required|numeric|gt:0|digits_between:1,10',
-            'category_id'     =>  'required|numeric|gt:0|digits_between:1,10',
+            'campus_id'       =>  'required|numeric|gt:0|digits_between:1,11',
+            'session_id'      =>  'required|numeric|gt:0|digits_between:1,11',
+            'class_id'        =>  'required|numeric|gt:0|digits_between:1,11',
+            'section_id'      =>  'required|numeric|gt:0|digits_between:1,11',
+            'category_id'     =>  'required|numeric|gt:0|digits_between:1,11',
             'admission_date'  =>  'required|date_format:d-m-Y'
         ]);
 
@@ -580,10 +573,10 @@ class AdmissionController extends Controller
 
     public function searchStudent(Request $request){
         $validator = Validator::make($request->all(), [
-            'campus_id'   =>  'required|numeric|gt:0|digits_between:1,10',
-            'session_id'  =>  'required|numeric|gt:0|digits_between:1,10',
-            'class_id'    =>  'required|numeric|gt:0|digits_between:1,10',
-            'section_id'  =>  'required|numeric|gt:0|digits_between:1,10',
+            'campus_id'   =>  'required|numeric|gt:0|digits_between:1,11',
+            'session_id'  =>  'required|numeric|gt:0|digits_between:1,11',
+            'class_id'    =>  'required|numeric|gt:0|digits_between:1,11',
+            'section_id'  =>  'required|numeric|gt:0|digits_between:1,11',
         ]);
 
         if ($validator->errors()->toArray() != Null) {
@@ -652,7 +645,11 @@ class AdmissionController extends Controller
         // echo "<br>";
 
         $query = Excel::import(new StudentAdmissionImport, $request->file('import_file'));
+<<<<<<< HEAD
         // $query = true;
+=======
+        $query = true;
+>>>>>>> 82e4fd1bf2cc7b7e5cfda98764c6c1976bf2d8ab
         if ($query) {
             return redirect()->back()->with('success', 'File has been Imported successfully.');
         }

@@ -36,9 +36,9 @@ class StudentRegistrationController extends Controller
         $formData = $request->all();
 
         $validator = Validator::make($request->all(), [
-            'campus_id'       =>  'required|numeric|gt:0|digits_between:1,10',
-            'class_id'        =>  'required|numeric|gt:0|digits_between:1,10',
-            'session_id'      =>  'required|numeric|gt:0|digits_between:1,10',
+            'campus_id'       =>  'required|numeric|gt:0|digits_between:1,11',
+            'class_id'        =>  'required|numeric|gt:0|digits_between:1,11',
+            'session_id'      =>  'required|numeric|gt:0|digits_between:1,11',
             'father_email'    =>  'email',
             'no_of_siblings'  =>  'numeric'
         ]);

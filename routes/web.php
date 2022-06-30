@@ -1,26 +1,56 @@
 <?php
 
+// namespace App\Http\Controllers\Student;
+// namespace App\Http\Controllers\School;
+// use App\Http\Controllers\School;
+// use App\Http\Controllers\DashboardController;
+namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\DashboardController;
+// use App\Http\Controllers\DashboardController;
 
-use App\Http\Controllers\ContractorController;
-use App\Http\Controllers\DriverController;
-use App\Http\Controllers\VehicleController;
-use App\Http\Controllers\RouteController;
-use App\Http\Controllers\ShiftController;
-use App\Http\Controllers\DriverVehicleController;
-use App\Http\Controllers\TransportRegistrationController;
+// use App\Http\Controllers\ContractorController;
+// use App\Http\Controllers\DriverController;
+// use App\Http\Controllers\VehicleController;
+// use App\Http\Controllers\RouteController;
+// use App\Http\Controllers\ShiftController;
+// use App\Http\Controllers\DriverVehicleController;
+// use App\Http\Controllers\TransportRegistrationController;
 
-use App\Http\Controllers\AdmissionController;
-use App\Http\Controllers\StudentRegistrationController;
+// use App\Http\Controllers\AdmissionController;
+// use App\Http\Controllers\StudentRegistrationController;
 
-use App\Http\Controllers\FeesGroupController;
-use App\Http\Controllers\FeesTypeController;
-use App\Http\Controllers\FeesMasterController;
-use App\Http\Controllers\FeesDiscountController;
+// use App\Http\Controllers\FeesGroupController;
+// use App\Http\Controllers\FeesTypeController;
+// use App\Http\Controllers\FeesMasterController;
+// use App\Http\Controllers\FeesDiscountController;
 
-use App\Http\Controllers\StudentDetailsController;
+// use App\Http\Controllers\StudentDetailsController;
+
+
+// ---------- STUDENT ---------- //
+Route::controller(RegistrationController::class)->group(function () {
+    Route::get('/student/registration/add', 'create')->name('student.registration.create');
+    // Route::post('/student/registration/store', 'store')->name(us'student.registration.store');
+    Route::post('/student/registration/store', 'store')->name('student.registration.store');
+    Route::get('/session/get-groups', 'getSessionGroups');
+});
+
+// ---------- SCHOOL ---------- //
+Route::controller(CampusController::class)->group(function () {
+    Route::get('/campus/school-system', 'getCampusSchoolSystemByCampusId')->name('campus.campusSchoolSystemByCampusId');
+    Route::get('/campus/classes', 'getCampusClassesByCampusAndSystemId')->name('campus.CampusClassesByCampusAndSystemId');
+    // Route::get('/campus/get-school-system-and-class', 'getCampusSchoolSystemAndClassesByCampusId')->name('campus.schoolSystemAndClassesByCampusId');
+    Route::get('/campus/class-groups-and-sections', 'getClassGroupAndSectionByCampusSystemAndClassId')->name('campus.classGroupAndSectionByCampusSystemAndClassId');
+    // Route::get('/campus/test-inteview-groups', 'getTestInterviewGroupByCampusId')->name('campus.testInterviewGroupByCampusId');
+    Route::get('/campus/test-inteview-groups-and-class-sections', 'getTestInterviewGroupAndClassSectionByCampusSystemClassId')->name('campus.testInterviewGroupAndClassSectionByCampusSystemClassId');
+    // Route::get('/campus/class-sections', 'getSectionByCampusSytemClassSessionId')->name('campus.sectionByCampusSytemClassSessionId');
+});
+
+// Route::controller(ClassController::class)->group(function () {
+//     Route::get('/campus/get-class-groups', 'getClassGroupByCampusAndClassId')->name('campus.getClassesByCampusId');
+// });
 
 // Dashboard Routes
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -87,10 +117,18 @@ Route::controller(TransportRegistrationController::class)->group(function () {
     Route::delete('/transport/registration/delete', 'delete')->name('registration.delete');
 });
 
+//Student Registration Routes
+// Route::controller(StudentRegistrationController::class)->group(function () {
+//     Route::get('/student/registration/add', 'add')->name('student.registration.create');
+//     Route::post('/student/registration/store', 'store')->name('student.registration.store');
+
+//     Route::get('/session/get-groups', 'getSessionGroups');
+// });
+
 //Admission routes
 Route::controller(AdmissionController::class)->group(function () {
     Route::get('/admission', 'listing')->name('admission.view');
-    Route::get('/admission/add', 'add')->name('admission.create');
+    Route::get('/admission/add', 'create')->name('admission.create');
     Route::post('/admission/store', 'store')->name('admission.store');
     Route::get('/admission/edit/{id}', 'edit')->name('admission.edit');
     Route::put('/admission/update', 'update')->name('admission.update');
@@ -99,18 +137,15 @@ Route::controller(AdmissionController::class)->group(function () {
 
     Route::post('/search/student', 'searchStudent');
     Route::get('/student/details', 'studentDetails');
+<<<<<<< HEAD
     Route::get('/import', 'import')->name('admission.import');
+=======
+    // Route::get('/import', 'import')->name('import');
+    Route::get('admission/import', 'import')->name('admission.import');
+>>>>>>> 82e4fd1bf2cc7b7e5cfda98764c6c1976bf2d8ab
     Route::post('/admission/import/store', 'importStore')->name('admission.import.store');
 
     Route::get('/campus/get-system', 'getCampusSystem');
-});
-
-//Admission routes
-Route::controller(StudentRegistrationController::class)->group(function () {
-    Route::get('/student/registration/add', 'add')->name('student.registration.create');
-    Route::post('/student/registration/store', 'store')->name('student.registration.store');
-
-    Route::get('/session/get-groups', 'getSessionGroups');
 });
 
 Route::controller(FeesGroupController::class)->group(function () {

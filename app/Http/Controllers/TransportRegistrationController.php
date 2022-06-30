@@ -54,12 +54,25 @@ class TransportRegistrationController extends Controller
     public function store(Request $request) {
     //    dd($request->joining_date);
         $validator = Validator::make($request->all(), [
+<<<<<<< HEAD
+            'vehicle_id'    =>  'required|numeric|gt:0|digits_between:1,11',
+            'driver_id'     =>  'required|numeric|gt:0|digits_between:1,11',
+            'shift_id'      =>  'required|numeric|gt:0|digits_between:1,11',
+            'route_id'      =>  'required|numeric|gt:0|digits_between:1,11',
+<<<<<<< HEAD
+            'shift_id'      =>  'required|numeric|gt:0|digits_between:1,11',
+=======
+>>>>>>> 8bcb86ffb4f293f22ba3c3f3533fa76259fbc357
+            'student_id'    =>  'required|numeric|gt:0|digits_between:1,11',
+            'fees'          =>  'required|numeric|gt:0|digits_between:1,11',
+=======
             'vehicle_id'    =>  'required|numeric|gt:0|digits_between:1,10',
             'driver_id'     =>  'required|numeric|gt:0|digits_between:1,10',
             'shift_id'      =>  'required|numeric|gt:0|digits_between:1,10',
             'route_id'      =>  'required|numeric|gt:0|digits_between:1,10',
             'student_id'    =>  'required|numeric|gt:0|digits_between:1,10',
             'fees'          =>  'required|numeric|gt:0|digits_between:1,10',
+>>>>>>> eba870a65288787d744fbc5e3e153817133d3000
             'joining_date'  =>  'required|date_format:d-m-Y'
         ]);
 
@@ -129,13 +142,13 @@ class TransportRegistrationController extends Controller
 
     public function update(Request $request, $id) {
         $validator = Validator::make($request->all(), [
-            'vehicle_id'    =>  'required|numeric|gt:0|digits_between:1,10',
-            'driver_id'     =>  'required|numeric|gt:0|digits_between:1,10',
-            'shift_id'      =>  'required|numeric|gt:0|digits_between:1,10',
-            'route_id'      =>  'required|numeric|gt:0|digits_between:1,10',
-            'shift_id'      =>  'required|numeric|gt:0|digits_between:1,10',
-            'student_id'    =>  'required|numeric|gt:0|digits_between:1,10',
-            'fees'          =>  'required|numeric|gt:0|digits_between:1,10',
+            'vehicle_id'    =>  'required|numeric|gt:0|digits_between:1,11',
+            'driver_id'     =>  'required|numeric|gt:0|digits_between:1,11',
+            'shift_id'      =>  'required|numeric|gt:0|digits_between:1,11',
+            'route_id'      =>  'required|numeric|gt:0|digits_between:1,11',
+            'shift_id'      =>  'required|numeric|gt:0|digits_between:1,11',
+            'student_id'    =>  'required|numeric|gt:0|digits_between:1,11',
+            'fees'          =>  'required|numeric|gt:0|digits_between:1,11',
             'joining_date'  =>  'required|date_format:d-m-Y'
         ]);
 

@@ -66,8 +66,17 @@
 
 <input type="hidden" class="base-url" value={{ url('/') }}>
 
+<!--Bootstrap-datepicker js-->
+<script src="{{ url('assets/plugins/bootstrap-datepicker/bootstrap-datepicker.js') }}"></script>
+
+<!--Bootstrap-timepicker js-->
+<script src="{{ url('assets/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js') }}"></script>
+
 <!-- Internal Jquery-Ui js-->
 <script src="{{ url('assets/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
+
+<!-- Internal jquery-datetimepicker js -->
+<script src="{{ url('assets/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js') }}"></script>
 
 <script>
     $('.date-picker').datepicker({
