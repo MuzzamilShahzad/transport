@@ -16,10 +16,10 @@ class StudentAddressDetail extends Model
         'current_building_name_no',
         'current_city',
         'current_area_id',
-        'permenant_house_no',
-        'permenant_block_no',
-        'permenant_building_name_no',
-        'permenant_city',
-        'permenant_area_id',
+        'permanent_house_no',
+        'permanent_block_no',
+        'permanent_building_name_no',
+        'permanent_city',
+        'permanent_area_id',
     ];
 }

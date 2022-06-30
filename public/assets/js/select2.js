@@ -51,8 +51,8 @@ jQuery(function () {
 		width: '100%'
 	});
 
-	$('.permenantSelect2').select2({
-		placeholder: 'Select Permenant Area',
+	$('.permanentSelect2').select2({
+		placeholder: 'Select permanent Area',
 		searchInputPlaceholder: 'Search',
 		width: '100%'
 	});

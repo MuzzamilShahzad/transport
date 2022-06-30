@@ -30,19 +30,19 @@
                         <form action="{{ route('admission.store') }}" method="post">
                             <div class="card-body" id="after-form-store-msg">  
                                 <div class="form-row">
-                                    <div class="form-group col-md-3 mb-0">
+                                    <div class="form-group col-md-2 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Temporary G.R</label>
-                                            <input type="text" class="form-control" name="temporary_gr" id="temporary-gr">
+                                            <input type="text" class="form-control bg-transparent" name="temporary_gr" id="temporary-gr" readonly>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-3 mb-0">
+                                    <div class="form-group col-md-2 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">G.R</label>
                                             <input type="text" class="form-control" name="gr" id="gr">
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-3 mb-0">
+                                    <div class="form-group col-md-2 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Roll Number</label>
                                             <input type="text" class="form-control" name="roll_no"  id="roll-no">
@@ -80,7 +80,7 @@
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">School System</label>
                                             <div class="pos-relative">
-                                                <select class="form-control select2" name="school_system_id" id="system-id" disabled>
+                                                <select class="form-control select2" name="system_id" id="system-id" disabled>
                                                     <option value="">Select School System</option>
                                                 </select>
                                             </div>
@@ -124,21 +124,18 @@
                                             <input type="text" class="form-control" name="bform_crms_no" id="bform-crms-no">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">First Name</label>
                                             <input type="text" class="form-control" name="first_name"  id="first-name">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Last Name</label>
                                             <input type="text" class="form-control" name="last_name"  id="last-name">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold date-picker">Date of Birth</label>
@@ -146,7 +143,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
@@ -182,22 +178,19 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Previous Class</label>
-                                            <input type="text" class="form-control" name="previous_class"  id="previous-class">
+                                            <input type="text" class="form-control" name="previous_class_id"  id="previous-class-id">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Previous School</label>
                                             <input type="text" class="form-control" name="previous_school"  id="previous-school">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Category</label>
@@ -208,7 +201,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Religion</label>
@@ -216,7 +208,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
@@ -224,21 +215,18 @@
                                             <input type="text" class="form-control" name="mobile_no" id="mobile-no" data-inputmask="'mask': '03##-#######'" placeholder="03##-#######">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Email</label>
                                             <input type="text" class="form-control" name="email"  id="email">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold date-picker">Admission Date</label>
                                             <input class="form-control date-picker" name="admission_date" id="admission-date" placeholder="DD-MM-YYYY" type="text">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Blood Group</label>
@@ -258,7 +246,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-row">
                                     <!-- <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
@@ -270,21 +257,18 @@
                                             </div>
                                         </div>
                                     </div> -->
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Height</label>
                                             <input type="text" class="form-control" name="height"  id="height">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Weight</label>
                                             <input type="text" class="form-control" name="weight"  id="weight">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold date-picker">As on Date</label>
@@ -292,7 +276,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-row">
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
@@ -300,7 +283,6 @@
                                             <input type="text" class="form-control" name="fee_discount"  id="fee-discount">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Select Religion Type</label>
@@ -314,7 +296,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group" id="religion-type-other-input">
                                             <label class="form-label tx-semibold">Other</label>
@@ -322,7 +303,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-row">
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
@@ -360,7 +340,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card-header d-flex">
                                 <h6 class="main-content-label">Parent Guardian Detail</h6>
                             </div>
@@ -521,8 +500,8 @@
 
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
-                                            <label class="form-label tx-semibold">Guardian First Name</label>
-                                            <input type="text" class="form-control" name="guardian_first_name" id="guardian-first-name">
+                                            <label class="form-label tx-semibold">Guardian Name</label>
+                                            <input type="text" class="form-control" name="guardian_name" id="guardian-name">
                                         </div>
                                     </div>
 
@@ -572,14 +551,12 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card-header d-flex">
                                 <h6 class="main-content-label">Address Details</h6>
                             </div>
                             <div class="card-body">
                                 <h6 class="main-content-label">Current Address</h6>
                                 <br>
-
                                 <div class="form-row">
                                     <div class="form-group col-md-6 mb-0">
                                         <div class="form-group">
@@ -587,7 +564,6 @@
                                             <input type="text" class="form-control" name="current_house_no" id="current-house-no">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-6 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Block Number</label>
@@ -595,15 +571,13 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-row">
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Building Name/Number (If ANY)</label>
-                                            <input type="text" class="form-control" name="current_building_name_no"  id="current-building-name-no">
+                                            <input type="text" class="form-control" name="current_building_name"  id="current-building-name">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Area</label>
@@ -621,7 +595,7 @@
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">City</label>
-                                            <input type="text" class="form-control" name="current_city" id="current-city">
+                                            <input type="text" class="form-control" name="current_city_id" id="current-city-id">
                                         </div>
                                     </div>
                                 </div>
@@ -632,7 +606,7 @@
 
                                 <div class="form-row">
                                     <div class="col-md-6 mb-0">
-                                        <h6 class="main-content-label">Permenant Address</h6>
+                                        <h6 class="main-content-label">permanent Address</h6>
                                     </div>
 
                                     <div class="col-md-6 mb-0">
@@ -651,14 +625,14 @@
                                     <div class="form-group col-md-6 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">House / Apartment Number</label>
-                                            <input type="text" class="form-control" name="permenant_house_no" id="permenant-house-no">
+                                            <input type="text" class="form-control" name="permanent_house_no" id="permanent-house-no">
                                         </div>
                                     </div>
 
                                     <div class="form-group col-md-6 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Block Number</label>
-                                            <input type="text" class="form-control" name="permenant_block_no" id="permenant-block-no">
+                                            <input type="text" class="form-control" name="permanent_block_no" id="permanent-block-no">
                                         </div>
                                     </div>
                                 </div>
@@ -667,7 +641,7 @@
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Building Name/Number (If ANY)</label>
-                                            <input type="text" class="form-control" name="permenant_building_name_no"  id="permenant-building-name-no">
+                                            <input type="text" class="form-control" name="permanent_building_name_no"  id="permanent-building-name-no">
                                         </div>
                                     </div>
 
@@ -675,7 +649,7 @@
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Area</label>
                                             <div class="pos-relative">
-                                                <select class="form-control select2" name="permenant_area_id" id="permenant-area-id">
+                                                <select class="form-control select2" name="permanent_area_id" id="permanent-area-id">
                                                     <option selected value="">Select Area</option>
                                                     @foreach($data['area'] as $area)
                                                         <option value="{{$area->id}}">{{$area->name}}</option>
@@ -688,7 +662,7 @@
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">City</label>
-                                            <input type="text" class="form-control" name="permenant_city" id="permenant-city">
+                                            <input type="text" class="form-control" name="permanent_city" id="permanent-city">
                                         </div>
                                     </div>
                                 </div>

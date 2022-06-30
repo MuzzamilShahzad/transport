@@ -11,81 +11,91 @@ $(document).ready(function () {
         var flag = true;
 
         //Student Table Data
+        var temporary_gr                =  $("#temporary-gr").val();
         var gr                          =  $("#gr").val();
+        var roll_no                     =  $("#roll-no").val();
+        var session_id                  =  $("#session-id").val();
+        var campus_id                   =  $("#campus-id").val();
+        var system_id                   =  $("#system-id").val();
+        var class_id                    =  $("#class-id").val();
+        var class_group_id              =  $("#class-group-id").val();
+        var section_id                  =  $("#section-id").val();
         var bform_crms_no               =  $("#bform-crms-no").val();
+        var first_name                  =  $("#first-name").val();
+        var last_name                   =  $("#last-name").val();
         var dob                         =  $("#dob").val();
         var gender                      =  $("#gender").val();
         var place_of_birth              =  $("#place-of-birth").val();
         var nationality                 =  $("#nationality").val();
         var mother_tongue               =  $("#mother-tongue").val();
-        var first_name                  =  $("#first-name").val();
-        var last_name                   =  $("#last-name").val();
-        var religion                    =  $("#religion").val();
-        var admission_date              =  $("#admission-date").val();
-        var previous_class              =  $("#previous-class").val();
+        var previous_class_id           =  $("#previous-class-id").val();
         var previous_school             =  $("#previous-school").val();
+        var religion                    =  $("#religion").val();
+        var mobile_no                   =  $("#mobile-no").val();
+        var email                       =  $("#email").val();
+        var admission_date              =  $("#admission-date").val();
         var blood_group                 =  $("#blood-group").val();
         var height                      =  $("#height").val();
         var weight                      =  $("#weight").val();
-        var student_vaccinated          =  $("input[name='student_vaccinated']:checked").val();
         var as_on_date                  =  $("#as-on-date").val();
         var fee_discount                =  $("#fee-discount").val();
-        var system                      =  $("#system").val();
-        var roll_no                     =  $("#roll-no").val();
-        var temporary_gr                =  $("#temporary-gr").val();
-        var mobile_no                   =  $("#mobile-no").val();
-        var email                       =  $("#email").val();
-
-        //Student Religion Type Table Data
         var religion_type               =  $("#religion-type").val();
-        var other_religion              =  $("#other-religion").val();
 
-        //Student Sibling Table Data
         var siblings_in_mpa             =  $("#siblings-in-mpa").val();
         var no_of_siblings              =  $("#no-of-siblings").val();
+        
+        var student_vaccinated          =  $("input[name='student_vaccinated']:checked").val();
+        
+        var category_id                 =  $("#category-id").val();
+        var school_house_id             =  $("#school-house-id").val();
+        var system                      =  $("#system").val();
+        // var temporary_gr                =  $("#temporary-gr").val();
+
+        //Student Religion Type Table Data
+        var other_religion              =  $("#other-religion").val();
 
         //Student Father Table Data
-        var father_name                 =  $("#father-name").val();
         var father_cnic                 =  $("#father-cnic").val();
-        var father_phone                =  $("#father-phone").val();
+        var father_salary               =  $("#father-salary").val();
         var father_email                =  $("#father-email").val();
+        var father_name                 =  $("#father-name").val();
+        var father_phone                =  $("#father-phone").val();
         var father_occupation           =  $("#father-occupation").val();
         var father_company_name         =  $("#father-company-name").val();
-        var father_salary               =  $("#father-salary").val();
         var father_vaccinated           =  $("input[name='father_vaccinated']:checked").val();
 
         //Student Mother Table Data
-        var mother_name                 =  $("#mother-name").val();
         var mother_cnic                 =  $("#mother-cnic").val();
-        var mother_phone                =  $("#mother-phone").val();
+        var mother_salary               =  $("#mother-salary").val();
         var mother_email                =  $("#mother-email").val();
+        var mother_name                 =  $("#mother-name").val();
+        var mother_phone                =  $("#mother-phone").val();
         var mother_occupation           =  $("#mother-occupation").val();
         var mother_company_name         =  $("#mother-company-name").val();
-        var mother_salary               =  $("#mother-salary").val();
         var mother_vaccinated           =  $("input[name='mother_vaccinated']:checked").val();
 
         //Student Guardian Table Data
-        var guardian_first_name         =  $("#guardian-first-name").val();
+        var guardian_cnic               =  $("#guardian-cnic").val();
+        var guardian_name               =  $("#guardian-name").val();
         var guardian_phone              =  $("#guardian-phone").val();
         var guardian_relation           =  $("#guardian-relation").val();
         var other_relation              =  $("#other-relation").val();
         var first_person_call           =  $("#first-person-call").val();
-        var guardian_cnic               =  $("#guardian-cnic").val();
 
         //Student Address Table Data
         var current_house_no            =  $("#current-house-no").val();
         var current_block_no            =  $("#current-block-no").val();
         var current_building_name_no    =  $("#current-building-name-no").val();
-        var current_city                =  $("#current-city").val();
         var current_area_id             =  $("#current-area-id").val();
+        var current_city_id             =  $("#current-city-id").val();
 
         var same_as_current             =  $("input[name='same_as_current']:checked").val();
 
-        var permenant_house_no          =  $("#permenant-house-no").val();
-        var permenant_block_no          =  $("#permenant-block-no").val();
-        var permenant_building_name_no  =  $("#permenant-building-name-no").val();
-        var permenant_city              =  $("#permenant-city").val();
-        var permenant_area_id           =  $("#permenant-area-id").val();
+        var permanent_house_no          =  $("#permanent-house-no").val();
+        var permanent_block_no          =  $("#permanent-block-no").val();
+        var permanent_building_name_no  =  $("#permanent-building-name-no").val();
+        var permanent_area_id           =  $("#permanent-area-id").val();
+        var permanent_city_id           =  $("#permanent-city-id").val();
 
         //Student Pick And Drop Table Data
         var pick_and_drop_detail        =  $("#pick-and-drop-detail").val();
@@ -99,19 +109,65 @@ $(document).ready(function () {
         var private_driver_phone        =  $("#private-driver-phone").val();
         var private_vehicle_no          =  $("#private-vehicle-no").val();
 
-        //Student Detail Table Data
-        var campus_id                   =  $("#campus-id").val();
-        var session_id                  =  $("#session-id").val();
-        var class_id                    =  $("#class-id").val();
-        var section_id                  =  $("#section-id").val();
-        var category_id                 =  $("#category-id").val();
-        var school_house_id             =  $("#school-house-id").val();
-
+        if (temporary_gr == "") {
+            $("#temporary_gr").addClass("has-error");
+            $("#temporary_gr").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
         if (gr == "") {
             $("#gr").addClass("has-error");
             $("#gr").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
+
+        if (session_id == "") {
+            $("#session-id").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#session-id").siblings("span").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
+        if (campus_id == "") {
+            $("#campus-id").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#campus-id").siblings("span").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
+        if (system_id == "") {
+            $("#system-id").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#system-id").siblings("span").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
+        if (class_id == "") {
+            $("#class-id").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#class-id").siblings("span").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
+        if (class_group_id == "" || class_group_id == "0") {
+            $("#class-group-id:not([disabled])").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#class-group-id:not([disabled])").siblings("span").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
+        if (section_id == "") {
+            $("#section-id").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#section-id").siblings("span").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
+        
+        if (first_name == "") {
+            $("#first-name").addClass("has-error");
+            $("#first-name").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
+        if (last_name == "") {
+            $("#last-name").addClass("has-error");
+            $("#last-name").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
+
+        // if (roll_no == "") {
+        //     $("#roll-no").addClass("has-error");
+        //     $("#roll-no").after("<span class='error'>This field is required.</span>");
+        //     flag = false;
+        // }
+
         if (gender == "") {
             $("#gender").siblings("span").find(".select2-selection--single").addClass("has-error");
             $("#gender").siblings("span").after("<span class='error'>This field is required.</span>");
@@ -132,32 +188,11 @@ $(document).ready(function () {
             $("#mother-tongue").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
-        if (first_name == "") {
-            $("#first-name").addClass("has-error");
-            $("#first-name").after("<span class='error'>This field is required.</span>");
-            flag = false;
-        }
-        if (last_name == "") {
-            $("#last-name").addClass("has-error");
-            $("#last-name").after("<span class='error'>This field is required.</span>");
-            flag = false;
-        }
         if (religion == "") {
             $("#religion").addClass("has-error");
             $("#religion").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
-        if (admission_date == "") {
-            $("#admission-date").addClass("has-error");
-            $("#admission-date").after("<span class='error'>This field is required.</span>");
-            flag = false;
-        }
-        if (roll_no == "") {
-            $("#roll-no").addClass("has-error");
-            $("#roll-no").after("<span class='error'>This field is required.</span>");
-            flag = false;
-        }
-
         if (religion_type == "other") {
             if (other_religion == "") {
                 $("#other-religion").addClass("has-error");
@@ -165,15 +200,20 @@ $(document).ready(function () {
                 flag = false;
             }
         }
-
-        if (father_name == "") {
-            $("#father-name").addClass("has-error");
-            $("#father-name").after("<span class='error'>This field is required.</span>");
+        if (admission_date == "") {
+            $("#admission-date").addClass("has-error");
+            $("#admission-date").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
+
         if (father_cnic == "") {
             $("#father-cnic").addClass("has-error");
             $("#father-cnic").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
+        if (father_name == "") {
+            $("#father-name").addClass("has-error");
+            $("#father-name").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
         if (father_phone == "") {
@@ -182,14 +222,14 @@ $(document).ready(function () {
             flag = false;
         }
 
-        if (mother_name == "") {
-            $("#mother-name").addClass("has-error");
-            $("#mother-name").after("<span class='error'>This field is required.</span>");
-            flag = false;
-        }
         if (mother_cnic == "") {
             $("#mother-cnic").addClass("has-error");
             $("#mother-cnic").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
+        if (mother_name == "") {
+            $("#mother-name").addClass("has-error");
+            $("#mother-name").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
         if (mother_phone == "") {
@@ -216,33 +256,7 @@ $(document).ready(function () {
             $("#pick-and-drop-detail").siblings("span").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
-
-        if (campus_id == "") {
-            $("#campus-id").siblings("span").find(".select2-selection--single").addClass("has-error");
-            $("#campus-id").siblings("span").after("<span class='error'>This field is required.</span>");
-            flag = false;
-        }
-        if (session_id == "") {
-            $("#session-id").siblings("span").find(".select2-selection--single").addClass("has-error");
-            $("#session-id").siblings("span").after("<span class='error'>This field is required.</span>");
-            flag = false;
-        }
-        if (class_id == "") {
-            $("#class-id").siblings("span").find(".select2-selection--single").addClass("has-error");
-            $("#class-id").siblings("span").after("<span class='error'>This field is required.</span>");
-            flag = false;
-        }
-        if (section_id == "") {
-            $("#section-id").siblings("span").find(".select2-selection--single").addClass("has-error");
-            $("#section-id").siblings("span").after("<span class='error'>This field is required.</span>");
-            flag = false;
-        }
-        if (category_id == "") {
-            $("#category-id").siblings("span").find(".select2-selection--single").addClass("has-error");
-            $("#category-id").siblings("span").after("<span class='error'>This field is required.</span>");
-            flag = false;
-        }
-
+        
         if (flag) {
 
             $("#btn-add-admission").addClass('disabled');
@@ -321,11 +335,11 @@ $(document).ready(function () {
                 "current_city": current_city,
                 "current_area_id": current_area_id,
                 "same_as_current": same_as_current,
-                "permenant_house_no": permenant_house_no,
-                "permenant_block_no": permenant_block_no,
-                "permenant_building_name_no": permenant_building_name_no,
-                "permenant_city": permenant_city,
-                "permenant_area_id": permenant_area_id,
+                "permanent_house_no": permanent_house_no,
+                "permanent_block_no": permanent_block_no,
+                "permanent_building_name_no": permanent_building_name_no,
+                "permanent_city": permanent_city,
+                "permanent_area_id": permanent_area_id,
 
                 "pick_and_drop_detail": pick_and_drop_detail,
                 "ride_vehicle_no": ride_vehicle_no,
@@ -369,9 +383,9 @@ $(document).ready(function () {
                         }
                     } else {
 
-                        $("#session-id, #class-id, #section-id, #category-id, #campus-id, #gender, #blood-group, #school-house-id, #current-area-id, #permenant-area-id, #pick-and-drop-detail, #siblings-in-mpa, #religion-type, #guardian-relation, #first-person-call").val('').change();
+                        $("#session-id, #class-id, #section-id, #category-id, #campus-id, #gender, #blood-group, #school-house-id, #current-area-id, #permanent-area-id, #pick-and-drop-detail, #siblings-in-mpa, #religion-type, #guardian-relation, #first-person-call").val('').change();
 
-                        $("#gr, #roll-no, #temporary-gr, #system, #bform-crms-no, #first-name, #last-name, #dob, #place-of-birth, #nationality, #mother-tongue, #previous-class, #previous-school, #religion, #mobile-no, #email, #admission-date, #height, #weight, #as-on-date, #fee-discount, #student-vaccinated, #father-cnic, #father-salary, #father-email, #father-name, #father-phone, #father-occupation, #father-company-name, #father-vaccinated, #mother-cnic, #mother-salary, #mother-email, #mother-name, #mother-phone, #mother-occupation, #mother-company-name, #mother-vaccinated, #guardian-cnic, #guardian-first-name, #guardian-phone, #guardian-relation, #first-person-call, #current-house-no, #current-block-no, #current-building-name-no, #current-city, #permenant-house-no, #permenant-block-no, #permenant-building-name-no, #permenant-city, #ride-vehicle-no, #school-driver-name, #school-driver-phone, #school-vehicle-no, #private-driver-name, #private-driver-phone, #private-vehicle-no,#other-relation, #other-religion, #no-of-siblings").val('');
+                        $("#gr, #roll-no, #temporary-gr, #system, #bform-crms-no, #first-name, #last-name, #dob, #place-of-birth, #nationality, #mother-tongue, #previous-class, #previous-school, #religion, #mobile-no, #email, #admission-date, #height, #weight, #as-on-date, #fee-discount, #student-vaccinated, #father-cnic, #father-salary, #father-email, #father-name, #father-phone, #father-occupation, #father-company-name, #father-vaccinated, #mother-cnic, #mother-salary, #mother-email, #mother-name, #mother-phone, #mother-occupation, #mother-company-name, #mother-vaccinated, #guardian-cnic, #guardian-first-name, #guardian-phone, #guardian-relation, #first-person-call, #current-house-no, #current-block-no, #current-building-name-no, #current-city, #permanent-house-no, #permanent-block-no, #permanent-building-name-no, #permanent-city, #ride-vehicle-no, #school-driver-name, #school-driver-phone, #school-vehicle-no, #private-driver-name, #private-driver-phone, #private-vehicle-no,#other-relation, #other-religion, #no-of-siblings").val('');
 
                         message += `<div class="alert alert-success alert-dismissible">
                                         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
@@ -485,11 +499,11 @@ $(document).ready(function () {
 
         var same_as_current = $("input[name='same_as_current']:checked").val();
 
-        var permenant_house_no = $("#permenant-house-no").val();
-        var permenant_block_no = $("#permenant-block-no").val();
-        var permenant_building_name_no = $("#permenant-building-name-no").val();
-        var permenant_city = $("#permenant-city").val();
-        var permenant_area_id = $("#permenant-area-id").val();
+        var permanent_house_no = $("#permanent-house-no").val();
+        var permanent_block_no = $("#permanent-block-no").val();
+        var permanent_building_name_no = $("#permanent-building-name-no").val();
+        var permanent_city = $("#permanent-city").val();
+        var permanent_area_id = $("#permanent-area-id").val();
 
         //Student Pick And Drop Table Data
         var pick_and_drop_detail = $("#pick-and-drop-detail").val();
@@ -726,11 +740,11 @@ $(document).ready(function () {
                 "current_city": current_city,
                 "current_area_id": current_area_id,
                 "same_as_current": same_as_current,
-                "permenant_house_no": permenant_house_no,
-                "permenant_block_no": permenant_block_no,
-                "permenant_building_name_no": permenant_building_name_no,
-                "permenant_city": permenant_city,
-                "permenant_area_id": permenant_area_id,
+                "permanent_house_no": permanent_house_no,
+                "permanent_block_no": permanent_block_no,
+                "permanent_building_name_no": permanent_building_name_no,
+                "permanent_city": permanent_city,
+                "permanent_area_id": permanent_area_id,
 
                 "pick_and_drop_detail": pick_and_drop_detail,
                 "ride_vehicle_no": ride_vehicle_no,

@@ -163,17 +163,17 @@ class AdmissionController extends Controller
                             if ($studentGuardianDetails) {
 
                                 if ($request->same_as_current == 'yes') {
-                                    $permenant_house_no          =  $request->current_house_no;
-                                    $permenant_block_no          =  $request->current_block_no;
-                                    $permenant_building_name_no  =  $request->current_building_name_no;
-                                    $permenant_city              =  $request->current_city;
-                                    $permenant_area_id           =  $request->current_area_id; 
+                                    $permanent_house_no          =  $request->current_house_no;
+                                    $permanent_block_no          =  $request->current_block_no;
+                                    $permanent_building_name_no  =  $request->current_building_name_no;
+                                    $permanent_city              =  $request->current_city;
+                                    $permanent_area_id           =  $request->current_area_id; 
                                 } else {
-                                    $permenant_house_no          =  $request->permenant_house_no;
-                                    $permenant_block_no          =  $request->permenant_block_no;
-                                    $permenant_building_name_no  =  $request->permenant_building_name_no;
-                                    $permenant_city              =  $request->permenant_city;
-                                    $permenant_area_id           =  $request->permenant_area_id;
+                                    $permanent_house_no          =  $request->permanent_house_no;
+                                    $permanent_block_no          =  $request->permanent_block_no;
+                                    $permanent_building_name_no  =  $request->permanent_building_name_no;
+                                    $permanent_city              =  $request->permanent_city;
+                                    $permanent_area_id           =  $request->permanent_area_id;
                                 }
 
                                 $studentAddressDetail = StudentAddressDetail::create([
@@ -183,11 +183,11 @@ class AdmissionController extends Controller
                                     'current_city'                =>  $request->current_city,
                                     'current_area_id'             =>  $request->current_area_id,
 
-                                    'permenant_house_no'          =>  $permenant_house_no,
-                                    'permenant_block_no'          =>  $permenant_block_no,
-                                    'permenant_building_name_no'  =>  $permenant_building_name_no,
-                                    'permenant_city'              =>  $permenant_city,
-                                    'permenant_area_id'           =>  $permenant_area_id
+                                    'permanent_house_no'          =>  $permanent_house_no,
+                                    'permanent_block_no'          =>  $permanent_block_no,
+                                    'permanent_building_name_no'  =>  $permanent_building_name_no,
+                                    'permanent_city'              =>  $permanent_city,
+                                    'permanent_area_id'           =>  $permanent_area_id
                                 ]);
 
                                 if ($studentAddressDetail) {
@@ -409,17 +409,17 @@ class AdmissionController extends Controller
                             if ($studentGuardianDetails) {
 
                                 if ($request->same_as_current == 'yes') {
-                                    $permenant_house_no          =  $request->current_house_no;
-                                    $permenant_block_no          =  $request->current_block_no;
-                                    $permenant_building_name_no  =  $request->current_building_name_no;
-                                    $permenant_city              =  $request->current_city;
-                                    $permenant_area_id           =  $request->current_area_id; 
+                                    $permanent_house_no          =  $request->current_house_no;
+                                    $permanent_block_no          =  $request->current_block_no;
+                                    $permanent_building_name_no  =  $request->current_building_name_no;
+                                    $permanent_city              =  $request->current_city;
+                                    $permanent_area_id           =  $request->current_area_id; 
                                 } else {
-                                    $permenant_house_no          =  $request->permenant_house_no;
-                                    $permenant_block_no          =  $request->permenant_block_no;
-                                    $permenant_building_name_no  =  $request->permenant_building_name_no;
-                                    $permenant_city              =  $request->permenant_city;
-                                    $permenant_area_id           =  $request->permenant_area_id;
+                                    $permanent_house_no          =  $request->permanent_house_no;
+                                    $permanent_block_no          =  $request->permanent_block_no;
+                                    $permanent_building_name_no  =  $request->permanent_building_name_no;
+                                    $permanent_city              =  $request->permanent_city;
+                                    $permanent_area_id           =  $request->permanent_area_id;
                                 }
 
                                 $studentAddressDetail = StudentAddressDetail::where('id',$studentDetails->student_address_id)->update([
@@ -429,11 +429,11 @@ class AdmissionController extends Controller
                                     'current_city'                =>  $request->current_city,
                                     'current_area_id'             =>  $request->current_area_id,
 
-                                    'permenant_house_no'          =>  $permenant_house_no,
-                                    'permenant_block_no'          =>  $permenant_block_no,
-                                    'permenant_building_name_no'  =>  $permenant_building_name_no,
-                                    'permenant_city'              =>  $permenant_city,
-                                    'permenant_area_id'           =>  $permenant_area_id
+                                    'permanent_house_no'          =>  $permanent_house_no,
+                                    'permanent_block_no'          =>  $permanent_block_no,
+                                    'permanent_building_name_no'  =>  $permanent_building_name_no,
+                                    'permanent_city'              =>  $permanent_city,
+                                    'permanent_area_id'           =>  $permanent_area_id
                                 ]);
 
                                 if ($studentAddressDetail) {

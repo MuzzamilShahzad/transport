@@ -24,13 +24,13 @@ return new class extends Migration
             $table->unsignedInteger('current_area_id')->nullable();
             $table->foreign('current_area_id')->references('id')->on('areas')->onDelete('cascade');
 
-            $table->string('permenant_house_no',30)->nullable();
-            $table->string('permenant_block_no',30)->nullable();
-            $table->string('permenant_building_name_no',30)->nullable();
-            $table->string('permenant_city',30)->nullable();
+            $table->string('permanent_house_no',30)->nullable();
+            $table->string('permanent_block_no',30)->nullable();
+            $table->string('permanent_building_name_no',30)->nullable();
+            $table->string('permanent_city',30)->nullable();
 
-            $table->unsignedInteger('permenant_area_id')->nullable();
-            $table->foreign('permenant_area_id')->references('id')->on('areas')->onDelete('cascade');
+            $table->unsignedInteger('permanent_area_id')->nullable();
+            $table->foreign('permanent_area_id')->references('id')->on('areas')->onDelete('cascade');
             
             $table->timestamps();
         });

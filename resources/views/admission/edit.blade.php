@@ -625,13 +625,13 @@
 
                                 <div class="form-row">
                                     <div class="col-md-6 mb-0">
-                                        <h6 class="main-content-label">Permenant Address</h6>
+                                        <h6 class="main-content-label">permanent Address</h6>
                                     </div>
 
                                     <div class="col-md-6 mb-0">
                                         <div class="form-check form-check-inline">
                                             <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" name="same_as_current" value="yes" {{ $data['studentAddressDetail']->current_house_no == $data['studentAddressDetail']->permenant_house_no ? 'checked' : '' }}>
+                                                <input type="checkbox" class="custom-control-input" name="same_as_current" value="yes" {{ $data['studentAddressDetail']->current_house_no == $data['studentAddressDetail']->permanent_house_no ? 'checked' : '' }}>
                                                 <span class="custom-control-label"><strong> Same As Current Address </strong></span>
                                             </label>
                                         </div>
@@ -644,14 +644,14 @@
                                     <div class="form-group col-md-6 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">House / Apartment Number</label>
-                                            <input type="text" class="form-control" name="permenant_house_no" id="permenant-house-no" value="{{$data['studentAddressDetail']->permenant_house_no}}">
+                                            <input type="text" class="form-control" name="permanent_house_no" id="permanent-house-no" value="{{$data['studentAddressDetail']->permanent_house_no}}">
                                         </div>
                                     </div>
 
                                     <div class="form-group col-md-6 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Block Number</label>
-                                            <input type="text" class="form-control" name="permenant_block_no" id="permenant-block-no" value="{{$data['studentAddressDetail']->permenant_block_no}}">
+                                            <input type="text" class="form-control" name="permanent_block_no" id="permanent-block-no" value="{{$data['studentAddressDetail']->permanent_block_no}}">
                                         </div>
                                     </div>
                                 </div>
@@ -660,7 +660,7 @@
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Building Name/Number (If ANY)</label>
-                                            <input type="text" class="form-control" name="permenant_building_name_no"  id="permenant-building-name-no" value="{{$data['studentAddressDetail']->permenant_building_name_no}}">
+                                            <input type="text" class="form-control" name="permanent_building_name_no"  id="permanent-building-name-no" value="{{$data['studentAddressDetail']->permanent_building_name_no}}">
                                         </div>
                                     </div>
 
@@ -668,10 +668,10 @@
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Area</label>
                                             <div class="pos-relative">
-                                                <select class="form-control select2" name="permenant_area_id" id="permenant-area-id">
+                                                <select class="form-control select2" name="permanent_area_id" id="permanent-area-id">
                                                     <option selected value="">Select Area</option>
                                                     @foreach($data['area'] as $item)
-                                                        <option value="{{$item->id}}" {{$data['studentAddressDetail']->permenant_area_id == $item->id ? 'selected' : null }}>{{$item->name}}</option>
+                                                        <option value="{{$item->id}}" {{$data['studentAddressDetail']->permanent_area_id == $item->id ? 'selected' : null }}>{{$item->name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -681,7 +681,7 @@
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">City</label>
-                                            <input type="text" class="form-control" name="permenant_city" id="permenant-city" value="{{$data['studentAddressDetail']->permenant_city}}">
+                                            <input type="text" class="form-control" name="permanent_city" id="permanent-city" value="{{$data['studentAddressDetail']->permanent_city}}">
                                         </div>
                                     </div>
                                 </div>
