@@ -30,31 +30,31 @@ use App\Models\StudentDetails;
 
 class AdmissionController extends Controller
 {
-    public function listing() {
-        $students        =  Student::all();
-        $campuses        =  Campus::get();
-        $sessions        =  Session::get();
-        $studentClasses  =  StudentClass::get();
-        $sections        =  Section::get();
-        $categories      =  Category::get();
-        $schoolHouses    =  SchoolHouse::get();
-        $areas           =  Area::get();
+    // public function listing() {
+    //     $students        =  Student::all();
+    //     $campuses        =  Campus::get();
+    //     $sessions        =  Session::get();
+    //     $studentClasses  =  StudentClass::get();
+    //     $sections        =  Section::get();
+    //     $categories      =  Category::get();
+    //     $schoolHouses    =  SchoolHouse::get();
+    //     $areas           =  Area::get();
 
-        $data = array(
-            'students'        =>  $students,
-            'campuses'        =>  $campuses,
-            'sessions'        =>  $sessions,
-            'studentClasses'  =>  $studentClasses,
-            'sections'        =>  $sections,
-            'categories'      =>  $categories,
-            'schoolHouses'    =>  $schoolHouses,
-            'areas'           =>  $areas,
-            'page'            =>  'Admission',
-            'menu'            =>  'Manage Admission'
-        );
+    //     $data = array(
+    //         'students'        =>  $students,
+    //         'campuses'        =>  $campuses,
+    //         'sessions'        =>  $sessions,
+    //         'studentClasses'  =>  $studentClasses,
+    //         'sections'        =>  $sections,
+    //         'categories'      =>  $categories,
+    //         'schoolHouses'    =>  $schoolHouses,
+    //         'areas'           =>  $areas,
+    //         'page'            =>  'Admission',
+    //         'menu'            =>  'Manage Admission'
+    //     );
 
-        return view('admission.listing', compact('data'));
-    }
+    //     return view('admission.listing', compact('data'));
+    // }
 
     public function create() {
         $campus        =  Campus::where('is_active',1)->where('is_delete',0)->get();
@@ -273,50 +273,50 @@ class AdmissionController extends Controller
         }
     }
 
-    public function edit($id) {
-        $student       =  Student::find($id);
-        $campus        =  Campus::get();
-        $session       =  Session::get();
-        $studentClass  =  StudentClass::get();
-        $section       =  Section::get();
-        $category      =  Category::get();
-        $schoolHouse   =  SchoolHouse::get();
-        $area          =  Area::get();
+    // public function edit($id) {
+    //     $student       =  Student::find($id);
+    //     $campus        =  Campus::get();
+    //     $session       =  Session::get();
+    //     $studentClass  =  StudentClass::get();
+    //     $section       =  Section::get();
+    //     $category      =  Category::get();
+    //     $schoolHouse   =  SchoolHouse::get();
+    //     $area          =  Area::get();
 
-        $studentDetails           =  StudentDetails::where('student_id',$id)->first();
-        $studentReligionType      =  StudentReligionType::where('id',$studentDetails->student_religion_type_id)->first();
-        $studentSiblingDetails    =  StudentSiblingDetails::where('id',$studentDetails->student_sibling_id)->first();
-        $studentFatherDetails     =  StudentFatherDetails::where('id',$studentDetails->student_father_id)->first();
-        $studentMotherDetails     =  StudentMotherDetails::where('id',$studentDetails->student_mother_id)->first();
-        $StudentGuardianDetails   =  StudentGuardianDetails::where('id',$studentDetails->student_guardian_id)->first();
-        $studentAddressDetail     =  StudentAddressDetail::where('id',$studentDetails->student_address_id)->first();
-        $studentTransportDetails  =  StudentTransportDetails::where('id',$studentDetails->student_transport_id)->first();
+    //     $studentDetails           =  StudentDetails::where('student_id',$id)->first();
+    //     $studentReligionType      =  StudentReligionType::where('id',$studentDetails->student_religion_type_id)->first();
+    //     $studentSiblingDetails    =  StudentSiblingDetails::where('id',$studentDetails->student_sibling_id)->first();
+    //     $studentFatherDetails     =  StudentFatherDetails::where('id',$studentDetails->student_father_id)->first();
+    //     $studentMotherDetails     =  StudentMotherDetails::where('id',$studentDetails->student_mother_id)->first();
+    //     $StudentGuardianDetails   =  StudentGuardianDetails::where('id',$studentDetails->student_guardian_id)->first();
+    //     $studentAddressDetail     =  StudentAddressDetail::where('id',$studentDetails->student_address_id)->first();
+    //     $studentTransportDetails  =  StudentTransportDetails::where('id',$studentDetails->student_transport_id)->first();
 
-        $data = array(
-            'student'                  =>  $student,
-            'campus'                   =>  $campus,
-            'session'                  =>  $session,
-            'studentClass'             =>  $studentClass,
-            'section'                  =>  $section,
-            'category'                 =>  $category,
-            'schoolHouse'              =>  $schoolHouse,
-            'area'                     =>  $area,
+    //     $data = array(
+    //         'student'                  =>  $student,
+    //         'campus'                   =>  $campus,
+    //         'session'                  =>  $session,
+    //         'studentClass'             =>  $studentClass,
+    //         'section'                  =>  $section,
+    //         'category'                 =>  $category,
+    //         'schoolHouse'              =>  $schoolHouse,
+    //         'area'                     =>  $area,
 
-            'studentDetails'           =>  $studentDetails,
-            'studentReligionType'      =>  $studentReligionType,
-            'studentSiblingDetails'    =>  $studentSiblingDetails,
-            'studentFatherDetails'     =>  $studentFatherDetails,
-            'studentMotherDetails'     =>  $studentMotherDetails,
-            'StudentGuardianDetails'   =>  $StudentGuardianDetails,
-            'studentAddressDetail'     =>  $studentAddressDetail,
-            'studentTransportDetails'  =>  $studentTransportDetails,
+    //         'studentDetails'           =>  $studentDetails,
+    //         'studentReligionType'      =>  $studentReligionType,
+    //         'studentSiblingDetails'    =>  $studentSiblingDetails,
+    //         'studentFatherDetails'     =>  $studentFatherDetails,
+    //         'studentMotherDetails'     =>  $studentMotherDetails,
+    //         'StudentGuardianDetails'   =>  $StudentGuardianDetails,
+    //         'studentAddressDetail'     =>  $studentAddressDetail,
+    //         'studentTransportDetails'  =>  $studentTransportDetails,
 
-            'page'                     =>  'Admission',
-            'menu'                     =>  'Edit Admission',
-        );
+    //         'page'                     =>  'Admission',
+    //         'menu'                     =>  'Edit Admission',
+    //     );
 
-        return view('admission.edit', compact('data'));
-    }
+    //     return view('admission.edit', compact('data'));
+    // }
 
     public function update(Request $request) {
         $student_id = $request->student_id;
@@ -510,50 +510,50 @@ class AdmissionController extends Controller
         }
     }
 
-    public function admissionStudentDetails($id) {
-        $student       =  Student::find($id);
-        $campus        =  Campus::get();
-        $session       =  Session::get();
-        $studentClass  =  StudentClass::get();
-        $section       =  Section::get();
-        $category      =  Category::get();
-        $schoolHouse   =  SchoolHouse::get();
-        $area          =  Area::get();
+    // public function admissionStudentDetails($id) {
+    //     $student       =  Student::find($id);
+    //     $campus        =  Campus::get();
+    //     $session       =  Session::get();
+    //     $studentClass  =  StudentClass::get();
+    //     $section       =  Section::get();
+    //     $category      =  Category::get();
+    //     $schoolHouse   =  SchoolHouse::get();
+    //     $area          =  Area::get();
 
-        $studentDetails           =  StudentDetails::where('student_id',$id)->first();
-        $studentReligionType      =  StudentReligionType::where('id',$studentDetails->student_religion_type_id)->first();
-        $studentSiblingDetails    =  StudentSiblingDetails::where('id',$studentDetails->student_sibling_id)->first();
-        $studentFatherDetails     =  StudentFatherDetails::where('id',$studentDetails->student_father_id)->first();
-        $studentMotherDetails     =  StudentMotherDetails::where('id',$studentDetails->student_mother_id)->first();
-        $StudentGuardianDetails   =  StudentGuardianDetails::where('id',$studentDetails->student_guardian_id)->first();
-        $studentAddressDetail     =  StudentAddressDetail::where('id',$studentDetails->student_address_id)->first();
-        $studentTransportDetails  =  StudentTransportDetails::where('id',$studentDetails->student_transport_id)->first();
+    //     $studentDetails           =  StudentDetails::where('student_id',$id)->first();
+    //     $studentReligionType      =  StudentReligionType::where('id',$studentDetails->student_religion_type_id)->first();
+    //     $studentSiblingDetails    =  StudentSiblingDetails::where('id',$studentDetails->student_sibling_id)->first();
+    //     $studentFatherDetails     =  StudentFatherDetails::where('id',$studentDetails->student_father_id)->first();
+    //     $studentMotherDetails     =  StudentMotherDetails::where('id',$studentDetails->student_mother_id)->first();
+    //     $StudentGuardianDetails   =  StudentGuardianDetails::where('id',$studentDetails->student_guardian_id)->first();
+    //     $studentAddressDetail     =  StudentAddressDetail::where('id',$studentDetails->student_address_id)->first();
+    //     $studentTransportDetails  =  StudentTransportDetails::where('id',$studentDetails->student_transport_id)->first();
 
-        $data = array(
-            'student'                  =>  $student,
-            'campus'                   =>  $campus,
-            'session'                  =>  $session,
-            'studentClass'             =>  $studentClass,
-            'section'                  =>  $section,
-            'category'                 =>  $category,
-            'schoolHouse'              =>  $schoolHouse,
-            'area'                     =>  $area,
+    //     $data = array(
+    //         'student'                  =>  $student,
+    //         'campus'                   =>  $campus,
+    //         'session'                  =>  $session,
+    //         'studentClass'             =>  $studentClass,
+    //         'section'                  =>  $section,
+    //         'category'                 =>  $category,
+    //         'schoolHouse'              =>  $schoolHouse,
+    //         'area'                     =>  $area,
 
-            'studentDetails'           =>  $studentDetails,
-            'studentReligionType'      =>  $studentReligionType,
-            'studentSiblingDetails'    =>  $studentSiblingDetails,
-            'studentFatherDetails'     =>  $studentFatherDetails,
-            'studentMotherDetails'     =>  $studentMotherDetails,
-            'StudentGuardianDetails'   =>  $StudentGuardianDetails,
-            'studentAddressDetail'     =>  $studentAddressDetail,
-            'studentTransportDetails'  =>  $studentTransportDetails,
+    //         'studentDetails'           =>  $studentDetails,
+    //         'studentReligionType'      =>  $studentReligionType,
+    //         'studentSiblingDetails'    =>  $studentSiblingDetails,
+    //         'studentFatherDetails'     =>  $studentFatherDetails,
+    //         'studentMotherDetails'     =>  $studentMotherDetails,
+    //         'StudentGuardianDetails'   =>  $StudentGuardianDetails,
+    //         'studentAddressDetail'     =>  $studentAddressDetail,
+    //         'studentTransportDetails'  =>  $studentTransportDetails,
 
-            'page'                     =>  'Admission',
-            'menu'                     =>  'Student Details',
-        );
+    //         'page'                     =>  'Admission',
+    //         'menu'                     =>  'Student Details',
+    //     );
 
-        return view('admission.details', compact('data'));
-    }
+    //     return view('admission.details', compact('data'));
+    // }
 
     public function studentDetails(Request $request){
         $studentId  =  $request->student_id;
@@ -613,29 +613,29 @@ class AdmissionController extends Controller
         return response()->json($response);
     }
 
-    public function import(){
-        $campuses        =  Campus::get();
-        $sessions        =  Session::get();
-        $studentClasses  =  StudentClass::get();
-        $sections        =  Section::get();
-        $categories      =  Category::get();
-        $schoolHouses    =  SchoolHouse::get();
-        $areas           =  Area::get();
+    // public function import(){
+    //     $campuses        =  Campus::get();
+    //     $sessions        =  Session::get();
+    //     $studentClasses  =  StudentClass::get();
+    //     $sections        =  Section::get();
+    //     $categories      =  Category::get();
+    //     $schoolHouses    =  SchoolHouse::get();
+    //     $areas           =  Area::get();
 
-        $data = array(
-            'campuses'        =>  $campuses,
-            'sessions'        =>  $sessions,
-            'studentClasses'  =>  $studentClasses,
-            'sections'        =>  $sections,
-            'categories'      =>  $categories,
-            'schoolHouses'    =>  $schoolHouses,
-            'areas'           =>  $areas,
-            'page'            =>  'Admission',
-            'menu'            =>  'Import Student Admission Data'
-        );
+    //     $data = array(
+    //         'campuses'        =>  $campuses,
+    //         'sessions'        =>  $sessions,
+    //         'studentClasses'  =>  $studentClasses,
+    //         'sections'        =>  $sections,
+    //         'categories'      =>  $categories,
+    //         'schoolHouses'    =>  $schoolHouses,
+    //         'areas'           =>  $areas,
+    //         'page'            =>  'Admission',
+    //         'menu'            =>  'Import Student Admission Data'
+    //     );
         
-        return view('admission.import',compact('data'));
-    }
+    //     return view('admission.import',compact('data'));
+    // }
 
     public function importStore(Request $request){
         $request->validate([

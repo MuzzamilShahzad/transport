@@ -137,12 +137,8 @@ Route::controller(AdmissionController::class)->group(function () {
 
     Route::post('/search/student', 'searchStudent');
     Route::get('/student/details', 'studentDetails');
-<<<<<<< HEAD
-    Route::get('/import', 'import')->name('admission.import');
-=======
     // Route::get('/import', 'import')->name('import');
     Route::get('admission/import', 'import')->name('admission.import');
->>>>>>> 82e4fd1bf2cc7b7e5cfda98764c6c1976bf2d8ab
     Route::post('/admission/import/store', 'importStore')->name('admission.import.store');
 
     Route::get('/campus/get-system', 'getCampusSystem');
