@@ -98,11 +98,11 @@ class StudentAdmissionImport implements ToCollection, WithHeadingRow
                                 'current_city'                =>  $row['current_city'],
                                 'current_area_id'             =>  $row['current_area_id'],
 
-                                'permenant_house_no'          =>  $row['permenant_house_no'],
-                                'permenant_block_no'          =>  $row['permenant_block_no'],
-                                'permenant_building_name_no'  =>  $row['permenant_building_name_no'],
-                                'permenant_city'              =>  $row['permenant_city'],
-                                'permenant_area_id'           =>  $row['permenant_area_id']
+                                'permanent_house_no'          =>  $row['permanent_house_no'],
+                                'permanent_block_no'          =>  $row['permanent_block_no'],
+                                'permanent_building_name_no'  =>  $row['permanent_building_name_no'],
+                                'permanent_city'              =>  $row['permanent_city'],
+                                'permanent_area_id'           =>  $row['permanent_area_id']
                             ]);
 
                             if ($studentAddressDetail) {

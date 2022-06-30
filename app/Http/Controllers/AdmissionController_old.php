@@ -142,17 +142,17 @@ class AdmissionController_old extends Controller
                 $admission->current_area_id                 =  $request->current_area_id;
 
                 if ($request->same_as_current == 'yes') {
-                    $admission->permenant_house_no          =  $request->current_house_no;
-                    $admission->permenant_block_no          =  $request->current_block_no;
-                    $admission->permenant_building_name_no  =  $request->current_building_name_no;
-                    $admission->permenant_city              =  $request->current_city;
-                    $admission->permenant_area_id           =  $request->current_area_id; 
+                    $admission->permanent_house_no          =  $request->current_house_no;
+                    $admission->permanent_block_no          =  $request->current_block_no;
+                    $admission->permanent_building_name_no  =  $request->current_building_name_no;
+                    $admission->permanent_city              =  $request->current_city;
+                    $admission->permanent_area_id           =  $request->current_area_id; 
                 } else {
-                    $admission->permenant_house_no          =  $request->permenant_house_no;
-                    $admission->permenant_block_no          =  $request->permenant_block_no;
-                    $admission->permenant_building_name_no  =  $request->permenant_building_name_no;
-                    $admission->permenant_city              =  $request->permenant_city;
-                    $admission->permenant_area_id           =  $request->permenant_area_id;
+                    $admission->permanent_house_no          =  $request->permanent_house_no;
+                    $admission->permanent_block_no          =  $request->permanent_block_no;
+                    $admission->permanent_building_name_no  =  $request->permanent_building_name_no;
+                    $admission->permanent_city              =  $request->permanent_city;
+                    $admission->permanent_area_id           =  $request->permanent_area_id;
                 }
 
                 $admission->pick_and_drop_detail            =  $request->pick_and_drop_detail;
