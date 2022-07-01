@@ -696,11 +696,11 @@
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Select Pick up / Drop off Transport Details</label>
                                             <div class="pos-relative">
-                                                <select class="form-control select2" name="pick_and_drop_detail" id="pick-and-drop-detail" disabled>
-                                                    <option value="ByWalk" {{ $data['studentTransportDetails']->pick_and_drop_detail == 'ByWalk' ? 'selected' : '' }} >By Walk</option>
-                                                    <option value="ByRide" {{ $data['studentTransportDetails']->pick_and_drop_detail == 'ByRide' ? 'selected' : '' }}>By Ride</option>
-                                                    <option value="SchoolVan" {{ $data['studentTransportDetails']->pick_and_drop_detail == 'SchoolVan' ? 'selected' : '' }}>School Van</option>
-                                                    <option value="PrivateVan" {{ $data['studentTransportDetails']->pick_and_drop_detail == 'PrivateVan' ? 'selected' : '' }}>Private Van</option>
+                                                <select class="form-control select2" name="pick_and_drop" id="pick-and-drop" disabled>
+                                                    <option value="ByWalk" {{ $data['studentTransportDetails']->pick_and_drop == 'ByWalk' ? 'selected' : '' }} >By Walk</option>
+                                                    <option value="ByRide" {{ $data['studentTransportDetails']->pick_and_drop == 'ByRide' ? 'selected' : '' }}>By Ride</option>
+                                                    <option value="SchoolVan" {{ $data['studentTransportDetails']->pick_and_drop == 'SchoolVan' ? 'selected' : '' }}>School Van</option>
+                                                    <option value="PrivateVan" {{ $data['studentTransportDetails']->pick_and_drop == 'PrivateVan' ? 'selected' : '' }}>Private Van</option>
                                                 </select>
                                             </div>
                                         </div>

@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('student_transport_details', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->enum('pick_and_drop_detail',['ByWalk','ByRide', 'SchoolVan','PrivateVan'])->nullable();
+            $table->enum('pick_and_drop',['ByWalk','ByRide', 'SchoolVan','PrivateVan'])->nullable();
             $table->string('ride_vehicle_no',30)->nullable();
 
             $table->string('school_driver_name',30)->nullable();

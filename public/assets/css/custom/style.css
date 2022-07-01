@@ -32,3 +32,8 @@ form input:checked+label:before {
 .bg-transparent{
     background-color: transparent
 }
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #f5f5f5;
+    opacity: 1;
+}

@@ -27,7 +27,10 @@ return new class extends Migration
             $table->string('last_name',30);
             $table->string('religion',20);
             $table->date('admission_date');
-            $table->string('previous_class',20)->nullable();
+
+            $table->unsignedInteger('previous_class_id')->nullable();
+            $table->foreign('previous_class_id')->references('id')->on('classes')->onDelete('cascade');
+            
             $table->string('previous_school',30)->nullable();
             $table->string('blood_group',10)->nullable();
             $table->string('height',20)->nullable();
@@ -36,7 +39,10 @@ return new class extends Migration
             $table->date('as_on_date')->nullable();
             $table->string('fee_discount',20)->nullable();
 
-            $table->string('system',20);
+            $table->unsignedInteger('system_id')->nullable();
+            $table->foreign('system_id')->references('id')->on('school_systems')->onDelete('cascade');
+
+
             $table->string('roll_no',20);
             $table->string('temporary_gr',20)->nullable();
             $table->string('mobile_no',20)->nullable();

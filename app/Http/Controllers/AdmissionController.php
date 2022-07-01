@@ -27,6 +27,7 @@ use App\Models\StudentTransportDetails;
 use App\Models\StudentReligionType;
 use App\Models\StudentSiblingDetails;
 use App\Models\StudentDetails;
+use App\Models\City;
 
 class AdmissionController extends Controller
 {
@@ -57,14 +58,18 @@ class AdmissionController extends Controller
     }
 
     public function create() {
-        $campus        =  Campus::where('is_active',1)->where('is_delete',0)->get();
-        $session       =  Session::get();
-        $area          =  Area::get();
+        $campus   =  Campus::where('is_active',1)->where('is_delete',0)->get();
+        $session  =  Session::get();
+        $class    =  Classes::get();
+        $area     =  Area::get();
+        $city     =  City::get();
 
         $data = array(
             'campus'   =>  $campus,
             'session'  =>  $session,
+            'class'    =>  $class,
             'area'     =>  $area,
+            'city'     =>  $city,
             'page'     =>  'Admission',
             'menu'     =>  'Add Admission'
         );
@@ -73,6 +78,8 @@ class AdmissionController extends Controller
     }
 
     public function store(Request $request) {
+
+        dd($request->all());
 
         $validator = Validator::make($request->all(), [
             'campus_id'       =>  'required|numeric|gt:0|digits_between:1,11',
@@ -96,7 +103,135 @@ class AdmissionController extends Controller
             $success = false;
             DB::beginTransaction();
             try {
+                
+                $formData =  $request->all();
+                dd($formData);
+
+                $student  = new Student;
+               
+                $student->temporary_gr         =  $request->temporary_gr;
+                $student->gr                   =  $request->gr;
+                $student->roll_no              =  $request->roll_no;
+                $student->session_id           =  $request->session_id;
+                $student->campus_id            =  $request->campus_id;
+                $student->system_id            =  $request->category_id;
+                $student->class_id             =  $request->class_id;
+                $student->class_group_id       =  $request->section_id;
+                $student->section_id           =  $request->section_id;
+                $student->bform_crms_no        =  $request->bform_crms_no;
+                $student->first_name           =  $request->first_name;
+                $student->last_name            =  $request->last_name;
+                $student->dob                  =  date('Y-m-d', strtotime($request->dob));
+
+                $student->gender               =  $request->gender;
+                $student->place_of_birth       =  $request->place_of_birth;
+                $student->nationality          =  $request->nationality;
+                $student->mother_tongue        =  $request->mother_tongue;
+                $student->previous_class_id    =  $request->previous_class;
+                $student->previous_school_id   =  $request->previous_school;
+
+                $student->mobile_no            =  $request->mobile_no;
+                $student->email                =  $request->email;
+                $student->admission_date       =  date('Y-m-d', strtotime($request->admission_date));
+
+                $student->blood_group          =  $request->blood_group;
+                $student->height               =  $request->height;
+                $student->weight               =  $request->weight;
+                $student->as_on_date           =  date('Y-m-d', strtotime($request->as_on_date));
+                $student->fee_discount         =  $request->fee_discount;
+                
+                $student->religion             =  $request->religion;
+                $student->religion_type        =  $request->religion_type;
+
+                if($student->religion_type == "other"){
+                    $student->religion_type_other  =  $request->religion_type_other;
+                }
+                
+                if($student->siblings_in_mpa == "yes"){
+                    $student->no_of_siblings  =  $request->no_of_siblings;
+                }
+
+                $student->student_vaccinated   =  $request->student_vaccinated;
+
+                $fatherDetails = array(
+                    'cnic'          =>  $request->father_cnic,
+                    'salary'        =>  $request->father_salary,
+                    'email'         =>  $request->father_email,
+                    'name'          =>  $request->father_name,
+                    'phone'         =>  $request->father_phone,
+                    'occupation'    =>  $request->father_occupation,
+                    'company_name'  =>  $request->father_company_name,
+                    'vaccinated'    =>  $request->father_vaccinated
+                );
+                $student->father_details = json_encode($fatherDetails);
+                
+                $motherDetails = array(
+                    'cnic'          =>  $request->mother_cnic,
+                    'salary'        =>  $request->mother_salary,
+                    'email'         =>  $request->mother_email,
+                    'name'          =>  $request->mother_name,
+                    'phone'         =>  $request->mother_phone,
+                    'occupation'    =>  $request->mother_occupation,
+                    'company_name'  =>  $request->mother_company_name,
+                    'vaccinated'    =>  $request->mother_vaccinated
+                );
+                $student->mother_details = json_encode($motherDetails);
+
+                $guardianDetails = array(
+                    'cnic'               =>  $request->guardian_cnic,
+                    'name'               =>  $request->guardian_name,
+                    'phone'              =>  $request->guardian_phone,
+                    'relation'           =>  $request->guardian_relation,
+                    'other_relation'     =>  $request->guardian_relation == 'other' ? $request->guardian_other_relation : NULL,
+                    'first_person_call'  =>  $request->first_person_call,
+                );
+                
+                $student->guardian_details = json_encode($guardianDetails);
+                
+                $currentAddress = array(
+                    'current_house_no'            =>  $request->current_house_no,
+                    'current_block_no'            =>  $request->current_block_no,
+                    'current_building_name_no'    =>  $request->current_building_name_no,
+                    'current_area_id'             =>  $request->current_area_id,
+                    'current_city_id'             =>  $request->current_city_id
+                );
+
+                if($request->same_as_current == 'yes'){
+                    
+                    $sameAsCurrent = array(
+                        'same_as_current' => 'yes'
+                    );
+                    
+                    $permanentAddress = array();
+
+                } else {
+                    
+                    $sameAsCurrent = array(
+                        'same_as_current' => 'no'
+                    );
+                    
+                    $permanentAddress = array(
+                        'permanent_house_no'            =>  $request->permanent_house_no,
+                        'permanent_block_no'            =>  $request->permanent_block_no,
+                        'permanent_building_name_no'    =>  $request->permanent_building_name_no,
+                        'permanent_area_id'             =>  $request->permanent_area_id,
+                        'permanent_city_id'             =>  $request->permanent_city_id
+                    );
+
+                }
+
+                $student->address_details = json_encode(array(
+                    'current_address'    =>  $currentAddress,
+                    'same_as_current'    =>  $sameAsCurrent,
+                    'permanent_address'  =>  $permanentAddress
+
+                ));
+
+               
+
                 $student = Student::create([
+
+                    'temporary_gr'        =>  $request->temporary_gr,
                     'gr'                  =>  $request->gr,
                     'bform_crms_no'       =>  $request->bform_crms_no,
                     'dob'                 =>  date('Y-m-d', strtotime($request->dob)),
@@ -193,7 +328,7 @@ class AdmissionController extends Controller
                                 if ($studentAddressDetail) {
 
                                     $studentTransportDetails = StudentTransportDetails::create([
-                                        'pick_and_drop_detail'  =>  $request->pick_and_drop_detail,
+                                        'pick_and_drop'         =>  $request->pick_and_drop,
                                         'ride_vehicle_no'       =>  $request->ride_vehicle_no,
 
                                         'school_driver_name'    =>  $request->school_driver_name,
@@ -439,7 +574,7 @@ class AdmissionController extends Controller
                                 if ($studentAddressDetail) {
 
                                     $studentTransportDetails = StudentTransportDetails::where('id',$studentDetails->student_transport_id)->update([
-                                        'pick_and_drop_detail'  =>  $request->pick_and_drop_detail,
+                                        'pick_and_drop'  =>  $request->pick_and_drop,
                                         'ride_vehicle_no'       =>  $request->ride_vehicle_no,
 
                                         'school_driver_name'    =>  $request->school_driver_name,
@@ -556,6 +691,7 @@ class AdmissionController extends Controller
     }
 
     public function studentDetails(Request $request){
+
         $studentId  =  $request->student_id;
         $student    =  Student::where('id',$studentId)->first();
         // dd($student->toArray());

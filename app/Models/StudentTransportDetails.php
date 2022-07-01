@@ -11,7 +11,7 @@ class StudentTransportDetails extends Model
     protected $table = "student_transport_details";
 
     protected $fillable = [
-        'pick_and_drop_detail',
+        'pick_and_drop',
         'ride_vehicle_no',
 
         'school_driver_name',

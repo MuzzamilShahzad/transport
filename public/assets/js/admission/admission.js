@@ -30,7 +30,6 @@ $(document).ready(function () {
         var mother_tongue               =  $("#mother-tongue").val();
         var previous_class_id           =  $("#previous-class-id").val();
         var previous_school             =  $("#previous-school").val();
-        var religion                    =  $("#religion").val();
         var mobile_no                   =  $("#mobile-no").val();
         var email                       =  $("#email").val();
         var admission_date              =  $("#admission-date").val();
@@ -39,6 +38,8 @@ $(document).ready(function () {
         var weight                      =  $("#weight").val();
         var as_on_date                  =  $("#as-on-date").val();
         var fee_discount                =  $("#fee-discount").val();
+        
+        var religion                    =  $("#religion").val();
         var religion_type               =  $("#religion-type").val();
 
         var siblings_in_mpa             =  $("#siblings-in-mpa").val();
@@ -98,7 +99,7 @@ $(document).ready(function () {
         var permanent_city_id           =  $("#permanent-city-id").val();
 
         //Student Pick And Drop Table Data
-        var pick_and_drop_detail        =  $("#pick-and-drop-detail").val();
+        var pick_and_drop               =  $("#pick-and-drop").val();
         var ride_vehicle_no             =  $("#ride-vehicle-no").val();
 
         var school_driver_name          =  $("#school-driver-name").val();
@@ -110,16 +111,16 @@ $(document).ready(function () {
         var private_vehicle_no          =  $("#private-vehicle-no").val();
 
         if (temporary_gr == "") {
-            $("#temporary_gr").addClass("has-error");
-            $("#temporary_gr").after("<span class='error'>This field is required.</span>");
+            $("#temporary-gr").addClass("has-error");
+            $("#temporary-gr").after("<span class='error'>This field is required.</span>");
             flag = false;
+            // console.log(flag);
         }
         if (gr == "") {
             $("#gr").addClass("has-error");
             $("#gr").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
-
         if (session_id == "") {
             $("#session-id").siblings("span").find(".select2-selection--single").addClass("has-error");
             $("#session-id").siblings("span").after("<span class='error'>This field is required.</span>");
@@ -131,13 +132,13 @@ $(document).ready(function () {
             flag = false;
         }
         if (system_id == "") {
-            $("#system-id").siblings("span").find(".select2-selection--single").addClass("has-error");
-            $("#system-id").siblings("span").after("<span class='error'>This field is required.</span>");
+            $("#system-id:not([disabled]").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#system-id:not([disabled]").siblings("span").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
         if (class_id == "") {
-            $("#class-id").siblings("span").find(".select2-selection--single").addClass("has-error");
-            $("#class-id").siblings("span").after("<span class='error'>This field is required.</span>");
+            $("#class-id:not([disabled]").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#class-id:not([disabled]").siblings("span").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
         if (class_group_id == "" || class_group_id == "0") {
@@ -146,11 +147,10 @@ $(document).ready(function () {
             flag = false;
         }
         if (section_id == "") {
-            $("#section-id").siblings("span").find(".select2-selection--single").addClass("has-error");
-            $("#section-id").siblings("span").after("<span class='error'>This field is required.</span>");
+            $("#section-id:not([disabled]").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#section-id:not([disabled]").siblings("span").after("<span class='error'>This field is required.</span>");
             flag = false;
-        }
-        
+        }        
         if (first_name == "") {
             $("#first-name").addClass("has-error");
             $("#first-name").after("<span class='error'>This field is required.</span>");
@@ -205,7 +205,6 @@ $(document).ready(function () {
             $("#admission-date").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
-
         if (father_cnic == "") {
             $("#father-cnic").addClass("has-error");
             $("#father-cnic").after("<span class='error'>This field is required.</span>");
@@ -221,7 +220,6 @@ $(document).ready(function () {
             $("#father-phone").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
-
         if (mother_cnic == "") {
             $("#mother-cnic").addClass("has-error");
             $("#mother-cnic").after("<span class='error'>This field is required.</span>");
@@ -237,12 +235,6 @@ $(document).ready(function () {
             $("#mother-phone").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
-
-        if (first_person_call == "") {
-            $("#first-person-call").siblings("span").find(".select2-selection--single").addClass("has-error");
-            $("#first-person-call").siblings("span").after("<span class='error'>This field is required.</span>");
-            flag = false;
-        }
         if (guardian_relation == "other") {
             if (other_relation == "") {
                 $("#other-relation").addClass("has-error");
@@ -250,105 +242,167 @@ $(document).ready(function () {
                 flag = false;
             }
         }
-
-        if (pick_and_drop_detail == "") {
-            $("#pick-and-drop-detail").siblings("span").find(".select2-selection--single").addClass("has-error");
-            $("#pick-and-drop-detail").siblings("span").after("<span class='error'>This field is required.</span>");
+        if (first_person_call == "") {
+            $("#first-person-call").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#first-person-call").siblings("span").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
+        if (current_house_no == "") {
+            $("#current-house-no").addClass("has-error");
+            $("#current-house-no").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
+        if (current_block_no == "") {
+            $("#current-block-no").addClass("has-error");
+            $("#current-block-no").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
+        // if (current_building_name_no == "") {
+        //     $("#current-building-name-no").addClass("has-error");
+        //     $("#current-building-name-no").after("<span class='error'>This field is required.</span>");
+        //     flag = false;
+        // }
+        if (current_area_id == "") {
+            $("#current-area-id").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#current-area-id").siblings("span").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
+        if (current_city_id == "") {
+            $("#current-city-id").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#current-city-id").siblings("span").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
+
+        if($('#same-as-current').is(':checked') == false){
+            if (permanent_house_no == "") {
+                $("#permanent-house-no:not([disabled]").addClass("has-error");
+                $("#permanent-house-no:not([disabled]").after("<span class='error'>This field is required.</span>");
+                flag = false;
+            }
+            if (permanent_block_no == "") {
+                $("#permanent-block-no:not([disabled]").addClass("has-error");
+                $("#permanent-block-no:not([disabled]").after("<span class='error'>This field is required.</span>");
+                flag = false;
+            }
+            // if (permanent_building_name_no == "") {
+            //     $("#permanent-building-name-no:not([disabled]").addClass("has-error");
+            //     $("#permanent-building-name-no:not([disabled]").after("<span class='error'>This field is required.</span>");
+            //     flag = false;
+            // }
+            if (permanent_area_id == "") {
+                $("#permanent-area-id:not([disabled]").siblings("span").find(".select2-selection--single").addClass("has-error");
+                $("#permanent-area-id:not([disabled]").siblings("span").after("<span class='error'>This field is required.</span>");
+                flag = false;
+            }
+            if (permanent_city_id == "") {
+                $("#permanent-city-id:not([disabled]").siblings("span").find(".select2-selection--single").addClass("has-error");
+                $("#permanent-city-id:not([disabled]").siblings("span").after("<span class='error'>This field is required.</span>");
+                flag = false;
+            }   
+        }
         
+        if (pick_and_drop == "") {
+            $("#pick-and-drop").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#pick-and-drop").siblings("span").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
+        console.log(flag);
+
+
         if (flag) {
 
             $("#btn-add-admission").addClass('disabled');
             $("#btn-add-admission").html('. . . . .');
 
             var message = '';
+            
             var formData = {
-                "gr": gr,
-                "bform_crms_no": bform_crms_no,
-                "dob": dob,
-                "gender": gender,
-                "place_of_birth": place_of_birth,
-                "nationality": nationality,
-                "mother_tongue": mother_tongue,
-                "first_name": first_name,
-                "last_name": last_name,
-                "religion": religion,
-                "admission_date": admission_date,
-                "previous_class": previous_class,
-                "previous_school": previous_school,
-                "blood_group": blood_group,
-                "height": height,
-                "weight": weight,
-                "student_vaccinated": student_vaccinated,
-                "as_on_date": as_on_date,
-                "fee_discount": fee_discount,
-                "system": system,
-                "roll_no": roll_no,
-                "temporary_gr": temporary_gr,
-                "mobile_no": mobile_no,
-                "email": email,
+                "gr"                          :  gr,
+                "bform_crms_no"               :  bform_crms_no,
+                "dob"                         :  dob,
+                "gender"                      :  gender,
+                "place_of_birth"              :  place_of_birth,
+                "nationality"                 :  nationality,
+                "mother_tongue"               :  mother_tongue,
+                "first_name"                  :  first_name,
+                "last_name"                   :  last_name,
+                "religion"                    :  religion,
+                "admission_date"              :  admission_date,
+                "previous_class"              :  previous_class_id,
+                "previous_school"             :  previous_school,
+                "blood_group"                 :  blood_group,
+                "height"                      :  height,
+                "weight"                      :  weight,
+                "student_vaccinated"          :  student_vaccinated,
+                "as_on_date"                  :  as_on_date,
+                "fee_discount"                :  fee_discount,
+                "system"                      :  system,
+                "roll_no"                     :  roll_no,
+                "temporary_gr"                :  temporary_gr,
+                "mobile_no"                   :  mobile_no,
+                "email"                       :  email,
 
-                "religion_type": religion_type,
-                "other_religion": other_religion,
+                "religion_type"               :  religion_type,
+                "other_religion"              :  other_religion,
 
-                "siblings_in_mpa": siblings_in_mpa,
-                "no_of_siblings": no_of_siblings,
+                "siblings_in_mpa"             :  siblings_in_mpa,
+                "no_of_siblings"              :  no_of_siblings,
 
-                "father_name": father_name,
-                "father_cnic": father_cnic,
-                "father_phone": father_phone,
-                "father_email": father_email,
-                "father_occupation": father_occupation,
-                "father_company_name": father_company_name,
-                "father_salary": father_salary,
-                "father_vaccinated": father_vaccinated,
+                "father_name"                 :  father_name,
+                "father_cnic"                 :  father_cnic,
+                "father_phone"                :  father_phone,
+                "father_email"                :  father_email,
+                "father_occupation"           :  father_occupation,
+                "father_company_name"         :  father_company_name,
+                "father_salary"               :  father_salary,
+                "father_vaccinated"           :  father_vaccinated,
 
-                "mother_name": mother_name,
-                "mother_cnic": mother_cnic,
-                "mother_phone": mother_phone,
-                "mother_email": mother_email,
-                "mother_occupation": mother_occupation,
-                "mother_company_name": mother_company_name,
-                "mother_salary": mother_salary,
-                "mother_vaccinated": mother_vaccinated,
+                "mother_name"                 :  mother_name,
+                "mother_cnic"                 :  mother_cnic,
+                "mother_phone"                :  mother_phone,
+                "mother_email"                :  mother_email,
+                "mother_occupation"           :  mother_occupation,
+                "mother_company_name"         :  mother_company_name,
+                "mother_salary"               :  mother_salary,
+                "mother_vaccinated"           :  mother_vaccinated,
 
-                "guardian_first_name": guardian_first_name,
-                "guardian_phone": guardian_phone,
-                "guardian_relation": guardian_relation,
-                "other_relation": other_relation,
-                "first_person_call": first_person_call,
-                "guardian_cnic": guardian_cnic,
+                "guardian_name"               :  guardian_name,
+                "guardian_phone"              :  guardian_phone,
+                "guardian_relation"           :  guardian_relation,
+                "other_relation"              :  other_relation,
+                "first_person_call"           :  first_person_call,
+                "guardian_cnic"               :  guardian_cnic,
 
-                "campus_id": campus_id,
-                "session_id": session_id,
-                "class_id": class_id,
-                "section_id": section_id,
-                "category_id": category_id,
-                "first_person_call": first_person_call,
-                "school_house_id": school_house_id,
+                "campus_id"                   :  campus_id,
+                "session_id"                  :  session_id,
+                "class_id"                    :  class_id,
+                "section_id"                  :  section_id,
+                "category_id"                 :  category_id,
+                "first_person_call"           :  first_person_call,
+                "school_house_id"             :  school_house_id,
 
+                "current_house_no"            :  current_house_no,
+                "current_block_no"            :  current_block_no,
+                "current_building_name_no"    :  current_building_name_no,
+                "current_area_id"             :  current_area_id,
+                "current_city_id"             :  current_city_id,
 
-                "current_house_no": current_house_no,
-                "current_block_no": current_block_no,
-                "current_building_name_no": current_building_name_no,
-                "current_city": current_city,
-                "current_area_id": current_area_id,
-                "same_as_current": same_as_current,
-                "permanent_house_no": permanent_house_no,
-                "permanent_block_no": permanent_block_no,
-                "permanent_building_name_no": permanent_building_name_no,
-                "permanent_city": permanent_city,
-                "permanent_area_id": permanent_area_id,
+                "same_as_current"             :  same_as_current,
+                
+                "permanent_house_no"          :  permanent_house_no,
+                "permanent_block_no"          :  permanent_block_no,
+                "permanent_building_name_no"  :  permanent_building_name_no,
+                "permanent_area_id"           :  permanent_area_id,
+                "permanent_city_id"           :  permanent_city_id,
 
-                "pick_and_drop_detail": pick_and_drop_detail,
-                "ride_vehicle_no": ride_vehicle_no,
-                "school_driver_name": school_driver_name,
-                "school_driver_phone": school_driver_phone,
-                "school_vehicle_no": school_vehicle_no,
-                "private_driver_name": private_driver_name,
-                "private_driver_phone": private_driver_phone,
-                "private_vehicle_no": private_vehicle_no
+                "pick_and_drop"               :  pick_and_drop,
+                "ride_vehicle_no"             :  ride_vehicle_no,
+                "school_driver_name"          :  school_driver_name,
+                "school_driver_phone"         :  school_driver_phone,
+                "school_vehicle_no"           :  school_vehicle_no,
+                "private_driver_name"         :  private_driver_name,
+                "private_driver_phone"        :  private_driver_phone,
+                "private_vehicle_no"          :  private_vehicle_no
             };
 
             $.ajax({
@@ -383,7 +437,7 @@ $(document).ready(function () {
                         }
                     } else {
 
-                        $("#session-id, #class-id, #section-id, #category-id, #campus-id, #gender, #blood-group, #school-house-id, #current-area-id, #permanent-area-id, #pick-and-drop-detail, #siblings-in-mpa, #religion-type, #guardian-relation, #first-person-call").val('').change();
+                        $("#session-id, #class-id, #section-id, #category-id, #campus-id, #gender, #blood-group, #school-house-id, #current-area-id, #permanent-area-id, #pick-and-drop, #siblings-in-mpa, #religion-type, #guardian-relation, #first-person-call").val('').change();
 
                         $("#gr, #roll-no, #temporary-gr, #system, #bform-crms-no, #first-name, #last-name, #dob, #place-of-birth, #nationality, #mother-tongue, #previous-class, #previous-school, #religion, #mobile-no, #email, #admission-date, #height, #weight, #as-on-date, #fee-discount, #student-vaccinated, #father-cnic, #father-salary, #father-email, #father-name, #father-phone, #father-occupation, #father-company-name, #father-vaccinated, #mother-cnic, #mother-salary, #mother-email, #mother-name, #mother-phone, #mother-occupation, #mother-company-name, #mother-vaccinated, #guardian-cnic, #guardian-first-name, #guardian-phone, #guardian-relation, #first-person-call, #current-house-no, #current-block-no, #current-building-name-no, #current-city, #permanent-house-no, #permanent-block-no, #permanent-building-name-no, #permanent-city, #ride-vehicle-no, #school-driver-name, #school-driver-phone, #school-vehicle-no, #private-driver-name, #private-driver-phone, #private-vehicle-no,#other-relation, #other-religion, #no-of-siblings").val('');
 
@@ -506,7 +560,7 @@ $(document).ready(function () {
         var permanent_area_id = $("#permanent-area-id").val();
 
         //Student Pick And Drop Table Data
-        var pick_and_drop_detail = $("#pick-and-drop-detail").val();
+        var pick_and_drop = $("#pick-and-drop").val();
         var ride_vehicle_no = $("#ride-vehicle-no").val();
 
         var school_driver_name = $("#school-driver-name").val();
@@ -629,9 +683,9 @@ $(document).ready(function () {
             }
         }
 
-        if (pick_and_drop_detail == "") {
-            $("#pick-and-drop-detail").siblings("span").find(".select2-selection--single").addClass("has-error");
-            $("#pick-and-drop-detail").siblings("span").after("<span class='error'>This field is required.</span>");
+        if (pick_and_drop == "") {
+            $("#pick-and-drop").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#pick-and-drop").siblings("span").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
 
@@ -660,8 +714,11 @@ $(document).ready(function () {
             $("#category-id").siblings("span").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
+        
+        console.log(flag);
 
         if (flag) {
+
 
             $("#btn-update-admission").addClass('disabled');
             $("#btn-update-admission").html('. . . . .');
@@ -734,27 +791,29 @@ $(document).ready(function () {
                 "school_house_id": school_house_id,
 
 
-                "current_house_no": current_house_no,
-                "current_block_no": current_block_no,
-                "current_building_name_no": current_building_name_no,
-                "current_city": current_city,
-                "current_area_id": current_area_id,
-                "same_as_current": same_as_current,
-                "permanent_house_no": permanent_house_no,
-                "permanent_block_no": permanent_block_no,
-                "permanent_building_name_no": permanent_building_name_no,
-                "permanent_city": permanent_city,
-                "permanent_area_id": permanent_area_id,
+                "current_house_no"            :  current_house_no,
+                "current_block_no"            :  current_block_no,
+                "current_building_name_no"    :  current_building_name_no,
+                "current_city"                :  current_city,
+                "current_area_id"             :  current_area_id,
+                "same_as_current"             :  same_as_current,
+                "permanent_house_no"          :  permanent_house_no,
+                "permanent_block_no"          :  permanent_block_no,
+                "permanent_building_name_no"  :   permanent_building_name_no,
+                "permanent_city"              :  permanent_city,
+                "permanent_area_id"           :  permanent_area_id,
 
-                "pick_and_drop_detail": pick_and_drop_detail,
-                "ride_vehicle_no": ride_vehicle_no,
-                "school_driver_name": school_driver_name,
-                "school_driver_phone": school_driver_phone,
-                "school_vehicle_no": school_vehicle_no,
-                "private_driver_name": private_driver_name,
-                "private_driver_phone": private_driver_phone,
-                "private_vehicle_no": private_vehicle_no
+                "pick_and_drop"               :  pick_and_drop,
+                "ride_vehicle_no"             :  ride_vehicle_no,
+                "school_driver_name"          :  school_driver_name,
+                "school_driver_phone"         :  school_driver_phone,
+                "school_vehicle_no"           :  school_vehicle_no,
+                "private_driver_name"         :  private_driver_name,
+                "private_driver_phone"        :  private_driver_phone,
+                "private_vehicle_no"          :  private_vehicle_no
             };
+
+
 
             $.ajax({
                 url: baseUrl + '/admission/update',
@@ -813,6 +872,17 @@ $(document).ready(function () {
                     $("#btn-update-admission").html('Updated');
                 }
             });
+        }
+    });
+
+    $(document).on('change',"#same-as-current", function() {
+        
+        if($('#same-as-current').is(':checked')){
+            $("#permanent-house-no, #permanent-block-no, #permanent-building-name-no, #permanent-city, #permanent-area-id, #permanent-city-id").prop('disabled',true);
+            $("#permanent-house-no, #permanent-block-no, #permanent-building-name-no, #permanent-city, #permanent-area-id, #permanent-city-id").val('');
+        } else {
+            $("#permanent-house-no, #permanent-block-no, #permanent-building-name-no, #permanent-city, #permanent-area-id, #permanent-city-id").prop('disabled',false);
+            $("#permanent-house-no, #permanent-block-no, #permanent-building-name-no, #permanent-city, #permanent-area-id, #permanent-city-id").val('');
         }
     });
     // End data update script
@@ -1051,22 +1121,23 @@ $(document).ready(function () {
     });
 
     // Get Pick / Drop Details
-    $(document).on('change', '#pick-and-drop-detail', function (e) {
+    $(document).on('change', '#pick-and-drop', function (e) {
+        
         e.preventDefault();
+        $("#pick-drop-details-row").remove();
+        var pick_and_drop = $('#pick-and-drop').val();
+        var html = '<div class="form-group" id="pick-drop-details-row">';
 
-        var value = $('#pick-and-drop-detail').val();
-
-        if (value == 'ByWalk') {
-            var html = '';
-            $('#pick-drop-append-input').html(html);
-        }
-        else if (value == 'ByRide') {
-            var html = `<label class="form-label tx-semibold">Vehicle No</label>`;
-            html += `<input type="text" class="form-control" name="ride_vehicle_no" id="ride-vehicle-no">`;
-            $('#pick-drop-append-input').html(html);
-        }
-        else if (value == 'SchoolVan') {
-            var html = `<div class="form-row"> 
+        if (pick_and_drop == 'By Ride') {
+            
+            html +=     `<label class="form-label tx-semibold">Vehicle No</label>
+                        <input type="text" class="form-control" name="ride_vehicle_no" id="ride-vehicle-no">
+                    </div>`;        
+            
+            $(this).parent().parent().after(html);
+        
+        } else if (pick_and_drop == 'School Van') {
+            html +=    `<div class="form-row"> 
                             <div class="form-group col-md-4 mb-0" > 
                                 <label class="form-label tx-semibold">School Driver Name</label> 
                                 <input type="text" class="form-control" name="school_driver_name" id="school-driver-name"> 
@@ -1081,11 +1152,12 @@ $(document).ready(function () {
                                 <label class="form-label tx-semibold">School Vehicle No</label> 
                                 <input type="text" class="form-control" name="school_vehicle_no" id="school-vehicle-no"> 
                             </div> 
-                        </div >`;
-            $('#pick-drop-append-input').html(html);
-        }
-        else if (value == 'PrivateVan') {
-            var html = `<div class="form-row"> 
+                        </div >
+                    </div>`;
+
+            $(this).parent().parent().after(html);
+        } else if (pick_and_drop == 'Private Van') {
+            html +=    `<div class="form-row"> 
                             <div class="form-group col-md-4 mb-0">
                                 <label class="form-label tx-semibold">Private Driver Name</label> 
                                 <input type="text" class="form-control" name="private_driver_name" id="private-driver-name">
@@ -1100,8 +1172,9 @@ $(document).ready(function () {
                                 <label class="form-label tx-semibold">School Vehicle No</label> 
                                 <input type="text" class="form-control" name="private_vehicle_no" id="private-vehicle-no"> 
                             </div> 
-                        </div>`;
-            $('#pick-drop-append-input').html(html);
+                        </div>
+                    </div>`;
+            $(this).parent().parent().after(html);
         }
 
     });

@@ -3,7 +3,9 @@
 @section('page_title', 'Add Admission')
 
 <link href="{{ url('assets/css/custom/style.css') }}" rel="stylesheet" />
+<style>
 
+</style>
 
 <div class="main-content side-content pt-0">
     <div class="main-container container-fluid">
@@ -28,21 +30,21 @@
                             <h6 class="main-content-label">{{ $data['menu'] }}</h6>
                         </div>
                         <form action="{{ route('admission.store') }}" method="post">
-                            <div class="card-body" id="after-form-store-msg">  
+                            <div class="card-body" id="after-form-store-msg">
                                 <div class="form-row">
-                                    <div class="form-group col-md-2 mb-0">
+                                    <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Temporary G.R</label>
-                                            <input type="text" class="form-control bg-transparent" name="temporary_gr" id="temporary-gr" readonly>
+                                            <input type="text" class="form-control bg-transparent" name="temporary_gr" id="temporary-gr" value="123" readonly>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-2 mb-0">
+                                    <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">G.R</label>
                                             <input type="text" class="form-control" name="gr" id="gr">
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-2 mb-0">
+                                    <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Roll Number</label>
                                             <input type="text" class="form-control" name="roll_no"  id="roll-no">
@@ -61,6 +63,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Campus</label>
@@ -74,8 +78,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">School System</label>
@@ -91,7 +93,7 @@
                                             <label class="form-label tx-semibold">Class</label>
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="class_id" id="class-id" disabled>
-                                                    <option value="">Select Class</option>
+                                                    <option value="">Select</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -106,6 +108,8 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Section</label>
@@ -116,8 +120,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">B-Form / CRMS No </label>
@@ -136,14 +138,14 @@
                                             <input type="text" class="form-control" name="last_name"  id="last-name">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold date-picker">Date of Birth</label>
                                             <input class="form-control date-picker bg-transparent" name="dob" id="dob" placeholder="DD-MM-YYYY" type="text" readonly>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Gender</label>
@@ -156,33 +158,35 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Place of Birth</label>
                                             <input type="text" class="form-control" name="place_of_birth"  id="place-of-birth">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Nationality</label>
                                             <input type="text" class="form-control" name="nationality"  id="nationality">
                                         </div>
                                     </div>
-
+                                </div>
+                                <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Mother Tongue</label>
                                             <input type="text" class="form-control" name="mother_tongue"  id="mother-tongue">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
-                                        <div class="form-group">
-                                            <label class="form-label tx-semibold">Previous Class</label>
-                                            <input type="text" class="form-control" name="previous_class_id"  id="previous-class-id">
+                                        <label class="form-label tx-semibold">Previous Class (IF ANY)</label>
+                                        <div class="pos-relative">
+                                            <select class="form-control select2" name="previous_class" id="previous-class">
+                                                <option value="">Select</option>
+                                                @foreach($data['class'] as $class)
+                                                    <option value="{{$class->id}}">{{$class->name}}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-3 mb-0">
@@ -190,8 +194,9 @@
                                             <label class="form-label tx-semibold">Previous School</label>
                                             <input type="text" class="form-control" name="previous_school"  id="previous-school">
                                         </div>
+                                        
                                     </div>
-                                    <div class="form-group col-md-3 mb-0">
+                                    <!-- <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Category</label>
                                             <div class="pos-relative">
@@ -200,21 +205,15 @@
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group col-md-3 mb-0">
-                                        <div class="form-group">
-                                            <label class="form-label tx-semibold">Religion</label>
-                                            <input type="text" class="form-control" name="religion"  id="religion">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
+                                    </div> -->
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Mobile Number</label>
                                             <input type="text" class="form-control" name="mobile_no" id="mobile-no" data-inputmask="'mask': '03##-#######'" placeholder="03##-#######">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Email</label>
@@ -224,7 +223,7 @@
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold date-picker">Admission Date</label>
-                                            <input class="form-control date-picker" name="admission_date" id="admission-date" placeholder="DD-MM-YYYY" type="text">
+                                            <input class="form-control date-picker bg-transparent" name="admission_date" id="admission-date" placeholder="DD-MM-YYYY" type="text" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-3 mb-0">
@@ -245,6 +244,12 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="form-group col-md-3 mb-0">
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Height</label>
+                                            <input type="text" class="form-control" name="height"  id="height">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-row">
                                     <!-- <div class="form-group col-md-3 mb-0">
@@ -257,30 +262,30 @@
                                             </div>
                                         </div>
                                     </div> -->
-                                    <div class="form-group col-md-3 mb-0">
-                                        <div class="form-group">
-                                            <label class="form-label tx-semibold">Height</label>
-                                            <input type="text" class="form-control" name="height"  id="height">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-3 mb-0">
+                                    <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Weight</label>
                                             <input type="text" class="form-control" name="weight"  id="weight">
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-3 mb-0">
+                                    <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold date-picker">As on Date</label>
-                                            <input class="form-control date-picker" name="as_on_date" id="as-on-date" placeholder="DD-MM-YYYY" type="text">
+                                            <input class="form-control date-picker bg-transparent" name="as_on_date" id="as-on-date" placeholder="DD-MM-YYYY" type="text" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4 mb-0">
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Fee Discount</label>
+                                            <input type="text" class="form-control" name="fee_discount"  id="fee-discount">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
-                                            <label class="form-label tx-semibold">Fee Discount</label>
-                                            <input type="text" class="form-control" name="fee_discount"  id="fee-discount">
+                                            <label class="form-label tx-semibold">Religion</label>
+                                            <input type="text" class="form-control" name="religion"  id="religion">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4 mb-0">
@@ -351,21 +356,18 @@
                                             <input type="text" class="form-control" name="father_cnic" id="father-cnic" data-inputmask="'mask': '99999-9999999-9'" placeholder="XXXXX-XXXXXXX-X">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Father Salary</label>
                                             <input type="number" class="form-control" name="father_salary" id="father-salary">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Father Email</label>
                                             <input type="text" class="form-control" name="father_email" id="father-email">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Father Name</label>
@@ -373,7 +375,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
@@ -381,25 +382,21 @@
                                             <input type="text" class="form-control" name="father_phone"  id="father-phone" data-inputmask="'mask': '03##-#######'" placeholder="03##-#######">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Father Occupation</label>
                                             <input type="text" class="form-control" name="father_occupation"  id="father-occupation">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Company Name</label>
                                             <input type="text" class="form-control" name="father_company_name" id="father-company-name">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Father Vaccinated</label>
-
                                             <div class="btn-list radiobtns radio-btn">
                                                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                                                     <input type="radio" class="btn-check" name="father_vaccinated" id="father-vaccinated-yes" value="Yes" checked>
@@ -412,11 +409,9 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <br>
                                 <hr style="border: 1px solid black;">
                                 <br>
-
                                 <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
@@ -424,21 +419,18 @@
                                             <input type="text" class="form-control" name="mother_cnic" id="mother-cnic" data-inputmask="'mask': '99999-9999999-9'" placeholder="XXXXX-XXXXXXX-X">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Mother Salary</label>
                                             <input type="number" class="form-control" name="mother_salary" id="mother-salary">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Mother Email</label>
                                             <input type="text" class="form-control" name="mother_email" id="mother-email">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Mother Name</label>
@@ -446,7 +438,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-row">
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
@@ -454,21 +445,18 @@
                                             <input type="text" class="form-control" name="mother_phone"  id="mother-phone" data-inputmask="'mask': '03##-#######'" placeholder="03##-#######">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Mother Occupation</label>
                                             <input type="text" class="form-control" name="mother_occupation"  id="mother-occupation">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Company Name</label>
                                             <input type="text" class="form-control" name="mother_company_name" id="mother-company-name">
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Mother Vaccinated</label>
@@ -485,11 +473,9 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <br>
                                 <hr style="border: 1px solid black;">
                                 <br>
-
                                 <div class="form-row">
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
@@ -512,7 +498,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-row">
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
@@ -575,7 +560,7 @@
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Building Name/Number (If ANY)</label>
-                                            <input type="text" class="form-control" name="current_building_name"  id="current-building-name">
+                                            <input type="text" class="form-control" name="current_building_name_no"  id="current-building-name-no">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4 mb-0">
@@ -591,65 +576,63 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">City</label>
-                                            <input type="text" class="form-control" name="current_city_id" id="current-city-id">
+                                            <div class="pos-relative">
+                                                <select class="form-control select2" name="current_city_id " id="current-city-id">
+                                                    <option value="">Select City</option>
+                                                    @foreach($data['city'] as $city)
+                                                        <option value="{{$city->id}}">{{$city->city}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <br>
                                 <hr style="border: 1px solid black;">
                                 <br>
-
                                 <div class="form-row">
                                     <div class="col-md-6 mb-0">
                                         <h6 class="main-content-label">permanent Address</h6>
                                     </div>
-
                                     <div class="col-md-6 mb-0">
                                         <div class="form-check form-check-inline">
                                             <label class="custom-control custom-checkbox">
-                                                <input type="checkbox" class="custom-control-input" name="same_as_current" value="yes">
+                                                <input type="checkbox" class="custom-control-input" name="same_as_current" id="same-as-current" checked>
                                                 <span class="custom-control-label"><strong> Same As Current Address </strong></span>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
-                                
                                 <br>
-
                                 <div class="form-row">
                                     <div class="form-group col-md-6 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">House / Apartment Number</label>
-                                            <input type="text" class="form-control" name="permanent_house_no" id="permanent-house-no">
+                                            <input type="text" class="form-control" name="permanent_house_no" id="permanent-house-no" disabled>
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-6 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Block Number</label>
-                                            <input type="text" class="form-control" name="permanent_block_no" id="permanent-block-no">
+                                            <input type="text" class="form-control" name="permanent_block_no" id="permanent-block-no" disabled>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-row">
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Building Name/Number (If ANY)</label>
-                                            <input type="text" class="form-control" name="permanent_building_name_no"  id="permanent-building-name-no">
+                                            <input type="text" class="form-control" name="permanent_building_name_no"  id="permanent-building-name-no" disabled>
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Area</label>
                                             <div class="pos-relative">
-                                                <select class="form-control select2" name="permanent_area_id" id="permanent-area-id">
+                                                <select class="form-control select2" name="permanent_area_id" id="permanent-area-id" disabled>
                                                     <option selected value="">Select Area</option>
                                                     @foreach($data['area'] as $area)
                                                         <option value="{{$area->id}}">{{$area->name}}</option>
@@ -658,16 +641,21 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">City</label>
-                                            <input type="text" class="form-control" name="permanent_city" id="permanent-city">
+                                            <div class="pos-relative">
+                                                <select class="form-control select2" name="permanent_city_id" id="permanent-city-id" disabled>
+                                                    <option value="">Select City</option>
+                                                    @foreach($data['city'] as $city)
+                                                        <option value="{{$city->id}}">{{$city->city}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="card-header d-flex">
                                 <h6 class="main-content-label">Pick up / Drop off Transport Details</h6>
                             </div>
@@ -677,22 +665,17 @@
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Select Pick up / Drop off Transport Details</label>
                                             <div class="pos-relative">
-                                                <select class="form-control select2" name="pick_and_drop_detail" id="pick-and-drop-detail">
-                                                    <option selected value="">Select Pick/Drop</option>
-                                                    <option value="ByWalk">By Walk</option>
-                                                    <option value="ByRide">By Ride</option>
-                                                    <option value="SchoolVan">School Van</option>
-                                                    <option value="PrivateVan">Private Van</option>
+                                                <select class="form-control select2" name="pick_and_drop" id="pick-and-drop">
+                                                    <option value="">Select Pick/Drop</option>
+                                                    <option value="By Walk">By Walk</option>
+                                                    <option value="By Ride">By Ride</option>
+                                                    <option value="School Van">School Van</option>
+                                                    <option value="Private Van">Private Van</option>
                                                 </select>
                                             </div>
                                         </div>
-
-                                        <div class="form-group" id="pick-drop-append-input">
-                                            
-                                        </div>
                                     </div>
                                 </div>
-
                                 <div class="form-footer mt-2">
                                     <button type="submit" class="btn btn-primary" id="btn-add-admission">Save</button>
                                     <a href="{{ route('admission.view') }}" class="btn btn-danger">Back</a>

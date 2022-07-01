@@ -108,7 +108,7 @@ class StudentAdmissionImport implements ToCollection, WithHeadingRow
                             if ($studentAddressDetail) {
 
                                 $studentTransportDetails = StudentTransportDetails::create([
-                                    'pick_and_drop_detail'  =>  $row['pick_and_drop_detail'],
+                                    'pick_and_drop'  =>  $row['pick_and_drop'],
                                     'ride_vehicle_no'       =>  $row['ride_vehicle_no'],
 
                                     'school_driver_name'    =>  $row['school_driver_name'],

@@ -155,7 +155,7 @@ class AdmissionController_old extends Controller
                     $admission->permanent_area_id           =  $request->permanent_area_id;
                 }
 
-                $admission->pick_and_drop_detail            =  $request->pick_and_drop_detail;
+                $admission->pick_and_drop            =  $request->pick_and_drop;
                 $admission->ride_vehicle_no                 =  $request->ride_vehicle_no;
                 $admission->school_driver_name              =  $request->school_driver_name;
                 $admission->school_driver_phone             =  $request->school_driver_phone;
