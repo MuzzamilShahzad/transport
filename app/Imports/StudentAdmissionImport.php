@@ -25,6 +25,7 @@ class StudentAdmissionImport implements ToCollection, WithHeadingRow
     {
         dd($request);
         foreach ($request->file('import_file') as $row) {
+            dd($row);
             $student = Student::create([
                 'gr'                  =>  $row['gr'],
                 'bform_crms_no'       =>  $row['bform_crms_no'],

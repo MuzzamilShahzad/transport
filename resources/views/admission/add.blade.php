@@ -35,7 +35,7 @@
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Temporary G.R</label>
-                                            <input type="text" class="form-control bg-transparent" name="temporary_gr" id="temporary-gr" value="123" readonly>
+                                            <input type="text" class="form-control bg-transparent" name="temporary_gr" id="temporary-gr" value="123" disabled>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-3 mb-0">
@@ -179,15 +179,17 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-md-3 mb-0">
-                                        <label class="form-label tx-semibold">Previous Class (IF ANY)</label>
-                                        <div class="pos-relative">
-                                            <select class="form-control select2" name="previous_class" id="previous-class">
-                                                <option value="">Select</option>
-                                                @foreach($data['class'] as $class)
-                                                    <option value="{{$class->id}}">{{$class->name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-label tx-semibold">Previous Class (IF ANY)</label>
+                                            <div class="pos-relative">
+                                                <select class="form-control select2" name="previous_class" id="previous-class">
+                                                    <option value="">Select</option>
+                                                    @foreach($data['class'] as $class)
+                                                        <option value="{{$class->id}}">{{$class->name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>    
                                     </div>
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
@@ -247,7 +249,7 @@
                                     <div class="form-group col-md-3 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Height</label>
-                                            <input type="text" class="form-control" name="height"  id="height">
+                                            <input type="number" class="form-control" name="height"  id="height">
                                         </div>
                                     </div>
                                 </div>
@@ -265,7 +267,7 @@
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Weight</label>
-                                            <input type="text" class="form-control" name="weight"  id="weight">
+                                            <input type="number" class="form-control" name="weight"  id="weight">
                                         </div>
                                     </div>
                                     <div class="form-group col-md-4 mb-0">
@@ -277,7 +279,7 @@
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group">
                                             <label class="form-label tx-semibold">Fee Discount</label>
-                                            <input type="text" class="form-control" name="fee_discount"  id="fee-discount">
+                                            <input type="number" class="form-control" name="fee_discount"  id="fee-discount">
                                         </div>
                                     </div>
                                 </div>
@@ -294,8 +296,8 @@
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="religion_type" id="religion-type">
                                                     <option selected value="">Select Religion Type</option>
-                                                    <option value="Sunni">Sunni</option>
-                                                    <option value="Asna Ashri">Asna Ashri</option>
+                                                    <option value="sunni">Sunni</option>
+                                                    <option value="asna_ashri">Asna Ashri</option>
                                                     <option value="other">Other</option>
                                                 </select>
                                             </div>
@@ -304,7 +306,7 @@
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group" id="religion-type-other-input">
                                             <label class="form-label tx-semibold">Other</label>
-                                            <input type="text" class="form-control" name="other_religion" id="other-religion" readonly>
+                                            <input type="text" class="form-control" name="religion_type_other" id="religion-type-other" disabled>
                                         </div>
                                     </div>
                                 </div>
@@ -315,8 +317,8 @@
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="siblings_in_mpa" id="siblings-in-mpa">
                                                     <option selected value="">Select</option>
-                                                    <option value="Yes">Yes</option>
-                                                    <option value="No">No</option>
+                                                    <option value="yes">Yes</option>
+                                                    <option value="no">No</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -334,10 +336,10 @@
                                             <label class="form-label tx-semibold">Student Vaccinated</label>
                                             <div class="btn-list radiobtns radio-btn">
                                                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                                    <input type="radio" class="btn-check" name="student_vaccinated" id="student-vaccinated-yes" value="Yes" checked>
+                                                    <input type="radio" class="btn-check" name="student_vaccinated" id="student-vaccinated-yes" value="yes" checked>
                                                     <label class="btn btn-outline-primary" for="student-vaccinated-yes">Yes</label>
 
-                                                    <input type="radio" class="btn-check" name="student_vaccinated" id="student-vaccinated-no" value="No">
+                                                    <input type="radio" class="btn-check" name="student_vaccinated" id="student-vaccinated-no" value="no">
                                                     <label class="btn btn-outline-primary" for="student-vaccinated-no">No</label>
                                                 </div>
                                             </div>
@@ -399,10 +401,10 @@
                                             <label class="form-label tx-semibold">Father Vaccinated</label>
                                             <div class="btn-list radiobtns radio-btn">
                                                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                                    <input type="radio" class="btn-check" name="father_vaccinated" id="father-vaccinated-yes" value="Yes" checked>
+                                                    <input type="radio" class="btn-check" name="father_vaccinated" id="father-vaccinated-yes" value="yes" checked>
                                                     <label class="btn btn-outline-primary" for="father-vaccinated-yes">Yes</label>
 
-                                                    <input type="radio" class="btn-check" name="father_vaccinated" id="father-vaccinated-no" value="No">
+                                                    <input type="radio" class="btn-check" name="father_vaccinated" id="father-vaccinated-no" value="no">
                                                     <label class="btn btn-outline-primary" for="father-vaccinated-no">No</label>
                                                 </div>
                                             </div>
@@ -463,10 +465,10 @@
 
                                             <div class="btn-list radiobtns radio-btn">
                                                 <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                                                    <input type="radio" class="btn-check" name="mother_vaccinated" id="mother-vaccinated-yes" value="Yes" checked>
+                                                    <input type="radio" class="btn-check" name="mother_vaccinated" id="mother-vaccinated-yes" value="yes" checked>
                                                     <label class="btn btn-outline-primary" for="mother-vaccinated-yes">Yes</label>
 
-                                                    <input type="radio" class="btn-check" name="mother_vaccinated" id="mother-vaccinated-no" value="No">
+                                                    <input type="radio" class="btn-check" name="mother_vaccinated" id="mother-vaccinated-no" value="no">
                                                     <label class="btn btn-outline-primary" for="mother-vaccinated-no">No</label>
                                                 </div>
                                             </div>
@@ -504,10 +506,10 @@
                                             <label class="form-label tx-semibold">Select Guardian Relation</label>
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="guardian_relation" id="guardian-relation">
-                                                    <option selected value="">Select Religion Type</option>
-                                                    <option value="Uncle/Aunty">Uncle/Aunty</option>
-                                                    <option value="GrandFather/GrandMother">GrandFather/GrandMother</option>
-                                                    <option value="Neighbours">Neighbours</option>
+                                                    <option value="">Select Religion Type</option>
+                                                    <option value="uncle_aunty">Uncle/Aunty</option>
+                                                    <option value="grandfather_grandmother">GrandFather/GrandMother</option>
+                                                    <option value="neighbours">Neighbours</option>
                                                     <option value="other">Other</option>
                                                 </select>
                                             </div>
@@ -517,7 +519,7 @@
                                     <div class="form-group col-md-4 mb-0">
                                         <div class="form-group" id="guardian-relation-other-input">
                                             <label class="form-label tx-semibold">Other</label>
-                                            <input type="text" class="form-control" name="other_relation" id="other-relation" readonly>
+                                            <input type="text" class="form-control" name="guardian_relation_other" id="guardian-relation-other" disabled>
                                         </div>
                                     </div>
 
@@ -527,9 +529,9 @@
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="first_person_call" id="first-person-call">
                                                     <option selected value="">Select Person To Call</option>
-                                                    <option value="Father">Father</option>
-                                                    <option value="Mother">Mother</option>
-                                                    <option value="Guardian">Guardian</option>
+                                                    <option value="father">Father</option>
+                                                    <option value="mother">Mother</option>
+                                                    <option value="guardian">Guardian</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -667,10 +669,10 @@
                                             <div class="pos-relative">
                                                 <select class="form-control select2" name="pick_and_drop" id="pick-and-drop">
                                                     <option value="">Select Pick/Drop</option>
-                                                    <option value="By Walk">By Walk</option>
-                                                    <option value="By Ride">By Ride</option>
-                                                    <option value="School Van">School Van</option>
-                                                    <option value="Private Van">Private Van</option>
+                                                    <option value="by_walk">By Walk</option>
+                                                    <option value="by_ride">By Ride</option>
+                                                    <option value="by_school_van">School Van</option>
+                                                    <option value="by_private_van">Private Van</option>
                                                 </select>
                                             </div>
                                         </div>

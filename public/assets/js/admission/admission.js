@@ -41,19 +41,19 @@ $(document).ready(function () {
         
         var religion                    =  $("#religion").val();
         var religion_type               =  $("#religion-type").val();
+        var religion_type_other         =  $("#religion-type-other").val();
 
         var siblings_in_mpa             =  $("#siblings-in-mpa").val();
         var no_of_siblings              =  $("#no-of-siblings").val();
         
         var student_vaccinated          =  $("input[name='student_vaccinated']:checked").val();
         
-        var category_id                 =  $("#category-id").val();
-        var school_house_id             =  $("#school-house-id").val();
-        var system                      =  $("#system").val();
+        // var category_id                 =  $("#category-id").val();
+        // var school_house_id             =  $("#school-house-id").val();
+        // var system                      =  $("#system").val();
         // var temporary_gr                =  $("#temporary-gr").val();
 
         //Student Religion Type Table Data
-        var other_religion              =  $("#other-religion").val();
 
         //Student Father Table Data
         var father_cnic                 =  $("#father-cnic").val();
@@ -80,7 +80,7 @@ $(document).ready(function () {
         var guardian_name               =  $("#guardian-name").val();
         var guardian_phone              =  $("#guardian-phone").val();
         var guardian_relation           =  $("#guardian-relation").val();
-        var other_relation              =  $("#other-relation").val();
+        var guardian_relation_other     =  $("#guardian-relation-other").val();
         var first_person_call           =  $("#first-person-call").val();
 
         //Student Address Table Data
@@ -100,15 +100,14 @@ $(document).ready(function () {
 
         //Student Pick And Drop Table Data
         var pick_and_drop               =  $("#pick-and-drop").val();
-        var ride_vehicle_no             =  $("#ride-vehicle-no").val();
 
-        var school_driver_name          =  $("#school-driver-name").val();
-        var school_driver_phone         =  $("#school-driver-phone").val();
-        var school_vehicle_no           =  $("#school-vehicle-no").val();
+        // var school_driver_name          =  $("#school-driver-name").val();
+        // var school_driver_phone         =  $("#school-driver-phone").val();
+        // var school_vehicle_no           =  $("#school-vehicle-no").val();
 
-        var private_driver_name         =  $("#private-driver-name").val();
-        var private_driver_phone        =  $("#private-driver-phone").val();
-        var private_vehicle_no          =  $("#private-vehicle-no").val();
+        // var private_driver_name         =  $("#private-driver-name").val();
+        // var private_driver_phone        =  $("#private-driver-phone").val();
+        // var private_vehicle_no          =  $("#private-vehicle-no").val();
 
         if (temporary_gr == "") {
             $("#temporary-gr").addClass("has-error");
@@ -141,10 +140,14 @@ $(document).ready(function () {
             $("#class-id:not([disabled]").siblings("span").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
-        if (class_group_id == "" || class_group_id == "0") {
-            $("#class-group-id:not([disabled])").siblings("span").find(".select2-selection--single").addClass("has-error");
-            $("#class-group-id:not([disabled])").siblings("span").after("<span class='error'>This field is required.</span>");
-            flag = false;
+        // if (class_group_id == "" || class_group_id == "0") {
+        if ($("#class-group-id:not([disabled])")) {
+            if(class_group_id == ""){
+                $("#class-group-id").siblings("span").find(".select2-selection--single").addClass("has-error");
+                $("#class-group-id").siblings("span").after("<span class='error'>This field is required.</span>");
+                flag = false;
+            }
+            
         }
         if (section_id == "") {
             $("#section-id:not([disabled]").siblings("span").find(".select2-selection--single").addClass("has-error");
@@ -188,22 +191,27 @@ $(document).ready(function () {
             $("#mother-tongue").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
+        if (admission_date == "") {
+            $("#admission-date").addClass("has-error");
+            $("#admission-date").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
         if (religion == "") {
             $("#religion").addClass("has-error");
             $("#religion").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
+        if (religion_type == "") {
+            $("#religion-type").siblings("span").find(".select2-selection--single").addClass("has-error");
+            $("#religion-type").siblings("span").after("<span class='error'>This field is required.</span>");
+            flag = false;
+        }
         if (religion_type == "other") {
-            if (other_religion == "") {
-                $("#other-religion").addClass("has-error");
-                $("#other-religion").after("<span class='error'>This field is required.</span>");
+            if (religion_type_other == "") {
+                $("#religion_type_other").addClass("has-error");
+                $("#religion_type_other").after("<span class='error'>This field is required.</span>");
                 flag = false;
             }
-        }
-        if (admission_date == "") {
-            $("#admission-date").addClass("has-error");
-            $("#admission-date").after("<span class='error'>This field is required.</span>");
-            flag = false;
         }
         if (father_cnic == "") {
             $("#father-cnic").addClass("has-error");
@@ -236,9 +244,9 @@ $(document).ready(function () {
             flag = false;
         }
         if (guardian_relation == "other") {
-            if (other_relation == "") {
-                $("#other-relation").addClass("has-error");
-                $("#other-relation").after("<span class='error'>This field is required.</span>");
+            if (guardian_relation_other == "") {
+                $("#guardian_relation_other").addClass("has-error");
+                $("#guardian_relation_other").after("<span class='error'>This field is required.</span>");
                 flag = false;
             }
         }
@@ -272,42 +280,64 @@ $(document).ready(function () {
             $("#current-city-id").siblings("span").after("<span class='error'>This field is required.</span>");
             flag = false;
         }
-
         if($('#same-as-current').is(':checked') == false){
             if (permanent_house_no == "") {
-                $("#permanent-house-no:not([disabled]").addClass("has-error");
-                $("#permanent-house-no:not([disabled]").after("<span class='error'>This field is required.</span>");
+                $("#permanent-house-no").addClass("has-error");
+                $("#permanent-house-no").after("<span class='error'>This field is required.</span>");
                 flag = false;
             }
             if (permanent_block_no == "") {
-                $("#permanent-block-no:not([disabled]").addClass("has-error");
-                $("#permanent-block-no:not([disabled]").after("<span class='error'>This field is required.</span>");
+                $("#permanent-block-no").addClass("has-error");
+                $("#permanent-block-no").after("<span class='error'>This field is required.</span>");
                 flag = false;
             }
-            // if (permanent_building_name_no == "") {
-            //     $("#permanent-building-name-no:not([disabled]").addClass("has-error");
-            //     $("#permanent-building-name-no:not([disabled]").after("<span class='error'>This field is required.</span>");
-            //     flag = false;
-            // }
             if (permanent_area_id == "") {
-                $("#permanent-area-id:not([disabled]").siblings("span").find(".select2-selection--single").addClass("has-error");
-                $("#permanent-area-id:not([disabled]").siblings("span").after("<span class='error'>This field is required.</span>");
+                $("#permanent-area-id").siblings("span").find(".select2-selection--single").addClass("has-error");
+                $("#permanent-area-id").siblings("span").after("<span class='error'>This field is required.</span>");
                 flag = false;
             }
             if (permanent_city_id == "") {
-                $("#permanent-city-id:not([disabled]").siblings("span").find(".select2-selection--single").addClass("has-error");
-                $("#permanent-city-id:not([disabled]").siblings("span").after("<span class='error'>This field is required.</span>");
+                $("#permanent-city-id").siblings("span").find(".select2-selection--single").addClass("has-error");
+                $("#permanent-city-id").siblings("span").after("<span class='error'>This field is required.</span>");
                 flag = false;
             }   
-        }
-        
+        }        
         if (pick_and_drop == "") {
+            
             $("#pick-and-drop").siblings("span").find(".select2-selection--single").addClass("has-error");
             $("#pick-and-drop").siblings("span").after("<span class='error'>This field is required.</span>");
             flag = false;
-        }
-        console.log(flag);
+        
+        } else {
 
+            var vehicle_no    =  $("#vehicle-no").val();
+            var driver_name   =  $("#driver-name").val();
+            var driver_phone  =  $("#driver-phone").val();
+
+            if(pick_and_drop == 'by_ride' || pick_and_drop == 'by_school_van' || pick_and_drop == 'by_private_van'){
+                
+                if(vehicle_no == ''){
+                    $("#vehicle-no").addClass("has-error");
+                    $("#vehicle-no").after("<span class='error'>This field is required.</span>");
+                    flag = false;
+                }
+                
+            } 
+            if(pick_and_drop == 'by_school_van' || pick_and_drop == 'by_private_van') {
+                
+                if(driver_name == ''){
+                    $("#driver-name").addClass("has-error");
+                    $("#driver-name").after("<span class='error'>This field is required.</span>");
+                    flag = false;
+                }
+                if(driver_phone == ''){
+                    $("#driver-phone").addClass("has-error");
+                    $("#driver-phone").after("<span class='error'>This field is required.</span>");
+                    flag = false;
+                }
+            } 
+            
+        }
 
         if (flag) {
 
@@ -317,69 +347,65 @@ $(document).ready(function () {
             var message = '';
             
             var formData = {
+
+                "temporary_gr"                : temporary_gr,
                 "gr"                          :  gr,
+                "roll_no"                     :  roll_no,
+                "session_id"                  :  session_id,
+                "campus_id"                   :  campus_id,
+                "system_id"                   :  system_id,
+                "class_id"                    :  class_id,
+                "class_group_id"              :  class_group_id,
+                "section_id"                  :  section_id,
                 "bform_crms_no"               :  bform_crms_no,
+                "first_name"                  :  first_name,
+                "last_name"                   :  last_name,
                 "dob"                         :  dob,
                 "gender"                      :  gender,
                 "place_of_birth"              :  place_of_birth,
                 "nationality"                 :  nationality,
                 "mother_tongue"               :  mother_tongue,
-                "first_name"                  :  first_name,
-                "last_name"                   :  last_name,
-                "religion"                    :  religion,
-                "admission_date"              :  admission_date,
-                "previous_class"              :  previous_class_id,
+                "previous_class_id"           :  previous_class_id,
                 "previous_school"             :  previous_school,
+                "mobile_no"                   :  mobile_no,
+                "email"                       :  email,
+                "admission_date"              :  admission_date,
                 "blood_group"                 :  blood_group,
                 "height"                      :  height,
                 "weight"                      :  weight,
-                "student_vaccinated"          :  student_vaccinated,
                 "as_on_date"                  :  as_on_date,
                 "fee_discount"                :  fee_discount,
-                "system"                      :  system,
-                "roll_no"                     :  roll_no,
-                "temporary_gr"                :  temporary_gr,
-                "mobile_no"                   :  mobile_no,
-                "email"                       :  email,
-
+                "religion"                    :  religion,
                 "religion_type"               :  religion_type,
-                "other_religion"              :  other_religion,
-
+                "religion_type_other"         :  religion_type_other,
                 "siblings_in_mpa"             :  siblings_in_mpa,
                 "no_of_siblings"              :  no_of_siblings,
+                "student_vaccinated"          :  student_vaccinated,
 
-                "father_name"                 :  father_name,
                 "father_cnic"                 :  father_cnic,
-                "father_phone"                :  father_phone,
+                "father_salary"               :  father_salary,
                 "father_email"                :  father_email,
+                "father_name"                 :  father_name,
+                "father_phone"                :  father_phone,
                 "father_occupation"           :  father_occupation,
                 "father_company_name"         :  father_company_name,
-                "father_salary"               :  father_salary,
                 "father_vaccinated"           :  father_vaccinated,
 
-                "mother_name"                 :  mother_name,
                 "mother_cnic"                 :  mother_cnic,
-                "mother_phone"                :  mother_phone,
+                "mother_salary"               :  mother_salary,
                 "mother_email"                :  mother_email,
+                "mother_name"                 :  mother_name,
+                "mother_phone"                :  mother_phone,
                 "mother_occupation"           :  mother_occupation,
                 "mother_company_name"         :  mother_company_name,
-                "mother_salary"               :  mother_salary,
                 "mother_vaccinated"           :  mother_vaccinated,
 
+                "guardian_cnic"               :  guardian_cnic,
                 "guardian_name"               :  guardian_name,
                 "guardian_phone"              :  guardian_phone,
                 "guardian_relation"           :  guardian_relation,
-                "other_relation"              :  other_relation,
+                "guardian_relation_other"     :  guardian_relation_other,
                 "first_person_call"           :  first_person_call,
-                "guardian_cnic"               :  guardian_cnic,
-
-                "campus_id"                   :  campus_id,
-                "session_id"                  :  session_id,
-                "class_id"                    :  class_id,
-                "section_id"                  :  section_id,
-                "category_id"                 :  category_id,
-                "first_person_call"           :  first_person_call,
-                "school_house_id"             :  school_house_id,
 
                 "current_house_no"            :  current_house_no,
                 "current_block_no"            :  current_block_no,
@@ -396,13 +422,10 @@ $(document).ready(function () {
                 "permanent_city_id"           :  permanent_city_id,
 
                 "pick_and_drop"               :  pick_and_drop,
-                "ride_vehicle_no"             :  ride_vehicle_no,
-                "school_driver_name"          :  school_driver_name,
-                "school_driver_phone"         :  school_driver_phone,
-                "school_vehicle_no"           :  school_vehicle_no,
-                "private_driver_name"         :  private_driver_name,
-                "private_driver_phone"        :  private_driver_phone,
-                "private_vehicle_no"          :  private_vehicle_no
+                "vehicle_no"                  :  vehicle_no,
+                "driver_name"                 :  driver_name,
+                "driver_phone"                :  driver_phone
+                
             };
 
             $.ajax({
@@ -1106,17 +1129,23 @@ $(document).ready(function () {
     $(document).on('change', '#guardian-relation', function (e) {
         e.preventDefault();
 
-        var value = $('#guardian-relation').val();
+        var guardian_relation = $('#guardian-relation').val();
 
-        if (value == "other") {
-            var html = `<label class="form-label tx-semibold">Other</label>`;
-            html += `<input type="text" class="form-control" name="other_relation" id="other-relation">`;
-            $('#guardian-relation-other-input').html(html);
+        if (guardian_relation == "other") {
+            $('#guardian-relation-other').prop('disabled',false);
+            // var html = `<label class="form-label tx-semibold">Other</label>`;
+            // html += `<input type="text" class="form-control" name="other_relation" id="other-relation">`;
+            // $('#guardian-relation-other-input').html(html);
         }
         else {
-            var html = `<label class="form-label tx-semibold">Other</label>`;
-            html += `<input type="text" class="form-control" name="other_relation" id="other-relation" readonly>`;
-            $('#guardian-relation-other-input').html(html);
+            $("#guardian-relation-other").removeClass("has-error");
+            $("#guardian-relation-other").siblings('span.error').remove();
+            $('#guardian-relation-other').val('');
+            $('#guardian-relation-other').prop('disabled',true);
+
+            // var html = `<label class="form-label tx-semibold">Other</label>`;
+            // html += `<input type="text" class="form-control" name="other_relation" id="other-relation" readonly>`;
+            // $('#guardian-relation-other-input').html(html);
         }
     });
 
@@ -1126,56 +1155,80 @@ $(document).ready(function () {
         e.preventDefault();
         $("#pick-drop-details-row").remove();
         var pick_and_drop = $('#pick-and-drop').val();
-        var html = '<div class="form-group" id="pick-drop-details-row">';
+        var html = '<div class="form-row" id="pick-drop-details-row">';
 
-        if (pick_and_drop == 'By Ride') {
+        if(pick_and_drop == 'by_ride' || pick_and_drop == 'by_school_van' || pick_and_drop == 'by_private_van'){
+                
+            html +=    `<div class="form-group col-md-4 mb-0">
+                            <label class="form-label tx-semibold">Vehicle No</label>
+                            <input type="text" class="form-control" name="vehicle_no" id="vehicle-no">
+                        </div>`; 
             
-            html +=     `<label class="form-label tx-semibold">Vehicle No</label>
-                        <input type="text" class="form-control" name="ride_vehicle_no" id="ride-vehicle-no">
-                    </div>`;        
+        } 
+        if(pick_and_drop == 'by_school_van' || pick_and_drop == 'by_private_van') {
             
-            $(this).parent().parent().after(html);
-        
-        } else if (pick_and_drop == 'School Van') {
-            html +=    `<div class="form-row"> 
-                            <div class="form-group col-md-4 mb-0" > 
-                                <label class="form-label tx-semibold">School Driver Name</label> 
-                                <input type="text" class="form-control" name="school_driver_name" id="school-driver-name"> 
-                            </div>
-
-                            <div class="form-group col-md-4 mb-0"> 
-                                <label class="form-label tx-semibold">School Driver Phone</label> 
-                                <input type="number" class="form-control" name="school_driver_phone" id="school-driver-phone" placeholder="03##-#######"> 
-                            </div>
-
-                            <div class="form-group col-md-4 mb-0"> 
-                                <label class="form-label tx-semibold">School Vehicle No</label> 
-                                <input type="text" class="form-control" name="school_vehicle_no" id="school-vehicle-no"> 
-                            </div> 
-                        </div >
-                    </div>`;
-
-            $(this).parent().parent().after(html);
-        } else if (pick_and_drop == 'Private Van') {
-            html +=    `<div class="form-row"> 
-                            <div class="form-group col-md-4 mb-0">
-                                <label class="form-label tx-semibold">Private Driver Name</label> 
-                                <input type="text" class="form-control" name="private_driver_name" id="private-driver-name">
-                            </div>
-
-                            <div class="form-group col-md-4 mb-0">
-                                <label class="form-label tx-semibold">Private Driver Phone</label> 
-                                <input type="number" class="form-control" name="private_driver_phone" id="private-driver-phone" placeholder="03##-#######"> 
-                            </div>
-                            
-                            <div class="form-group col-md-4 mb-0"> 
-                                <label class="form-label tx-semibold">School Vehicle No</label> 
-                                <input type="text" class="form-control" name="private_vehicle_no" id="private-vehicle-no"> 
-                            </div> 
+            html +=    `<div class="form-group col-md-4 mb-0" > 
+                            <label class="form-label tx-semibold">Driver Name</label> 
+                            <input type="text" class="form-control" name="driver_name" id="driver-name"> 
                         </div>
-                    </div>`;
-            $(this).parent().parent().after(html);
-        }
+                        <div class="form-group col-md-4 mb-0"> 
+                            <label class="form-label tx-semibold">Driver Phone</label> 
+                            <input type="number" class="form-control" name="driver_phone" id="driver-phone" placeholder="03##-#######"> 
+                        </div>`;
+        } 
+        html +=    `</div>`;
+        $(this).parent().parent().after(html);
+
+        // if (pick_and_drop == 'by_ride') {
+            
+        //     html +=     `<label class="form-label tx-semibold">Vehicle No</label>
+        //                 <input type="text" class="form-control" name="ride_vehicle_no" id="ride-vehicle-no">
+        //             </div>`;        
+            
+        //     $(this).parent().parent().after(html);
+        
+        // } else if (pick_and_drop == 'by_school_van') {
+            
+        //     html +=    `<div class="form-row"> 
+        //                     <div class="form-group col-md-4 mb-0" > 
+        //                         <label class="form-label tx-semibold">School Driver Name</label> 
+        //                         <input type="text" class="form-control" name="school_driver_name" id="school-driver-name"> 
+        //                     </div>
+
+        //                     <div class="form-group col-md-4 mb-0"> 
+        //                         <label class="form-label tx-semibold">School Driver Phone</label> 
+        //                         <input type="number" class="form-control" name="school_driver_phone" id="school-driver-phone" placeholder="03##-#######"> 
+        //                     </div>
+
+        //                     <div class="form-group col-md-4 mb-0"> 
+        //                         <label class="form-label tx-semibold">School Vehicle No</label> 
+        //                         <input type="text" class="form-control" name="school_vehicle_no" id="school-vehicle-no"> 
+        //                     </div> 
+        //                 </div >
+        //             </div>`;
+        //     $(this).parent().parent().after(html);
+
+        // } else if (pick_and_drop == 'by_private_van') {
+            
+        //     html +=    `<div class="form-row"> 
+        //                     <div class="form-group col-md-4 mb-0">
+        //                         <label class="form-label tx-semibold">Private Driver Name</label> 
+        //                         <input type="text" class="form-control" name="private_driver_name" id="private-driver-name">
+        //                     </div>
+
+        //                     <div class="form-group col-md-4 mb-0">
+        //                         <label class="form-label tx-semibold">Private Driver Phone</label> 
+        //                         <input type="number" class="form-control" name="private_driver_phone" id="private-driver-phone" placeholder="03##-#######"> 
+        //                     </div>
+                            
+        //                     <div class="form-group col-md-4 mb-0"> 
+        //                         <label class="form-label tx-semibold">School Vehicle No</label> 
+        //                         <input type="text" class="form-control" name="private_vehicle_no" id="private-vehicle-no"> 
+        //                     </div> 
+        //                 </div>
+        //             </div>`;
+        //     $(this).parent().parent().after(html);
+        // }
 
     });
 

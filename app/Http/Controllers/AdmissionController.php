@@ -35,9 +35,9 @@ class AdmissionController extends Controller
         $students        =  Student::all();
         $campuses        =  Campus::get();
         $sessions        =  Session::get();
-        $studentClasses  =  StudentClass::get();
+        $studentClasses  =  Classes::get();
         $sections        =  Section::get();
-        $categories      =  Category::get();
+        // $categories      =  Category::get();
         $schoolHouses    =  SchoolHouse::get();
         $areas           =  Area::get();
 
@@ -79,14 +79,13 @@ class AdmissionController extends Controller
 
     public function store(Request $request) {
 
-        dd($request->all());
+        // dd($request->all());
 
         $validator = Validator::make($request->all(), [
             'campus_id'       =>  'required|numeric|gt:0|digits_between:1,11',
             'session_id'      =>  'required|numeric|gt:0|digits_between:1,11',
             'class_id'        =>  'required|numeric|gt:0|digits_between:1,11',
             'section_id'      =>  'required|numeric|gt:0|digits_between:1,11',
-            'category_id'     =>  'required|numeric|gt:0|digits_between:1,11',
             'admission_date'  =>  'required|date_format:d-m-Y'
         ]);
 
@@ -101,34 +100,34 @@ class AdmissionController extends Controller
             
         } else {
             $success = false;
-            DB::beginTransaction();
+            // DB::beginTransaction();
             try {
                 
                 $formData =  $request->all();
-                dd($formData);
+                // dd($formData);
 
-                $student  = new Student;
+                $student  = new Student();
                
                 $student->temporary_gr         =  $request->temporary_gr;
                 $student->gr                   =  $request->gr;
                 $student->roll_no              =  $request->roll_no;
                 $student->session_id           =  $request->session_id;
                 $student->campus_id            =  $request->campus_id;
-                $student->system_id            =  $request->category_id;
+                $student->system_id            =  $request->system_id;
                 $student->class_id             =  $request->class_id;
-                $student->class_group_id       =  $request->section_id;
+                $student->group_id             =  $request->class_group_id;
                 $student->section_id           =  $request->section_id;
                 $student->bform_crms_no        =  $request->bform_crms_no;
                 $student->first_name           =  $request->first_name;
                 $student->last_name            =  $request->last_name;
-                $student->dob                  =  date('Y-m-d', strtotime($request->dob));
+                $student->dob                  =  isset($request->dob) ? date('Y-m-d', strtotime($request->dob)) : NULL;
 
                 $student->gender               =  $request->gender;
                 $student->place_of_birth       =  $request->place_of_birth;
                 $student->nationality          =  $request->nationality;
                 $student->mother_tongue        =  $request->mother_tongue;
                 $student->previous_class_id    =  $request->previous_class;
-                $student->previous_school_id   =  $request->previous_school;
+                $student->previous_school      =  $request->previous_school;
 
                 $student->mobile_no            =  $request->mobile_no;
                 $student->email                =  $request->email;
@@ -188,6 +187,8 @@ class AdmissionController extends Controller
                 
                 $student->guardian_details = json_encode($guardianDetails);
                 
+                dd($request->same_as_current);
+
                 $currentAddress = array(
                     'current_house_no'            =>  $request->current_house_no,
                     'current_block_no'            =>  $request->current_block_no,
@@ -196,13 +197,19 @@ class AdmissionController extends Controller
                     'current_city_id'             =>  $request->current_city_id
                 );
 
-                if($request->same_as_current == 'yes'){
+                if($request->same_as_current == 'on'){
                     
                     $sameAsCurrent = array(
                         'same_as_current' => 'yes'
                     );
                     
-                    $permanentAddress = array();
+                    $permanentAddress = array(
+                        'permanent_house_no'            =>  $request->current_house_no,
+                        'permanent_block_no'            =>  $request->current_block_no,
+                        'permanent_building_name_no'    =>  $request->current_building_name_no,
+                        'permanent_area_id'             =>  $request->current_area_id,
+                        'permanent_city_id'             =>  $request->current_city_id
+                    );
 
                 } else {
                     
@@ -227,7 +234,16 @@ class AdmissionController extends Controller
 
                 ));
 
-               
+                // dd($student);
+                
+                if($student->save()){
+                    
+                    dd("saved");
+                } else {
+                    
+                    dd("Error Occured");
+                }
+
 
                 $student = Student::create([
 
@@ -397,11 +413,11 @@ class AdmissionController extends Controller
                     }
                 }
             } catch (\Exception $e) {
-                DB::rollback();
+                // DB::rollback();
                 $success = false;
                 $response = array(
                     'status'   =>  false, 
-                    'message'  =>  'Some thing went wrong!'
+                    'message'  =>  $e
                 );
                 return response()->json($response);
             }
@@ -412,7 +428,7 @@ class AdmissionController extends Controller
         $student       =  Student::find($id);
         $campus        =  Campus::get();
         $session       =  Session::get();
-        $studentClass  =  StudentClass::get();
+        $studentClass  =  Classes::get();
         $section       =  Section::get();
         $category      =  Category::get();
         $schoolHouse   =  SchoolHouse::get();
@@ -649,7 +665,7 @@ class AdmissionController extends Controller
         $student       =  Student::find($id);
         $campus        =  Campus::get();
         $session       =  Session::get();
-        $studentClass  =  StudentClass::get();
+        $studentClass  =  Classes::get();
         $section       =  Section::get();
         $category      =  Category::get();
         $schoolHouse   =  SchoolHouse::get();
@@ -752,10 +768,10 @@ class AdmissionController extends Controller
     public function import(){
         $campuses        =  Campus::get();
         $sessions        =  Session::get();
-        $studentClasses  =  StudentClass::get();
+        $studentClasses  =  Classes::get();
         $sections        =  Section::get();
-        $categories      =  Category::get();
-        $schoolHouses    =  SchoolHouse::get();
+        // $categories      =  Category::get();
+        // $schoolHouses    =  SchoolHouse::get();
         $areas           =  Area::get();
 
         $data = array(
@@ -763,8 +779,8 @@ class AdmissionController extends Controller
             'sessions'        =>  $sessions,
             'studentClasses'  =>  $studentClasses,
             'sections'        =>  $sections,
-            'categories'      =>  $categories,
-            'schoolHouses'    =>  $schoolHouses,
+            'categories'      =>  array(),
+            'schoolHouses'    =>  array(),
             'areas'           =>  $areas,
             'page'            =>  'Admission',
             'menu'            =>  'Import Student Admission Data'
@@ -777,8 +793,11 @@ class AdmissionController extends Controller
         $request->validate([
             'import_file'  =>  'required|mimes:xlsx'
         ]);
+        echo "<pre>";
         print_r($request->file('import_file'));
         echo "<br>";
+        // die();
+        // dd($request->file('import_file'));
 
         $query = Excel::import(new StudentAdmissionImport, $request->file('import_file'));
         $query = true;
